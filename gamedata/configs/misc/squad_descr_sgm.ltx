@@ -1,0 +1,446 @@
+;-------------------------------------------------------------------------------------------------------------;
+;--------------------------------------------Отряды:----------------------------------------------------------;
+;-------------------------------------------------------------------------------------------------------------;
+;---------Сюжетные отряды----------;
+[mar_csky_reinforcements]
+auto_id = true
+faction = csky
+npc = mar_spec_reinforcement1,mar_spec_reinforcement2,mar_spec_reinforcement3,mar_spec_reinforcement4,mar_spec_reinforcement1,mar_spec_reinforcement2
+target_smart = mar_smart_terrain_10_5
+spawn_point = mar_smart_terrain_5_12_defenders_spawn_point
+[esc_hero_reinforcements]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz4, esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_3_16:nil
+attack_power = 400
+sympathy = 0.5
+relationship = friend
+[esc_wolf_novices1]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_3_16:nil
+attack_power = 200
+sympathy = 0.5
+relationship = friend
+[esc_wolf_novices2]
+faction = stalker
+npc = esc_stalker_specnaz3, esc_stalker_specnaz4, esc_stalker_specnaz2
+target_smart = esc_smart_terrain_3_16:nil
+attack_power = 200
+sympathy = 0.5
+relationship = friend
+[gar_stalker_reinforcements]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4, gar_stalker_specnaz2
+target_smart = gar_smart_terrain_3_7:nil
+attack_power = 150
+sympathy = 0.5
+[gar_capture_reinf1]
+faction = stalker
+npc = gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker2
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 200
+sympathy = 0.5
+[gar_capture_reinf2]
+faction = stalker
+npc = gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker2
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 200
+sympathy = 0.5
+[gar_capture_reinf3]
+faction = stalker
+npc = gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker2
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 200
+sympathy = 0.5
+[gar_depo_attackers]
+faction = stalker
+npc = gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker1, gar_depo_attacker2, gar_depo_attacker2
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 200
+sympathy = 0.5
+on_death = %+gar_depo_attackers_deaths%
+[gar_rush_reinforcements]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4, gar_stalker_specnaz2
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 200
+sympathy = 0.5
+[gar_acceptance_reinf]
+faction = stalker
+npc = gar_depo_attacker1, gar_depo_attacker2
+target_smart = gar_smart_terrain_5_8:nil
+attack_power = 200
+sympathy = 0.5
+[val_after_dogs_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_6_4:nil
+attack_power = 80
+sympathy = 0.5
+on_death = %+val_dogs_hole_deaths%
+[val_pseudo_giant_6_4]
+faction = monster
+npc = gigant_strong
+target_smart = val_smart_terrain_6_4
+attack_power = 300
+[agr_significant_hold_up]
+faction = monster
+npc = dog_normal,dog_normal,dog_normal,dog_normal,dog_normal,dog_normal,dog_normal
+target_smart = agr_smart_terrain_1_6
+attack_power = 125
+[agr_monsters_n_wave1]
+faction = monster
+npc = dog_normal,dog_normal,dog_normal,dog_normal,dog_normal,dog_normal,dog_normal
+target_smart = agr_smart_terrain_1_6_near_1
+attack_power = 500
+on_death = %+agr_defend_dolg_north_h1_end%
+[agr_monsters_n_wave2]
+faction = monster
+npc = snork_normal,snork_normal,snork_normal,snork_normal,snork_normal
+target_smart = agr_smart_terrain_1_6_near_1
+attack_power = 500
+on_death = %+agr_defend_dolg_north_h2_end%
+[agr_monsters_e_wave1]
+faction = monster
+npc = snork_normal,snork_normal,snork_normal,snork_normal,snork_normal
+target_smart = agr_smart_terrain_1_6_near_2
+[agr_smart_terrain_7_4_stalker_1_squad]
+faction = stalker
+npc = sim_default_stalker_2, sim_default_stalker_2, sim_default_stalker_1, sim_default_stalker_1, sim_default_stalker_1
+target_smart = agr_smart_terrain_7_4
+on_death = %+agr_smart_terrain_7_4_duty_1_squad_dead%
+[agr_smart_terrain_7_4_stalker_2_squad]
+faction = stalker
+npc = sim_default_stalker_2, sim_default_stalker_2, sim_default_stalker_1, sim_default_stalker_1, sim_default_stalker_1
+target_smart = agr_smart_terrain_7_4
+attack_power = 400
+on_death = %+agr_smart_terrain_7_4_duty_2_squad_dead%
+[agr_smart_terrain_7_4_dolg_squad1]
+faction = dolg
+npc = sim_default_duty_2, sim_default_duty_2, sim_default_duty_1, sim_default_duty_1, sim_default_duty_1
+target_smart = agr_smart_terrain_7_4
+[agr_smart_terrain_7_4_dolg_squad2]
+faction = dolg
+npc = sim_default_duty_2, sim_default_duty_2, sim_default_duty_1, sim_default_duty_1, sim_default_duty_1
+target_smart = agr_smart_terrain_7_4
+attack_power = 400
+[agr_tunnel_once_squad]
+faction = stalker
+npc = sim_default_stalker_2, sim_default_stalker_2, sim_default_stalker_1, sim_default_stalker_1, sim_default_stalker_1
+target_smart = agr_smart_terrain_6_4
+attack_power = 400
+[mil_monolith_ambush1]
+faction = monolith
+npc = sim_default_monolith_1, sim_default_monolith_2, sim_default_monolith_0, sim_default_monolith_0, sim_default_monolith_1
+target_smart = mil_smart_terrain_2_2
+attack_power = 200
+[mil_monolith_ambush2]
+faction = monolith
+npc = sim_default_monolith_2, sim_default_monolith_2, sim_default_monolith_2
+target_smart = mil_smart_terrain_2_2
+attack_power = 300
+[mil_army_ambush1]
+faction = army
+npc = sim_default_military_3, sim_default_military_3, sim_default_military_3, sim_default_military_3, sim_default_military_3
+target_smart = mil_smart_terrain_5_6
+attack_power = 100
+on_death = %+mil_stop_invasion_5_6_complete%
+[mil_army_ambush2]
+faction = army
+npc = sim_default_military_4, sim_default_military_4, sim_default_military_4, sim_default_military_4, sim_default_military_4
+target_smart = mil_smart_terrain_5_5
+attack_power = 100
+on_death = %+mil_stop_invasion_5_5_complete%
+;---------Захватчики----------;
+[mar_north_khutor_explorers]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_12_2:nil
+attack_power = 100
+sympathy = 0.5
+relationship = friend
+on_death = %+mar_force_north_khutor_deaths%
+[mar_railway_explorers]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2
+target_smart = mar_smart_terrain_7_3:nil
+attack_power = 50
+sympathy = 0.5
+relationship = friend
+on_death = %+mar_force_railway_deaths%
+[mar_boat_station_explorers]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_3_3:nil
+attack_power = 90
+sympathy = 0.5
+relationship = friend
+on_death = %+mar_force_boat_station_deaths%
+[mar_village_explorers]
+faction = csky
+npc = mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_4_5:nil
+attack_power = 80
+sympathy = 0.5
+relationship = friend
+on_death = %+mar_force_village_deaths%
+[mar_test_explorers]
+faction = csky
+npc = mar_test_force
+target_smart = mar_smart_terrain_8_11:nil
+attack_power = 200
+sympathy = 0.5
+relationship = friend
+[esc_army_blockpost_explorers]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz4
+target_smart = esc_smart_terrain_3_16:nil
+attack_power = 400
+sympathy = 0.5
+relationship = friend
+[esc_ruins_explorers_s1]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_6_6:nil
+attack_power = 200
+sympathy = 0.5
+relationship = friend
+on_death = %+esc_force_ruins_deaths%
+[esc_ruins_explorers_s2]
+faction = stalker
+npc = esc_stalker_specnaz2, esc_stalker_specnaz4
+target_smart = esc_smart_terrain_6_6:nil
+attack_power = 210
+sympathy = 0.5
+relationship = friend
+on_death = %+esc_force_ruins_deaths%
+;---------Одиночные отряды----------;
+[esc_6_8_once_squad]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz4
+target_smart = esc_smart_terrain_6_8:nil
+attack_power = 100
+sympathy = 0.5
+[esc_5_9_once_squad]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_5_9:nil
+attack_power = 100
+sympathy = 0.5
+[esc_7_11_once_squad]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz4
+target_smart = esc_smart_terrain_7_11:nil
+attack_power = 150
+sympathy = 0.5
+[esc_5_10_once_squad]
+faction = stalker
+npc = esc_stalker_specnaz1, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_5_10:nil
+attack_power = 80
+sympathy = 0.5
+relationship = friend
+[esc_4_9_once_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_4_9:nil
+attack_power = 70
+sympathy = 0.5
+relationship = friend
+[esc_test_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3
+target_smart = esc_smart_terrain_5_10:nil
+attack_power = 70
+sympathy = 0.5
+relationship = friend
+;---------Отряды для организации операций----------;
+[mar_follower_6_4_squad]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3
+target_smart = mar_smart_terrain_6_4:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+mar_follower_6_4_squad_deaths%
+[mar_follower_6_11_squad]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_6_11:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+mar_follower_6_11_squad_deaths%
+[mar_follower_11_3_squad]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_11_3:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+mar_follower_11_3_squad_deaths%
+[mar_follower_4_5_squad]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_4_5:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+mar_follower_4_5_squad_deaths%
+[mar_follower_3_10_squad]
+faction = csky
+npc = mar_csky_specnaz1, mar_csky_specnaz2, mar_csky_specnaz3, mar_csky_specnaz4
+target_smart = mar_smart_terrain_3_10:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+mar_follower_3_10_squad_deaths%
+[esc_follower_4_9_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_4_9:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_4_9_squad_deaths%
+[esc_follower_5_9_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_5_9:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_5_9_squad_deaths%
+[esc_follower_5_10_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_5_10:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_5_10_squad_deaths%
+[esc_follower_6_7_squad]
+faction = stalker
+npc = esc_stalker_specnaz2, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_6_7:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_6_7_squad_deaths%
+[esc_follower_6_8_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_6_8:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_6_8_squad_deaths%
+[esc_follower_7_11_squad]
+faction = stalker
+npc = esc_stalker_specnaz4, esc_stalker_specnaz2, esc_stalker_specnaz3, esc_stalker_specnaz1
+target_smart = esc_smart_terrain_7_11:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+esc_follower_7_11_squad_deaths%
+[gar_follower_5_5_squad]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4
+target_smart = gar_smart_terrain_5_5:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+gar_follower_5_5_squad_deaths%
+[gar_follower_3_7_squad]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4
+target_smart = gar_smart_terrain_3_7:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+gar_follower_3_7_squad_deaths%
+[gar_follower_3_8_squad]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4
+target_smart = gar_smart_terrain_3_8:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+gar_follower_3_8_squad_deaths%
+[gar_follower_1_5_squad]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4
+target_smart = gar_smart_terrain_1_5:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+gar_follower_1_5_squad_deaths%
+[gar_follower_3_5_squad]
+faction = stalker
+npc = gar_stalker_specnaz1, gar_stalker_specnaz2, gar_stalker_specnaz3, gar_stalker_specnaz4
+target_smart = gar_smart_terrain_3_5:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+gar_follower_3_5_squad_deaths%
+[val_follower_9_6_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_9_6:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+val_follower_9_6_squad_deaths%
+[val_follower_8_7_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_8_7:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+val_follower_8_7_squad_deaths%
+[val_follower_1_2_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_1_2:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+val_follower_1_2_squad_deaths%
+[val_follower_4_0_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_4_0:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+val_follower_4_0_squad_deaths%
+[val_follower_3_0_squad]
+faction = freedom
+npc = val_freedom_specnaz1, val_freedom_specnaz2, val_freedom_specnaz3, val_freedom_specnaz4
+target_smart = val_smart_terrain_3_0:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+val_follower_3_0_squad_deaths%
+[agr_follower_6_4_squad]
+faction = dolg
+npc = agr_dolg_specnaz1, agr_dolg_specnaz2, agr_dolg_specnaz3, agr_dolg_specnaz4
+target_smart = agr_smart_terrain_6_4:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+agr_follower_6_4_squad_deaths%
+[agr_follower_5_4_squad]
+faction = dolg
+npc = agr_dolg_specnaz1, agr_dolg_specnaz2, agr_dolg_specnaz3, agr_dolg_specnaz4
+target_smart = agr_smart_terrain_5_4:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+agr_follower_5_4_squad_deaths%
+[agr_follower_4_6_squad]
+faction = dolg
+npc = agr_dolg_specnaz1, agr_dolg_specnaz2, agr_dolg_specnaz3, agr_dolg_specnaz4
+target_smart = agr_smart_terrain_4_6:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+agr_follower_4_6_squad_deaths%
+[agr_follower_2_3_squad]
+faction = dolg
+npc = agr_dolg_specnaz1, agr_dolg_specnaz2, agr_dolg_specnaz3, agr_dolg_specnaz4
+target_smart = agr_smart_terrain_2_3:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+agr_follower_2_3_squad_deaths%
+[agr_follower_2_2_squad]
+faction = dolg
+npc = agr_dolg_specnaz1, agr_dolg_specnaz2, agr_dolg_specnaz3, agr_dolg_specnaz4
+target_smart = agr_smart_terrain_2_2:nil
+attack_power = 50
+sympathy = 0.5
+on_death = %+agr_follower_2_2_squad_deaths%
+
+
+
+
+
+

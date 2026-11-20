@@ -1,0 +1,26 @@
+<w>
+    <file name="ui\ui_extra_option">
+    <texture id="ui_mod_logo" x="604" y="475" width="146" height="34" />
+    <texture id="ui_extra_options_dlg" x="0" y="0" width="558" height="463" />
+    <texture id="ui_extra_options_dlg2" x="577" y="568" width="349" height="290" />
+    <texture id="ui_extra_helps_dlg"   x="0" y="554" width="558" height="470" />
+    <texture id="ui_extra_options_pre_title"   x="603" y="33" width="176" height="25" />
+    <texture id="ui_extra_options_pre_title_2" x="618" y="83" width="145" height="43" />
+    <texture id="ui_extra_options_pre_title_2_long" x="607" y="128" width="205" height="29" />
+    <texture id="ui_extra_options_pre_title_field"   x="597" y="279" width="297" height="138" />
+    <texture id="ui_extra_options_monitor" x="606" y="192" width="84" height="71" />
+    <texture id="ui_extra_button_clean_e" x="580" y="892" width="215" height="29" />
+    <texture id="ui_extra_button_clean_h" x="580" y="921" width="215" height="29" />
+    <texture id="ui_extra_button_clean_t" x="580" y="980" width="215" height="29" />
+    <texture id="ui_extra_button_ordinary_e" x="29" y="492" width="161" height="38" />
+    <texture id="ui_extra_button_ordinary_h" x="209" y="492" width="161" height="38" />
+    <texture id="ui_extra_button_ordinary_t" x="208" y="492" width="161" height="38" />
+    <texture id="ui_extra_options_power_icon" x="707" y="223" width="27" height="23" />
+    <texture id="ui_extra_button_long_e" x="598" y="334" width="275" height="36" />
+    <texture id="ui_extra_button_long_h" x="595" y="391" width="276" height="37" />
+    <texture id="ui_extra_button_long_t" x="594" y="391" width="276" height="37" />
+    <texture id="ui_extra_button_mini_e" x="834" y="474" width="36" height="25" />
+    <texture id="ui_extra_button_mini_h" x="834" y="503" width="36" height="25" />
+    <texture id="ui_extra_button_mini_t" x="834" y="532" width="36" height="25" />
+    </file>
+</w>

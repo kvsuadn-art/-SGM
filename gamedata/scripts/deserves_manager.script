@@ -1,0 +1,55 @@
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function get_deserve_case_manager()
+	if(RB_manager==nil) then
+		DV_manager = Cdeserve_case()
+	end
+	return DV_manager
+end
+------------------------------------
+----------/Переменнные/-------------
+------------------------------------
+local DV_manager = nil
+local insert_tbl = {}
+local insert_bool = false
+------------------------------------
+--------/Инициализация/-------------
+------------------------------------
+class "Cdeserve_case"
+function Cdeserve_case:__init()
+end
+function Cdeserve_case:add_deserve(item)
+   local sect=item:section()
+   if db.actor~=nil then
+     param_what=sect.."_unpack"
+     param_x=sgm_functions.GetDeserveX(sect)
+     param_y=sgm_functions.GetDeserveY(sect)
+     param_z=sgm_functions.GetDeserveZ(sect)
+     param_lv=sgm_functions.GetDeserveLV(sect)
+     param_gv=sgm_functions.GetDeserveGV(sect)
+     param_descr=sgm_functions.GetDeserveDescr(sect)
+     local deserve=alife():create(param_what,vector():set(param_x,param_y,param_z),param_lv,param_gv)
+     if level.map_has_object_spot(deserve.id,"deserve")==0 then
+     level.map_add_object_spot_ser(deserve.id,"deserve",param_descr)
+     end
+   end
+end
+function Cdeserve_case:radius_update(obj)
+   if find_in_string(obj:section(),"_unpack") then
+       unpack_items=sgm_functions.GetDeserveItems(obj:section())
+       if unpack_items_table==nil then
+          unpack_items_table = parse_names(unpack_items)
+       end
+       if unpack_items_table~=nil and not has_alife_info(obj:section(),"_unpack") then
+          for k,v in pairs(unpack_items_table) do
+              alife():create(v,obj:position(),obj:level_vertex_id(),obj:game_vertex_id(),obj:id())
+              db.actor:give_info_portion(obj:section(),"_unpack")
+          end
+          show_hud_message(#unpack_items_table)
+       end
+   end
+end
+
+
+

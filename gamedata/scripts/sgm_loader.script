@@ -1,0 +1,46 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------(Загрузчик файлов Sigerous MOD)-----------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function sigerous_mod_init()
+   if not has_alife_info("mod_deactivate") then
+   sigerous_mod_loader()
+   end  
+   --level_tasks.add_location(1013,"hide_trader_location","Секретный торгаш")
+   --if has_alife_info("blackday_is_active") then
+   --show_hud_message("blackday_is_activeate")
+   --elseif not has_alife_info("blackday_is_active") then
+   --show_hud_message("blackday_is_deactivate")
+   --end
+   --show_hud_message(db.actor:character_rank())
+   --local pop1=sim_board.get_sim_board():get_smart_population(sim_board.get_sim_board().smarts_by_names["mil_smart_terrain_5_5"])
+   --local pop2=sim_board.get_sim_board():get_smart_population(sim_board.get_sim_board().smarts_by_names["mil_smart_terrain_5_6"])
+   --local nos1=sim_board.get_sim_board().smarts_by_names["mil_smart_terrain_5_5"].player_name
+   --local nos2=sim_board.get_sim_board().smarts_by_names["mil_smart_terrain_5_6"].player_name
+   --show_hud_message("5_5="..nos1..pop1.."  5_6="..nos2..pop2)
+   --show_hud_message(db.actor:mass())
+   --if sgm_functions.read_variable("satiety_factor")~=nil then
+   --show_hud_message(sgm_functions.read_variable("satiety_factor").."  "..sgm_flags.satiety_kick)
+   --end
+   --show_hud_message(sim_faction.get_current_expansion("freedom"))
+end
+
+function sigerous_mod_loader()
+   sgm_huds.hud_checker()
+   sgm_grant.item_works_init()
+   sgm_modes.modes_init()
+   sgm_effects.effects_init()
+   sgm_value_work.values_init()
+   sgm_world.update_spawn()
+   sgm_info.info_work_init()
+   sgm_tasks.sgm_task_init()
+   sgm_reinforcement.update_reinforcement()
+   sgm_squads.squads_init()
+   sgm_news.sgm_news_init()
+   sgm_creator.blackday_creator()
+   sgm_sleep_places.sleep_places_init()
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

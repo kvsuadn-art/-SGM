@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+val_go_to_outpost_start} sr_idle2  %+val_go_to_outpost_distance%
+
+[sr_idle2]
+on_actor_inside = {+val_talk_to_medic_complete} nil  %+val_deadblockpost_sos%

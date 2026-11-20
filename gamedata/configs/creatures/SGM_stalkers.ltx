@@ -1,0 +1,1047 @@
+;----------------------------------------------------------------
+;----------------------------'Болота'----------------------------
+;----------------------------------------------------------------
+[test_npc]:stalker
+$spawn            = "respawn\proba"
+character_profile = test_npc
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\logic_proba.ltx
+;------Ренегаты форпоста------->
+[mar_outpost_renegate1]:stalker
+$spawn            = "respawn\mar_outpost_renegate1"
+character_profile = mar_outpost_renegate1
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_outpost_renegate1.ltx
+[mar_outpost_renegate2]:stalker
+$spawn            = "respawn\mar_outpost_renegate2"
+character_profile = mar_outpost_renegate2
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_outpost_renegate2.ltx
+;------Главарь ренегатов------->
+[mar_renegate_boss]:faction_boss
+$spawn            = "respawn\mar_renegate_boss"
+character_profile = mar_renegate_boss
+spec_rank         = master
+community         = renegade
+custom_data       = scripts\SGM\march\mar_renegate_boss.ltx
+;------Организатор отрядов ЧН------->
+[mar_csky_squads_commander]:stalker
+$spawn            = "respawn\mar_csky_squads_commander"
+character_profile = mar_csky_squads_commander
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_squads_commander.ltx
+;------Сберегатель ЧН------->
+[mar_csky_bankir]:stalker
+$spawn            = "respawn\mar_csky_bankir"
+character_profile = mar_csky_bankir
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_bankir.ltx
+;----Лидер спецназа ЧН------>
+[mar_csky_specnaz_leader]:stalker
+$spawn            = "respawn\mar_csky_specnaz_leader"
+character_profile = mar_csky_specnaz_leader
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_specnaz_leader.ltx
+;----Спящий ЧН------>
+[mar_csky_sleeper]:stalker
+$spawn            = "respawn\mar_csky_sleeper"
+character_profile = mar_csky_sleeper
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_sleeper.ltx
+;----Патрульный ЧН------>
+[mar_csky_patrol]:stalker
+$spawn            = "respawn\mar_csky_patrol"
+character_profile = mar_csky_patrol
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_patrol.ltx
+;----Ренегат Барон------>
+[mar_renegate_baron]:stalker
+$spawn            = "respawn\mar_renegate_baron"
+character_profile = mar_renegate_baron
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_renegate_baron.ltx
+;----Захватчики точек------>
+[mar_explorer_village1]:stalker
+$spawn            = "respawn\mar_csky_specnaz1"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_village1.ltx
+[mar_explorer_village2]:stalker
+$spawn            = "respawn\mar_csky_specnaz2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_village2.ltx
+[mar_explorer_village3]:stalker
+$spawn            = "respawn\mar_csky_specnaz3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_village3.ltx
+[mar_explorer_crossing1]:stalker
+$spawn            = "respawn\mar_explorer_crossing1"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_crossing1.ltx
+[mar_explorer_crossing2]:stalker
+$spawn            = "respawn\mar_explorer_crossing2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_crossing2.ltx
+[mar_explorer_crossing3]:stalker
+$spawn            = "respawn\mar_explorer_crossing3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_crossing3.ltx
+[mar_explorer_crossing4]:stalker
+$spawn            = "respawn\mar_explorer_crossing4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_crossing4.ltx
+[mar_explorer_railway1]:stalker
+$spawn            = "respawn\mar_explorer_railway1"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_railway1.ltx
+[mar_explorer_railway2]:stalker
+$spawn            = "respawn\mar_explorer_railway2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_railway2.ltx
+[mar_explorer_khutor1]:stalker
+$spawn            = "respawn\mar_explorer_khutor1"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_khutor1.ltx
+[mar_explorer_khutor2]:stalker
+$spawn            = "respawn\mar_explorer_khutor2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_khutor2.ltx
+[mar_explorer_khutor3]:stalker
+$spawn            = "respawn\mar_explorer_khutor3"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_khutor3.ltx
+[mar_explorer_khutor4]:stalker
+$spawn            = "respawn\mar_explorer_khutor4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\explorers\mar_explorer_khutor4.ltx
+;----Спец. отряды------>
+[mar_csky_specnaz1]:stalker
+$spawn            = "respawn\mar_csky_specnaz1"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+[mar_csky_specnaz2]:stalker
+$spawn            = "respawn\mar_csky_specnaz2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+[mar_csky_specnaz3]:stalker
+$spawn            = "respawn\mar_csky_specnaz3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+[mar_csky_specnaz4]:stalker
+$spawn            = "respawn\mar_csky_specnaz4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+[mar_test_force]:stalker
+$spawn            = "respawn\test_force"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+;----Карательный отряд ЧН------>
+[mar_csky_force1]:stalker
+$spawn            = "respawn\mar_csky_force1"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_force1.ltx
+[mar_csky_force2]:stalker
+$spawn            = "respawn\mar_csky_force2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_force2.ltx
+[mar_csky_force3]:stalker
+$spawn            = "respawn\mar_csky_force3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_force3.ltx
+[mar_csky_force4]:stalker
+$spawn            = "respawn\mar_csky_force4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_force4.ltx
+[mar_csky_force_leader]:stalker
+$spawn            = "respawn\mar_csky_force_leader"
+character_profile = mar_csky_force_leader
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_csky_force_leader.ltx
+;----Спец. подкрепление ЧН------>
+[mar_spec_reinforcement1]:stalker
+$spawn            = "respawn\mar_spec_reinforcement1"
+character_profile = mar_csky_specnaz1
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_spec_reinforcements.ltx
+[mar_spec_reinforcement2]:stalker
+$spawn            = "respawn\mar_spec_reinforcement2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_spec_reinforcements.ltx
+[mar_spec_reinforcement3]:stalker
+$spawn            = "respawn\mar_spec_reinforcement3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_spec_reinforcements.ltx
+[mar_spec_reinforcement4]:stalker
+$spawn            = "respawn\mar_spec_reinforcement4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_spec_reinforcements.ltx
+;----Ренгаты перехватчики------>
+[mar_recapture_renagad1]:stalker
+$spawn            = "respawn\mar_recapture_renagad1"
+character_profile = mar_recapture_renagad1
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_recapture_renagades.ltx
+[mar_recapture_renagad2]:stalker
+$spawn            = "respawn\mar_recapture_renagad2"
+character_profile = mar_recapture_renagad2
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_recapture_renagades.ltx
+[mar_recapture_renagad3]:stalker
+$spawn            = "respawn\mar_recapture_renagad3"
+character_profile = mar_recapture_renagad3
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_recapture_renagades.ltx
+[mar_recapture_renagad4]:stalker
+$spawn            = "respawn\mar_recapture_renagad4"
+character_profile = mar_recapture_renagad4
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_recapture_renagades.ltx
+;----Требующий спасения отряд ЧН------>
+[mar_rescue_soldier1]:stalker
+$spawn            = "respawn\mar_rescue_soldier1"
+character_profile = mar_csky_specnaz_rescue
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_rescue_soldier1.ltx
+[mar_rescue_soldier2]:stalker
+$spawn            = "respawn\mar_rescue_soldier2"
+character_profile = mar_csky_specnaz2
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_rescue_soldier2.ltx
+[mar_rescue_soldier3]:stalker
+$spawn            = "respawn\mar_rescue_soldier3"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_rescue_soldier3.ltx
+[mar_rescue_soldier4]:stalker
+$spawn            = "respawn\mar_rescue_soldier4"
+character_profile = mar_csky_specnaz4
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_rescue_soldier4.ltx
+[mar_rescue_soldier5]:stalker
+$spawn            = "respawn\mar_rescue_soldier5"
+character_profile = mar_csky_specnaz3
+spec_rank         = regular
+community         = csky
+custom_data       = scripts\SGM\march\mar_rescue_soldier5.ltx
+;----Мешающие спасению отряда ЧН------>
+[mar_hindrance_renagad1]:stalker
+$spawn            = "respawn\mar_hindrance_renagad1"
+character_profile = mar_recapture_renagad1
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagades.ltx
+[mar_hindrance_renagad2]:stalker
+$spawn            = "respawn\mar_hindrance_renagad2"
+character_profile = mar_recapture_renagad4
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagades.ltx
+[mar_hindrance_renagad3]:stalker
+$spawn            = "respawn\mar_hindrance_renagad3"
+character_profile = mar_recapture_renagad1
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagad1.ltx
+[mar_hindrance_renagad4]:stalker
+$spawn            = "respawn\mar_hindrance_renagad4"
+character_profile = mar_recapture_renagad4
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagad2.ltx
+[mar_hindrance_renagad5]:stalker
+$spawn            = "respawn\mar_hindrance_renagad5"
+character_profile = mar_recapture_renagad1
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagades.ltx
+[mar_hindrance_renagad6]:stalker
+$spawn            = "respawn\mar_hindrance_renagad6"
+character_profile = mar_recapture_renagad4
+spec_rank         = regular
+community         = renegade
+custom_data       = scripts\SGM\march\mar_hindrance_renagades.ltx
+;----Телохранители------>
+[mar_bodyguard_csky]:stalker
+$spawn            = "respawn\mar_bodyguard_csky"
+character_profile = mar_bodyguard_csky
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\march\bodyguards\mar_bodyguard_csky.ltx
+;----------------------------------------------------------------
+;----------------------------'Кордон'----------------------------
+;----------------------------------------------------------------
+[esc_tunnel_scout]:stalker
+$spawn            = "respawn\esc_tunnel_scout"
+character_profile = esc_tunnel_scout
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_tunnel_scout.ltx
+;------Сберегатель------->
+[esc_stalker_bankir]:stalker
+$spawn            = "respawn\esc_stalker_bankir"
+character_profile = esc_stalker_bankir
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_stalker_bankir.ltx
+;---Начальник охраны---->
+[esc_stalker_bogdanov]:stalker
+$spawn            = "respawn\esc_stalker_bogdanov"
+character_profile = esc_stalker_bogdanov
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_stalker_bogdanov.ltx
+;------Отдыхающие------->
+[esc_camp_stalker1]:stalker
+$spawn            = "respawn\esc_camp_stalker1"
+character_profile = esc_camp_stalker1
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_camp_stalker1.ltx
+[esc_camp_stalker2]:stalker
+$spawn            = "respawn\esc_camp_stalker2"
+character_profile = esc_camp_stalker2
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_camp_stalker2.ltx
+[esc_camp_stalker3]:stalker
+$spawn            = "respawn\esc_camp_stalker3"
+character_profile = esc_camp_stalker3
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_camp_stalker3.ltx
+[esc_camp_stalker4]:stalker
+$spawn            = "respawn\esc_camp_stalker4"
+character_profile = esc_camp_stalker4
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_camp_stalker4.ltx
+;------Свиридов------->
+[esc_army_polkovnik]:stalker
+$spawn            = "respawn\esc_army_polkovnik"
+character_profile = esc_army_polkovnik
+spec_rank         = master
+community         = army
+custom_data       = scripts\SGM\escape\esc_army_polkovnik.ltx
+;----Захватчики точек------>
+[esc_explorer_ruins1]:stalker
+$spawn            = "respawn\esc_explorer_ruins1"
+character_profile = esc_explorer_ruins1
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\explorers\esc_explorer_ruins1.ltx
+[esc_explorer_ruins2]:stalker
+$spawn            = "respawn\esc_explorer_ruins2"
+character_profile = esc_explorer_ruins2
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\explorers\esc_explorer_ruins2.ltx
+;----Спец. отряды------>
+[esc_stalker_specnaz1]:stalker
+$spawn            = "respawn\esc_stalker_specnaz1"
+character_profile = esc_specnaz_stalker1
+spec_rank         = regular
+community         = stalker
+[esc_stalker_specnaz2]:stalker
+$spawn            = "respawn\esc_stalker_specnaz2"
+character_profile = esc_specnaz_stalker2
+spec_rank         = regular
+community         = stalker
+[esc_stalker_specnaz3]:stalker
+$spawn            = "respawn\esc_stalker_specnaz3"
+character_profile = esc_specnaz_stalker3
+spec_rank         = regular
+community         = stalker
+[esc_stalker_specnaz4]:stalker
+$spawn            = "respawn\esc_stalker_specnaz4"
+character_profile = esc_specnaz_stalker4
+spec_rank         = regular
+community         = stalker
+;----Телохранители------>
+[esc_bodyguard_stalker]:stalker
+$spawn            = "respawn\esc_bodyguard_stalker"
+character_profile = esc_bodyguard_stalker
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\bodyguards\esc_bodyguard_stalker.ltx
+[esc_bodyguard_novice]:stalker
+$spawn            = "respawn\esc_bodyguard_novice"
+character_profile = esc_bodyguard_novice
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\escape\bodyguards\esc_bodyguard_novice.ltx
+;----Охрана Сидоровича------>
+[esc_sidorovich_guard1]:stalker
+$spawn            = "respawn\esc_sidorovich_guard1"
+character_profile = esc_specnaz_stalker2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_sidorovich_guard1.ltx
+[esc_sidorovich_guard2]:stalker
+$spawn            = "respawn\esc_sidorovich_guard2"
+character_profile = esc_specnaz_stalker4
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\escape\esc_sidorovich_guard2.ltx
+;----------------------------------------------------------------
+;----------------------------'Свалка'----------------------------
+;----------------------------------------------------------------
+;----Спец. отряды------>
+[gar_stalker_specnaz1]:stalker
+$spawn            = "respawn\gar_stalker_specnaz1"
+character_profile = esc_specnaz_stalker1
+spec_rank         = regular
+community         = stalker
+[gar_stalker_specnaz2]:stalker
+$spawn            = "respawn\gar_stalker_specnaz2"
+character_profile = esc_specnaz_stalker2
+spec_rank         = regular
+community         = stalker
+[gar_stalker_specnaz3]:stalker
+$spawn            = "respawn\gar_stalker_specnaz3"
+character_profile = esc_specnaz_stalker3
+spec_rank         = regular
+community         = stalker
+[gar_stalker_specnaz4]:stalker
+$spawn            = "respawn\gar_stalker_specnaz4"
+character_profile = esc_specnaz_stalker4
+spec_rank         = regular
+community         = stalker
+[gar_depo_attacker1]:heavy_stalker
+$spawn            = "respawn\gar_depo_attacker1"
+character_profile = gar_depo_defender1
+spec_rank         = master
+community         = stalker
+[gar_depo_attacker2]:heavy_stalker
+$spawn            = "respawn\gar_depo_attacker2"
+character_profile = gar_depo_defender2
+spec_rank         = master
+community         = stalker
+;------Торговцы------->
+[gar_stalker_trader]:stalker_huckster
+$spawn            = "respawn\gar_stalker_trader"
+character_profile = gar_stalker_trader
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_stalker_trader.ltx
+[gar_freedom_trader]:stalker_huckster
+$spawn            = "respawn\gar_freedom_trader"
+character_profile = gar_freedom_trader
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\garbage\gar_freedom_trader.ltx
+;----Телохранители------>
+[gar_bodyguard_freedom]:stalker
+$spawn            = "respawn\gar_bodyguard_freedom"
+character_profile = gar_bodyguard_freedom
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\garbage\bodyguards\gar_bodyguard_freedom.ltx
+[gar_bodyguard_stalker]:stalker
+$spawn            = "respawn\gar_bodyguard_stalker"
+character_profile = gar_bodyguard_stalker
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\garbage\bodyguards\gar_bodyguard_stalker.ltx
+;------Сберегатель------->
+[gar_stalker_bankir]:stalker
+$spawn            = "respawn\gar_stalker_bankir"
+character_profile = gar_stalker_bankir
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_stalker_bankir.ltx
+;------Лидер барьера------->
+[gar_barier_commander]:stalker
+$spawn            = "respawn\gar_barier_commander"
+character_profile = gar_barier_commander
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\garbage\gar_barier_commander.ltx
+;------Организатор отрядов------->
+[gar_stalker_squads_commander]:stalker
+$spawn            = "respawn\gar_stalker_squads_commander"
+character_profile = gar_stalker_squads_commander
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_stalker_squads_commander.ltx
+;------Химик------->
+[gar_stalker_breeder]:stalker
+$spawn            = "respawn\gar_stalker_breeder"
+character_profile = gar_stalker_breeder
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_stalker_breeder.ltx
+;------Диггер------->
+[gar_tunnel_novice]:stalker
+$spawn            = "respawn\gar_tunnel_novice"
+character_profile = gar_tunnel_novice
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_tunnel_novice.ltx
+;------Охрана Депо------->
+[gar_depo_defender1]:heavy_stalker
+$spawn            = "respawn\gar_depo_defender1"
+character_profile = gar_depo_defender1
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_depo_defender1.ltx
+[gar_depo_defender2]:heavy_stalker
+$spawn            = "respawn\gar_depo_defender2"
+character_profile = gar_depo_defender2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\garbage\gar_depo_defender2.ltx
+;------Бандиты с РПГ------->
+[gar_base_rpg_bandit1]:stalker
+$spawn            = "respawn\gar_base_rpg_bandit1"
+character_profile = gar_base_rpg_bandit1
+spec_rank         = regular
+community         = bandit
+custom_data       = scripts\SGM\garbage\gar_base_rpg_bandit1.ltx
+[gar_base_rpg_bandit2]:stalker
+$spawn            = "respawn\gar_base_rpg_bandit2"
+character_profile = gar_base_rpg_bandit2
+spec_rank         = regular
+community         = bandit
+custom_data       = scripts\SGM\garbage\gar_base_rpg_bandit2.ltx
+;----------------------------------------------------------------
+;----------------------------'Долина'----------------------------
+;----------------------------------------------------------------
+;------Сберегатель------->
+[val_freedom_bankir]:stalker
+$spawn            = "respawn\val_freedom_bankir"
+character_profile = val_freedom_bankir
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_bankir.ltx
+;------Организатор отрядов------->
+[val_freedom_squads_commander]:stalker
+$spawn            = "respawn\val_freedom_squads_commander"
+character_profile = val_freedom_squads_commander
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_squads_commander.ltx
+;------Химик------->
+[val_freedom_breeder]:stalker
+$spawn            = "respawn\val_freedom_breeder"
+character_profile = val_freedom_breeder
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_breeder.ltx
+;----Телохранители------>
+[val_bodyguard_freedom]:stalker
+$spawn            = "respawn\val_bodyguard_freedom"
+character_profile = val_bodyguard_freedom
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\bodyguards\val_bodyguard_freedom.ltx
+;------Медик------->
+[val_freedom_medic]:stalker
+$spawn            = "respawn\val_freedom_medic"
+character_profile = val_freedom_medic
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_medic.ltx
+;----Спец. отряды------>
+[val_freedom_specnaz1]:stalker
+$spawn            = "respawn\val_freedom_specnaz1"
+character_profile = val_freedom_specnaz1
+spec_rank         = regular
+community         = freedom
+[val_freedom_specnaz2]:stalker
+$spawn            = "respawn\val_freedom_specnaz2"
+character_profile = val_freedom_specnaz2
+spec_rank         = regular
+community         = freedom
+[val_freedom_specnaz3]:stalker
+$spawn            = "respawn\val_freedom_specnaz3"
+character_profile = val_freedom_specnaz3
+spec_rank         = regular
+community         = freedom
+[val_freedom_specnaz4]:stalker
+$spawn            = "respawn\val_freedom_specnaz4"
+character_profile = val_freedom_specnaz4
+spec_rank         = regular
+community         = freedom
+;----Начальник охраны------>
+[val_freedom_guard_leader]:stalker
+$spawn            = "respawn\val_freedom_guard_leader"
+character_profile = val_freedom_guard_leader
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_guard_leader.ltx
+;----Начальник блокпоста------>
+[val_freedom_7_6_commander]:stalker
+$spawn            = "respawn\val_freedom_7_6_commander"
+character_profile = val_freedom_7_6_commander
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_7_6_commander.ltx
+;------РПГшники------>
+[val_freedom_rpg_trooper]:stalker_gunner
+$spawn            = "respawn\val_freedom_rpg_trooper"
+character_profile = val_freedom_rpg_trooper
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_rpg_trooper.ltx
+[val_freedom_rpg_tower1]:stalker_gunner
+$spawn            = "respawn\val_freedom_rpg_tower1"
+character_profile = val_freedom_rpg_trooper
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_rpg_tower1.ltx
+[val_freedom_rpg_tower2]:stalker_gunner
+$spawn            = "respawn\val_freedom_rpg_tower2"
+character_profile = val_freedom_rpg_trooper
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_rpg_tower2.ltx
+[val_freedom_rpg_tower3]:stalker_gunner
+$spawn            = "respawn\val_freedom_rpg_tower3"
+character_profile = val_freedom_rpg_trooper
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_freedom_rpg_tower3.ltx
+;--------Трупы-------->
+[val_impounded_corpse]:stalker
+$spawn            = "respawn\val_impounded_corpse"
+character_profile = val_impounded_corpse
+spec_rank         = regular
+community         = freedom
+allow_release     = false
+custom_data       = scripts\SGM\darkvalley\val_impounded_corpse.ltx
+;--------Актер: Заложник-------->
+[val_bus_hostage]:stalker
+$spawn            = "respawn\val_bus_hostage"
+character_profile = val_bus_hostage
+spec_rank         = regular
+community         = freedom
+allow_release     = false
+custom_data       = scripts\SGM\darkvalley\scenes\val_bus_hostage.ltx
+;--------Актер: Киллер-------->
+[val_bus_killer]:stalker
+$spawn            = "respawn\val_bus_killer"
+character_profile = val_bus_killer
+spec_rank         = regular
+community         = bandit
+custom_data       = scripts\SGM\darkvalley\scenes\val_bus_killer.ltx
+;--------Актер: Самоубийца-------->
+[val_freedom_suicide]:stalker
+$spawn            = "respawn\val_freedom_suicide"
+character_profile = val_freedom_suicide
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\scenes\val_freedom_suicide.ltx
+;------Торговцы------->
+[val_4_0_trader]:stalker_huckster
+$spawn            = "respawn\val_4_0_trader"
+character_profile = val_4_0_trader
+spec_rank         = regular
+community         = freedom
+custom_data       = scripts\SGM\darkvalley\val_4_0_trader.ltx
+;----------------------------------------------------------------
+;--------------------------'Агропром'----------------------------
+;----------------------------------------------------------------
+;------Сберегатели------->
+[agr_dolg_bankir]:stalker
+$spawn            = "respawn\agr_dolg_bankir"
+character_profile = agr_dolg_bankir
+spec_rank         = regular
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_dolg_bankir.ltx
+[agr_stalker_bankir]:stalker
+$spawn            = "respawn\agr_stalker_bankir"
+character_profile = agr_stalker_bankir
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_stalker_bankir.ltx
+;------Организатор отрядов------->
+[agr_dolg_squads_commander]:stalker
+$spawn            = "respawn\agr_dolg_squads_commander"
+character_profile = agr_dolg_squads_commander
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_dolg_squads_commander.ltx
+;------Химик------->
+[agr_dolg_breeder]:stalker
+$spawn            = "respawn\agr_dolg_breeder"
+character_profile = agr_dolg_breeder
+spec_rank         = regular
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_dolg_breeder.ltx
+;----Спец. отряды------>
+[agr_dolg_specnaz1]:stalker
+$spawn            = "respawn\agr_dolg_specnaz1"
+character_profile = agr_dolg_specnaz1
+spec_rank         = regular
+community         = dolg
+[agr_dolg_specnaz2]:stalker
+$spawn            = "respawn\agr_dolg_specnaz2"
+character_profile = agr_dolg_specnaz2
+spec_rank         = regular
+community         = dolg
+[agr_dolg_specnaz3]:stalker
+$spawn            = "respawn\agr_dolg_specnaz3"
+character_profile = agr_dolg_specnaz3
+spec_rank         = regular
+community         = dolg
+[agr_dolg_specnaz4]:stalker
+$spawn            = "respawn\agr_dolg_specnaz4"
+character_profile = agr_dolg_specnaz4
+spec_rank         = regular
+community         = dolg
+;----Телохранители------>
+[agr_bodyguard_stalker]:stalker
+$spawn            = "respawn\agr_bodyguard_stalker"
+character_profile = agr_bodyguard_stalker
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\bodyguards\agr_bodyguard_stalker.ltx
+[agr_bodyguard_dolg]:stalker
+$spawn            = "respawn\agr_bodyguard_dolg"
+character_profile = agr_bodyguard_dolg
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\bodyguards\agr_bodyguard_dolg.ltx
+;------Торговцы------->
+[agr_dolg_trader]:stalker_huckster
+$spawn            = "respawn\agr_dolg_trader"
+character_profile = agr_dolg_trader
+spec_rank         = regular
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_dolg_trader.ltx
+[agr_stalker_trader]:stalker_huckster
+$spawn            = "respawn\agr_stalker_trader"
+character_profile = agr_stalker_trader
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_stalker_trader.ltx
+;------Охрана Мест------>
+[agr_base_defender1]:heavy_stalker
+$spawn            = "respawn\agr_base_defender1"
+character_profile = agr_base_defender1
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_base_defender1.ltx
+[agr_base_defender2]:heavy_stalker
+$spawn            = "respawn\agr_base_defender2"
+character_profile = agr_base_defender2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_base_defender2.ltx
+[agr_tunnel_defender1]:heavy_stalker
+$spawn            = "respawn\agr_tunnel_defender1"
+character_profile = agr_base_defender1
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_tunnel_defender1.ltx
+[agr_tunnel_defender2]:heavy_stalker
+$spawn            = "respawn\agr_tunnel_defender2"
+character_profile = agr_base_defender2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_tunnel_defender2.ltx
+[agr_coverture_defender1]:heavy_stalker
+$spawn            = "respawn\agr_coverture_defender1"
+character_profile = agr_base_defender1
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_coverture_defender1.ltx
+[agr_coverture_defender2]:heavy_stalker
+$spawn            = "respawn\agr_coverture_defender2"
+character_profile = agr_base_defender2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_coverture_defender2.ltx
+;------Охотники на псевдо-гигантов------>
+[agr_giant_hunter1]:heavy_stalker
+$spawn            = "respawn\agr_giant_hunter1"
+character_profile = agr_giant_hunter1
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_giant_hunter1.ltx
+[agr_giant_hunter2]:heavy_stalker
+$spawn            = "respawn\agr_giant_hunter2"
+character_profile = agr_giant_hunter2
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_giant_hunter2.ltx
+[agr_giant_hunter3]:heavy_stalker
+$spawn            = "respawn\agr_giant_hunter3"
+character_profile = agr_giant_hunter3
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_giant_hunter3.ltx
+;------Лидер блокпоста------>
+[agr_7_4_commander]:stalker
+$spawn            = "respawn\agr_7_4_commander"
+character_profile = agr_7_4_commander
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_7_4_commander.ltx
+;------Отряд напр. на базу------>
+[agr_rush_soldier1]:heavy_stalker
+$spawn            = "respawn\agr_rush_soldier1"
+character_profile = agr_rush_soldier1
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_rush_soldier1.ltx
+[agr_rush_soldier2]:stalker
+$spawn            = "respawn\agr_rush_soldier2"
+character_profile = agr_rush_soldier2
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_rush_soldier2.ltx
+[agr_rush_soldier3]:stalker
+$spawn            = "respawn\agr_rush_soldier3"
+character_profile = agr_rush_soldier3
+spec_rank         = regular
+community         = stalker
+custom_data       = scripts\SGM\agroprom\agr_rush_soldier3.ltx
+;------Агент 000------>
+[agr_dolg_agent]:stalker
+$spawn            = "respawn\agr_dolg_agent"
+character_profile = agr_dolg_agent
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\agroprom\agr_dolg_agent.ltx
+;------Бандюки в екзиках------>
+[agr_exo_bandit1]:heavy_stalker
+$spawn            = "respawn\agr_exo_bandit1"
+character_profile = agr_exo_bandit1
+spec_rank         = master
+community         = bandit
+allow_release     = false
+custom_data       = scripts\SGM\agroprom\agr_exo_bandit1.ltx
+[agr_exo_bandit2]:heavy_stalker
+$spawn            = "respawn\agr_exo_bandit2"
+character_profile = agr_exo_bandit2
+spec_rank         = master
+community         = bandit
+allow_release     = false
+custom_data       = scripts\SGM\agroprom\agr_exo_bandit2.ltx
+;------Жертвы бандитов------>
+[agr_bandit_victim1]:stalker
+$spawn            = "respawn\agr_bandit_victim1"
+character_profile = agr_bandit_victim1
+spec_rank         = master
+community         = dolg
+allow_release     = false
+custom_data       = scripts\SGM\agroprom\agr_bandit_victim1.ltx
+[agr_bandit_victim2]:stalker
+$spawn            = "respawn\agr_bandit_victim2"
+character_profile = agr_bandit_victim2
+spec_rank         = master
+community         = dolg
+allow_release     = false
+custom_data       = scripts\SGM\agroprom\agr_bandit_victim2.ltx
+;----------------------------------------------------------------
+;--------------------------'Янтарь'------------------------------
+;----------------------------------------------------------------
+;------Торгаш------->
+[yan_ecolog_trader]:stalker_huckster
+$spawn            = "respawn\yan_ecolog_trader"
+character_profile = yan_ecolog_trader
+spec_rank         = regular
+community         = ecolog
+custom_data       = scripts\SGM\yantar\yan_ecolog_trader.ltx
+;------Сберегатель------->
+[yan_ecolog_bankir]:stalker
+$spawn            = "respawn\yan_ecolog_bankir"
+character_profile = yan_ecolog_bankir
+spec_rank         = regular
+community         = ecolog
+custom_data       = scripts\SGM\yantar\yan_ecolog_bankir.ltx
+;------Сберегатель------->
+[yan_tunnel_rpg]:heavy_stalker
+$spawn            = "respawn\yan_tunnel_rpg"
+character_profile = yan_tunnel_rpg
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\yantar\yan_tunnel_rpg.ltx
+;------Зомбак-кровосос------->
+[yan_zombie_bloodsucker]:heavy_zombied
+$spawn            = "respawn\yan_zombie_bloodsucker"
+character_profile = yan_zombie_bloodsucker
+spec_rank         = master
+community         = zombied
+custom_data       = scripts\SGM\yantar\yan_zombie_bloodsucker.ltx
+;----------------------------------------------------------------
+;----------------------'Заповедник'------------------------------
+;----------------------------------------------------------------
+;------Сберегатели------->
+[red_dolg_bankir]:stalker
+$spawn            = "respawn\red_dolg_bankir"
+character_profile = red_dolg_bankir
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\red_forest\red_dolg_bankir.ltx
+[red_freedom_bankir]:stalker
+$spawn            = "respawn\red_freedom_bankir"
+character_profile = red_freedom_bankir
+spec_rank         = master
+community         = freedom
+custom_data       = scripts\SGM\red_forest\red_freedom_bankir.ltx
+;------Торгаш------->
+[red_dolg_trader]:stalker_huckster
+$spawn            = "respawn\red_dolg_trader"
+character_profile = red_dolg_trader
+spec_rank         = master
+community         = dolg
+custom_data       = scripts\SGM\red_forest\red_dolg_trader.ltx
+;------Спец. ЧН------->
+[red_csky_squads_commander]:heavy_stalker
+$spawn            = "respawn\red_csky_squads_commander"
+character_profile = red_csky_squads_commander
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\red_forest\red_csky_squads_commander.ltx
+[red_reinforcement_rpg]:stalker_slepoy
+$spawn            = "respawn\red_reinforcement_rpg"
+character_profile = red_reinforcement_rpg
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\red_forest\red_reinforcement_rpg.ltx
+[red_reinforcement2_rpg]:stalker_slepoy
+$spawn            = "respawn\red_reinforcement2_rpg"
+character_profile = red_reinforcement2_rpg
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\red_forest\red_reinforcement2_rpg.ltx
+[red_reinforcement3_sniper]:heavy_stalker
+$spawn            = "respawn\red_reinforcement3_sniper"
+character_profile = red_reinforcement3_sniper
+spec_rank         = master
+community         = csky
+custom_data       = scripts\SGM\red_forest\red_reinforcement3_sniper.ltx
+;----------------------------------------------------------------
+;-------------------------'Склады'-------------------------------
+;----------------------------------------------------------------
+;------Лидер вояк------->
+[mil_army_boss]:heavy_stalker
+$spawn            = "respawn\mil_army_boss"
+character_profile = mil_army_boss
+spec_rank         = master
+community         = army
+allow_release     = false
+custom_data       = scripts\SGM\military\mil_army_boss.ltx
+;------Лидер зомби------->
+[mil_zombied_boss]:heavy_zombied
+$spawn            = "respawn\mil_zombied_boss"
+character_profile = mil_zombied_boss
+spec_rank         = master
+community         = zombied
+allow_release     = false
+custom_data       = scripts\SGM\military\mil_zombied_boss.ltx
+;------Торгаш------->
+[mil_killer_trader]:stalker_huckster
+$spawn            = "respawn\mil_killer_trader"
+character_profile = mil_killer_trader
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\military\mil_killer_trader.ltx
+;------Торгаш------->
+[mil_stalker_upgrader]:stalker_huckster
+$spawn            = "respawn\mil_stalker_upgrader"
+character_profile = mil_stalker_upgrader
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\military\mil_stalker_upgrader.ltx
+;------Военный с РПГ------->
+[mil_rpg_ambush]:stalker_gunner
+$spawn            = "respawn\mil_rpg_ambush"
+character_profile = mil_rpg_ambush
+spec_rank         = master
+community         = army
+custom_data       = scripts\SGM\military\mil_rpg_ambush.ltx
+;----------------------------------------------------------------
+;------------------------'Лиманск'-------------------------------
+;----------------------------------------------------------------
+;------Штурмовики------->
+[lim_team_breakout1]:heavy_stalker
+$spawn            = "respawn\lim_team_breakout1"
+character_profile = lim_team_breakout1
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\limansk\lim_team_breakout1.ltx
+[lim_team_breakout2]:heavy_stalker
+$spawn            = "respawn\lim_team_breakout2"
+character_profile = lim_team_breakout2
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\limansk\lim_team_breakout2.ltx
+[lim_team_breakout3]:heavy_stalker
+$spawn            = "respawn\lim_team_breakout3"
+character_profile = lim_team_breakout3
+spec_rank         = master
+community         = stalker
+custom_data       = scripts\SGM\limansk\lim_team_breakout3.ltx
+;------Сивоха------->
+[lim_construction_robbery_leader]:heavy_stalker
+$spawn            = "respawn\lim_construction_robbery_leader"
+character_profile = lim_construction_robbery_leader
+spec_rank         = master
+community         = monolith
+custom_data       = scripts\SGM\limansk\lim_construction_robbery_leader.ltx

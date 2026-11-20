@@ -1,0 +1,142 @@
+;-------------------------------------------------------------------------------------------------------------------------;
+;------------------------------------------------------Приборы:-----------------------------------------------------------;
+;-------------------------------------------------------------------------------------------------------------------------;
+[sleeping_bag]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency    =
+$spawn 		        = "device\sleeping_bag"
+$prefetch 		= 32
+class			= II_ANTIR
+cform                   = skeleton
+visual                  = dynamics\equipments\documents_7.ogf
+inv_name		= sleeping_bag_title
+inv_name_short		= sleeping_bag_title
+description		= sleeping_bag_descr
+random_sleep_a          = 1
+random_sleep_b          = 6
+cost			= 0
+inv_weight		= 0.00
+can_trade	        = false
+inv_grid_width	        = 2
+inv_grid_height		= 2
+inv_grid_x		= 32
+inv_grid_y		= 16
+eat_health              = 0
+eat_satiety             = 0
+eat_power               = 0
+eat_radiation           = 0
+wounds_heal_perc        = 0
+eat_portions_num        = 1
+animation_slot		= 4
+hud                     = wpn_vodka_hud
+quest_item 	        = true
+;-------------;
+[event_radio]:identity_immunities
+GroupControlSection	      = spawn_group
+discovery_dependency           = 
+$spawn 			        = "devices\quest_items\event_radio"
+class				= II_ATTCH
+cform				= skeleton
+visual			        = dynamics\devices\dev_fmradio\dev_fmradio.ogf
+radius			        = 1
+description			= event_radio_descr
+inv_name			= event_radio_title
+inv_name_short	                = event_radio_title
+inv_weight			= 0.26
+inv_grid_width		        = 1
+inv_grid_height		        = 2
+inv_grid_x			= 9
+inv_grid_y			= 30
+cost				= 0
+can_trade			= false
+;-------------;
+[treasure_rukzak]
+GroupControlSection	= spawn_group
+discovery_dependency    =
+$spawn 			= "devices\treasure_rukzak"
+class			= O_INVBOX
+cform			= skeleton
+visual			= dynamics\devices\dev_rukzak\dev_rukzak.ogf
+script_binding          = bind_physic_object.init
+radius                  = 3
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x		= 23
+inv_grid_y		= 15
+cost			= 3500
+can_take		= true
+inv_weight		= 1.14
+description		= 
+inv_name		= 
+inv_name_short		= 
+;-------------;
+[personal_rukzak]:treasure_rukzak,identity_immunities
+$spawn 			= "devices\personal_rukzak"
+$prefetch 		= 32
+class			= II_ANTIR
+eat_health              = 0
+eat_satiety             = 0
+eat_power               = 0
+eat_radiation           = 0
+wounds_heal_perc        = 0
+eat_portions_num        = 1
+animation_slot		= 4
+cost			= 1500
+inv_weight		= 1.14
+hud                     = wpn_vodka_hud
+description		= treasure_rukzak_descr
+inv_name		= treasure_rukzak_title
+inv_name_short		= treasure_rukzak_title
+can_trade	        = true
+;-------------;
+[repair_arms_box]:identity_immunities
+GroupControlSection	      = spawn_group
+discovery_dependency           = 
+$spawn 			        = "devices\quest_items\repair_arms_box"
+$prefetch 		        = 32
+class			        = II_ANTIR
+cform                           = skeleton
+visual			        = dynamics\devices\dev_fmradio\dev_fmradio.ogf
+description			= repair_arms_box_descr
+inv_name			= repair_arms_box_title
+inv_name_short	                = repair_arms_box_title
+inv_weight			= 0.56
+inv_grid_width		        = 2
+inv_grid_height		        = 2
+inv_grid_x			= 70
+inv_grid_y			= 2
+cost				= 4000
+eat_health                      = 0
+eat_satiety                     = 0
+eat_power                       = 0
+eat_radiation                   = 0
+wounds_heal_perc                = 0
+eat_portions_num                = 1
+animation_slot		        = 4
+hud                             = wpn_vodka_hud
+;-------------;
+[repair_outfit_box]:identity_immunities
+GroupControlSection	      = spawn_group
+discovery_dependency           = 
+$spawn 			        = "devices\quest_items\repair_outfit_box"
+$prefetch 		        = 32
+class			        = II_ANTIR
+cform                           = skeleton
+visual			        = dynamics\devices\dev_fmradio\dev_fmradio.ogf
+description			= repair_outfit_box_descr
+inv_name			= repair_outfit_box_title
+inv_name_short	                = repair_outfit_box_title
+inv_weight			= 0.75
+inv_grid_width		        = 2
+inv_grid_height		        = 2
+inv_grid_x			= 72
+inv_grid_y			= 2
+cost				= 5000
+eat_health                      = 0
+eat_satiety                     = 0
+eat_power                       = 0
+eat_radiation                   = 0
+wounds_heal_perc                = 0
+eat_portions_num                = 1
+animation_slot		        = 4
+hud                             = wpn_vodka_hud

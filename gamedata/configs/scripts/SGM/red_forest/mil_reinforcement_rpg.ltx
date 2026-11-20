@@ -1,0 +1,32 @@
+[logic]
+active = shooter@reinf
+
+[shooter@reinf]
+danger = danger_condition
+shooter_pos         = 7683
+shooter_fire_look   = 5367,5210,4670
+shooter_idle_look   = 5367
+shooter_clip        = 80
+shooter_reload      = 4800
+shooter_type_wpn    = grenade_launcher
+shooter_move_state  = walk
+shooter_idle_state  = threat
+shooter_fire_state  = threat_fire
+shooter_delay       = 6000
+shooter_switch      = stage_end | nil %=destroy_object%
+on_info             = {+red_bridge_down_done} nil %=destroy_object%
+combat_ignore_cond  = true
+combat_ignore_keep_when_attacked = true
+
+[danger_condition]
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_grenade = 0
+ignore_distance_sound = 0
+
+
+
+
+
+
+

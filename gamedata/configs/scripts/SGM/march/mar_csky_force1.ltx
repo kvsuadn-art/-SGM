@@ -1,0 +1,46 @@
+[logic]
+active = move@wait
+
+[move@wait]
+target_type     = level_vertex
+dest_number     = 455101
+state_in_center = hide
+state_for_move  = walk
+miss_center     = false
+meet            = no_meet
+on_actor_dist_le_nvis = 6 | move@preparate %+mar_entry_csky_force_see%
+on_info         = {+mar_entry_csky_force_see} move@preparate,{+mar_story_capture_bandit_base_reward} nil
+look_vertex     = 449685
+
+[move@preparate]
+target_type     = level_vertex
+dest_number     = 455101
+state_in_center = hide
+state_for_move  = walk
+miss_center     = false
+meet            = no_meet
+look_vertex     = 449685
+on_info         = {+mar_entry_csky_force_assault} move@assault,{+mar_story_capture_bandit_base_reward} nil
+
+[move@assault]
+target_type     = level_vertex
+dest_number     = 411937
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+on_signal       = in_center | move@hide %+mar_entry_csky_force_free%
+
+[move@hide]
+target_type     = level_vertex
+dest_number     = 411937
+state_in_center = hide
+state_for_move  = assault
+miss_center     = false
+
+
+
+
+
+
+
+

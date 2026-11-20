@@ -1,0 +1,71 @@
+[up_sect_a_grenade_rgd5]
+cost		      	= 120
+blast			= 6.0
+[up_sect_b_grenade_rgd5]
+cost		      	= 80
+blast_r			= 25
+frags_r			= 30
+[up_sect_c_grenade_rgd5]
+cost		      	= 60
+frag_hit		= 3.0
+frags			= 40
+
+[up_a_grenade_rgd5]
+scheme_index            = 0, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_a_grenade_rgd5
+property                = prop_grenade_a
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = on_weapon_upgrade_something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = st_upg_grenade_a
+description             = st_upg_grenade_a_descr
+icon                    = ui_sgm_upgrade_02
+
+[up_b_grenade_rgd5]
+scheme_index            = 0, 1
+known                   = 1
+effects                 = 
+section                 = up_sect_b_grenade_rgd5
+property                = prop_grenade_b  
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = st_upg_grenade_b
+description             = st_upg_grenade_b_descr
+icon                    = ui_sgm_upgrade_02
+
+[up_c_grenade_rgd5]
+scheme_index            = 0, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_c_grenade_rgd5
+property                = prop_grenade_c
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = st_upg_grenade_c
+description             = st_upg_grenade_c_descr
+icon                    = ui_sgm_upgrade_02
+
+
+
+[up_gr_a_grenade_rgd5]
+elements                = up_a_grenade_rgd5
+[up_gr_b_grenade_rgd5]
+elements                = up_b_grenade_rgd5
+[up_gr_c_grenade_rgd5]
+elements                = up_c_grenade_rgd5

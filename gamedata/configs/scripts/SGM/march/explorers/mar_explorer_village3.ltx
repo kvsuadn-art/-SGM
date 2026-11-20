@@ -1,0 +1,14 @@
+[logic]
+active = move@explorer
+on_death = death
+
+[death]
+on_info = %+mar_explorer_village3_death%
+
+[move@explorer]
+target_type     = level_vertex
+dest_number     = 110472
+state_in_center = sit
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 109084

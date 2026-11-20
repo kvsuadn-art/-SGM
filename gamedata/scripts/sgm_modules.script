@@ -1,0 +1,465 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------------(Модули функций)--------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+------------------------------------
+-----------/Переменные/-------------
+------------------------------------
+----======'Тексты'======----
+local stalker_vs_bandit_texts={"stalker_vs_bandit_txt1","stalker_vs_bandit_txt2","stalker_vs_bandit_txt3","stalker_vs_bandit_txt4","stalker_vs_bandit_txt5"}
+local stalker_vs_renegade_texts={"stalker_vs_renegade_txt1","stalker_vs_renegade_txt2","stalker_vs_renegade_txt3","stalker_vs_renegade_txt4","stalker_vs_renegade_txt5"}
+local stalker_vs_zombied_texts={"stalker_vs_zombied_txt1","stalker_vs_zombied_txt2","stalker_vs_zombied_txt3","stalker_vs_zombied_txt4","stalker_vs_zombied_txt5"}
+local stalker_vs_killer_texts={"stalker_vs_killer_txt1","stalker_vs_killer_txt2","stalker_vs_killer_txt3","stalker_vs_killer_txt4","stalker_vs_killer_txt5"}
+local stalker_vs_military_texts={"stalker_vs_military_txt1","stalker_vs_military_txt2","stalker_vs_military_txt3","stalker_vs_military_txt4","stalker_vs_military_txt5"}
+local stalker_vs_monolith_texts={"stalker_vs_monolith_txt1","stalker_vs_monolith_txt2","stalker_vs_monolith_txt3","stalker_vs_monolith_txt4","stalker_vs_monolith_txt5"}
+local dolg_vs_bandit_texts={"dolg_vs_bandit_txt1","dolg_vs_bandit_txt2","dolg_vs_bandit_txt3","dolg_vs_bandit_txt4","dolg_vs_bandit_txt5"}
+local dolg_vs_renegade_texts={"dolg_vs_renegade_txt1","dolg_vs_renegade_txt2","dolg_vs_renegade_txt3","dolg_vs_renegade_txt4","dolg_vs_renegade_txt5"}
+local dolg_vs_zombied_texts={"dolg_vs_zombied_txt1","dolg_vs_zombied_txt2","dolg_vs_zombied_txt3","dolg_vs_zombied_txt4","dolg_vs_zombied_txt5"}
+local dolg_vs_killer_texts={"dolg_vs_killer_txt1","dolg_vs_killer_txt2","dolg_vs_killer_txt3","dolg_vs_killer_txt4","dolg_vs_killer_txt5"}
+local dolg_vs_military_texts={"dolg_vs_military_txt1","dolg_vs_military_txt2","dolg_vs_military_txt3","dolg_vs_military_txt4","dolg_vs_military_txt5"}
+local dolg_vs_monolith_texts={"dolg_vs_monolith_txt1","dolg_vs_monolith_txt2","dolg_vs_monolith_txt3","dolg_vs_monolith_txt4","dolg_vs_monolith_txt5"}
+local freedom_vs_bandit_texts={"freedom_vs_bandit_txt1","freedom_vs_bandit_txt2","freedom_vs_bandit_txt3","freedom_vs_bandit_txt4","freedom_vs_bandit_txt5"}
+local freedom_vs_renegade_texts={"freedom_vs_renegade_txt1","freedom_vs_renegade_txt2","freedom_vs_renegade_txt3","freedom_vs_renegade_txt4","freedom_vs_renegade_txt5"}
+local freedom_vs_zombied_texts={"freedom_vs_zombied_txt1","freedom_vs_zombied_txt2","freedom_vs_zombied_txt3","freedom_vs_zombied_txt4","freedom_vs_zombied_txt5"}
+local freedom_vs_killer_texts={"freedom_vs_killer_txt1","freedom_vs_killer_txt2","freedom_vs_killer_txt3","freedom_vs_killer_txt4","freedom_vs_killer_txt5"}
+local freedom_vs_military_texts={"freedom_vs_military_txt1","freedom_vs_military_txt2","freedom_vs_military_txt3","freedom_vs_military_txt4","freedom_vs_military_txt5"}
+local freedom_vs_monolith_texts={"freedom_vs_monolith_txt1","freedom_vs_monolith_txt2","freedom_vs_monolith_txt3","freedom_vs_monolith_txt4","freedom_vs_monolith_txt5"}
+local csky_vs_bandit_texts={"csky_vs_bandit_txt1","csky_vs_bandit_txt2","csky_vs_bandit_txt3","csky_vs_bandit_txt4","csky_vs_bandit_txt5"}
+local csky_vs_renegade_texts={"csky_vs_renegade_txt1","csky_vs_renegade_txt2","csky_vs_renegade_txt3","csky_vs_renegade_txt4","csky_vs_renegade_txt5"}
+local csky_vs_zombied_texts={"csky_vs_zombied_txt1","csky_vs_zombied_txt2","csky_vs_zombied_txt3","csky_vs_zombied_txt4","csky_vs_zombied_txt5"}
+local csky_vs_killer_texts={"csky_vs_killer_txt1","csky_vs_killer_txt2","csky_vs_killer_txt3","csky_vs_killer_txt4","csky_vs_killer_txt5"}
+local csky_vs_military_texts={"csky_vs_military_txt1","csky_vs_military_txt2","csky_vs_military_txt3","csky_vs_military_txt4","csky_vs_military_txt5"}
+local csky_vs_monolith_texts={"csky_vs_monolith_txt1","csky_vs_monolith_txt2","csky_vs_monolith_txt3","csky_vs_monolith_txt4","csky_vs_monolith_txt5"}
+local profiles_ids={}
+local profiles_names={}
+local profiles_list = {
+{"mar_renegate_baron"},
+{"mar_csky_force_leader"},
+{"mar_csky_specnaz_rescue"},
+{"mar_csky_patrol"},
+{"esc_tunnel_scout"},
+{"esc_army_polkovnik"},
+{"gar_digger_messenger_man"},
+{"gar_barier_commander"},
+{"gar_tunnel_novice"},
+{"gar_stalker_breeder"},
+{"val_freedom_guard_leader"},
+{"val_freedom_7_6_commander"},
+{"val_freedom_medic"},
+{"val_impounded_corpse"},
+{"val_freedom_breeder"},
+{"val_freedom_squads_commander"},
+{"val_bus_hostage"},
+{"agr_dolg_agent"},
+{"agr_exo_bandit1"},
+{"agr_exo_bandit2"}
+}
+----===='Физ. обьекты'====----
+local personal_items={}
+local physic_update_list = {
+{"treasure_rukzak"}
+}
+----======='Схемы'=======----
+local scheme_update_list = {
+{"gar_stalker_squads_commander","true"},
+{"gar_stalker_breeder","true"},
+{"gar_tunnel_novice","true"},
+{"val_freedom_guard_leader","true"},
+{"val_freedom_7_6_commander","true"},
+{"val_freedom_medic","true"},
+{"val_freedom_breeder","true"},
+{"val_freedom_squads_commander"},
+{"agr_dolg_agent"},
+{"agr_exo_bandit1"},
+{"agr_exo_bandit2"}
+}
+----=='Чистка трупов: список исключений'==---
+local release_exclude_list = {
+{"val_impounded_corpse"},
+{"agr_exo_bandit1"},
+{"agr_exo_bandit2"}
+}
+----===='Спаун: Запись ИД в лист'====----
+local create_update_one_list = {
+{"mar_renegate_baron","mar_renegate_baron"},
+{"mar_csky_force_leader","mar_csky_force_leader"},
+{"mar_rescue_soldier1","mar_csky_specnaz_rescue"},
+{"mar_csky_patrol","mar_csky_patrol"},
+{"esc_tunnel_scout","esc_tunnel_scout"},
+{"esc_stalker_bogdanov","esc_stalker_bogdanov"},
+{"esc_army_polkovnik","esc_army_polkovnik"},
+{"gar_barier_commander","gar_barier_commander"},
+{"gar_stalker_squads_commander","gar_stalker_squads_commander"},
+{"gar_stalker_breeder","gar_stalker_breeder"},
+{"gar_tunnel_novice","gar_tunnel_novice"},
+{"val_freedom_guard_leader","val_freedom_guard_leader"},
+{"val_freedom_7_6_commander","val_freedom_7_6_commander"},
+{"val_freedom_medic","val_freedom_medic"},
+{"val_impounded_corpse","val_impounded_corpse"},
+{"val_freedom_breeder","val_freedom_breeder"},
+{"val_freedom_squads_commander","val_freedom_squads_commander"},
+{"val_bus_hostage","val_bus_hostage"},
+{"agr_dolg_agent","agr_dolg_agent"},
+{"agr_exo_bandit1","agr_exo_bandit1"},
+{"agr_exo_bandit2","agr_exo_bandit2"},
+{"agr_wild_giant","agr_wild_giant"},
+{"mil_quest_wpn_rpg7","mil_quest_wpn_rpg7"},
+{"yan_zombie_bloodsucker","yan_zombie_bloodsucker"},
+{"explosive_dinamit","explosive_dinamit"},
+{"explosive_mobiltank","explosive_mobiltank"},
+{"explosive_barrel","explosive_barrel"},
+{"shilov_rukzak","shilov_rukzak"},
+{"svoboda_light_outfit_up","svoboda_light_outfit_up"},
+{"valley_propusk","valley_propusk"}
+}
+----===='Спаун: Начальная метка'====----
+local create_update_two_list = {
+{"mar_outpost_renegate1","renegade_spot","alife_presentation_squad_enemy"},
+{"mar_spec_reinforcement1","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_spec_reinforcement2","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_spec_reinforcement3","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_spec_reinforcement4","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_explorer_crossing1","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_crossing2","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_crossing3","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_crossing4","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_railway1","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_railway2","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_village1","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_village2","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_village3","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_khutor1","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_khutor2","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_khutor3","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_explorer_khutor4","mar_explorers_name","alife_presentation_squad_friend"},
+{"mar_rescue_soldier1","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_rescue_soldier2","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_rescue_soldier3","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_rescue_soldier4","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_rescue_soldier5","mar_spec_force_name","alife_presentation_squad_friend"},
+{"mar_csky_specnaz_leader","sgm_csky_orlov_name","quest_npc_location"},
+{"mar_csky_bankir","sgm_csky_bankir_name","bankir_npc_location"},
+{"mar_bodyguard_csky","sgm_bodyguard_name","bodyguard_npc_location"},
+{"mar_csky_squads_commander","sgm_commander_squads_name","squad_commander_location"},
+{"esc_explorer_ruins1","esc_explorers_name","alife_presentation_squad_neutral"},
+{"esc_explorer_ruins2","esc_explorers_name","alife_presentation_squad_neutral"},
+{"esc_stalker_bankir","sgm_stalker_bankir_name","bankir_npc_location"},
+{"esc_stalker_bogdanov","sgm_stalker_defender_name","quest_npc_location"},
+{"esc_bodyguard_stalker","sgm_bodyguard_name","bodyguard_npc_location"},
+{"esc_bodyguard_novice","sgm_bodyguard_name","bodyguard_npc_location"},
+{"gar_bodyguard_freedom","sgm_bodyguard_name","bodyguard_npc_location"},
+{"gar_bodyguard_stalker","sgm_bodyguard_name","bodyguard_npc_location"},
+{"gar_barier_commander","sgm_barier_commander_name","quest_npc_location"},
+{"gar_stalker_bankir","sgm_bankir_name","bankir_npc_location"},
+{"gar_freedom_trader","sgm_trader_name","hide_trader_location"},
+{"gar_stalker_trader","sgm_trader_name","hide_trader_location"},
+{"gar_stalker_squads_commander","sgm_commander_squads_name","squad_commander_location"},
+{"gar_stalker_breeder","sgm_breeder_name","breeder_location"},
+{"val_bodyguard_freedom","sgm_bodyguard_name","bodyguard_npc_location"},
+{"val_freedom_bankir","sgm_bankir_name","bankir_npc_location"},
+{"val_freedom_squads_commander","sgm_commander_squads_name","squad_commander_location"},
+{"val_freedom_breeder","sgm_breeder_name","breeder_location"},
+{"val_4_0_trader","sgm_trader_name","hide_trader_location"},
+{"agr_bodyguard_stalker","sgm_bodyguard_name","bodyguard_npc_location"},
+{"agr_bodyguard_dolg","sgm_bodyguard_name","bodyguard_npc_location"},
+{"agr_dolg_bankir","sgm_bankir_name","bankir_npc_location"},
+{"agr_dolg_squads_commander","sgm_commander_squads_name","squad_commander_location"},
+{"agr_dolg_trader","sgm_trader_name","hide_trader_location"},
+{"agr_dolg_breeder","sgm_breeder_name","breeder_location"},
+{"agr_stalker_trader","sgm_trader_name","hide_trader_location"},
+{"agr_stalker_bankir","sgm_bankir_name","bankir_npc_location"},
+{"agr_dolg_agent","agr_dolg_agent_name","quest_npc_location"},
+{"yan_ecolog_bankir","sgm_bankir_name","bankir_npc_location"},
+{"yan_ecolog_trader","sgm_trader_name","hide_trader_location"},
+{"red_dolg_bankir","sgm_bankir_name","bankir_npc_location"},
+{"red_freedom_bankir","sgm_bankir_name","bankir_npc_location"},
+{"red_dolg_trader","sgm_trader_name","hide_trader_location"},
+{"mil_killer_trader","sgm_trader_name","hide_trader_location"},
+{"mil_stalker_upgrader","sgm_upgrader_name","upgrader_location"}
+}
+local create_update_three_list = {
+{"treasure_rukzak","treasure_rukzak_name","personal_location"}
+}
+------------------------------------
+------------/Модули/----------------
+------------------------------------
+function enemy_found_tips_module(object)
+        local npc=object
+        local get_enemy=object:best_enemy()
+        local get_npc_name=level.object_by_id(object:id()):character_name()
+        local get_npc_community=level.object_by_id(object:id()):character_community()
+        local stalker_vs_bandit_tip=stalker_vs_bandit_texts[math.random(table.getn(stalker_vs_bandit_texts))]
+        local stalker_vs_renegade_tip=stalker_vs_renegade_texts[math.random(table.getn(stalker_vs_renegade_texts))]
+        local stalker_vs_zombied_tip=stalker_vs_zombied_texts[math.random(table.getn(stalker_vs_zombied_texts))]
+        local stalker_vs_killer_tip=stalker_vs_killer_texts[math.random(table.getn(stalker_vs_killer_texts))]
+        local stalker_vs_military_tip=stalker_vs_military_texts[math.random(table.getn(stalker_vs_military_texts))]
+        local stalker_vs_monolith_tip=stalker_vs_monolith_texts[math.random(table.getn(stalker_vs_monolith_texts))]
+        local dolg_vs_bandit_tip=dolg_vs_bandit_texts[math.random(table.getn(dolg_vs_bandit_texts))]
+        local dolg_vs_renegade_tip=dolg_vs_renegade_texts[math.random(table.getn(dolg_vs_renegade_texts))]
+        local dolg_vs_zombied_tip=dolg_vs_zombied_texts[math.random(table.getn(dolg_vs_zombied_texts))]
+        local dolg_vs_killer_tip=dolg_vs_killer_texts[math.random(table.getn(dolg_vs_killer_texts))]
+        local dolg_vs_military_tip=dolg_vs_military_texts[math.random(table.getn(dolg_vs_military_texts))]
+        local dolg_vs_monolith_tip=dolg_vs_monolith_texts[math.random(table.getn(dolg_vs_monolith_texts))]
+        local freedom_vs_bandit_tip=freedom_vs_bandit_texts[math.random(table.getn(freedom_vs_bandit_texts))]
+        local freedom_vs_renegade_tip=freedom_vs_renegade_texts[math.random(table.getn(freedom_vs_renegade_texts))]
+        local freedom_vs_zombied_tip=freedom_vs_zombied_texts[math.random(table.getn(freedom_vs_zombied_texts))]
+        local freedom_vs_killer_tip=freedom_vs_killer_texts[math.random(table.getn(freedom_vs_killer_texts))]
+        local freedom_vs_military_tip=freedom_vs_military_texts[math.random(table.getn(freedom_vs_military_texts))]
+        local freedom_vs_monolith_tip=freedom_vs_monolith_texts[math.random(table.getn(freedom_vs_monolith_texts))]
+        local csky_vs_bandit_tip=csky_vs_bandit_texts[math.random(table.getn(csky_vs_bandit_texts))]
+        local csky_vs_renegade_tip=csky_vs_renegade_texts[math.random(table.getn(csky_vs_renegade_texts))]
+        local csky_vs_zombied_tip=csky_vs_zombied_texts[math.random(table.getn(csky_vs_zombied_texts))]
+        local csky_vs_killer_tip=csky_vs_killer_texts[math.random(table.getn(csky_vs_killer_texts))]
+        local csky_vs_military_tip=csky_vs_military_texts[math.random(table.getn(csky_vs_military_texts))]
+        local csky_vs_monolith_tip=csky_vs_monolith_texts[math.random(table.getn(csky_vs_monolith_texts))]
+        if sgm_functions.read_variable("fill_npc_enemy")==nil then sgm_functions.write_variable("fill_npc_enemy","none") end
+        if sgm_functions.read_variable("fill_npc_time")==nil  then sgm_functions.write_variable("fill_npc_time",0) end
+        if sgm_functions.read_variable("fill_npc_enemy")=="show" and get_enemy~=nil then
+           if get_enemy~=nil and IsStalker(get_enemy) and level.object_by_id(object:id()):alive()==true and get_npc_community~=nil then
+             local get_enemy_community=get_enemy:character_community()
+             if get_enemy_community~=nil then
+              if get_npc_community=="stalker" then
+                if get_enemy_community=="bandit" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_bandit_tip,1,"stalker",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="renegade" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_renegade_tip,1,"stalker",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="zombied" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_zombied_tip,1,"stalker",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="killer" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_killer_tip,1,"stalker",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="army" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_military_tip,1,"stalker",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="monolith" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,stalker_vs_monolith_tip,1,"stalker",6000,nil,get_npc_name..":")
+                end
+              elseif get_npc_community=="dolg" then
+                if get_enemy_community=="bandit" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_bandit_tip,1,"dolg",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="renegade" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_renegade_tip,1,"dolg",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="zombied" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_zombied_tip,1,"dolg",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="killer" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_killer_tip,1,"dolg",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="army" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_military_tip,1,"dolg",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="monolith" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,dolg_vs_monolith_tip,1,"dolg",6000,nil,get_npc_name..":")
+                end
+              elseif get_npc_community=="freedom" then
+                if get_enemy_community=="bandit" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_bandit_tip,1,"freedom",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="renegade" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_renegade_tip,1,"freedom",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="zombied" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_zombied_tip,1,"freedom",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="killer" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_killer_tip,1,"freedom",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="army" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_military_tip,1,"freedom",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="monolith" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,freedom_vs_monolith_tip,1,"freedom",6000,nil,get_npc_name..":")
+                end
+              elseif get_npc_community=="csky" then
+                if get_enemy_community=="bandit" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_bandit_tip,1,"csky",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="renegade" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_renegade_tip,1,"csky",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="zombied" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_zombied_tip,1,"csky",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="killer" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_killer_tip,1,"csky",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="army" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_military_tip,1,"csky",6000,nil,get_npc_name..":")
+                elseif get_enemy_community=="monolith" then
+                    sgm_functions.write_variable("fill_npc_enemy","have")
+                    news_manager.send_tip(db.actor,csky_vs_monolith_tip,1,"csky",6000,nil,get_npc_name..":")
+                end
+              end
+             end
+           end
+        end
+        if sgm_functions.read_variable("fill_npc_time")~=nil and sgm_functions.read_variable("fill_npc_enemy")=="have" and sgm_functions.read_variable("fill_npc_time")==0 then 
+           sgm_functions.write_variable("fill_npc_enemy","none")
+        end
+        if sgm_functions.read_variable("fill_npc_time")~=nil and sgm_functions.read_variable("fill_npc_time")>0 and time_global()>=sgm_functions.read_variable("fill_npc_time") then 
+           sgm_functions.write_variable("fill_npc_time",0)
+           sgm_functions.write_variable("fill_npc_enemy","show")
+        end
+        if sgm_functions.read_variable("fill_npc_time")~=nil and sgm_functions.read_variable("fill_npc_enemy")=="none" and sgm_functions.read_variable("fill_npc_time")==0 then 
+           sgm_functions.write_variable("fill_npc_time",time_global()+math.random(180000,300000))
+        end
+end
+function npc_range_module(object)
+    local npc=object
+    if get_exception(object)==true then
+        if level.get_time_hours()>=5 and level.get_time_hours()<=22 then
+           if (not has_alife_info("blackday_is_active")) and npc:range()<=40 then
+           npc:set_range(60)
+           end
+        else
+           if (not has_alife_info("blackday_is_active")) and npc:range()>40 then
+           npc:set_range(20)
+           end
+        end
+        if has_alife_info("blackday_is_active") then
+           if npc:range()>40 then
+           npc:set_range(15)
+           end
+        end
+    end
+end
+function on_death_module(self,killer)
+        sgm_flags.unique_death_snd="off"
+        sgm_flags.victim_prof=level.object_by_id(self.id):profile_name()                           --/Профиль жертвы
+        sgm_flags.victim_name=level.object_by_id(self.id):character_name()                         --/Имя жертвы
+        sgm_flags.victim_id=self.id                                                                --/ID жертвы
+        sgm_flags.victim_death_h=level.get_time_hours()                                            --/Час смерти
+        sgm_flags.victim_death_m=level.get_time_minutes()                                          --/Минута смерти
+        if level.object_by_id(self.id):profile_name()~=nil then
+           if level.object_by_id(self.id):profile_name()=="esc_explorer_ruins1" then
+              db.actor:give_info_portion("esc_explorer_ruins1_death")
+           elseif level.object_by_id(self.id):profile_name()=="esc_explorer_ruins2" then
+              db.actor:give_info_portion("esc_explorer_ruins2_death")
+           elseif level.object_by_id(self.id):profile_name()=="esc_driver" then
+              alife():create("dv_army_driver_case",vector(),0,0,self.id)
+           end
+        end
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_friend")
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_neutral")
+        level.map_remove_object_spot(self.id,"bodyguard_npc_location")
+        level.map_remove_object_spot(self.id,"bankir_npc_location")
+        level.map_remove_object_spot(self.id,"squad_commander_location")
+        level.map_remove_object_spot(self.id,"hide_trader_location")
+        level.map_remove_object_spot(self.id,"quest_npc_location")
+        level.map_remove_object_spot(self.id,"breeder_location")
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_friend")
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_neutral")
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_enemy")
+        level.map_remove_object_spot(self.id,"alife_presentation_squad_attack_point")
+        level.map_remove_object_spot(self.id,"alife_presentation_enemy_squad_attack_point")
+        level.map_remove_object_spot(self.id,"alife_presentation_neutral_squad_attack_point")
+        level.map_remove_object_spot(self.id,"alife_presentation_friend_squad_attack_point")
+end
+function profile_update(object)
+        local npc=object
+        local prof=object:profile_name()
+        if npc~=nil and profiles_names[prof]==nil then
+        add_prof_name(prof,true)
+        elseif npc~=nil and profiles_names[prof]==true then
+        add_prof_id(prof,npc:id())
+        end
+        for k,v in pairs(profiles_list) do
+          if prof==v[1] then
+            add_prof_id(v[1],npc:id())
+	  end
+        end
+        --'Показать HUD сообщение про активную секцию'--
+        --/show_logic_section(object,"esc_stalker_novice_quest") 
+end
+function physic_update(object)
+        for k,v in pairs(physic_update_list) do
+         if object:section()==v[1] then
+            add_prof_id(v[1],object:id())
+	 end
+        end
+end
+function scheme_update(object)
+        for k,v in pairs(scheme_update_list) do
+         if object:profile_name()==v[1] and v[2]=="true" then
+            add_prof_id(v[1],object:id())
+	 end
+        end
+end
+function create_update(who,ids)
+       for k,v in pairs(create_update_one_list) do
+         if who==v[1] then
+            add_prof_id(v[2],ids)
+	 end
+       end
+       for z,h in pairs(create_update_two_list) do
+         if who==h[1] then
+            level.map_add_object_spot_ser(ids,h[3],h[2])
+	 end
+       end
+       for s,b in pairs(create_update_three_list) do
+         if who==b[1] then
+            level.map_add_object_spot_ser(ids,b[3],b[2])
+	 end
+       end
+end
+function release_exclude(obj)
+        for w,i in pairs(release_exclude_list) do
+           if obj:profile_name()==i[1] then
+              return true
+	   end
+        end
+        return false
+end
+------------------------------------
+----------/Общие функции/-----------
+------------------------------------
+function add_prof_name(profile,val)
+    if profiles_names[profile]==nil then
+    profiles_names[profile]=val
+    --/give_quick_news("add_prof_name: профиль="..profile)
+    end
+end
+function add_prof_id(profile,id)
+    if profiles_ids[profile]==nil then
+    profiles_ids[profile]=id
+    --/give_quick_news("add_prof_id: профиль="..profile.."  Айдишник="..id)
+    end
+end
+function add_prof_id2(profile,id)
+    if profiles_ids[profile]==nil then
+    profiles_ids[profile]=id
+    end
+end
+function get_exception(npc)
+     local get_exceptions = 
+     npc:profile_name()=="val_freedom_rpg_trooper"
+     if get_exceptions then 
+        return false
+     end
+     return true
+end
+function pre_profile_id(profile)
+	if profiles_ids[profile]~=nil then
+	   return true
+	end
+	return false
+end
+function get_profile_id(profile)
+	if profiles_ids[profile]~=nil then
+	   return profiles_ids[profile]
+	elseif profiles_ids[profile]==nil and profiles_ids[profile.."_spot"]~=nil then
+	   return profiles_ids[profile.."_spot"]
+	end
+	return nil
+end
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

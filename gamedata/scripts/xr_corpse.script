@@ -1,0 +1,109 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+-----------------------------------------(Схема трупа)---------------------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+------------------------------------
+------------/Условие/---------------
+------------------------------------
+class "evaluator_corpse" (property_evaluator)
+function evaluator_corpse:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_corpse:evaluate()
+        if xr_logic.is_active(self.object,self.st) and self.object:alive()==true then
+		return true
+	end
+	return false
+end
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_corpse" (action_base)
+function action_corpse:__init (npc,action_name,storage) super (nil,action_name)
+	self.st = storage
+end
+function action_corpse:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:clear_animations()
+        self.object:remove_all_restrictions()
+end
+function action_corpse:execute()
+        action_base.execute(self)
+        local npc=self.object
+        if self.st.corpse_items~=nil then
+	   for kk,vv in pairs(self.st.corpse_items_table) do
+	      if not npc:object(vv) then
+	      alife():create(vv,npc:position(),npc:level_vertex_id(),npc:game_vertex_id(),npc:id())
+	      end
+	   end
+           local shot = hit()
+           shot.draftsman = npc
+           shot.type = hit.wound
+           shot.power = 1000
+	   shot.impulse = 1
+           npc:hit(shot)	
+        else
+           local shot = hit()
+           shot.draftsman = npc
+           shot.type = hit.wound
+           shot.power = 1000
+	   shot.impulse = 1
+           npc:hit(shot)
+        end 
+end
+function action_corpse:death_callback()
+end
+function action_corpse:hit_callback()
+end
+function action_corpse:reset_scheme()
+	action_base.finalize(self)
+end
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+property_corpse  = 81225
+add_to_corpse    = property_corpse
+function add_to_binder(object,ini,scheme,section,storage)
+        --'Эвалуаторы
+	local manager = object:motivation_action_manager() --/планировщик
+	manager:add_evaluator(property_corpse,evaluator_corpse("corpse",storage))
+	local action = action_corpse(object,"corpse",storage)
+	action:add_precondition(world_property(stalker_ids.property_alive,true))
+	action:add_precondition(world_property(property_corpse,true))
+	action:add_effect(world_property(property_corpse,false))
+	manager:add_action(add_to_corpse,action)
+        xr_logic.subscribe_action_for_events(object,storage,action)
+	--'Разрешить раздражители
+	action = manager:action(xr_actions_id.alife)
+	action:add_precondition(world_property(property_corpse,false))
+	action = manager:action(stalker_ids.action_combat_planner)
+	action:add_precondition(world_property(property_corpse,false))
+	action = manager:action(stalker_ids.action_danger_planner)
+	action:add_precondition(world_property(property_corpse,false))
+end
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	printf("DEBUG: set_scheme: scheme='%s', section='%s'", scheme, section)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	printf("DEBUG: set_scheme: storage assigned")
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+        --/
+        st.corpse_items  = utils.cfg_get_string(ini,section,"corpse_items",npc,false,"",nil)  --'Спаун предметов
+        --/
+	if st.corpse_items ~= nil then
+	st.corpse_items_table = parse_names(st.corpse_items)
+	end
+        --/
+end
+function disable_scheme(npc, scheme)
+ local st = db.storage[npc:id()][scheme]
+ if st then
+  st.enabled = false
+ end
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

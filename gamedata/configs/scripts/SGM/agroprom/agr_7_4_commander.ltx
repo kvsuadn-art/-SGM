@@ -1,0 +1,53 @@
+[logic]
+active = move@commander
+level_spot = quest_npc
+
+[move@commander]
+target_type     = level_vertex
+dest_number     = 359558
+state_in_center = ward
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+combat_ignore_cond = always
+on_info = {=actor_on_level(agroprom) +agr_garbage_end -agr_blokpost_shout_sound} remark@look_at %=play_sound(agr_blokpost_shout:stalker:agr_smart_terrain_7_4)%
+on_info2 = {+agr_recapture_7_4_duty} %=destroy_object%
+
+[remark@look_at]
+anim = hello_wpn
+target = actor
+meet = no_meet
+on_signal = sound_end | remark@prelook %+agr_blokpost_shout_sound%
+combat_ignore_cond = always
+on_info2 = {+agr_recapture_7_4_duty} %=destroy_object%
+
+[remark@prelook]
+on_actor_dist_le_nvis = 3 | remark@ready_say %+agr_actor_inside_2%
+on_info2 = {+agr_recapture_7_4_duty} %=destroy_object%
+
+[remark@ready_say]
+anim = wait
+target = actor
+snd = agr_blokpost_dialog
+on_signal = sound_end  | move@idler %+agr_actor_inside_3%
+meet = no_meet
+combat_ignore_cond = always
+on_info2 = {+agr_recapture_7_4_duty} %=destroy_object%
+
+[move@idler]
+target_type     = level_vertex
+dest_number     = 359558
+state_in_center = ward
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 368073
+on_info2 = {+agr_recapture_7_4_duty} %=destroy_object%
+
+[known_info]
+agr_actor_inside_2
+agr_actor_inside_3
+
+[meet@end]
+meet_state_wpn = 5 | wait@nil
+use	= true
+use_wpn	= true

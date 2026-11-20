@@ -1,0 +1,135 @@
+[logic]
+active = move@switch_start
+level_spot = quest_npc
+
+[move@switch_start]
+target_type     = level_vertex
+dest_number     = 39261
+state_in_center = search
+state_for_move  = walk
+miss_center     = false
+on_signal       = in_center | move@switch1
+look_vertex     = 38074
+stand_time      = 5000
+stop_on_talk    = true
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@switch1]
+target_type     = level_vertex
+dest_number     = 39612
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch2
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+on_info         = {+mar_renegate_baron_death -mar_renegate_baron_complete} move@going
+
+[move@switch2]
+target_type     = level_vertex
+dest_number     = 53827
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch3
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@switch3]
+target_type     = level_vertex
+dest_number     = 82419
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch4
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@switch4]
+target_type     = level_vertex
+dest_number     = 83577
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+on_signal       = in_center | move@switch5
+look_vertex     = 83576
+stand_time      = 5000
+stop_on_talk    = true
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@switch5]
+target_type     = level_vertex
+dest_number     = 81180
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch7
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+on_info         = {+mar_renegate_baron_death -mar_renegate_baron_complete} move@going
+
+[move@switch7]
+target_type     = level_vertex
+dest_number     = 61677
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch8
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+on_info         = {+mar_renegate_baron_death -mar_renegate_baron_complete} move@going
+
+[move@switch8]
+target_type     = level_vertex
+dest_number     = 61150
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch10
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@switch10]
+target_type     = level_vertex
+dest_number     = 46251
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@switch_start
+play_dir 	= characters_voice\human_02\csky\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@going]
+target_type     = level_vertex
+dest_number     = 38659
+state_in_center = hello
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+stop_on_talk    = true
+on_info         = {+mar_renegate_baron_complete} move@switch_start
+
+
+
+
+
+
+

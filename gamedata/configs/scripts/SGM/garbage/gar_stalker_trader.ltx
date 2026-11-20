@@ -1,0 +1,25 @@
+[logic]
+active = move@trader
+trade = misc\trade\order_traders\gar_stalker_trader.ltx
+
+[move@trader]
+target_type     = level_vertex
+dest_number     = 190301
+state_in_center = ward_noweap
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 197497
+meet            = meet@trader
+
+[meet@trader]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= esc_stalker_trader_meet
+sound_stop 	= esc_stalker_trader_meet_bye
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

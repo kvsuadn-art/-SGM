@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<game_information_portions>
+<!-------------------Чит-меню---------------------->
+<info_portion id="activate_immortal"></info_portion>
+<info_portion id="activate_power"></info_portion>
+<info_portion id="activate_bleeding"></info_portion>
+<info_portion id="activate_repair"></info_portion>
+<!---------------Главные опции--------------------->
+<info_portion id="activate_auto_energy"></info_portion>
+<info_portion id="deactivate_scheme_doctor"></info_portion>
+<info_portion id="activate_scheme_gainer"></info_portion>
+<info_portion id="deactivate_no_wpn"></info_portion>
+<info_portion id="always_hide_sleep_zone"></info_portion>
+<info_portion id="disable_satiety"></info_portion>
+<!-------------------Опции-HUD--------------------->
+<info_portion id="disable_hud_time"></info_portion>
+<info_portion id="disable_hud_wpn"></info_portion>
+<info_portion id="disable_shock_hits"></info_portion>
+<info_portion id="disable_actor_vertigo"></info_portion>
+<info_portion id="activate_shock_motion"></info_portion>
+<info_portion id="show_rank_counter"></info_portion>
+<!--------------------Разное----------------------->
+<info_portion id="show_smarts"></info_portion>
+<info_portion id="show_afs"></info_portion>
+<!------------------------------------------------->
+</game_information_portions>

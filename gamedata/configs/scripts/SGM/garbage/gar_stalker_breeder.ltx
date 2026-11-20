@@ -1,0 +1,57 @@
+[logic]
+active = move@himik_s0
+trade = misc\trade\trade_breeder.ltx
+
+[move@himik_s0]
+target_type     = level_vertex
+dest_number     = 235470
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@himik_s1_look
+play_dir 	= characters_voice\human_02\stalker\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@himik_s1_look]
+target_type     = level_vertex
+dest_number     = 300839
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 315318
+stand_time      = 6000
+play_dir        = gar_breeder_see
+stop_on_talk    = true
+on_signal       = in_center | move@himik_s2_look
+play_dir 	= characters_voice\human_02\stalker\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@himik_s2_look]
+target_type     = level_vertex
+dest_number     = 288013
+state_in_center = search
+state_for_move  = walk
+miss_center     = false
+stand_time      = 6000
+play_dir        = gar_breeder_see
+stop_on_talk    = true
+on_signal       = in_center | move@himik_s3
+play_dir 	= characters_voice\human_02\stalker\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@himik_s3]
+target_type     = level_vertex
+dest_number     = 233620
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+stop_on_talk    = true
+on_signal       = in_center | move@himik_s0
+play_dir 	= characters_voice\human_02\stalker\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+

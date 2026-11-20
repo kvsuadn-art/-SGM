@@ -1,0 +1,49 @@
+[logic]
+active = move@free
+on_death = death
+
+[death]
+on_info = {=actor_is_no_enemy} %+agr_bodyguard_dolg_death -agr_bodyguard_dolg_pursue -agr_bodyguard_dolg_nofire -agr_bodyguard_dolg_stop =respawn_agr_bodyguard_dolg =sgm_bodyguard_death%
+
+[move@free]
+target_type     = level_vertex
+dest_number     = 62627
+state_in_center = hello_wpn
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 68056
+on_info         = {+agr_bodyguard_dolg_pursue} defender@changer %=sgm_bodyguard_init%
+meet            = meet@guard
+
+[defender@changer]
+defend_victim   = actor
+cure_actor      = true
+on_info         = {+agr_bodyguard_dolg_nofire} defender@command_nofire %=sgm_bodyguard_command_1%,{+agr_bodyguard_dolg_stop} defender@command_stop %=sgm_bodyguard_command_2%
+
+[defender@command_nofire]
+defend_victim   = actor
+cure_actor      = true
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info         = {-agr_bodyguard_dolg_nofire} defender@changer %=sgm_bodyguard_command_0%
+
+[defender@command_stop]
+use_command     = stop
+defend_victim   = actor
+cure_actor      = true
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info         = {-agr_bodyguard_dolg_stop} defender@changer %=sgm_bodyguard_command_0%
+
+[meet@guard]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\agroprom\agr_base_commander_1
+sound_stop 	= characters_voice\scenario\agroprom\agr_duty_leader_meet_bye_2
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

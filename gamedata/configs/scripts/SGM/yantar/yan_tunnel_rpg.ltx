@@ -1,0 +1,29 @@
+[logic]
+active = shooter@rpg_attack
+on_death = death
+
+[death]
+on_info = %+yan_kill_tunnel_snorks_fire%
+
+[shooter@rpg_attack]
+shooter_pos         = 110614
+shooter_fire_look   = 124545
+shooter_idle_look   = 124545
+shooter_clip        = 2
+shooter_reload      = 4800
+shooter_type_wpn    = grenade_launcher
+shooter_move_state  = walk
+shooter_idle_state  = threat
+shooter_fire_state  = threat_fire
+shooter_allow_info  = yan_kill_tunnel_snorks_fire
+shooter_switch      = stage_end | move@rpg_meat
+on_actor_dist_le_nvis = 20|%+yan_kill_tunnel_snorks_fire%
+combat_ignore_cond               = true
+combat_ignore_keep_when_attacked = true
+
+[move@rpg_meat]
+target_type      = level_vertex
+dest_number      = 124545
+state_in_center  = guard
+state_for_move   = assault
+miss_center      = false

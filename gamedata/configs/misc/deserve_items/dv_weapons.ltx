@@ -1,0 +1,187 @@
+;-------------------------------------------------------------------------------------------------------------------------;
+;---------------------------------------Персональное оружие:--------------------------------------------------------------;
+;-------------------------------------------------------------------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Болота'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+[wpn_mp5_sifon]:wpn_mp5
+inv_name		= st_sifon_weapon_name
+inv_name_short		= st_sifon_weapon_name
+description		= sgm_deserve_weapon_descr
+cost                    = 6000
+ammo_elapsed            = 39
+ammo_elapsed            = 39
+ammo_mag_size           = 39
+inv_weight              = 2.02
+fire_dispersion_base    = 0.5
+hit_power               = 0.56, 0.56, 0.56, 0.56
+silencer_hit_power      = 0.60, 0.60, 0.60, 0.60
+rpm                     = 825
+ammo_class		= ammo_9x18_fmj,ammo_9x18_pmm,ammo_9x18_hpm
+[grenade_f1_sifon]:grenade_f1
+inv_name		= st_sifon_granade_name
+inv_name_short		= st_sifon_granade_name
+description		= sgm_deserve_other_descr
+blast_r			= 24
+frags			= 20
+frags_r			= 40
+frag_hit		= 2.50
+cost			= 1500
+inv_grid_x	        = 30
+inv_grid_y		= 42
+[wpn_beretta_baron]:wpn_beretta
+inv_name		= st_baron_weapon_name
+inv_name_short		= st_baron_weapon_name
+description		= sgm_deserve_weapon_descr
+ammo_elapsed		= 20
+ammo_mag_size		= 20
+fire_dispersion_base	= 0.67
+hit_power           	= 0.65, 0.65, 0.65, 0.65
+silencer_hit_power      = 0.70
+cost			= 4000
+inv_grid_x	        = 28
+inv_grid_y		= 42
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Кордон'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+[wpn_ak74_sviridov]:wpn_ak74
+inv_name		= st_sviridov_weapon_name
+inv_name_short		= st_sviridov_weapon_name
+description		= sgm_deserve_weapon_descr
+cost              	= 7000
+ammo_elapsed            = 42
+ammo_elapsed            = 42
+ammo_mag_size           = 42
+inv_weight              = 3.0
+hit_power               = 0.56, 0.56, 0.56, 0.56
+silencer_hit_power      = 0.70, 0.70, 0.70, 0.70
+rpm                     = 732
+grenade_launcher_status = 2
+fire_dispersion_base    = 0.6
+cam_dispersion          = 0.6
+cam_dispersion_inc      = 0.6
+cam_dispersion_frac     = 0.6
+zoom_cam_dispersion     = 0.5
+zoom_cam_dispersion_inc = 0.5
+zoom_cam_dispersion_frac= 0.6
+inv_grid_x	        = 28
+inv_grid_y		= 40
+[wpn_l85_driver]:wpn_l85
+inv_name		= st_driver_weapon_name
+inv_name_short		= st_driver_weapon_name
+description		= sgm_deserve_weapon_descr
+cost                    = 9000
+ammo_elapsed            = 44
+ammo_mag_size           = 44
+inv_weight           	= 4.65
+fire_dispersion_base    = 0.7
+hit_power               = 0.54, 0.54, 0.54, 0.54
+rpm                     = 700
+grenade_launcher_status = 2
+scope_zoom_factor       = 25
+silencer_hit_power      = 0.67, 0.67, 0.67, 0.67
+inv_grid_x	        = 22
+inv_grid_y		= 44
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Свалка'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+[wpn_toz34_yoga]:wpn_toz34
+inv_name		= st_yoga_weapon_name
+inv_name_short		= st_yoga_weapon_name
+description		= sgm_deserve_weapon_descr
+cost                    = 3000
+fire_dispersion_base    = 0.5
+cam_dispersion          = 3.5
+cam_dispersion_inc      = 3.5
+cam_dispersion_frac	= 0.6
+cam_max_angle        	= 6.0
+cam_max_angle_horz      = 6.0
+zoom_cam_dispersion     = 2.0
+zoom_cam_dispersion_inc = 2.0
+zoom_cam_dispersion_frac= 0.6
+zoom_cam_max_angle      = 6.0
+zoom_cam_max_angle_horz = 6.0
+inv_weight              = 2.6
+fire_distance           = 120
+bullet_speed         	= 400
+inv_grid_x	        = 22
+inv_grid_y		= 42
+[wpn_hpsa_yoga]:wpn_hpsa
+inv_name		= st_yoga_weapon2_name
+inv_name_short		= st_yoga_weapon2_name
+description		= sgm_deserve_weapon_descr
+ammo_mag_size		= 16
+cost			= 4520
+fire_dispersion_base	= 0.72
+hit_power           	= 0.73, 0.73, 0.73, 0.73
+rpm                     = 299
+silencer_hit_power      = 0.82
+inv_grid_x	        = 28
+inv_grid_y		= 43
+;------------------------------------------==========-----------------------------------------------------------;
+;------------------------------------------'Агропром'-----------------------------------------------------------;
+;------------------------------------------==========-----------------------------------------------------------;
+[wpn_commander_pm_holeman]:wpn_commander_pm
+$spawn		        = "weapons\wpn_commander_pm_holeman"
+inv_weight		= 0.9
+inv_name		= st_wpn_commander_pm_holeman
+inv_name_short		= st_wpn_commander_pm_holeman
+description		= sgm_deserve_weapon_descr
+cost              	= 2500
+hit_power           	= 0.71, 0.71, 0.71, 0.71
+rpm                     = 327
+silencer_hit_power      = 0.79
+silencer_fire_distance  = 300
+fire_distance           = 300
+ammo_class		= ammo_9x18_fmj,ammo_9x18_pmm,ammo_9x18_hpm
+inv_grid_x	        = 22
+inv_grid_y		= 40
+;-------------------------------------------=========-----------------------------------------------------------;
+;-------------------------------------------'Лиманск'-----------------------------------------------------------;
+;-------------------------------------------=========-----------------------------------------------------------;
+[wpn_grom_sivoha]:wpn_grom
+$spawn		        = "weapons\wpn_grom_sivoha"
+increasing_skill_info   = skill_book_grom
+increasing_skill_point  = 0.21
+inv_weight		= 3.50
+inv_name                = st_wpn_grom_sivoha
+inv_name_short          = st_wpn_grom_sivoha
+description             = sgm_deserve_weapon_descr
+cost              	= 18000
+inv_grid_width          = 5
+inv_grid_height         = 2
+inv_grid_x              = 28
+inv_grid_y              = 44
+upgrades                = 
+installed_upgrades      =
+ammo_class		= ammo_5.45x39_fmj,ammo_5.45x39_ap,ammo_5.45x39_hm,ammo_5.45x39_hr
+ammo_elapsed            = 42
+ammo_mag_size           = 42
+fire_dispersion_base    = 0.47
+control_inertion_factor = 1.0f
+cam_relax_speed         = 12
+cam_dispersion          = 0.6
+cam_dispersion_inc      = 0.6
+cam_dispersion_frac     = 0.7
+cam_max_angle           = 5.0
+cam_max_angle_horz      = 10.0
+cam_step_angle_horz     = 1.7
+zoom_cam_relax_speed    = 12
+zoom_cam_dispersion     = 0.4
+zoom_cam_dispersion_inc = 0.4
+zoom_cam_dispersion_frac= 0.7
+zoom_cam_max_angle      = 10.0
+zoom_cam_max_angle_horz = 5.0
+zoom_cam_step_angle_horz= 1.5
+hit_power		= 0.91, 0.91, 0.91, 0.91
+fire_distance           = 600
+bullet_speed            = 800
+rpm                     = 700
+silencer_hit_power      = 0.94, 0.94, 0.94, 0.94
+silencer_hit_impulse    = 60
+silencer_fire_distance  = 600
+silencer_bullet_speed   = 800
+scope_status            = 1
+silencer_status         = 1
+grenade_launcher_status = 1
+scope_zoom_factor       = 15

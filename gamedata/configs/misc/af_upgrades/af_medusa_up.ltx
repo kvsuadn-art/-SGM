@@ -1,0 +1,74 @@
+[up_sect_a_medusa]
+cost		      	= 1000
+health_restore_speed	= 0.1
+
+[up_sect_b_medusa]
+cost		      	= 2000
+power_restore_speed	= 0.1
+
+[up_sect_c_medusa]
+cost		      	= 3000
+additional_inventory_weight  = 30
+additional_inventory_weight2 = 30
+
+;----------------------------------
+
+[up_a_medusa]
+scheme_index            = 0, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_a_medusa
+property                = prop_breeding1
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = on_weapon_upgrade_something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = sgm_af_breeding_level1
+description             = sgm_af_breeding_level1_descr
+icon                    = ui_wp_upgrade_53
+
+[up_b_medusa]
+scheme_index            = 0, 1
+known                   = 1
+effects                 = 
+section                 = up_sect_b_medusa
+property                = prop_breeding2
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = sgm_af_breeding_level2
+description             = sgm_af_breeding_level2_descr
+icon                    = ui_wp_upgrade_53
+
+[up_c_medusa]
+scheme_index            = 0, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_c_medusa
+property                = prop_breeding3
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = money(1000), item(habar)
+name                    = sgm_af_breeding_level3
+description             = sgm_af_breeding_level3_descr
+icon                    = ui_wp_upgrade_53
+
+;----------------------------------
+
+[up_gr_a_medusa]
+elements                = up_a_medusa
+[up_gr_b_medusa]
+elements                = up_b_medusa
+[up_gr_c_medusa]
+elements                = up_c_medusa

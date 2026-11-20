@@ -1,0 +1,27 @@
+[logic]
+active = mob_move
+on_death = death
+
+[death]
+on_info = %+agr_wild_giant_death%
+
+[mob_move]
+target_point = 118246
+;monster_switch = step_end |mob_move_p1
+
+[mob_move_p1]
+target_point = 124822
+;monster_switch = step_end |mob_move_p2
+
+[mob_move_p2]
+target_point = 167542
+;monster_switch = step_end |mob_move_p3
+
+[mob_move_p3]
+target_point = 187305
+;monster_switch = step_end |mob_move_p4
+
+[mob_move_p4]
+target_point = 124822
+;monster_switch = step_end |mob_move_p0
+

@@ -1,0 +1,593 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+---------------------------------(Схема для организации сцен)--------------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+------------------------------------
+----------/Общие переменные/--------
+------------------------------------
+off_scene=false
+------------------------------------
+------------/Условие/---------------
+------------------------------------
+class "evaluator_need_theatre" (property_evaluator)
+function evaluator_need_theatre:__init(storage, name) super(nil, name)
+  	self.st = storage
+end
+function evaluator_need_theatre:evaluate()
+  	return xr_logic.is_active(self.object, self.st) and off_scene==false
+end
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_theatre" (action_base)
+function action_theatre:__init (npc, action_name, storage) super(nil, action_name)
+	self.st = storage
+	self.move_mgr = db.storage[npc:id()].move_mgr
+end
+function action_theatre:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.run)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.napravlenie=vector():set(math.random()*6-3,0,math.random()*6-3)
+        self.napravlenie:normalize()
+	self:reset_scheme(nil, self.object)
+end
+function action_theatre:activate_scheme(loading, npc)
+	self.st.signals = {}
+	self:reset_scheme(loading, npc)
+        self.play_theme_started = false
+        self.play_reward_started = false
+        self.hostage_tip_text_bool = false
+        self.hostage_reward_tip_bool = false
+end
+function action_theatre:reset_scheme(loading,npc)
+end
+function action_theatre:get_target()
+    local look_tbl={}
+    if self.st.look_subject_init==false then
+      self.st.look_subject_position,self.st.look_subject_id,self.st.look_subject_init=load_target(self.object,self.st.look_subject)
+      if st.look_subject_init==false then
+        return nil
+      end
+    end
+    if self.st.look_subject_actor == true then
+        look_tbl.look_object = db.actor
+    end
+    if self.st.look_subject_id then
+        look_tbl.look_object = level.object_by_id(self.st.look_subject_id)
+    end
+    if self.st.look_subject_position then
+        look_tbl.look_position = self.st.look_subject_position
+    end
+    if self.st.look_vertex~="nil" then
+      if self.st.convert_lv_look~=nil then
+         look_tbl.look_position=self.st.convert_lv_look
+      end
+    end
+    return look_tbl
+end
+function action_theatre:turn_end_callback()
+  printf("TURN END CALLBACK CALLED")
+end
+function action_theatre:time_callback()
+  printf("TIME CALLBACK CALLED")
+end
+function action_theatre:death_callback()
+  printf("DEATH CALLBACK CALLED")
+end
+function action_theatre:hit_callback()
+  printf("HIT CALLBACK CALLED")
+end
+function action_theatre:execute()
+     action_base.execute(self)
+     self.move_mgr:update()
+     if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
+        return
+     end
+     --/Переменные/--
+     local npc=self.object
+     local get_enemy=self.object:best_enemy()
+     local choose_look=self:get_target()
+     local cb = { obj = self, func = self.time_callback, turn_end_func = self.turn_end_callback }
+     local npc_lv=npc:level_vertex_id()
+     local hostage_pre=self.st.hostage_reward_allow==true and self.st.hostage_reward_need~=nil and self.st.hostage_reward_info~=nil and self.st.hostage_reward_ru~=0
+     --/Начало роли: Заложник/--
+     if self.st.role_name=="hostage" and self.st.role_pos~=0 and self.st.role_state~=nil then
+        --/Инициализация роли/--
+        if self.st.hostage_reward_allow==false then --'Развлетление №1 (Награда исключена)
+            local hostage_pos=level.vertex_in_direction(self.st.role_pos,vector():set(0,0,0),5)
+            local hostage_utils=utils.send_to_nearest_accessible_vertex(npc,hostage_pos)
+            if npc_lv~=self.st.role_pos and sgm_flags.theatre_timer==0 then
+                if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+                   db.actor:give_info_portion(self.st.on_approach_info)
+                end
+                if state_mgr.get_state(npc)~="walk" then
+                   state_mgr.set_state(npc,"walk")
+                end
+                sgm_flags.theatre_timer=time_global()+math.random(400,500)
+            elseif npc_lv==self.st.role_pos and sgm_flags.theatre_timer==0 then
+              if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+                   db.actor:give_info_portion(self.st.on_approach_info)
+              end
+              if choose_look~=nil then
+                    if self.st.hostage_tip_text~=nil and self.st.hostage_tip_dist~=0 and distance_between(db.actor,npc)<self.st.hostage_tip_dist and self.hostage_tip_text_bool==false then
+                       self.hostage_tip_text_bool=true
+                       news_manager.send_tip(db.actor,self.st.hostage_tip_text,0,npc:character_community(),4000,nil,game.translate_string("st_theatre_tip_title").." "..npc:character_name()..":")
+                    end
+                    if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                       db.actor:give_info_portion(self.st.role_active_info)
+                    end
+                    if state_mgr.get_state(npc)~=self.st.role_state then
+                       state_mgr.set_state(npc,self.st.role_state,cb,0,choose_look)
+                    end
+                    sgm_flags.theatre_timer=time_global()+math.random(self.st.role_update,self.st.role_update)
+               else
+                    if self.st.hostage_tip_text~=nil and self.st.hostage_tip_dist~=0 and distance_between(db.actor,npc)<self.st.hostage_tip_dist and self.hostage_tip_text_bool==false then
+                       self.hostage_tip_text_bool=true
+                       news_manager.send_tip(db.actor,self.st.hostage_tip_text,0,npc:character_community(),4000,nil,game.translate_string("st_theatre_tip_title").." "..npc:character_name()..":")
+                    end
+                    if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                       db.actor:give_info_portion(self.st.role_active_info)
+                    end
+                    if state_mgr.get_state(npc)~=self.st.role_state then
+                       state_mgr.set_state(npc,self.st.role_state)
+                    end
+                    sgm_flags.theatre_timer=time_global()+math.random(self.st.role_update,self.st.role_update)
+               end
+            end
+        elseif self.st.hostage_reward_allow==true then --'Развлетление №2 (Позволена награда)
+          if has_alife_info(self.st.hostage_reward_need) then  --'Развлетление №2.1 (Схема движения к ГГ, для того чтобы отблагодарить)
+            local hostage_pos=level.vertex_in_direction(db.actor:level_vertex_id(),vector():set(0,0,0),5)
+            local hostage_utils=utils.send_to_nearest_accessible_vertex(npc,hostage_pos)
+            if npc_lv~=db.actor:level_vertex_id() and sgm_flags.theatre_timer==0 and not has_alife_info(self.st.hostage_reward_info) then
+                if self.st.hostage_reward_tip~=nil and self.hostage_reward_tip_bool==false then
+                    self.hostage_reward_tip_bool=true
+                    news_manager.send_tip(db.actor,self.st.hostage_reward_tip,0,npc:character_community(),4000,nil,game.translate_string("st_theatre_tip_title").." "..npc:character_name()..":")
+                end
+                if state_mgr.get_state(npc)~="walk" then
+                   state_mgr.set_state(npc,"walk")
+                end
+                if distance_between(db.actor,npc)>80 then
+                   db.actor:give_info_portion(self.st.hostage_reward_info)
+                end
+                sgm_flags.theatre_timer=time_global()+math.random(400,500)
+            elseif (npc_lv==db.actor:level_vertex_id() or distance_between(db.actor,npc)<2.5) and sgm_flags.theatre_timer3==0 and not has_alife_info(self.st.hostage_reward_info) then
+                    if state_mgr.get_state(npc)~="wait_trade" then
+                       state_mgr.set_state(npc,"wait_trade",nil,nil,{look_object=db.actor})
+                    end
+                    if self.st.hostage_reward_snd~=nil and self.play_reward_started==false then
+                          if self.st.hostage_reward_snd=="freedom" then
+                          self.play_reward_started=true
+                          play_snd_at_pos([[characters_voice\human_01\freedom\help\wounded_thanx\thanx_]],npc,1,5)
+                          elseif self.st.hostage_reward_snd=="stalker" then
+                          self.play_reward_started=true
+                          play_snd_at_pos([[characters_voice\human_01\stalker\help\wounded_thanx\thanx_]],npc,1,5)
+                          elseif self.st.hostage_reward_snd=="csky" then
+                          self.play_reward_started=true
+                          play_snd_at_pos([[characters_voice\human_01\csky\help\wounded_thanx\thanx_]],npc,1,5)
+                          elseif self.st.hostage_reward_snd=="dolg" then
+                          self.play_reward_started=true
+                          play_snd_at_pos([[characters_voice\human_01\dolg\help\wounded_thanx\thanx_]],npc,1,5)
+                          end
+                    end
+                    dialogs.relocate_money(db.actor,self.st.hostage_reward_ru,"in")
+                    db.actor:give_info_portion(self.st.hostage_reward_info)
+                    sgm_flags.theatre_timer3=time_global()+math.random(500,500)
+            end
+          else  --'Развлетление №2.2 (Работа до освобождения)
+            local hostage_pos=level.vertex_in_direction(self.st.role_pos,vector():set(0,0,0),5)
+            local hostage_utils=utils.send_to_nearest_accessible_vertex(npc,hostage_pos)
+            if npc_lv~=self.st.role_pos and sgm_flags.theatre_timer==0 then
+                if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+                   db.actor:give_info_portion(self.st.on_approach_info)
+                end
+                if state_mgr.get_state(npc)~="walk" then
+                   state_mgr.set_state(npc,"walk")
+                end
+                sgm_flags.theatre_timer=time_global()+math.random(400,500)
+            elseif npc_lv==self.st.role_pos and sgm_flags.theatre_timer==0 then
+              if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+                 db.actor:give_info_portion(self.st.on_approach_info)
+              end
+              if choose_look~=nil then
+                    if self.st.hostage_tip_text~=nil and self.st.hostage_tip_dist~=0 and distance_between(db.actor,npc)<self.st.hostage_tip_dist and self.hostage_tip_text_bool==false then
+                       self.hostage_tip_text_bool=true
+                       news_manager.send_tip(db.actor,self.st.hostage_tip_text,0,npc:character_community(),4000,nil,game.translate_string("st_theatre_tip_title").." "..npc:character_name()..":")
+                    end
+                    if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                       db.actor:give_info_portion(self.st.role_active_info)
+                    end
+                    if state_mgr.get_state(npc)~=self.st.role_state then
+                       state_mgr.set_state(npc,self.st.role_state,cb,0,choose_look)
+                    end
+                    sgm_flags.theatre_timer=time_global()+math.random(self.st.role_update,self.st.role_update)
+               else
+                    if self.st.hostage_tip_text~=nil and self.st.hostage_tip_dist~=0 and distance_between(db.actor,npc)<self.st.hostage_tip_dist and self.hostage_tip_text_bool==false then
+                       self.hostage_tip_text_bool=true
+                       news_manager.send_tip(db.actor,self.st.hostage_tip_text,0,npc:character_community(),4000,nil,game.translate_string("st_theatre_tip_title").." "..npc:character_name()..":")
+                    end
+                    if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                       db.actor:give_info_portion(self.st.role_active_info)
+                    end
+                    if state_mgr.get_state(npc)~=self.st.role_state then
+                       state_mgr.set_state(npc,self.st.role_state)
+                    end
+                    sgm_flags.theatre_timer=time_global()+math.random(self.st.role_update,self.st.role_update)
+               end
+            end
+          end
+        end
+     end
+     --/Конец роли: Заложник/--
+     --/Начало роли: Киллер/--
+     if self.st.role_name=="killer" and self.st.role_pos~=0 and self.st.role_state~=nil then
+        --/Переменные/--
+        local going_pos2=level.vertex_in_direction(self.st.role_pos,vector():set(0,0,0),5)
+        local load_utils2=utils.send_to_nearest_accessible_vertex(npc,going_pos2)
+        --/Инициализация роли/--
+        if npc_lv~=self.st.role_pos and sgm_flags.theatre_timer2==0 then
+            if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+               db.actor:give_info_portion(self.st.on_approach_info)
+            end
+            if state_mgr.get_state(npc)~="walk" then
+               state_mgr.set_state(npc,"walk")
+            end
+            sgm_flags.theatre_timer2=time_global()+math.random(400,500)
+        elseif npc_lv==self.st.role_pos and sgm_flags.theatre_timer2==0 then
+          if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+             db.actor:give_info_portion(self.st.on_approach_info)
+          end
+          if choose_look~=nil then
+                if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                   db.actor:give_info_portion(self.st.role_active_info)
+                end
+                if state_mgr.get_state(npc)~=self.st.role_state then
+                   state_mgr.set_state(npc,self.st.role_state,cb,0,choose_look)
+                end
+                sgm_flags.theatre_timer2=time_global()+math.random(self.st.role_update,self.st.role_update)
+                if self.st.killer_danger_dist~=0 and (distance_between(db.actor,npc)<=self.st.killer_danger_dist or (db.actor:see(npc) and distance_between(db.actor,npc)<25)) then
+                   if self.st.killer_danger_shot~=nil and sgm_flags.theatre_shot==0 then
+                      if self.st.killer_danger_shot=="wpn_pm" then
+                         play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      elseif self.st.killer_danger_shot=="wpn_pb" then
+                         play_snd_at_pos([[weapons\for_pb\pb_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      elseif self.st.killer_danger_shot=="wpn_desert_eagle" then
+                         play_snd_at_pos([[weapons\for_desert_eagle\desert_eagle_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      end
+                   elseif self.st.killer_danger_shot==nil and sgm_flags.theatre_shot==0 then
+                      play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                      sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                   end
+                   if self.st.killer_danger_info~=nil and not has_alife_info(self.st.killer_danger_info) then
+                      db.actor:give_info_portion(self.st.killer_danger_info)
+                   end
+                   --/off_scene=true
+                end
+           else
+                if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                   db.actor:give_info_portion(self.st.role_active_info)
+                end
+                if state_mgr.get_state(npc)~=self.st.role_state then
+                   state_mgr.set_state(npc,self.st.role_state)
+                end
+                sgm_flags.theatre_timer2=time_global()+math.random(self.st.role_update,self.st.role_update)
+                if self.st.killer_danger_dist~=0 and (distance_between(db.actor,npc)<=self.st.killer_danger_dist or (db.actor:see(npc) and distance_between(db.actor,npc)<25)) then
+                   if self.st.killer_danger_shot~=nil and sgm_flags.theatre_shot==0 then
+                      if self.st.killer_danger_shot=="wpn_pm" then
+                         play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      elseif self.st.killer_danger_shot=="wpn_pb" then
+                         play_snd_at_pos([[weapons\for_pb\pb_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      elseif self.st.killer_danger_shot=="wpn_desert_eagle" then
+                         play_snd_at_pos([[weapons\for_desert_eagle\desert_eagle_shot]],npc)
+                         sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                      end
+                   elseif self.st.killer_danger_shot==nil and sgm_flags.theatre_shot==0 then
+                      play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                      sgm_flags.theatre_shot=time_global()+math.random(5000,6000)
+                   end
+                   if self.st.killer_danger_info~=nil and not has_alife_info(self.st.killer_danger_info) then
+                      db.actor:give_info_portion(self.st.killer_danger_info)
+                   end
+                   --/off_scene=true
+                end
+           end
+        end
+     end
+     --/Конец роли: Киллер/--
+     --/Начало роли: Самоубийца/--
+     if self.st.role_name=="suicide" and self.st.role_pos~=0 then
+        --/Переменные/--
+        local going_pos3=level.vertex_in_direction(self.st.role_pos,vector():set(0,0,0),5)
+        local load_utils3=utils.send_to_nearest_accessible_vertex(npc,going_pos3)
+        --/Инициализация роли/--
+        if npc_lv~=self.st.role_pos and sgm_flags.theatre_timer4==0 then --'Развлетление №1 (Идти на позицию)
+            if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+               db.actor:give_info_portion(self.st.on_approach_info)
+            end
+            if state_mgr.get_state(npc)~="walk" then
+               state_mgr.set_state(npc,"walk")
+            end
+            sgm_flags.theatre_timer4=time_global()+math.random(400,500)
+        elseif npc_lv==self.st.role_pos and sgm_flags.theatre_timer4==0 and sgm_flags.theatre_timer5==0 then --'Развлетление №2 (На позиции. Установка первого состояния)
+          if self.st.on_approach_info~=nil and self.st.on_approach_dist~=0 and distance_between(db.actor,npc)<=self.st.on_approach_dist and not has_alife_info(self.st.on_approach_info) then
+             db.actor:give_info_portion(self.st.on_approach_info)
+          end
+          if choose_look~=nil then
+                if self.st.suicide_start_anim~=nil and self.st.suicide_end_anim~=nil and distance_between(db.actor,npc)<=self.st.suicide_start_dist then
+                   state_mgr.set_state(npc,self.st.suicide_start_anim,cb,0,choose_look)
+                   sgm_flags.theatre_timer5=time_global()+math.random(5000,5000)
+                elseif distance_between(db.actor,npc)>self.st.suicide_start_dist then
+                   if state_mgr.get_state(npc)~=self.st.role_state then
+                   state_mgr.set_state(npc,self.st.role_state,cb,0,choose_look)
+                   end
+                end
+                if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                   db.actor:give_info_portion(self.st.role_active_info)
+                end
+                sgm_flags.theatre_timer4=time_global()+math.random(self.st.role_update,self.st.role_update)
+           else
+                if self.st.suicide_start_anim~=nil and self.st.suicide_end_anim~=nil and distance_between(db.actor,npc)<=self.st.suicide_start_dist then
+                   state_mgr.set_state(npc,self.st.suicide_start_anim)
+                   sgm_flags.theatre_timer5=time_global()+math.random(5000,5000)
+                elseif distance_between(db.actor,npc)>self.st.suicide_start_dist then
+                   if state_mgr.get_state(npc)~=self.st.role_state then
+                   state_mgr.set_state(npc,self.st.role_state)
+                   end
+                end
+                if self.st.role_active_info~=nil and not has_alife_info(self.st.role_active_info) then
+                   db.actor:give_info_portion(self.st.role_active_info)
+                end
+                sgm_flags.theatre_timer4=time_global()+math.random(self.st.role_update,self.st.role_update)
+           end
+        elseif npc_lv==self.st.role_pos and sgm_flags.theatre_timer6==0 and sgm_flags.theatre_timer5==1 then --'Развлетление №3 (На позиции. Установка второго состояния)
+          if choose_look~=nil then
+                if sgm_flags.theatre_timer7==1 then
+                   sgm_flags.theatre_timer7=time_global()+math.random(6900,6900)
+                elseif sgm_flags.theatre_timer7==0 then
+                   if self.st.suicide_kill_wpn~=nil and sgm_flags.theatre_shot2==0 then
+                      if self.st.suicide_kill_wpn=="wpn_pm" then
+                         play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      elseif self.st.suicide_kill_wpn=="wpn_pb" then
+                         play_snd_at_pos([[weapons\for_pb\pb_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      elseif self.st.suicide_kill_wpn=="wpn_desert_eagle" then
+                         play_snd_at_pos([[weapons\for_desert_eagle\desert_eagle_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      end
+                   elseif self.st.suicide_kill_wpn==nil and sgm_flags.theatre_shot2==0 then
+                      play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                      sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                      local shot = hit()
+                      shot.draftsman = npc
+                      shot.type = hit.wound
+                      shot.power = 1000
+	              shot.impulse = 1
+                      npc:hit(shot)
+                   end
+                end
+                if state_mgr.get_state(npc)~=self.st.suicide_end_anim then
+                state_mgr.set_state(npc,self.st.suicide_end_anim,cb,0,choose_look)
+                  if sgm_flags.show_timer==0 then
+                  sgm_flags.show_timer=time_global()
+                  end
+                end
+                sgm_flags.theatre_timer6=time_global()+math.random(self.st.suicide_update,self.st.suicide_update)
+           else
+                if sgm_flags.theatre_timer7==1 then
+                   sgm_flags.theatre_timer7=time_global()+math.random(6900,6900)
+                elseif sgm_flags.theatre_timer7==0 then
+                   if self.st.suicide_kill_wpn~=nil and sgm_flags.theatre_shot2==0 then
+                      if self.st.suicide_kill_wpn=="wpn_pm" then
+                         play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      elseif self.st.suicide_kill_wpn=="wpn_pb" then
+                         play_snd_at_pos([[weapons\for_pb\pb_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      elseif self.st.suicide_kill_wpn=="wpn_desert_eagle" then
+                         play_snd_at_pos([[weapons\for_desert_eagle\desert_eagle_shot]],npc)
+                         sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                         local shot = hit()
+                         shot.draftsman = npc
+                         shot.type = hit.wound
+                         shot.power = 1000
+	                 shot.impulse = 1
+                         npc:hit(shot)
+                      end
+                   elseif self.st.suicide_kill_wpn==nil and sgm_flags.theatre_shot2==0 then
+                      play_snd_at_pos([[weapons\for_pm\pm_shot]],npc)
+                      sgm_flags.theatre_shot2=time_global()+math.random(5000,6000)
+                      local shot = hit()
+                      shot.draftsman = npc
+                      shot.type = hit.wound
+                      shot.power = 1000
+	              shot.impulse = 1
+                      npc:hit(shot)
+                   end
+                end
+                if state_mgr.get_state(npc)~=self.st.suicide_end_anim then
+                state_mgr.set_state(npc,self.st.suicide_end_anim)
+                end
+                sgm_flags.theatre_timer6=time_global()+math.random(self.st.suicide_update,self.st.suicide_update)
+           end
+        end
+        --/Ролевой модуль:/--
+        if self.st.suicide_want_rescue==true and npc:is_talking() and not has_alife_info(self.st.suicide_rescue_info) then
+           db.actor:give_info_portion(self.st.suicide_rescue_info)
+           state_mgr.set_state(npc,"wait")
+        end
+        --/show_hud_message(sgm_flags.show_timer-time_global())
+     end
+     --/Конец роли: Самоубийца/--
+end
+function action_theatre:finalize()
+	self.move_mgr:finalize()
+	action_base.finalize(self)
+end
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+theatre_base_eva=stalker_ids.property_script+4385
+theatre_base_act=stalker_ids.action_script+3913
+function add_to_binder(npc, ini, scheme, section, storage)
+		printf("DEBUG: add_to_binder: scheme='%s', section='%s'", scheme, section)
+  		local operators	= {} 
+	  	local properties  = {}
+	   	local manager = npc:motivation_action_manager()  --/планировщик
+		properties["event"] = xr_evaluators_id.reaction
+	 	properties["need_theatre"] = theatre_base_eva+1
+	 	operators["action_theatre"] = theatre_base_act+1
+		manager:add_evaluator(properties["need_theatre"], this.evaluator_need_theatre(storage,"theatre_need"))
+                --'Действие
+		local new_action = this.action_theatre(npc, "action_theatre", storage)
+		new_action:add_precondition(world_property(stalker_ids.property_alive, true))
+		new_action:add_precondition(world_property(properties["need_theatre"], true))
+		xr_motivator.addCommonPrecondition(new_action)
+	   	new_action:add_effect(world_property(properties["need_theatre"], false))
+		manager:add_action(operators["action_theatre"], new_action)
+		--'Зарегистрировать все actions
+		xr_logic.subscribe_action_for_events(npc, storage, new_action)
+	  	--'Разрешить раздражители
+	  	new_action = manager:action(xr_actions_id.alife)	
+	  	new_action:add_precondition(world_property(properties["need_theatre"],false))
+end
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	printf("DEBUG: set_scheme: scheme='%s', section='%s'", scheme, section)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	printf("DEBUG: set_scheme: storage assigned")
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+        --/
+	st.role_name           = utils.cfg_get_string(ini,section,"role_name",npc,true,"")
+        st.role_pos            = utils.cfg_get_number(ini,section,"role_pos",npc,false,0)
+	st.role_state          = utils.cfg_get_string(ini,section,"role_state",npc,false,"")
+        st.role_talk           = utils.cfg_get_string(ini,section,"role_talk",npc,false,"",nil)
+        st.role_talk_loop      = utils.cfg_get_bool(ini,section,"role_talk_loop",npc,false,false)
+        st.role_talk_dist      = utils.cfg_get_number(ini,section,"role_talk_dist",npc,false,10)
+        st.role_active_info    = utils.cfg_get_string(ini,section,"role_active_info",npc,false,"",nil)
+        st.role_update         = utils.cfg_get_number(ini,section,"role_update",npc,false,500)
+        st.hostage_reward_allow= utils.cfg_get_bool(ini,section,"hostage_reward_allow",npc,false,false)
+        st.hostage_reward_need = utils.cfg_get_string(ini,section,"hostage_reward_need",npc,false,"",nil)
+        st.hostage_reward_ru   = utils.cfg_get_number(ini,section,"hostage_reward_ru",npc,false,0)
+        st.hostage_reward_info = utils.cfg_get_string(ini,section,"hostage_reward_info",npc,false,"",nil)
+        st.hostage_reward_snd  = utils.cfg_get_string(ini,section,"hostage_reward_snd",npc,false,"",nil)
+        st.hostage_tip_text    = utils.cfg_get_string(ini,section,"hostage_tip_text",npc,false,"")
+        st.hostage_tip_dist    = utils.cfg_get_number(ini,section,"hostage_tip_dist",npc,false,0)
+        st.hostage_reward_tip  = utils.cfg_get_string(ini,section,"hostage_reward_tip",npc,false,"")
+        st.killer_danger_dist  = utils.cfg_get_number(ini,section,"killer_danger_dist",npc,false,0)
+        st.killer_danger_info  = utils.cfg_get_string(ini,section,"killer_danger_info",npc,false,"",nil)
+        st.killer_danger_shot  = utils.cfg_get_string(ini,section,"killer_danger_shot",npc,false,"",nil)
+        st.suicide_start_dist  = utils.cfg_get_number(ini,section,"suicide_start_dist",npc,false,15)
+        st.suicide_start_anim  = utils.cfg_get_string(ini,section,"suicide_start_anim",npc,false,"",nil)
+        st.suicide_end_anim    = utils.cfg_get_string(ini,section,"suicide_end_anim",npc,false,"",nil)
+        st.suicide_kill_wpn    = utils.cfg_get_string(ini,section,"suicide_kill_wpn",npc,false,"",nil)
+        st.suicide_want_rescue = utils.cfg_get_bool(ini,section,"suicide_want_rescue",npc,false,false)
+        st.suicide_rescue_info = utils.cfg_get_string(ini,section,"suicide_rescue_info",npc,false,"",nil)
+        st.suicide_update      = utils.cfg_get_number(ini,section,"suicide_update",npc,false,500)
+        st.look_subject        = utils.cfg_get_string(ini,section,"look_subject",npc,false,"","nil")
+        st.look_vertex         = utils.cfg_get_string(ini,section,"look_vertex",npc,false,"","nil")
+        st.on_approach_dist    = utils.cfg_get_number(ini,section,"on_approach_dist",npc,false,0)
+        st.on_approach_info    = utils.cfg_get_string(ini,section,"on_approach_info",npc,false,"",nil)
+        --/
+       st.look_subject_id = nil
+       st.look_subject_position = nil
+       if st.look_subject and st.look_subject ~= "nil" then
+          if st.look_subject == "actor" then
+             st.look_subject_actor = true
+             st.look_subject_init = true
+          else
+             st.look_subject_actor = false
+             local sid = tonumber(st.look_subject)
+             if sid then
+                st.look_subject_id = id_by_sid(sid)
+                  if not st.look_subject_id then
+                     st.look_subject_id = nil                
+                  end
+                st.look_subject_init = true
+            else
+                st.look_subject_position, st.look_subject_id, st.look_subject_init = load_target(npc, st.look_subject)
+            end
+          end
+       end 
+       st.convert_lv_look=nil
+       if st.look_vertex and st.look_vertex~="nil" then
+          local get_look_vertex=tonumber(st.look_vertex)
+          if get_look_vertex then
+             st.convert_lv_look=level.vertex_position(st.look_vertex)
+          else
+             st.convert_lv_look=nil
+          end
+       end
+end
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function parse_target(target)
+    local pos=string.find(target,",")
+    if pos then
+        return string.sub(target, 1, pos - 1), string.sub(target, pos + 1)
+    else
+        return target,nil
+    end
+end
+function load_target(npc,target)
+    local gulag = xr_gulag.get_npc_gulag(npc)
+    local param1, param2 = parse_target(target)
+    local wp_id = tonumber(param2)
+    if wp_id then
+      return patrol(param1):point(wp_id), nil, true
+    end
+    if param2 then
+        gulag = xr_gulag.get_gulag_by_name(param2)
+    end
+    if gulag then
+        return nil, gulag:idNPCOnJob(param1), true
+    end
+    return nil, nil, false
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

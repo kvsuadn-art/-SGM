@@ -1,0 +1,150 @@
+	<string id="st_generic_af">
+		<text>«Артефакт»</text>
+	</string>
+	<string id="st_repair_title">
+		<text>Отремонтирован предмет:</text>
+	</string>
+	<string id="st_repair_cond">
+		<text>НП=</text>
+	</string>
+	<string id="st_order_cost">
+		<text>Цена заказа:</text>
+	</string>
+	<string id="st_theatre_tip_title">
+		<text>Голосовое сообщение,</text>
+	</string>
+	<string id="st_bankir_money">
+		<text>В вашем рюкзаке денег =</text>
+	</string>
+	<string id="st_bankir_counter">
+		<text>Сберегательный счет :</text>
+	</string>
+	<string id="st_bankir_counter2">
+		<text>Депозитный счет :</text>
+	</string>
+	<string id="st_bankir_ru">
+		<text>рублей</text>
+	</string>
+	<string id="st_bankir_last">
+		<text>Последний внесенный капитал :</text>
+	</string>
+	<string id="st_bankir_result">
+		<text>Всего =</text>
+	</string>
+	<string id="st_bankir_percent">
+		<text>Общий процент завтра :</text>
+	</string>
+	<string id="hud_manager_text1">
+		<text>Погиб сталкер(!): </text>
+	</string>
+	<string id="hud_manager_text2">
+		<text>Погиб сталкер(?): </text>
+	</string>
+	<string id="hud_manager_text3">
+		<text>Событий нет</text>
+	</string>
+	<string id="hud_manager_text4">
+		<text>Внимание!!!: </text>
+	</string>
+	<string id="hud_manager_text5">
+		<text>Началось затмение</text>
+	</string>
+	<string id="hud_manager_text6">
+		<text>Начался выброс</text>
+	</string>
+	<string id="hud_manager_text7">
+		<text>Оружие повреждено, требуется ремонт!</text>
+	</string>
+	<string id="hud_manager_text8">
+		<text>Оружие изношено, срочно требуется ремонт!</text>
+	</string>
+	<string id="hud_manager_text9">
+		<text>Наносимый урон </text>
+	</string>
+	<string id="hud_manager_text10">
+		<text>Дальность </text>
+	</string>
+	<string id="hud_manager_text11">
+		<text>Радиус взрыва </text>
+	</string>
+	<string id="hud_manager_text12">
+		<text>Разлет осколков </text>
+	</string>
+	<string id="hud_manager_text13">
+		<text>м</text>
+	</string>
+	<string id="news_manager_text1">
+		<text>Персональное сообщение:</text>
+	</string>
+	<string id="news_manager_text2">
+		<text>Ваше месторасположение:</text>
+	</string>
+	<string id="news_manager_text3">
+		<text>Получены деньги:</text>
+	</string>
+	<string id="news_manager_text4">
+		<text>Получен мини-тайник:</text>
+	</string>
+	<string id="news_manager_text5">
+		<text>Граница: </text>
+	</string>
+	<string id="news_manager_text6">
+		<text>Свалка: </text>
+	</string>
+	<string id="news_manager_text7">
+		<text>Темная долина: </text>
+	</string>
+	<string id="news_manager_text8">
+		<text>Агропром: </text>
+	</string>
+	<string id="news_manager_text9">
+		<text>Болота: </text>
+	</string>
+	<string id="news_manager_text10">
+		<text>Рыжий лес: </text>
+	</string>
+	<string id="news_manager_text11">
+		<text>Янтарь: </text>
+	</string>
+	<string id="news_manager_text12">
+		<text>Военные склады: </text>
+	</string>
+	<string id="news_manager_text14">
+		<text>Лиманск: </text>
+	</string>
+	<string id="news_manager_text16">
+		<text>Канализация: </text>
+	</string>
+	<string id="news_manager_text17">
+		<text>Госпиталь: </text>
+	</string>
+	<string id="news_manager_text18">
+		<text>Получено расположение тайника:</text>
+	</string>
+	<string id="sos_spot_name">
+		<text>Имя: </text>
+	</string>
+	<string id="sos_spot_community">
+		<text>Группировка: </text>
+	</string>
+	<string id="sos_spot_title">
+		<text>Сигнал SOS</text>
+	</string>
+	<string id="sos_tip_text">
+		<text>Получен сигнал SOS.</text>
+	</string>
+	<string id="sos_tip_text2">
+		<text>Получен сигнал SOS, примерное расстояние до сигнала - </text>
+	</string>
+	<string id="sos_tip_text3">
+		<text> метров.</text>
+	</string>
+	<string id="mar_spec_force_name">
+		<text>«Чистое небо»</text>
+	</string>
+	<string id="mar_explorers_name">
+		<text>«Чистое небо»</text>
+	</string>
+	<string id="esc_explorers_name">
+		<text>«Сталкеры»</text>
+	</string>

@@ -1,0 +1,444 @@
+	<string id="mar_csky_find_baron">
+		<text>Найти лидера ренегатов "Барона"</text>
+	</string>
+	<string id="mar_csky_find_baron_text">
+		<text>Отправиться к ЖД, и обнаружить там "Барона".</text>
+	</string>
+	<string id="mar_csky_kill_baron">
+		<text>Нейтрализировать "Барона"</text>
+	</string>
+	<string id="mar_csky_kill_baron_text">
+		<text>Убить "Барона"</text>
+	</string>
+	<string id="mar_csky_reward_baron">
+		<text>Вернуться на базу ЧН, и поговорить с "Патрульным"</text>
+	</string>
+	<string id="mar_csky_reward_baron_text">
+		<text>Разискать "Патрульного" на базе ЧН</text>
+	</string>
+	<string id="mar_entry_csky_force">
+		<text>Встретится c отрядом ЧН</text>
+	</string>
+	<string id="mar_entry_csky_force_text">
+		<text>Встретится с карательным отрядом ЧН, для захвата фермы.</text>
+	</string>
+	<string id="mar_meet_csky_force">
+		<text>Поговорить с лидером</text>
+	</string>
+	<string id="mar_meet_csky_force_text">
+		<text>Присоединиться к карательному отряду, поговорив с лидером отряда.</text>
+	</string>
+	<string id="mar_hold_renagade_base">
+		<text>Удержать ферму до прибытия подкрепления</text>
+	</string>
+	<string id="mar_hold_renagade_base_text">
+		<text>Нужно удерживать базу Ренегатов, до прибытия спец. подкрепления ЧН.</text>
+	</string>
+	<string id="mar_capture_pumping_station">
+		<text>Выбить ренегатов из насосной станции</text>
+	</string>
+	<string id="mar_capture_pumping_station_text">
+		<text>Для ослабления главного ресурса ренегатов, необходимо захватить как минимум - 2 точки, среди них и насосная станция.</text>
+	</string>
+	<string id="mar_capture_watch_tower">
+		<text>Захватить смотровую вышку</text>
+	</string>
+	<string id="mar_capture_watch_tower_text">
+		<text>Для ослабления главного ресурса ренегатов, необходимо захватить как минимум - 3 точки, среди них и смотровая вышка.</text>
+	</string>
+	<string id="mar_capture_church">
+		<text>Очистить старую церковь от ренегатов</text>
+	</string>
+	<string id="mar_capture_church_text">
+		<text>Для ослабления главного ресурса ренегатов, необходимо захватить как минимум - 2 точки, среди них и старая церковь.</text>
+	</string>
+	<string id="mar_capture_boat_station">
+		<text>Захватить лодочную станцию</text>
+	</string>
+	<string id="mar_capture_boat_station_text">
+		<text>Для окончательной победы над ренегатами, нужно уничтожить их в последних трех поселениях.</text>
+	</string>
+	<string id="mar_capture_embankment">
+		<text>Захватить стоянку под насыпью</text>
+	</string>
+	<string id="mar_capture_embankment_text">
+		<text>Для окончательной победы над ренегатами, нужно уничтожить их в последних трех поселениях.</text>
+	</string>
+	<string id="mar_capture_north_khutor">
+		<text>Захватить северный хутор</text>
+	</string>
+	<string id="mar_capture_north_khutor_text">
+		<text>Для окончательной победы над ренегатами, нужно уничтожить их в последних трех поселениях.</text>
+	</string>
+	<string id="mar_last_intensify_reward">
+		<text>Получить екстра вознаграждение</text>
+	</string>
+	<string id="mar_last_intensify_reward_text">
+		<text>Получить награду за получение полного контроля над болотом</text>
+	</string>
+	<string id="mar_accompany_rescue_meet">
+		<text>Встретится c остатками отряда ЧН</text>
+	</string>
+	<string id="mar_accompany_rescue_meet_text">
+		<text>Отправиться на север, и повстречать там отряд ЧН. Необходимо поспешить, поскольку отряд может быть в опасности.</text>
+	</string>
+	<string id="mar_accompany_rescue_talk">
+		<text>Поговорить с лидером отряда</text>
+	</string>
+	<string id="mar_accompany_rescue_talk_text">
+		<text>Пообщятся с лидером отряда, для начала миссии. Потери недопустимы.</text>
+	</string>
+	<string id="mar_accompany_rescue_island">
+		<text>Довести отряд к острову с валунами</text>
+	</string>
+	<string id="mar_accompany_rescue_island_text">
+		<text>Отряду ЧН необходимо забрать ящики с аммуницией, для этого необходимо их туда сопроводить. Потери недопустимы.</text>
+	</string>
+	<string id="mar_accompany_rescue_home">
+		<text>Сопроводить отряд к рыбацкому хутору</text>
+	</string>
+	<string id="mar_accompany_rescue_home_text">
+		<text>Следовать вместе с отрядом к рыбацкому хутору. Потери недопустимы.</text>
+	</string>
+	<string id="esc_kill_blockpost_leader">
+		<text>Нейтрализировать Свиридова винтовкой СВУ</text>
+	</string>
+	<string id="esc_kill_blockpost_leader_text">
+		<text>Для получения признания и прохода на базу к сталкерам, необходимо убрать военного лидера.</text>
+	</string>
+	<string id="esc_kill_blockpost_talk">
+		<text>Поговорить с Богдановым</text>
+	</string>
+	<string id="esc_kill_blockpost_talk_text">
+		<text>Доложить Богданову об устранении полковника Свиридова.</text>
+	</string>
+	<string id="esc_capture_army_blockpost">
+		<text>Захватить военный блокпост</text>
+	</string>
+	<string id="esc_capture_army_blockpost_text">
+		<text>Необходимо выбить военных из главного блокпоста, он находится в южной части Кордона, для того чтобы сталкеры смогли избавится от посягательств на свои территории.</text>
+	</string>
+	<string id="esc_take_equipments">
+		<text>Взять снаряжение у торговца</text>
+	</string>
+	<string id="esc_take_equipments_text">
+		<text>Необходимо поговорить с местным торговцем. Он выдаст мне необходимое снаряжение.</text>
+	</string>
+	<string id="esc_shilov_find_rukzak">
+		<text>Найти рюкзак Шилова</text>
+	</string>
+	<string id="esc_shilov_find_rukzak_text">
+		<text>Необходимо отправится в лагерь одиночек, и забрать там рюкзак заказчика.</text>
+	</string>
+	<string id="esc_shilov_talk_rukzak">
+		<text>Вернуть рюкзак Шилову</text>
+	</string>
+	<string id="esc_shilov_talk_rukzak_text">
+		<text>Поговорить с заказчиком.</text>
+	</string>
+	<string id="gar_wild_napr_talk">
+		<text>Поговорить с лидером диггеров</text>
+	</string>
+	<string id="gar_wild_napr_talk_text">
+		<text>Необходимо отправится к "барахолке", и поговорить с Диким Напром. Он сообщил мне что обладает ценной информацией.</text>
+	</string>
+	<string id="gar_wild_napr_assistance">
+		<text>Содействовать лидеру диггеров</text>
+	</string>
+	<string id="gar_wild_napr_assistance_text">
+		<text>Помочь лидеру диггеров освободить своих ребят из концлагеря.</text>
+	</string>
+	<string id="gar_wild_napr_get_info">
+		<text>Получить нужную информацию от Напра</text>
+	</string>
+	<string id="gar_wild_napr_get_info_text">
+		<text>За освобождение диггеров, мне обещяна нужная для прохода на Долину информация.</text>
+	</string>
+	<string id="gar_get_propusk_having_talk">
+		<text>Поговорить с командиром местного барьера</text>
+	</string>
+	<string id="gar_get_propusk_having_talk_text">
+		<text>Узнать от лидера барьера, как получить пропуск на Темную Долину.</text>
+	</string>
+	<string id="gar_find_valley_propusk">
+		<text>Подобрать пропуск</text>
+	</string>
+	<string id="gar_find_valley_propusk_text">
+		<text>Найти пропуск в постовой кабинке, что на кладбище заброшеной техники.</text>
+	</string>
+	<string id="gar_fail_valley_propusk">
+		<text>Забрать пропуск у погибшего Напра</text>
+	</string>
+	<string id="gar_fail_valley_propusk_text">
+		<text>Из-за сбоя сюжета на Свалке, а именно преждевременной смерти Дикого Напра, получено резервное задание на окончание сюжета Свалки. Необходимо отправиться на Барахолку, и обыскать труп Напра.</text>
+	</string>
+	<string id="gar_searched_commander_body">
+		<text>Обыскать тело лейтенанта Звягинцева</text>
+	</string>
+	<string id="gar_searched_commander_body_text">
+		<text>Нужно забрать у покойного лейтенанта его пропуск.</text>
+	</string>
+	<string id="gar_digger_messanger_accompany">
+		<text>Сопроводить Васяна на "блокпост-приемник"</text>
+	</string>
+	<string id="gar_digger_messanger_accompany_text">
+		<text>Доправить Васяна к своим ребятам.</text>
+	</string>
+	<string id="gar_digger_messanger_reward">
+		<text>Поговорить с Васяном</text>
+	</string>
+	<string id="gar_digger_messanger_reward_text">
+		<text>Пообщятся с Васяном.</text>
+	</string>
+	<string id="gar_find_master_outfit">
+		<text>Найти предмет: Мастерский «Ветер свободы»</text>
+	</string>
+	<string id="gar_find_master_outfit_text">
+		<text>Необходимо найти мастерский «Ветер свободы».</text>
+	</string>
+	<string id="gar_reward_master_outfit">
+		<text>Вернуть предмет: Мастерский «Ветер свободы»</text>
+	</string>
+	<string id="gar_reward_master_outfit_text">
+		<text>Вернуть заказчику обещяное.</text>
+	</string>
+	<string id="gar_rescue_tunnel_novice">
+		<text>Разискать пропавшего диггера</text>
+	</string>
+	<string id="gar_rescue_tunnel_novice_text">
+		<text>Отправиться на место сигнала, который не так давно был получен Напром.</text>
+	</string>
+	<string id="gar_return_tunnel_novice">
+		<text>Вернуться с диггером на базу</text>
+	</string>
+	<string id="gar_return_tunnel_novice_text">
+		<text>Доставить диггера на базу к Напру.</text>
+	</string>
+	<string id="gar_reward_tunnel_novice">
+		<text>Поговорить с Диким Напром о диггере</text>
+	</string>
+	<string id="gar_reward_tunnel_novice_text">
+		<text>Получить вознаграждения за спасение диггера.</text>
+	</string>
+	<string id="val_go_to_outpost">
+		<text>Прийти на форпост</text>
+	</string>
+	<string id="val_go_to_outpost_text">
+		<text>Сходить на форпост, и узнать что к чему.</text>
+	</string>
+	<string id="val_talk_to_outpost_leader">
+		<text>Узнать у свободовцев о ситуации</text>
+	</string>
+	<string id="val_talk_to_outpost_leader_text">
+		<text>Поговорить с любым из свободовцев на форпосте.</text>
+	</string>
+	<string id="val_speak_about">
+		<text>Доложить о ситуации на форпосту</text>
+	</string>
+	<string id="val_speak_about_text">
+		<text>Поговорить с комендантом.</text>
+	</string>
+	<string id="val_talk_to_medic">
+		<text>Поговорить с Кречетовым</text>
+	</string>
+	<string id="val_talk_to_medic_text">
+		<text>Забрать у Кречетова необходимые форпосту - медикаменты и патроны.</text>
+	</string>
+	<string id="val_deliver_outpost_equipments">
+		<text>Доставить медикаменты и боеприпасы на форпост</text>
+	</string>
+	<string id="val_deliver_outpost_equipments_text">
+		<text>Отнести все снаряжение на форпост.</text>
+	</string>
+	<string id="val_talk_to_chief_guard">
+		<text>Поговорить с начальником охраны</text>
+	</string>
+	<string id="val_talk_to_chief_guard_text">
+		<text>Прежде чем попасть на базу, надо поговорить с полковником Бородиным.</text>
+	</string>
+	<string id="val_7_6_deliver_weapons">
+		<text>Доставить оружие на блокпост у элеватора</text>
+	</string>
+	<string id="val_7_6_deliver_weapons_text">
+		<text>Отнести оружие лейтенанту Кадочкину.</text>
+	</string>
+	<string id="val_reward_chief_guard">
+		<text>Вернуться к начальнику охраны за наградой</text>
+	</string>
+	<string id="val_reward_chief_guard_text">
+		<text>Получить вознаграждение у полковника Бородина.</text>
+	</string>
+	<string id="val_return_propusk">
+		<text>Вернуть свой пропук</text>
+	</string>
+	<string id="val_return_propusk_text">
+		<text>Когда я проходил через западный блокпост, у меня забрали мой спец. пропуск, сказав что я смогу его вернуть лишь когда буду покидать Темную Долину. Необходимо поговорить с лидером того блокпоста, и вернуть свой пропуск.</text>
+	</string>
+	<string id="val_searched_impounded">
+		<text>Найти тело пропавшего свободовца</text>
+	</string>
+	<string id="val_searched_impounded_text">
+		<text>Необходимо найти тело сталкера, погибшего в аномалии, и обыскать его, забрав все.</text>
+	</string>
+	<string id="val_reward_impounded">
+		<text>Отнести найденное доктору Мамаеву</text>
+	</string>
+	<string id="val_reward_impounded_text">
+		<text>Вернуть найденные вещи доктору, и получить вознаграждение.</text>
+	</string>
+	<string id="val_find_ashot_dummy">
+		<text>Найти для Ашота артефакт «Пустышка»</text>
+	</string>
+	<string id="val_find_ashot_dummy_text">
+		<text>Найти артефакт «Пустышка». За выполнение задания - обещяны хорошие цены на все товары.</text>
+	</string>
+	<string id="val_bring_ashot_dummy">
+		<text>Отдать Ашоту артефакт «Пустышка»</text>
+	</string>
+	<string id="val_bring_ashot_dummy_text">
+		<text>Принести артефакт «Пустышка» - Ашотику. За выполнение задания - обещяны хорошие цены на все товары.</text>
+	</string>
+	<string id="val_sos_check_bus">
+		<text>Отправится на сигнал SOS</text>
+	</string>
+	<string id="val_sos_check_bus_text">
+		<text>Добраться до места из которого исходит сигнал SOS.</text>
+	</string>
+	<string id="val_sos_rescue_bus">
+		<text>Спасти свободовца</text>
+	</string>
+	<string id="val_sos_rescue_bus_text">
+		<text>Свободовец ведет себя очень подозрительно, явно что-то не так. Необходимо вычислить причину такого поведения.</text>
+	</string>
+	<string id="val_sos_searched_bus">
+		<text>Забрать у погибшего КПК</text>
+	</string>
+	<string id="val_sos_searched_bus_text">
+		<text>Черт возьми, свободовец погиб.. нужно взять у него КПК, и отнести к Барановскому.</text>
+	</string>
+	<string id="val_sos_reward_bus">
+		<text>Доложить Барановскому о выполнении</text>
+	</string>
+	<string id="val_sos_reward_bus_text">
+		<text>Рассказать о ситуации майору Барановскому.</text>
+	</string>
+	<string id="agr_talk_to_stalker_leader">
+		<text>Поговорить с командиром сталкеров</text>
+	</string>
+	<string id="agr_talk_to_stalker_leader_text">
+		<text>Необходимо узнать как попасть в подземелья агропрома.</text>
+	</string>
+	<string id="agr_occupy_north_position">
+		<text>Помочь «Долгу» защитить базу</text>
+	</string>
+	<string id="agr_occupy_north_position_text">
+		<text>На базу Долга движется свора мутантов, необходимо занять оборонительный рубеж.</text>
+	</string>
+	<string id="agr_occupy_east_position">
+		<text>Занять восточный рубеж</text>
+	</string>
+	<string id="agr_occupy_east_position_text">
+		<text>Мутанты готовят новое нападение, необходимо занять восточный рубеж.</text>
+	</string>
+	<string id="agr_hold_north_position">
+		<text>Удержать северный рубеж</text>
+	</string>
+	<string id="agr_hold_north_position_text">
+		<text>Уничтожать всех мутантов, которые будут на падать..</text>
+	</string>
+	<string id="agr_destroy_snork_hole">
+		<text>Уничтожить окопавшихся мутантов</text>
+	</string>
+	<string id="agr_destroy_snork_hole_text">
+		<text>Моя задача: догнать и уничтожить остальных мутантов.</text>
+	</string>
+	<string id="agr_go_to_outpost">
+		<text>Добраться до форпоста</text>
+	</string>
+	<string id="agr_go_to_outpost_text">
+		<text>Узнать что произошло на южном форпосту.</text>
+	</string>
+	<string id="agr_eliminate_outpost">
+		<text>Очистить форпост от бандюков-ветеранов</text>
+	</string>
+	<string id="agr_eliminate_outpost_text">
+		<text>Похоже над форпостом поглумились бандиты, нужно их устранить во чтобы-то не стало.</text>
+	</string>
+	<string id="agr_search_ordinary_body">
+		<text>Обыскать тело рядового</text>
+	</string>
+	<string id="agr_search_ordinary_body_text">
+		<text>Нужно найти личное КПК рядового который служил на южном форпосту. Информация на КПК поможет Долгу прояснить ситуацию.</text>
+	</string>
+	<string id="agr_search_lieutenant_body">
+		<text>Обыскать тело лейтенанта</text>
+	</string>
+	<string id="agr_search_lieutenant_body_text">
+		<text>Нужно найти личное КПК лейтенанта который служил на южном форпосту. Информация на КПК поможет Долгу прояснить ситуацию.</text>
+	</string>
+	<string id="agr_return_outpost_pda">
+		<text>Вернуть найденые КПК сержанту Маклакову</text>
+	</string>
+	<string id="agr_return_outpost_pda_text">
+		<text>Поговорить с сержантом Маклаковым.</text>
+	</string>
+	<string id="agr_kill_wild_giant">
+		<text>Уничтожить «дикого псевдо-гиганта»</text>
+	</string>
+	<string id="agr_kill_wild_giant_text">
+		<text>На Агропроме появился незванный гость - дикий псевдо-гигант, нужно его проучить как следует.</text>
+	</string>
+	<string id="yan_kill_tunnel_snorks">
+		<text>Уничтожить мутантов в туннеле</text>
+	</string>
+	<string id="yan_kill_tunnel_snorks_text">
+		<text>Помочь сталкерам остановить наступление снорков со стороны туннеля.</text>
+	</string>
+	<string id="yan_reward_tunnel_snorks">
+		<text>Вернуться к Сахарову</text>
+	</string>
+	<string id="yan_reward_tunnel_snorks_text">
+		<text>Получить награду у профессора.</text>
+	</string>
+	<string id="yan_bring_sample_dnk">
+		<text>Обезглавить зомби-кровососа</text>
+	</string>
+	<string id="yan_bring_sample_dnk_text">
+		<text>Отправиться на завод «Янтарь», и нейтрализировать зомби-кровососа.</text>
+	</string>
+	<string id="yan_take_sample_dnk">
+		<text>Взять образец ДНК</text>
+	</string>
+	<string id="yan_take_sample_dnk_text">
+		<text>Взять образец ДНК у мертвого мутанта.</text>
+	</string>
+	<string id="yan_reward_sample_dnk">
+		<text>Отнести Сахарову образец ДНК</text>
+	</string>
+	<string id="yan_reward_sample_dnk_text">
+		<text>Доставить колбу с ДНК к профессору.</text>
+	</string>
+	<string id="mil_hog_find_item_name">
+		<text>Найти предмет: РПГ-7 «Резонанс»</text>
+	</string>
+	<string id="mil_hog_find_item_text">
+		<text>Необходмо отправиться на военную базу, и найти там трофейный гранатомет.</text>
+	</string>
+	<string id="mil_hog_reward_item_name">
+		<text>Вернуть предмет: РПГ-7 «Резонанс»</text>
+	</string>
+	<string id="mil_hog_reward_item_text">
+		<text>Вернуть заказчику обещяное.</text>
+	</string>
+	<string id="mil_stop_invasion_5_5">
+		<text>Остановить вторжение военных: «Укрепточка на остановке»</text>
+	</string>
+	<string id="mil_stop_invasion_5_5_text">
+		<text>Уничтожить последние отряды военного гарнизона.</text>
+	</string>
+	<string id="mil_stop_invasion_5_6">
+		<text>Остановить вторжение военных: «Грузовик на перекрёстке»</text>
+	</string>
+	<string id="mil_stop_invasion_5_6_text">
+		<text>Уничтожить последние отряды военного гарнизона.</text>
+	</string>

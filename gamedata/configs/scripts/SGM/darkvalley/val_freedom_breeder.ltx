@@ -1,0 +1,104 @@
+[logic]
+active = move@breeder_step_0
+trade = misc\trade\trade_breeder.ltx
+
+[move@breeder_step_0]
+target_type     = level_vertex
+dest_number     = 146468
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center | move@breeder_step_1
+on_info         = {+val_searched_impounded_check -val_searched_impounded_complete} move@breeder_has_task
+stop_on_talk    = true
+meet            = meet@breeder
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+play_dir 	= characters_voice\human_02\freedom\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@breeder_step_1]
+target_type     = level_vertex
+dest_number     = 162103
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 174422
+stand_time      = 6000
+play_dir        = gar_breeder_see
+on_signal       = in_center | move@breeder_step_2
+stop_on_talk    = true
+on_info         = {+val_searched_impounded_check -val_searched_impounded_complete} move@breeder_has_task
+meet            = meet@breeder
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+play_dir 	= characters_voice\human_02\freedom\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@breeder_step_2]
+target_type     = level_vertex
+dest_number     = 115269
+state_in_center = binocular
+state_for_move  = walk
+miss_center     = false
+stand_time      = 15000
+play_dir        = gar_breeder_see
+on_signal       = in_center | move@breeder_step_3
+look_vertex     = 73826
+stop_on_talk    = true
+on_info         = {+val_searched_impounded_check -val_searched_impounded_complete} move@breeder_has_task
+meet            = meet@breeder
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+play_dir 	= characters_voice\human_02\freedom\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@breeder_step_3]
+target_type     = level_vertex
+dest_number     = 174461
+look_vertex     = 175702
+state_in_center = search
+state_for_move  = walk
+miss_center     = false
+stand_time      = 6000
+on_signal       = in_center | move@breeder_step_0
+stop_on_talk    = true
+on_info         = {+val_searched_impounded_check -val_searched_impounded_complete} move@breeder_has_task
+meet            = meet@breeder
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+play_dir 	= characters_voice\human_02\freedom\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 16
+
+[move@breeder_has_task]
+target_type     = level_vertex
+dest_number     = 146468
+state_in_center = hello
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+stop_on_talk    = true
+on_info         = {+val_searched_impounded_complete} move@breeder_step_0
+meet            = meet@breeder
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+
+[meet@breeder]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\marsh\mar_csky_trader_meet_greet_2
+sound_stop 	= characters_voice\scenario\marsh\mar_csky_trader_meet_bye_2
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true
+trade_enable    = false
+allow_break     = false
+

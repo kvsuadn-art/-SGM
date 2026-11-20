@@ -1,0 +1,352 @@
+﻿<?xml version='1.0' encoding="UTF-8"?>
+<xml>
+	<character id="test_npc">
+		<class>test_npc</class>
+	</character>	
+<!------------Болота------------------>
+	<character id="mar_outpost_renegate1">
+		<class>mar_outpost_renegate1</class>
+	</character>
+	<character id="mar_outpost_renegate2">
+		<class>mar_outpost_renegate2</class>
+	</character>
+	<character id="mar_renegate_boss">
+		<class>mar_renegate_boss</class>
+	</character>
+	<character id="mar_csky_squads_commander">
+		<class>mar_csky_squads_commander</class>
+	</character>
+	<character id="mar_csky_sleeper">
+		<class>mar_csky_sleeper</class>
+	</character>
+	<character id="mar_csky_patrol">
+		<class>mar_csky_patrol</class>
+	</character>
+	<character id="mar_csky_specnaz1">
+		<class>mar_csky_specnaz1</class>
+	</character>
+	<character id="mar_csky_specnaz2">
+		<class>mar_csky_specnaz2</class>
+	</character>
+	<character id="mar_csky_specnaz3">
+		<class>mar_csky_specnaz3</class>
+	</character>
+	<character id="mar_csky_specnaz4">
+		<class>mar_csky_specnaz4</class>
+	</character>
+	<character id="mar_csky_force_leader">
+		<class>mar_csky_force_leader</class>
+	</character>
+	<character id="mar_renegate_baron">
+		<class>mar_renegate_baron</class>
+	</character>
+	<character id="mar_recapture_renagad1">
+		<class>mar_recapture_renagad1</class>
+	</character>
+	<character id="mar_recapture_renagad2">
+		<class>mar_recapture_renagad2</class>
+	</character>
+	<character id="mar_recapture_renagad3">
+		<class>mar_recapture_renagad3</class>
+	</character>
+	<character id="mar_recapture_renagad4">
+		<class>mar_recapture_renagad4</class>
+	</character>
+	<character id="mar_csky_specnaz_leader">
+		<class>mar_csky_specnaz_leader</class>
+	</character>
+	<character id="mar_csky_specnaz_rescue">
+		<class>mar_csky_specnaz_rescue</class>
+	</character>
+	<character id="mar_csky_bankir">
+		<class>mar_csky_bankir</class>
+	</character>
+	<character id="mar_bodyguard_csky">
+		<class>mar_bodyguard_csky</class>
+	</character>
+<!------------Кордон------------------>	
+	<character id="esc_tunnel_scout">
+		<class>esc_tunnel_scout</class>
+	</character>
+	<character id="esc_stalker_bankir">
+		<class>esc_stalker_bankir</class>
+	</character>
+	<character id="esc_camp_stalker1">
+		<class>esc_camp_stalker1</class>
+	</character>
+	<character id="esc_camp_stalker2">
+		<class>esc_camp_stalker2</class>
+	</character>
+	<character id="esc_camp_stalker3">
+		<class>esc_camp_stalker3</class>
+	</character>
+	<character id="esc_camp_stalker4">
+		<class>esc_camp_stalker4</class>
+	</character>
+	<character id="esc_stalker_bogdanov">
+		<class>esc_stalker_bogdanov</class>
+	</character>
+	<character id="esc_army_polkovnik">
+		<class>esc_army_polkovnik</class>
+	</character>
+	<character id="esc_specnaz_stalker1">
+		<class>esc_specnaz_stalker1</class>
+	</character>
+	<character id="esc_specnaz_stalker2">
+		<class>esc_specnaz_stalker2</class>
+	</character>
+	<character id="esc_specnaz_stalker3">
+		<class>esc_specnaz_stalker3</class>
+	</character>
+	<character id="esc_specnaz_stalker4">
+		<class>esc_specnaz_stalker4</class>
+	</character>
+	<character id="esc_explorer_ruins1">
+		<class>esc_explorer_ruins1</class>
+	</character>
+	<character id="esc_explorer_ruins2">
+		<class>esc_explorer_ruins2</class>
+	</character>
+	<character id="esc_bodyguard_novice">
+		<class>esc_bodyguard_novice</class>
+	</character>
+	<character id="esc_bodyguard_stalker">
+		<class>esc_bodyguard_stalker</class>
+	</character>
+<!------------Свалка------------------>	
+	<character id="gar_stalker_trader">
+		<class>gar_stalker_trader</class>
+	</character>
+	<character id="gar_freedom_trader">
+		<class>gar_freedom_trader</class>
+	</character>
+	<character id="gar_bodyguard_freedom">
+		<class>gar_bodyguard_freedom</class>
+	</character>
+	<character id="gar_bodyguard_stalker">
+		<class>gar_bodyguard_stalker</class>
+	</character>
+	<character id="gar_stalker_bankir">
+		<class>gar_stalker_bankir</class>
+	</character>
+	<character id="gar_barier_commander">
+		<class>gar_barier_commander</class>
+	</character>
+	<character id="gar_stalker_squads_commander">
+		<class>gar_stalker_squads_commander</class>
+	</character>
+	<character id="gar_stalker_breeder">
+		<class>gar_stalker_breeder</class>
+	</character>
+	<character id="gar_tunnel_novice">
+		<class>gar_tunnel_novice</class>
+	</character>
+	<character id="gar_depo_defender1">
+		<class>gar_depo_defender1</class>
+	</character>
+	<character id="gar_depo_defender2">
+		<class>gar_depo_defender2</class>
+	</character>
+	<character id="gar_base_rpg_bandit1">
+		<class>gar_base_rpg_bandit1</class>
+	</character>
+	<character id="gar_base_rpg_bandit2">
+		<class>gar_base_rpg_bandit2</class>
+	</character>
+<!------------Долина------------------>	
+	<character id="val_freedom_bankir">
+		<class>val_freedom_bankir</class>
+	</character>
+	<character id="val_bodyguard_freedom">
+		<class>val_bodyguard_freedom</class>
+	</character>
+	<character id="val_freedom_breeder">
+		<class>val_freedom_breeder</class>
+	</character>
+	<character id="val_freedom_squads_commander">
+		<class>val_freedom_squads_commander</class>
+	</character>
+	<character id="val_freedom_specnaz1">
+		<class>val_freedom_specnaz1</class>
+	</character>
+	<character id="val_freedom_specnaz2">
+		<class>val_freedom_specnaz2</class>
+	</character>
+	<character id="val_freedom_specnaz3">
+		<class>val_freedom_specnaz3</class>
+	</character>
+	<character id="val_freedom_specnaz4">
+		<class>val_freedom_specnaz4</class>
+	</character>
+	<character id="val_freedom_medic">
+		<class>val_freedom_medic</class>
+	</character>
+	<character id="val_freedom_guard_leader">
+		<class>val_freedom_guard_leader</class>
+	</character>
+	<character id="val_freedom_7_6_commander">
+		<class>val_freedom_7_6_commander</class>
+	</character>
+	<character id="val_freedom_rpg_trooper">
+		<class>val_freedom_rpg_trooper</class>
+	</character>
+	<character id="val_impounded_corpse">
+		<class>val_impounded_corpse</class>
+	</character>
+	<character id="val_bus_hostage">
+		<class>val_bus_hostage</class>
+	</character>
+	<character id="val_bus_killer">
+		<class>val_bus_killer</class>
+	</character>
+	<character id="val_freedom_suicide">
+		<class>val_freedom_suicide</class>
+	</character>
+	<character id="val_4_0_trader">
+		<class>val_4_0_trader</class>
+	</character>
+<!-------------Агропром--------------->	
+	<character id="agr_dolg_trader">
+		<class>agr_dolg_trader</class>
+	</character>
+	<character id="agr_dolg_breeder">
+		<class>agr_dolg_breeder</class>
+	</character>
+	<character id="agr_dolg_bankir">
+		<class>agr_dolg_bankir</class>
+	</character>
+	<character id="agr_dolg_squads_commander">
+		<class>agr_dolg_squads_commander</class>
+	</character>
+	<character id="agr_bodyguard_stalker">
+		<class>agr_bodyguard_stalker</class>
+	</character>
+	<character id="agr_bodyguard_dolg">
+		<class>agr_bodyguard_dolg</class>
+	</character>
+	<character id="agr_dolg_specnaz1">
+		<class>agr_dolg_specnaz1</class>
+	</character>
+	<character id="agr_dolg_specnaz2">
+		<class>agr_dolg_specnaz2</class>
+	</character>
+	<character id="agr_dolg_specnaz3">
+		<class>agr_dolg_specnaz3</class>
+	</character>
+	<character id="agr_dolg_specnaz4">
+		<class>agr_dolg_specnaz4</class>
+	</character>
+	<character id="agr_base_defender1">
+		<class>agr_base_defender1</class>
+	</character>
+	<character id="agr_base_defender2">
+		<class>agr_base_defender2</class>
+	</character>
+	<character id="agr_stalker_trader">
+		<class>agr_stalker_trader</class>
+	</character>
+	<character id="agr_stalker_bankir">
+		<class>agr_stalker_bankir</class>
+	</character>
+	<character id="agr_giant_hunter1">
+		<class>agr_giant_hunter1</class>
+	</character>
+	<character id="agr_giant_hunter2">
+		<class>agr_giant_hunter2</class>
+	</character>
+	<character id="agr_giant_hunter3">
+		<class>agr_giant_hunter3</class>
+	</character>
+	<character id="agr_7_4_commander">
+		<class>agr_7_4_commander</class>
+	</character>
+	<character id="agr_rush_soldier1">
+		<class>agr_rush_soldier1</class>
+	</character>
+	<character id="agr_rush_soldier2">
+		<class>agr_rush_soldier2</class>
+	</character>
+	<character id="agr_rush_soldier3">
+		<class>agr_rush_soldier3</class>
+	</character>
+	<character id="agr_dolg_agent">
+		<class>agr_dolg_agent</class>
+	</character>
+	<character id="agr_exo_bandit1">
+		<class>agr_exo_bandit1</class>
+	</character>
+	<character id="agr_exo_bandit2">
+		<class>agr_exo_bandit2</class>
+	</character>
+	<character id="agr_bandit_victim1">
+		<class>agr_bandit_victim1</class>
+	</character>
+	<character id="agr_bandit_victim2">
+		<class>agr_bandit_victim2</class>
+	</character>
+<!--------------Янтарь---------------->	
+	<character id="yan_ecolog_trader">
+		<class>yan_ecolog_trader</class>
+	</character>
+	<character id="yan_ecolog_bankir">
+		<class>yan_ecolog_bankir</class>
+	</character>
+	<character id="yan_tunnel_rpg">
+		<class>yan_tunnel_rpg</class>
+	</character>
+	<character id="yan_zombie_bloodsucker">
+		<class>yan_zombie_bloodsucker</class>
+	</character>
+<!-----------Заповедник--------------->	
+	<character id="red_dolg_bankir">
+		<class>red_dolg_bankir</class>
+	</character>
+	<character id="red_dolg_trader">
+		<class>red_dolg_trader</class>
+	</character>
+	<character id="red_freedom_bankir">
+		<class>red_freedom_bankir</class>
+	</character>
+	<character id="red_reinforcement_rpg">
+		<class>red_reinforcement_rpg</class>
+	</character>
+	<character id="red_reinforcement2_rpg">
+		<class>red_reinforcement2_rpg</class>
+	</character>
+	<character id="red_reinforcement3_sniper">
+		<class>red_reinforcement3_sniper</class>
+	</character>
+	<character id="red_csky_squads_commander">
+		<class>red_csky_squads_commander</class>
+	</character>
+<!--------------Склады---------------->	
+	<character id="mil_army_boss">
+		<class>mil_army_boss</class>
+	</character>
+	<character id="mil_zombied_boss">
+		<class>mil_zombied_boss</class>
+	</character>
+	<character id="mil_killer_trader">
+		<class>mil_killer_trader</class>
+	</character>
+	<character id="mil_stalker_upgrader">
+		<class>mil_stalker_upgrader</class>
+	</character>
+	<character id="mil_rpg_ambush">
+		<class>mil_rpg_ambush</class>
+	</character>
+<!--------------Лиманск--------------->	
+	<character id="lim_team_breakout1">
+		<class>lim_team_breakout1</class>
+	</character>
+	<character id="lim_team_breakout2">
+		<class>lim_team_breakout2</class>
+	</character>
+	<character id="lim_team_breakout3">
+		<class>lim_team_breakout3</class>
+	</character>
+	<character id="lim_construction_robbery_leader">
+		<class>lim_construction_robbery_leader</class>
+	</character>
+<!------------------------------------>	
+</xml>

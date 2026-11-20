@@ -1,0 +1,37 @@
+class "object_shot"
+function object_shot:__init(obj, storage)
+	self.object = obj
+	self.st = storage
+end
+function object_shot:reset_scheme()
+	local by_id = level.object_by_id(self.object:id())
+	local obj_pos = self.object:position()
+        local shot = hit()
+        shot.draftsman = by_id
+        shot.type = hit.strike
+        shot.power = self.st.power
+	shot.impulse = self.st.impulse
+        by_id:hit(shot)	
+end
+function object_shot:update(delta)
+	local actor = db.actor
+	if not actor then
+		return
+	end
+	if xr_logic.try_switch_to_another_section(self.object, self.st, actor) then
+		return
+	end
+end
+---------------------------------------------------------------------------------------------------------------------
+function add_to_binder(npc, ini, scheme, section, storage)
+	printf("DEBUG: add_to_binder: scheme='%s', section='%s'", scheme, section)
+	local new_action = object_shot(npc, storage)
+	xr_logic.subscribe_action_for_events(npc, storage, new_action)
+end
+
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	st.logic = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+	st.power    = utils.cfg_get_number(ini, section, "power", npc, false, 0)
+	st.impulse  = utils.cfg_get_number(ini, section, "impulse", npc, false, 50)
+end

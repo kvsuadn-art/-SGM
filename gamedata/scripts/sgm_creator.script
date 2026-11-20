@@ -1,0 +1,101 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+------------------(Система рождения новых артефактов, после определенных еффектов)----------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+--/Список артефактов, которые будут выбиратся для спауна..
+local af_names_esc_list = {"af_vyvert","af_medusa","af_cristall_flower","af_blood","af_medusa"}
+local af_names_gar_list = {"af_vyvert","af_medusa","af_cristall_flower","af_blood","af_medusa"}
+local af_names_val_list = {"af_vyvert","af_dummy_glassbeads","af_cristall_flower","af_blood","af_soul"}
+local af_names_agr_list = {"af_soul","af_fuzz_kolobok","af_electra_flash","af_cristall","af_dummy_glassbeads"}
+
+function blackday_creator()
+  local hours = level.get_time_hours()
+  local minutes = level.get_time_minutes()
+  local level_name = level.name()
+  af_name_esc_1 = af_names_esc_list[math.random(table.getn(af_names_esc_list))]
+  af_name_esc_2 = af_names_esc_list[math.random(table.getn(af_names_esc_list))]
+  af_name_esc_3 = af_names_esc_list[math.random(table.getn(af_names_esc_list))]
+  af_name_esc_4 = af_names_esc_list[math.random(table.getn(af_names_esc_list))]
+  af_name_gar_1 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_gar_2 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_gar_3 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_gar_4 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_gar_5 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_gar_6 = af_names_gar_list[math.random(table.getn(af_names_gar_list))]
+  af_name_val_1 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_2 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_3 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_4 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_5 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_6 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_7 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_8 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_val_9 = af_names_val_list[math.random(table.getn(af_names_val_list))]
+  af_name_agr_1 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  af_name_agr_2 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  af_name_agr_3 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  af_name_agr_4 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  af_name_agr_5 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  af_name_agr_6 = af_names_agr_list[math.random(table.getn(af_names_agr_list))]
+  esc_create_chance = math.random(1,4)
+  gar_create_chance = math.random(1,3)
+  val_create_chance = math.random(1,3)
+  agr_create_chance = math.random(1,2)
+  if esc_create_chance==1 and sgm_flags.enable_creator==true and level_name=="escape" then
+  create((af_name_esc_1),141.486,3.260,337.573,474810,657)
+  sgm_flags.enable_creator=false
+  elseif esc_create_chance==2 and sgm_flags.enable_creator==true and level_name=="escape" then
+  create((af_name_esc_2),350.982,16.412,77.892,618622,716)
+  sgm_flags.enable_creator=false
+  elseif esc_create_chance==3 and sgm_flags.enable_creator==true and level_name=="escape" then
+  create((af_name_esc_3),336.696,15.258,218.948,612410,507)
+  sgm_flags.enable_creator=false
+  elseif esc_create_chance==4 and sgm_flags.enable_creator==true and level_name=="escape" then
+  create((af_name_esc_4),367.822,20.745,263.911,623356,658)
+  sgm_flags.enable_creator=false
+  end
+  if gar_create_chance==1 and sgm_flags.enable_creator==true and level_name=="garbage" then
+  create((af_name_gar_1),239.178,-2.664,-168.790,341593,449)
+  create((af_name_gar_2),-259.408,5.256,96.705,4338,296)
+  sgm_flags.enable_creator=false
+  elseif gar_create_chance==2 and sgm_flags.enable_creator==true and level_name=="garbage" then
+  create((af_name_gar_3),-278.302,0.362,25.402,1304,295)
+  create((af_name_gar_4),-67.578,24.980,-113.100,167548,339)
+  sgm_flags.enable_creator=false
+  elseif gar_create_chance==3 and sgm_flags.enable_creator==true and level_name=="garbage" then
+  create((af_name_gar_5),69.880,16.682,22.787,287029,347)
+  create((af_name_gar_6),151.503,-6.612,106.304,293947,285)
+  sgm_flags.enable_creator=false
+  end
+  if val_create_chance==1 and sgm_flags.enable_creator==true and level_name=="darkvalley" then
+  create((af_name_val_1),-81.970,1.685,-541.280,77596,884)
+  create((af_name_val_2),118.637,2.820,-475.614,285091,953)
+  create((af_name_val_3),-29.191,-5.133,-243.437,139393,915)
+  sgm_flags.enable_creator=false
+  elseif val_create_chance==2 and sgm_flags.enable_creator==true and level_name=="darkvalley" then
+  create((af_name_val_4),-138.981,0.975,-522.291,20352,781)
+  create((af_name_val_5),175.159,2.303,-307.124,346994,839)
+  create((af_name_val_6),-75.422,-7.422,-27.201,88440,857)
+  sgm_flags.enable_creator=false
+  elseif val_create_chance==3 and sgm_flags.enable_creator==true and level_name=="darkvalley" then
+  create((af_name_val_7),-49.264,0.119,75.735,115412,831)
+  create((af_name_val_8),142.496,-2.140,86.148,313241,789)
+  create((af_name_val_9),135.039,15.701,-390.219,303946,838)
+  sgm_flags.enable_creator=false
+  end
+  if agr_create_chance==1 and sgm_flags.enable_creator==true and level_name=="agroprom" then
+  create((af_name_agr_1),40.392,2.492,-7.415,186269,1204)
+  create((af_name_agr_2),-204.148,0.453,-29.930,16205,1134)
+  create((af_name_agr_3),-188.357,5.181,30.447,24406,1161)
+  sgm_flags.enable_creator=false
+  elseif agr_create_chance==2 and sgm_flags.enable_creator==true and level_name=="agroprom" then
+  create((af_name_agr_4),42.627,7.498,-8.198,187981,1204)
+  create((af_name_agr_5),-197.705,1.788,90.848,19455,1164)
+  create((af_name_agr_6),-81.292,10.785,-104.128,90138,1063)
+  sgm_flags.enable_creator=false
+  end
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

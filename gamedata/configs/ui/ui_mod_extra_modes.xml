@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<w>
+<!-----Фон------>
+<background x="0" y="0" width="1024" height="768">
+	<texture x="0" y="0" width="1024" height="768">ui\ui_static_mm_back_05</texture>
+</background>
+
+<!-----Форма------>
+<modes_form x="360" y="240" width="349" height="290">
+        <!-----Текстура------>
+        <texture>ui_extra_options_dlg2</texture>
+        <!-----Описание------>
+	<title x="26" y="3" width="500" height="25" complex_mode="0">
+		<text font="letterica16" r="188" g="148" b="40">sgm_extra_menu_49</text>
+	</title>
+        <!-----Кнопки------>
+	<btn_back x="190" y="200" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_back</text>
+	</btn_back>
+	<btn_apply x="70" y="200" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_apply</text>
+	</btn_apply>
+        <!-----Опции(Лампа)------>
+	<btn_use_immortal x="35" y="60" width="30" height="21">
+		<options_item entry="use_immortal" group="extra_modes"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_69</text>
+	</btn_use_immortal>
+	<btn_use_power x="35" y="95" width="30" height="21">
+		<options_item entry="use_power" group="extra_modes"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_70</text>
+	</btn_use_power>
+	<btn_use_bleeding x="185" y="60" width="30" height="21">
+		<options_item entry="use_bleeding" group="extra_modes"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_71</text>
+	</btn_use_bleeding>
+	<btn_use_repair x="185" y="95" width="30" height="21">
+		<options_item entry="use_repair" group="extra_modes"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_72</text>
+	</btn_use_repair>
+</modes_form>
+</w>

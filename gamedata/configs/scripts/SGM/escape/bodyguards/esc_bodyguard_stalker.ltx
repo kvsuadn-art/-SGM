@@ -1,0 +1,49 @@
+[logic]
+active = move@free
+on_death = death
+
+[death]
+on_info = {=actor_is_no_enemy} %+esc_bodyguard_stalker_death -esc_bodyguard_stalker_pursue -esc_bodyguard_stalker_nofire -esc_bodyguard_stalker_stop =respawn_esc_bodyguard_stalker =sgm_bodyguard_death%
+
+[move@free]
+target_type     = level_vertex
+dest_number     = 325157
+state_in_center = sit
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 323302
+on_info         = {+esc_bodyguard_stalker_pursue} defender@changer %=sgm_bodyguard_init%
+meet            = meet@guard
+
+[defender@changer]
+defend_victim   = actor
+cure_actor      = true
+on_info         = {+esc_bodyguard_stalker_nofire} defender@command_nofire %=sgm_bodyguard_command_1%,{+esc_bodyguard_stalker_stop} defender@command_stop %=sgm_bodyguard_command_2%
+
+[defender@command_nofire]
+defend_victim   = actor
+cure_actor      = true
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info         = {-esc_bodyguard_stalker_nofire} defender@changer %=sgm_bodyguard_command_0%
+
+[defender@command_stop]
+use_command     = stop
+defend_victim   = actor
+cure_actor      = true
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info         = {-esc_bodyguard_stalker_stop} defender@changer %=sgm_bodyguard_command_0%
+
+[meet@guard]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\marsh\mar_csky_trader_meet_greet_2
+sound_stop 	= characters_voice\scenario\marsh\mar_csky_trader_meet_bye_1
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

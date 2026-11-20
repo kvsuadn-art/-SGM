@@ -1,0 +1,14 @@
+[logic]
+active = move@super_stalker
+on_death = death
+
+[death]
+on_info = {=actor_is_no_enemy} %-agr_base_defender2_spawner%
+
+[move@super_stalker]
+target_type     = level_vertex
+dest_number     = 111794
+state_in_center = ward
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 105781

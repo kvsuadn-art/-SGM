@@ -1,0 +1,45 @@
+      <string id="event_radio_title">
+		<text>Радио «Сталкер»</text>
+      </string>
+      <string id="event_radio_descr">
+		<text>Интересная хреновина, позволяющая держать сталкеров - в курсе последних событий, в зоне..</text>
+      </string>
+      <string id="treasure_rukzak_name">
+		<text>«Персональный рюкзак»</text>
+      </string>
+      <string id="treasure_rukzak_title">
+		<text>«Персональный рюкзак»</text>
+      </string>
+      <string id="treasure_rukzak_descr">
+		<text>Интересная хреновина, позволяет хранить огромное кол-во вещей.</text>
+      </string>
+      <string id="repair_arms_box_title">
+		<text>Ремкомплект для оружия</text>
+      </string>
+      <string id="repair_arms_box_descr">
+		<text>Ящик с инструментами. Предназначен для ремонта оружия.</text>
+      </string>
+      <string id="repair_outfit_box_title">
+		<text>Ремкомплект для бронекостюмов</text>
+      </string>
+      <string id="repair_outfit_box_descr">
+		<text>Ящик с инструментами. Предназначен для ремонта бронекостюмов.</text>
+      </string>
+      <string id="st_binocular">
+		<text>Бинокль «Стандартный»</text>
+      </string>
+      <string id="st_binocular_m1">
+		<text>Бинокль «Ястреб»</text>
+      </string>
+      <string id="st_binocular_m2">
+		<text>Бинокль «Стервятник»</text>
+      </string>
+      <string id="st_binocular_m3">
+		<text>Бинокль «Гепард»</text>
+      </string>
+      <string id="sleeping_bag_title">
+		<text>«Спальной мешок»</text>
+      </string>
+      <string id="sleeping_bag_descr">
+		<text>Самый обыкновенный спальный мешок. Используется для удобного сна.</text>
+      </string>

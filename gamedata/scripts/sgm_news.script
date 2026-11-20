@@ -1,0 +1,52 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+-------------------------------------(Функции для сообщений)--------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function sgm_news_init()
+   sgm_news_update()
+   sgm_tutorial_update()
+end
+
+function sgm_news_update()
+   local level_name=level.name()
+   local actor_pos = db.actor:position()
+   if level_name=="marsh" then
+     local mar_base_teleport=actor_pos:distance_to_sqr(vector():set(-134.487,0.738,-293.113),78734,138)<15
+     if has_alife_info("mar_story_capture_bandit_base_reward") and mar_base_teleport and not has_alife_info("mar_last_intensify_send_tip") then
+      db.actor:give_info_portion("mar_last_intensify_send_tip")
+      news_manager.send_tip(db.actor,"mar_last_intensify_tip",0,"mar_csky_commander_name",6000,nil,"mar_csky_commander_name")
+     end
+   end
+   if variable_precond("something","actor_percent")>0 then
+      if level.get_time_hours()==20 and not has_alife_info("sgm_about_bankir_percent") then
+         news_manager.bankir_tip(db.actor,0,"bankir",18000,nil,"sgm_about_deposit_title","sgm_about_deposit_part0","sgm_about_deposit_part1",variable_precond("something","actor_percent"),"sgm_about_deposit_part2",variable_precond("something","actor_deposit"))
+         db.actor:give_info_portion("sgm_about_bankir_percent")
+      end
+   end
+   if level.get_time_hours()==0 and has_alife_info("sgm_about_bankir_percent") then
+      db.actor:disable_info_portion("sgm_about_bankir_percent")
+   end
+end
+
+function sgm_tutorial_update()
+   local level_name=level.name()
+   local actor_pos = db.actor:position()
+   if level_name=="agroprom_underground" then
+     local dist_to_exit=actor_pos:distance_to_sqr(vector():set(26.823,-3.283,35.669),564,1522)<8
+     if dist_to_exit and not has_alife_info("agru_about_poltergeists") then
+      db.actor:give_info_portion("agru_about_poltergeists")
+      game.start_tutorial("agru_what_win_poltergeist_tutorial")
+     end
+   end
+   if level_name=="red_forest" then
+     local dist_to_case=actor_pos:distance_to_sqr(vector():set(-122.548,-6.250,-43.675),7324,993)<3
+     if dist_to_case and not has_alife_info("red_about_secret_case") then
+      db.actor:give_info_portion("red_about_secret_case")
+      game.start_tutorial("red_secret_case_tutorial")
+     end
+   end
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------
+

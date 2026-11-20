@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<w>
+<!-----Фон------>
+<background x="0" y="0" width="1024" height="768">
+	<texture x="0" y="0" width="1024" height="768">ui\ui_static_mm_back_04</texture>
+</background>
+
+<!-----Форма------>
+<form x="277" y="168" width="558" height="463">
+        <!-----Текстура------>
+        <texture>ui_extra_options_dlg</texture>
+
+        <monitor x="68" y="340" width="84" height="71" complex_mode="0" light_anim="ui_slow_blinking_alpha">
+                <texture>ui_extra_options_monitor</texture>
+	</monitor>
+
+        <!-----Описание------>
+	<title x="65" y="15" width="500" height="25" complex_mode="0" light_anim="ui_slow_blinking_alpha">
+		<text font="graffiti22" r="238" g="153" b="26">sgm_extra_menu_27</text>
+	</title>
+
+        <!-----Кнопки------>
+	<btn_apply x="180" y="400" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_apply</text>
+	</btn_apply>
+	<btn_return x="300" y="400" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_default</text>
+	</btn_return>
+	<btn_exit x="420" y="400" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_cancel</text>
+	</btn_exit>
+	<btn_hud x="420" y="370" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_hud</text>
+	</btn_hud>
+
+        <!-----Опции(Лампа)------>
+	<btn_activate_auto_energy x="58" y="70" width="30" height="21">
+		<options_item entry="activate_auto_energy" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_75</text>
+	</btn_activate_auto_energy>
+	<btn_deactivate_scheme_doctor x="58" y="95" width="30" height="21">
+		<options_item entry="deactivate_scheme_doctor" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_76</text>
+	</btn_deactivate_scheme_doctor>
+	<btn_activate_scheme_gainer x="58" y="145" width="30" height="21">
+		<options_item entry="activate_scheme_gainer" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_77</text>
+	</btn_activate_scheme_gainer>
+	<btn_deactivate_no_wpn x="58" y="120" width="30" height="21">
+		<options_item entry="deactivate_no_wpn" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_79</text>
+	</btn_deactivate_no_wpn>
+	<btn_disable_satiety x="58" y="145" width="30" height="21">
+		<options_item entry="disable_satiety" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_82</text>
+	</btn_disable_satiety>
+        <!---->
+</form>
+</w>

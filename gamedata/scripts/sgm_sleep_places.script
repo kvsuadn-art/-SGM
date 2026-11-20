@@ -1,0 +1,84 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+------------------------------------------(Зоны сна для ГГ)---------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function sleep_places_init()
+   sleep_places_update()
+end
+function sleep_places_update()
+   local level_name=level.name()
+   local actor_pos = db.actor:position()
+   local mar_p1=actor_pos:distance_to_sqr(vector():set(411.574,3.53,238.366),411422,98)<20
+   local mar_p2=actor_pos:distance_to_sqr(vector():set(298.473,0.687,-160.933),330569,222)<20
+   local mar_p3=actor_pos:distance_to_sqr(vector():set(40.156,2.912,-245.449),159885,13)<20
+   local mar_p4=actor_pos:distance_to_sqr(vector():set(433.925,3.335,261.548),427045,125)<20
+   local mar_pre=mar_p1 or mar_p2 or mar_p3 or mar_p4 or actor_in_sleep_zone("mar_space_restrictor_csky_base_noweapon")
+   local gar_p1=actor_pos:distance_to_sqr(vector():set(100.692,3.773,172.169),252647,359)<20
+   local gar_p2=actor_pos:distance_to_sqr(vector():set(103.028,8.199,177.536),254238,364)<20
+   local gar_p3=actor_pos:distance_to_sqr(vector():set(43.190,0.911,240.545),203955,289)<20
+   local gar_p4=actor_pos:distance_to_sqr(vector():set(-96.77,1.826,-25.540),102191,329)<20
+   local gar_p5=actor_pos:distance_to_sqr(vector():set(-77.601,1.8067,7.837),113766,302)<20
+   local gar_p6=actor_pos:distance_to_sqr(vector():set(-96.444,0.741,21.738),103148,329)<20
+   local gar_p7=actor_pos:distance_to_sqr(vector():set(-100.337,1.765,11.879),100801,329)<20
+   local gar_p8=actor_pos:distance_to_sqr(vector():set(-92.541,1.751,12.050),105749,329)<20
+   local gar_pre=gar_p1 or gar_p2 or gar_p3 or gar_p4 or gar_p5 or gar_p6 or gar_p7 or gar_p8
+   local esc_p1=actor_pos:distance_to_sqr(vector():set(-14.186,0.863,256.845),283318,557)<20
+   local esc_p2=actor_pos:distance_to_sqr(vector():set(-186.819,-19.503,-134.689),63663,494)<20
+   local esc_p3=actor_pos:distance_to_sqr(vector():set(140.359,0.218,337.901),473417,573)<20
+   local esc_p4=actor_pos:distance_to_sqr(vector():set(110.769,-2.858,1.630),441922,556)<20
+   local esc_p5=actor_pos:distance_to_sqr(vector():set(0.668,0.992,259.383),302774,557)<20
+   local esc_p6=actor_pos:distance_to_sqr(vector():set(136.311,0.252,337.429),469420,573)<20
+   local esc_p7=actor_pos:distance_to_sqr(vector():set(-205.443,-22.557,-128.303),47656,569)<20
+   local esc_p8=actor_pos:distance_to_sqr(vector():set(-211.908,-23.193,-123.503),41585,569)<20
+   local esc_p9=actor_pos:distance_to_sqr(vector():set(-82.181,-4.936,-77.072),192106,670)<20
+   local esc_p10=actor_pos:distance_to_sqr(vector():set(-222.228,-19.845,-163.685),33514,570)<20
+   local esc_p11=actor_pos:distance_to_sqr(vector():set(-241.842,-20.040,-155.454),17305,570)<20
+   local esc_p12=actor_pos:distance_to_sqr(vector():set(30.746,16.638,679.895),342553,479)<20
+   local esc_pre=esc_p1 or esc_p2 or esc_p3 or esc_p4 or esc_p5 or esc_p6 or esc_p7 or esc_p8 or esc_p9 or esc_p10 or esc_p11 or esc_p12
+   local val_p1=actor_pos:distance_to_sqr(vector():set(-155.682,1.747,-180.678),10474,788)<20
+   local val_p2=actor_pos:distance_to_sqr(vector():set(-130.834,0.666,-470.275),27181,780)<20
+   local val_p3=actor_pos:distance_to_sqr(vector():set(-127.683,0.909,-505.732),30390,781)<20
+   local val_pre=val_p1 or val_p2 or val_p3 or actor_in_sleep_zone("val_space_restrictor")
+   local agr_p1=actor_pos:distance_to_sqr(vector():set(-132.616,-0.002,-157.833),54981,1210)<20
+   local agr_p2=actor_pos:distance_to_sqr(vector():set(-150.930,1.092,-173.288),43057,1104)<20
+   local agr_p3=actor_pos:distance_to_sqr(vector():set(-179.592,0.141,-171.818),28131,1208)<20
+   local agr_pre=agr_p1 or agr_p2 or agr_p3 or actor_in_sleep_zone("agr_no_wpn_zone_3")
+   local yan_pre=actor_in_sleep_zone("yan_space_restrictor_no_weapon_actor_base_cut2")
+   local red_p1=actor_pos:distance_to_sqr(vector():set(-117.904,0.467,-255.506),7916,1013)<20
+   local red_p2=actor_pos:distance_to_sqr(vector():set(27.0004,4.013,25.080),80563,1033)<20
+   local red_p3=actor_pos:distance_to_sqr(vector():set(-150.723,2.426,-26.074),5827,993)<20
+   local red_pre=red_p1 or red_p2 or red_p3
+   local mil_p1=actor_pos:distance_to_sqr(vector():set(-71.261,8.360,-29.643),227557,1447)<20
+   local mil_p2=actor_pos:distance_to_sqr(vector():set(-319.017,-22.416,219.865),26914,1376)<20
+   local mil_p3=actor_pos:distance_to_sqr(vector():set(-330.492,-4.595,132.409),19541,1378)<20
+   local mil_p4=actor_pos:distance_to_sqr(vector():set(-18.262,-7.368,-17.818),272681,1444)<20
+   local mil_p5=actor_pos:distance_to_sqr(vector():set(-23.569,-7.371,-29.207),267527,1407)<20
+   local mil_pre=mil_p1 or mil_p2 or mil_p3 or mil_p4 or mil_p5
+   local other_pre=level_name=="limansk" or level_name=="hospital"
+   if sgm_functions.read_variable("allow_sleep")~=nil then
+     if mar_pre or esc_pre or gar_pre or val_pre or agr_pre or yan_pre or red_pre or mil_pre or other_pre then
+      if sgm_functions.read_variable("allow_sleep")==false then
+         sgm_functions.write_variable("allow_sleep",true)
+      end
+      if get_hud():GetCustomStatic("hud_sleep_zone")==nil and object_alive(db.actor) and not has_alife_info("always_hide_sleep_zone") then
+         get_hud():AddCustomStatic("hud_sleep_zone",true)
+      elseif get_hud():GetCustomStatic("hud_sleep_zone")~=nil and (has_alife_info("always_hide_sleep_zone") or object_alive(db.actor)==false) then
+         get_hud():RemoveCustomStatic("hud_sleep_zone")
+      end
+     elseif (not esc_pre) and (not gar_pre) then
+      if sgm_functions.read_variable("allow_sleep")==true then
+         sgm_functions.write_variable("allow_sleep",false)
+      end
+      if get_hud():GetCustomStatic("hud_sleep_zone")~=nil then
+         get_hud():RemoveCustomStatic("hud_sleep_zone")
+      end
+     end
+   end
+
+
+end
+
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

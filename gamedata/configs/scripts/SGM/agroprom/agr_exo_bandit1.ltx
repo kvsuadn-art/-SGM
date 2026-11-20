@@ -1,0 +1,23 @@
+[logic]
+active = move@bandit1
+on_death = death
+
+[death]
+on_info = %+agr_exo_bandit1_death%
+
+[move@bandit1]
+target_type        = level_vertex
+dest_number        = 120737
+state_in_center    = search
+state_for_move     = assault
+miss_center        = false
+look_vertex        = 121721
+on_actor_dist_le_nvis = 45| move@bandit2 %+agr_find_squad_distance%
+
+[move@bandit2]
+target_type        = level_vertex
+dest_number        = 120737
+state_in_center    = search
+state_for_move     = assault
+miss_center        = false
+look_vertex        = 121721

@@ -1,0 +1,13 @@
+[logic]
+active = move@trader
+trade = misc\trade\order_traders\red_dolg_trader.ltx
+
+[move@trader]
+target_type     = level_vertex
+dest_number     = 81443
+state_in_center = wait_trade
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 79285
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true

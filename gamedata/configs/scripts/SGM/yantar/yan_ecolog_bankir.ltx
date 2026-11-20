@@ -1,0 +1,26 @@
+[logic]
+active = move@bankir
+
+[move@bankir]
+target_type      = level_vertex
+dest_number      = 79658
+state_in_center  = hello
+state_for_move   = walk
+miss_center      = false
+look_vertex      = 80042
+meet             = meet@bankir
+combat_ignore_cond = always
+invulnerable = true
+
+[meet@bankir]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= agr_secret_trader_meet
+sound_stop 	= agr_secret_trader_meet_bye
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

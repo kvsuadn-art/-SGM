@@ -1,0 +1,43 @@
+[logic]
+active = move@outpost_guard_p0
+
+[move@outpost_guard_p0]
+target_type     = level_vertex
+dest_number     = 2513
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center|move@outpost_guard_p1
+
+[move@outpost_guard_p1]
+target_type     = level_vertex
+dest_number     = 2724
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center|move@outpost_guard_p2
+
+[move@outpost_guard_p2]
+target_type     = level_vertex
+dest_number     = 7309
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center|move@outpost_guard_p3
+
+[move@outpost_guard_p3]
+target_type     = level_vertex
+dest_number     = 9386
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center|move@outpost_guard_p4
+
+[move@outpost_guard_p4]
+target_type     = level_vertex
+dest_number     = 5453
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center|move@outpost_guard_p0
+

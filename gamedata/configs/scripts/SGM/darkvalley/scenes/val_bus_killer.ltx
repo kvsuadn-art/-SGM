@@ -1,0 +1,41 @@
+[logic]
+active = theatre@killer
+on_death = death
+on_hit = hit
+
+[death]
+on_info = %+val_bus_killer_death%
+
+[hit]
+on_info = %+val_bus_ambush_danger%
+
+[theatre@killer]
+role_name          = killer
+role_pos           = 222212
+role_state         = threat
+role_update        = 1800
+killer_danger_dist = 10
+killer_danger_info = val_bus_ambush_danger
+killer_danger_shot = wpn_pm
+on_approach_dist   = 60
+on_approach_info   = val_check_bus_on_zone
+look_vertex        = 216492
+meet               = no_meet
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info            = {+val_bus_ambush_danger} nil, {+val_bus_hostage_death} nil
+on_actor_dist_le_nvis = 14 | theatre@killer2
+
+[theatre@killer2]
+role_name          = killer
+role_pos           = 222212
+role_state         = threat_fire
+role_update        = 1800
+killer_danger_dist = 10
+killer_danger_info = val_bus_ambush_danger
+killer_danger_shot = wpn_pm
+look_vertex        = 216492
+meet               = no_meet
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info            = {+val_bus_ambush_danger} nil, {+val_bus_hostage_death} nil

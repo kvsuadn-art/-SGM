@@ -1,0 +1,39 @@
+	<string id="st_shilov_rukzak">
+		<text>«Рюкзак Шилова»</text>
+	</string>
+	<string id="st_shilov_rukzak_descr">
+		<text>Личная вещь торговца Шилова. Больше ничего о рюкзаке не известно.</text>
+	</string>
+	<string id="st_valley_propusk">
+		<text>«Пропуск»</text>
+	</string>
+	<string id="st_valley_propusk_descr">
+		<text>Пропуск через блокпост, что в Темной Долине.</text>
+	</string>
+	<string id="st_wpn_rpg7_for_blockpost">
+		<text>РПГ-7 «СВОБОДА»</text>
+	</string>
+	<string id="st_af_sizer">
+		<text>«Гиря»</text>
+	</string>
+	<string id="st_af_sizer_descr">
+		<text>Чрезвычайно редкий артефакт. Позволяет уменьшить вес рюкзака аж на 40. Радиоктивен.</text>
+	</string>
+	<string id="st_device_pda_bus_hostage">
+		<text>КПК свободовца</text>
+	</string>
+	<string id="st_device_pda_bus_hostage_descr">
+		<text>КПК с важной информацией, нужно отнести его к майору Барановскому.</text>
+	</string>
+	<string id="st_device_pda_exo_victim2">
+		<text>КПК лейтенанта</text>
+	</string>
+	<string id="st_device_pda_exo_victim2_descr">
+		<text>КПК с информацией о ситуации на форпосту.</text>
+	</string>
+	<string id="st_device_pda_exo_victim1">
+		<text>КПК рядового</text>
+	</string>
+	<string id="st_device_pda_exo_victim1_descr">
+		<text>КПК с информацией о ситуации на форпосту.</text>
+	</string>

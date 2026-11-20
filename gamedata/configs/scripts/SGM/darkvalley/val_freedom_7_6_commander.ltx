@@ -1,0 +1,28 @@
+[logic]
+active = move@commander
+on_death = death
+
+[death]
+on_info = {=actor_is_no_enemy} %=respawn_val_7_6_commander%
+
+[move@commander]
+target_type     = level_vertex
+dest_number     = 167432
+state_in_center = binocular
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 193370
+look_subject    = nil
+on_actor_dist_le_nvis = 5| move@commander2
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+
+[move@commander2]
+target_type     = level_vertex
+dest_number     = 167432
+state_in_center = guard
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+on_actor_dist_ge_nvis = 5| move@commander
+

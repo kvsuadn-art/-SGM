@@ -1,0 +1,63 @@
+[logic]
+active = move@wait
+level_spot = quest_npc
+
+[move@wait]
+target_type     = level_vertex
+dest_number     = 449685
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+on_actor_dist_le_nvis = 10| move@talks %+mar_entry_csky_force_see%
+on_info         = {+mar_entry_csky_force_see} move@talks,{+mar_story_capture_bandit_base_reward} nil
+
+[move@talks]
+target_type     = level_vertex
+dest_number     = 449685
+state_in_center = guard
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+on_info         = {+mar_csky_force_talk_a} move@raciya,{+mar_csky_force_talk_b} move@chest,{+mar_story_capture_bandit_base_reward} nil
+
+[move@raciya]
+target_type     = level_vertex
+dest_number     = 449685
+state_in_center = wait_rac
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+on_timer        = 5000 | move@assault %+mar_entry_csky_force_assault =play_s3d_sound(characters_voice\human_01\csky\alife\attack\attack_begin_:1:3)%
+meet            = no_meet
+
+[move@chest]
+target_type     = level_vertex
+dest_number     = 449685
+state_in_center = salut
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+on_timer        = 4000 | move@assault %+mar_entry_csky_force_assault =play_s3d_sound(characters_voice\human_01\csky\alife\attack\attack_begin_:1:3)%
+meet            = no_meet
+
+[move@assault]
+target_type     = level_vertex
+dest_number     = 427026
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+on_signal       = in_center | move@hide %+mar_entry_csky_force_free%
+
+[move@hide]
+target_type     = level_vertex
+dest_number     = 427026
+state_in_center = hide
+state_for_move  = assault
+miss_center     = false
+
+
+
+
+
+

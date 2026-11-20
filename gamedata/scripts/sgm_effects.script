@@ -1,0 +1,101 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+------------------------------------------(Еффекты)-----------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+local prev_health=0
+function effects_init()
+   effects_update()
+end
+function effects_update()
+   local level_name=level.name()
+   local actor_pos=db.actor:position() 
+   if sgm_flags.satiety_timer==0 and sgm_functions.read_variable("satiety_factor")~=nil and not has_alife_info("disable_satiety") then  
+      sgm_functions.write_variable("satiety_factor",sgm_functions.read_variable("satiety_factor")+1)
+      sgm_flags.satiety_timer=time_global()+math.random(13000,21000)
+   end
+   if sgm_flags.satiety_damage==3 and sgm_flags.satiety_kick==0 and not has_alife_info("disable_satiety") then  
+      local satiety_shot=hit()
+      satiety_shot.draftsman=db.actor
+      satiety_shot.type=hit.telepatic
+      satiety_shot.power=0.04
+      db.actor:hit(satiety_shot)
+      sgm_flags.satiety_kick=time_global()+math.random(2000,2100)
+      --/give_quick_news("satiety_kick".."  currert="..db.actor.psy_health)
+   end
+   if sgm_flags.sleep_value~=4 and level.get_time_hours()>=sgm_flags.sleep_value then
+        level.remove_pp_effector(76470)
+        level.set_time_factor(8)
+        level.enable_input()
+        level.add_cam_effector("camera_effects\\fusker.anm",76431,false,"")
+        level.add_pp_effector("actor_hit.ppe",76425,false)
+        level.add_pp_effector("shock_hit.ppe",76426,false)
+        db.actor.psy_health=0.25
+        level.show_indicators()
+        sgm_flags.sleep_value=99
+   elseif sgm_flags.sleep_value==4 and level.get_time_hours()==sgm_flags.sleep_value then
+        level.remove_pp_effector(76470)
+        level.set_time_factor(8)
+        level.enable_input()
+        level.add_cam_effector("camera_effects\\fusker.anm",76431,false,"")
+        level.add_pp_effector("actor_hit.ppe",76425,false)
+        level.add_pp_effector("shock_hit.ppe",76426,false)
+        db.actor.psy_health=0.25
+        level.show_indicators()
+        sgm_flags.sleep_value=99
+   end
+   if db.actor.health<0.30 and not has_alife_info("disable_actor_vertigo") then  
+      level.add_pp_effector("actor_hit.ppe",510,false)
+   end
+   if has_alife_info("activate_auto_energy") then 
+         if db.actor.power<0.25 then
+            if db.actor:object("energy_drink") then 
+               db.actor:eat(db.actor:object("energy_drink"))
+            elseif db.actor:object("wild_drink") then 
+               db.actor:eat(db.actor:object("wild_drink"))
+            end
+         end
+   end
+   -->/Взял из АМК мода, авторам идеи огромная благодарность/-->
+   if prev_health>db.actor.health+0.05 then
+      if not has_alife_info("disable_shock_hits") then
+        local detector_in_slot=db.actor:item_in_slot(8)
+        level.add_pp_effector("shock_hit.ppe",91350,false)
+        level.set_pp_effector_factor(91350,20)
+	if prev_health>db.actor.health+0.55 then
+		level.add_cam_effector("camera_effects\\fusker.anm",91383,false,"")	
+                play_folder_snd([[actor\pain_2]])
+	end
+	if prev_health>db.actor.health+0.80 then
+		local active_item=db.actor:active_item()
+		if active_item then
+		   local active_sect=active_item:section()
+                   if find_out_string(active_sect,"bolt") and find_out_string(active_sect,"knife") and find_out_string(active_sect,"binoc") then
+		     db.actor:drop_item(active_item)
+                   end
+		end
+	elseif prev_health>db.actor.health+0.90 and detector_in_slot~=nil then
+		db.actor:drop_item(detector_in_slot:section())
+	end
+      end
+      if has_alife_info("activate_shock_motion") then
+        local heavy_hit_rnd=math.random(1,5)
+	if prev_health>db.actor.health+0.12 and heavy_hit_rnd==1 then
+		level.add_cam_effector("camera_effects\\hit_front.anm",91383,false,"")	
+	elseif prev_health>db.actor.health+0.12 and heavy_hit_rnd==2 then
+		level.add_cam_effector("camera_effects\\hit_right.anm",91383,false,"")	
+	elseif prev_health>db.actor.health+0.12 and heavy_hit_rnd==3 then
+		level.add_cam_effector("camera_effects\\hit_back.anm",91383,false,"")	
+	elseif prev_health>db.actor.health+0.12 and heavy_hit_rnd==4 then
+		level.add_cam_effector("camera_effects\\hit_left.anm",91383,false,"")	
+	elseif prev_health>db.actor.health+0.12 and heavy_hit_rnd==5 then
+		level.add_cam_effector("camera_effects\\hit_front_left.anm",91383,false,"")	
+	end
+      end		
+    end
+    prev_health=db.actor.health
+end
+
+
+
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------

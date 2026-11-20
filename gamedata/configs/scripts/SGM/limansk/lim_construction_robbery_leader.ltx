@@ -1,0 +1,46 @@
+[logic]
+active = move@sivoha
+on_death = death
+on_hit = hit
+
+[hit]
+on_info = {-lim_stroyka_choose_a} %+lim_stroyka_choose_b%
+
+[death]
+on_info = {-lim_stroyka_choose_a} %+lim_stroyka_choose_b =bad_on_sivoha_death%, {+lim_stroyka_choose_a} %=bad_on_sivoha_death%
+
+[move@sivoha]
+target_type        = level_vertex
+dest_number        = 28498
+state_in_center    = claim
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 26734
+meet               = meet@autouse_sivoha
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info            = {+lim_stroyka_choose_b} nil
+on_info2           = {+lim_stroyka_choose_a} move@sivoha_pass
+on_actor_dist_le_nvis = 19|{-lim_stroyka_talk} %+lim_stroyka_talk =lim_send_sivoha_tip%
+
+[move@sivoha_pass]
+target_type        = level_vertex
+dest_number        = 28498
+state_in_center    = sit
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 26734
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+on_info            = {+lim_stroyka_choose_b} nil
+
+[meet@autouse_sivoha]
+use = auto_3_5
+use_wpn = auto_3_5
+meet_state = 3 | nil@nil
+meet_state_wpn = 3 | nil@nil
+victim = 0 | actor
+victim_wpn = 0 | actor
+trade_enable = false
+allow_break     = false
+precond = usability

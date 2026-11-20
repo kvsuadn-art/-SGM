@@ -1,0 +1,56 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+--------------------------------------(Схема движения монстра)-------------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "mob_move"
+function mob_move:__init(obj, storage)
+	self.object = obj
+	self.st = storage
+end
+function mob_move:reset_scheme()
+	mob_state_mgr.set_state(self.object, db.actor, self.st.state)
+	self.st.signals = {}
+	xr_logic.mob_capture(self.object, not self.st.no_reset)
+	self.state = state_moving
+	self.crouch = false
+	self.running = true
+	self.cur_anim_set = default_anim_standing
+	self.pt_wait_time = default_wait_time -- сколько ждать в точке, где играем анимацию 
+	self.scheduled_snd = nil
+	self.last_index = nil
+	self.last_look_index = nil
+end
+function mob_move:update(delta)
+	local actor = db.actor
+        local send_target=level.vertex_in_direction(self.st.target_point,vector():set(0,0,0),5)
+        local send_monster=utils.send_to_nearest_accessible_vertex(self.object,send_target)
+        action(self.object,move(move.run_fwd,level.vertex_position(self.st.target_point)))
+        if self.object:see(db.actor) then
+        xr_logic.mob_release(self.object)
+        end
+end
+function mob_move:deactivate()
+	xr_logic.mob_capture(self.object,true)
+end
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+function add_to_binder(npc, ini, scheme, section, storage)
+	printf("DEBUG: add_to_binder: npc:name()='%s', scheme='%s', section='%s'", npc:name(), scheme, section)
+	local new_action = mob_move(npc, storage)
+	xr_logic.subscribe_action_for_events(npc, storage, new_action)
+end
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+	st.alife_mode      = mob_alife_mgr.cfg_get_mode(ini, section, npc)
+	st.state           = mob_state_mgr.get_state(ini, section, npc)
+	st.no_reset        = utils.cfg_get_bool(ini, section, "no_reset", npc, false)
+        st.target_point    = utils.cfg_get_number(ini,section,"target_point",npc,false,0)
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

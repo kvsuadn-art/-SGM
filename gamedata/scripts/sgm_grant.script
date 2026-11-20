@@ -1,0 +1,53 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+---------------------------------(Система обязательных предметов)---------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function item_works_init()
+   item_works_update()
+end
+function item_works_update()
+     if not db.actor:object("sleeping_bag") then
+        give_object_to_actor("sleeping_bag")
+     end
+     if db.actor:object("wpn_rpg7_for_blockpost") and has_alife_info("val_7_6_deliver_weapon_talk") and not has_alife_info("val_reward_chief_guard_talk") then
+        remove_inv_item(db.actor,"wpn_rpg7_for_blockpost")
+     end
+     local get_rank=db.actor:character_rank()
+     if get_rank>=100 and not has_alife_info("medal_rank_100") then
+        db.actor:give_info_portion("medal_rank_100")
+        give_object_to_actor("medal_rank_100")
+        news_manager.send_tip(db.actor,"st_medal_tip_text1",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=200 and not has_alife_info("medal_rank_200") then
+        db.actor:give_info_portion("medal_rank_200")
+        give_object_to_actor("medal_rank_200")
+        news_manager.send_tip(db.actor,"st_medal_tip_text2",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=400 and not has_alife_info("medal_rank_400") then
+        db.actor:give_info_portion("medal_rank_400")
+        give_object_to_actor("medal_rank_400")
+        news_manager.send_tip(db.actor,"st_medal_tip_text3",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=600 and not has_alife_info("medal_rank_600") then
+        db.actor:give_info_portion("medal_rank_600")
+        give_object_to_actor("medal_rank_600")
+        news_manager.send_tip(db.actor,"st_medal_tip_text4",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=800 and not has_alife_info("medal_rank_800") then
+        db.actor:give_info_portion("medal_rank_800")
+        give_object_to_actor("medal_rank_800")
+        news_manager.send_tip(db.actor,"st_medal_tip_text5",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=1000 and not has_alife_info("medal_rank_1000") then
+        db.actor:give_info_portion("medal_rank_1000")
+        give_object_to_actor("medal_rank_1000")
+        news_manager.send_tip(db.actor,"st_medal_tip_text6",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=1100 and not has_alife_info("medal_rank_1100") then
+        db.actor:give_info_portion("medal_rank_1100")
+        give_object_to_actor("medal_rank_1100")
+        news_manager.send_tip(db.actor,"st_medal_tip_text7",0,"medal",8000,nil,"st_medal_tip_title")
+     elseif get_rank>=1200 and not has_alife_info("medal_rank_1200") then
+        db.actor:give_info_portion("medal_rank_1200")
+        give_object_to_actor("medal_rank_1200")
+        news_manager.send_tip(db.actor,"st_medal_tip_text8",0,"medal",8000,nil,"st_medal_tip_title")
+     end
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

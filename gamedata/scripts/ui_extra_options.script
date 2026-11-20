@@ -1,0 +1,147 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+------------------------------------(Меню-для-Sigerous-Mod)---------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+
+class "extra_options" (CUIScriptWnd)
+
+function extra_options:__init(owner) super()
+	self.owner=owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function extra_options:__finalize()
+end
+
+function extra_options:InitControls()
+	---Фон---
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mod_extra_main.xml")
+        xml:InitStatic("background",self)
+
+	---Формы---
+	self.form = xml:InitStatic("form",self)
+	xml:InitStatic("form:title",self.form)
+	xml:InitStatic("form:monitor",self.form)
+
+	---Кнопки---
+        self:Register(xml:Init3tButton("form:btn_exit",self.form), "btn_exit")
+	self:Register(xml:Init3tButton("form:btn_return",self.form),"btn_return")
+	self:Register(xml:Init3tButton("form:btn_apply",self.form),"btn_apply")
+	self:Register(xml:Init3tButton("form:btn_hud",self.form),"btn_hud")
+
+        ---Функции---(Лампа)
+        local btn
+	btn = xml:InitCheck("form:btn_activate_auto_energy",self.form)
+	self:Register(btn,"btn_activate_auto_energy")
+	self.btn_activate_auto_energy=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_auto_energy"))
+        -->
+        local btn
+	btn = xml:InitCheck("form:btn_deactivate_scheme_doctor",self.form)
+	self:Register(btn,"btn_deactivate_scheme_doctor")
+	self.btn_deactivate_scheme_doctor=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("deactivate_scheme_doctor"))
+        -->
+        --local btn
+	--btn = xml:InitCheck("form:btn_activate_scheme_gainer",self.form)
+	--self:Register(btn,"btn_activate_scheme_gainer")
+	--self.btn_activate_scheme_gainer=btn
+	--btn:SetCheck(sgm_functions.info_get_boolean("activate_scheme_gainer"))
+        -->
+        local btn
+	btn = xml:InitCheck("form:btn_deactivate_no_wpn",self.form)
+	self:Register(btn,"btn_deactivate_no_wpn")
+	self.btn_deactivate_no_wpn=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("deactivate_no_wpn"))
+        -->
+        local btn
+	btn = xml:InitCheck("form:btn_disable_satiety",self.form)
+	self:Register(btn,"btn_disable_satiety")
+	self.btn_disable_satiety=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("disable_satiety"))
+        -->
+end
+
+
+function extra_options:InitCallBacks()
+        self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED,self.press_exit,self)
+        self:AddCallback("btn_return",ui_events.BUTTON_CLICKED,self.press_return,self)
+        self:AddCallback("btn_apply",ui_events.BUTTON_CLICKED,self.press_apply,self)
+        self:AddCallback("btn_hud",ui_events.BUTTON_CLICKED,self.press_hud,self)
+end
+
+function extra_options:press_hud()
+	if self.extra_hud_dlg == nil then
+		self.extra_hud_dlg = ui_extra_hud.extra_hud()
+		self.extra_hud_dlg.owner = self
+	end
+	self:GetHolder():start_stop_menu(self.extra_hud_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+end
+
+function extra_options:press_exit()
+	self:GetHolder():start_stop_menu(self.owner,true)
+	self:GetHolder():start_stop_menu(self,true)
+	self.owner:Show(true)
+end
+
+function extra_options:press_return()
+        if db.actor~=nil then
+        db.actor:disable_info_portion("disable_hud_time")
+        db.actor:disable_info_portion("disable_hud_wpn")
+        db.actor:disable_info_portion("disable_shock_hits")
+        db.actor:disable_info_portion("disable_actor_vertigo")
+        db.actor:disable_info_portion("activate_auto_energy")
+        db.actor:disable_info_portion("deactivate_scheme_doctor")
+        db.actor:disable_info_portion("activate_scheme_gainer")
+        db.actor:disable_info_portion("activate_shock_motion")
+        db.actor:disable_info_portion("deactivate_no_wpn")
+        db.actor:disable_info_portion("always_hide_sleep_zone")
+        db.actor:disable_info_portion("show_rank_counter")
+        db.actor:disable_info_portion("disable_satiety")
+        end
+        self:press_exit()
+end
+
+function extra_options:press_apply()
+        --'Активировать авто.энергетик
+	local btn_activate_auto_energy=self.btn_activate_auto_energy:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_activate_auto_energy,"activate_auto_energy")
+        --'Выключить схему лечения
+	local btn_deactivate_scheme_doctor=self.btn_deactivate_scheme_doctor:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_deactivate_scheme_doctor,"deactivate_scheme_doctor")
+        --'Включить схему обыска трупов
+	--local btn_activate_scheme_gainer=self.btn_activate_scheme_gainer:GetCheck()
+        --sgm_functions.info_give_on_boolean(btn_activate_scheme_gainer,"activate_scheme_gainer")
+        --'Выключить разоружение
+	local btn_deactivate_no_wpn=self.btn_deactivate_no_wpn:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_deactivate_no_wpn,"deactivate_no_wpn")
+        --'Отключить голод
+	local btn_disable_satiety=self.btn_disable_satiety:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_disable_satiety,"disable_satiety")
+        --'Назад
+	self:press_exit()
+end
+
+function extra_options:OnKeyboard(dik,keyboard_action)  --virtual function
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action==ui_events.WINDOW_KEY_PRESSED then
+		if dik==DIK_keys.DIK_ESCAPE then
+                   self:press_exit()
+		end
+		if dik==DIK_keys.DIK_RETURN then
+                   self:press_apply()
+		end
+	end
+        return true
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------
+
+
+

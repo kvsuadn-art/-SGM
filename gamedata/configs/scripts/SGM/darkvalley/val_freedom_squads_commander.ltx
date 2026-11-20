@@ -1,0 +1,24 @@
+[logic]
+active = move@squad_commander
+
+[move@squad_commander]
+target_type     = level_vertex
+dest_number     = 184135
+state_in_center = ward
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 188166
+meet            = meet@squad_commander
+
+[meet@squad_commander]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\marsh\mar_csky_trader_meet_greet_2
+sound_stop 	= characters_voice\scenario\marsh\mar_csky_trader_meet_bye_2
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

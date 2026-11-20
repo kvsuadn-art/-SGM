@@ -1,0 +1,321 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+---------------------------------------(Загрузчик HUDa)-------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function hud_checker()
+   local hud = get_hud()
+   local active_slot = db.actor:active_slot()
+   local active_item = db.actor:active_item()
+   local wpn_in_slot_one = db.actor:item_in_slot(1)
+   local wpn_in_slot_two = db.actor:item_in_slot(2)
+   local wpn_in_slot_three = db.actor:item_in_slot(3)
+   local in_slot_six = db.actor:item_in_slot(6)
+   local hide_global_time
+   local wpn_name_rifle	
+   local wpn_name_pistol
+   local wpn_name_granade
+   local actor=db.actor
+   if in_slot_six~=nil then hide_armor=in_slot_six:section() outfit_active=in_slot_six:section() armor_sect=in_slot_six:section() end
+   if wpn_in_slot_two~=nil then wpn_name_rifle=wpn_in_slot_two:section() end
+   if wpn_in_slot_one~=nil then wpn_name_pistol=wpn_in_slot_one:section() end
+   if wpn_in_slot_three~=nil then wpn_name_granade=wpn_in_slot_three:section() end
+   if object_alive(db.actor) and not has_alife_info("disable_hud_time") then
+		local static_time=hud:GetCustomStatic("hud_global_time")
+                local minutes_time=level.get_time_minutes()
+                local hours_time=level.get_time_hours()
+                local zero=0
+		if (static_time~=nil or static_time==nil) and level.get_time_minutes()>=0 and level.get_time_minutes()<=9 then
+                        local data = hours_time..":".."0"..minutes_time
+			hud:AddCustomStatic("hud_global_time", true)
+			hud:GetCustomStatic("hud_global_time"):wnd():SetTextST(data)
+		end
+		if (static_time~=nil or static_time==nil) and level.get_time_minutes()>=10 and level.get_time_minutes()<=59 then
+                        local data = hours_time..":"..minutes_time
+			hud:AddCustomStatic("hud_global_time", true)
+			hud:GetCustomStatic("hud_global_time"):wnd():SetTextST(data)
+		end
+		if (static_time~=nil or static_time==nil) and level.get_time_minutes()>=0 and level.get_time_minutes()<=9 and level.get_time_hours()>=0 and level.get_time_hours()<10 then
+                        local data = "0"..hours_time..":".."0"..minutes_time
+			hud:AddCustomStatic("hud_global_time", true)
+			hud:GetCustomStatic("hud_global_time"):wnd():SetTextST(data)
+		end
+		if (static_time~=nil or static_time==nil) and level.get_time_minutes()>=10 and level.get_time_minutes()<=59 and level.get_time_hours()>=0 and level.get_time_hours()<10 then
+                        local data = "0"..hours_time..":"..minutes_time
+			hud:AddCustomStatic("hud_global_time", true)
+			hud:GetCustomStatic("hud_global_time"):wnd():SetTextST(data)
+		end
+    elseif has_alife_info("disable_hud_time") or not object_alive(db.actor) then    
+                local check_static_time=hud:GetCustomStatic("hud_global_time")
+		if check_static_time~=nil then
+       		        hud:RemoveCustomStatic("hud_global_time")
+		end       
+   end
+   if db.actor:object("event_radio") and object_alive(db.actor) then
+     if sgm_flags.victim_name~="noname" then
+          local static_last_event=hud:GetCustomStatic("hud_last_event")  
+          local plus=sgm_flags.victim_death_m+3
+          if sgm_flags.victim_death_m>=0 and sgm_flags.victim_death_m<=9 then
+          local time_data="("..sgm_flags.victim_death_h..":".."0"..sgm_flags.victim_death_m..")"
+           if level.get_time_minutes()<=plus and sgm_flags.victim_id~=0 then
+             local last_event_txt=game.translate_string("hud_manager_text1").."["..sgm_flags.victim_name..time_data.."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+           elseif level.get_time_minutes()>plus and sgm_flags.bd_event=="false" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt="["..game.translate_string("hud_manager_text3").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+             sgm_flags.victim_name="noname"
+           end
+	  elseif sgm_flags.victim_death_m>=10 and sgm_flags.victim_death_m<=59 then
+          local time_data="("..sgm_flags.victim_death_h..":"..sgm_flags.victim_death_m..")"
+           if level.get_time_minutes()<=plus and sgm_flags.victim_id~=0 then
+             local last_event_txt=game.translate_string("hud_manager_text1").."["..sgm_flags.victim_name..time_data.."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+           elseif level.get_time_minutes()>plus and sgm_flags.bd_event=="false" and sgm_flags.vb_event=="false" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt="["..game.translate_string("hud_manager_text3").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+             sgm_flags.victim_name="noname"
+           end
+	  elseif sgm_flags.victim_death_m>=0 and sgm_flags.victim_death_m<=9 and sgm_flags.victim_death_h>=0 and sgm_flags.victim_death_h<10 then
+          local time_data="(".."0"..sgm_flags.victim_death_h..":".."0"..sgm_flags.victim_death_m..")"
+           if level.get_time_minutes()<=plus and sgm_flags.victim_id~=0 then
+             local last_event_txt=game.translate_string("hud_manager_text1").."["..sgm_flags.victim_name..time_data.."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+           elseif level.get_time_minutes()>plus and sgm_flags.bd_event=="false" and sgm_flags.vb_event=="false" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt="["..game.translate_string("hud_manager_text3").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+             sgm_flags.victim_name="noname"
+           end
+	  elseif sgm_flags.victim_death_m>=10 and sgm_flags.victim_death_m<=59 and sgm_flags.victim_death_h>=0 and sgm_flags.victim_death_h<10 then
+          local time_data="(".."0"..sgm_flags.victim_death_h..":"..sgm_flags.victim_death_m..")"
+           if level.get_time_minutes()<=plus and sgm_flags.victim_id~=0 then
+             local last_event_txt=game.translate_string("hud_manager_text1").."["..sgm_flags.victim_name..time_data.."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+           elseif level.get_time_minutes()>plus and sgm_flags.bd_event=="false" and sgm_flags.vb_event=="false" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt="["..game.translate_string("hud_manager_text3").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+             sgm_flags.victim_name="noname"
+             sgm_flags.victim_prof="noprof"
+             sgm_flags.unique_death_snd="off"
+           end
+	  end
+      elseif sgm_flags.victim_name=="noname" and sgm_flags.bd_event=="false" and sgm_flags.vb_event=="false" then
+          local static_last_event=hud:GetCustomStatic("hud_last_event")  
+          local last_event_txt="["..game.translate_string("hud_manager_text3").."]"
+          hud:AddCustomStatic("hud_last_bg", true)
+          hud:AddCustomStatic("hud_last_event", true)
+	  hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+      elseif sgm_flags.bd_event=="true" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt=game.translate_string("hud_manager_text4").."["..game.translate_string("hud_manager_text5").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+      elseif sgm_flags.vb_event=="true" then
+             local static_last_event=hud:GetCustomStatic("hud_last_event")  
+             local last_event_txt=game.translate_string("hud_manager_text4").."["..game.translate_string("hud_manager_text6").."]"
+             hud:AddCustomStatic("hud_last_bg", true)
+             hud:AddCustomStatic("hud_last_event", true)
+	     hud:GetCustomStatic("hud_last_event"):wnd():SetTextST(last_event_txt)
+      end
+    else
+          if hud:GetCustomStatic("hud_last_bg")~=nil then hud:RemoveCustomStatic("hud_last_bg") 
+          elseif hud:GetCustomStatic("hud_last_event")~=nil then hud:RemoveCustomStatic("hud_last_event") 
+          end
+    end
+    if not has_alife_info("disable_hud_wpn") then       
+		      local static_wpn_1=hud:GetCustomStatic("hud_wpn_params_1")
+		      local static_wpn_1_1=hud:GetCustomStatic("hud_wpn_params_1")
+		      local static_wpn_2=hud:GetCustomStatic("hud_wpn_params_2")
+		      local static_wpn_2_2=hud:GetCustomStatic("hud_wpn_params_2_2")
+		      local static_wpn_3=hud:GetCustomStatic("hud_wpn_params_3")
+		      local static_wpn_3_3=hud:GetCustomStatic("hud_wpn_params_3_3")
+		      local static_dont=hud:GetCustomStatic("hud_wpn_dont")
+                      local pistol=db.actor:item_in_slot(1)
+                      local rifle=db.actor:item_in_slot(2)
+                      if active_item~=nil and active_slot==1 then
+                        local wpn=wpn_name_pistol
+                        local params_damage=ReadDamage(wpn,pistol)
+                        local params_distance=ReadDistance(wpn,pistol)
+                        local params_txt = game.translate_string("hud_manager_text9").."["..params_damage.."]"
+                        local params_txt_2 = game.translate_string("hud_manager_text10").."["..params_distance..game.translate_string("hud_manager_text13").."]"
+			hud:AddCustomStatic("hud_wpn_params_1",true)
+			hud:GetCustomStatic("hud_wpn_params_1"):wnd():SetTextST(params_txt)
+			hud:AddCustomStatic("hud_wpn_params_1_1",true)
+			hud:GetCustomStatic("hud_wpn_params_1_1"):wnd():SetTextST(params_txt_2)
+                      end
+                      if (active_item==nil or active_slot~=1) and (static_wpn_1~=nil or static_wpn_1_1~=nil) then
+			hud:RemoveCustomStatic("hud_wpn_params_1")
+                        hud:RemoveCustomStatic("hud_wpn_params_1_1")
+                      end
+                      if active_item~=nil and active_slot==2 then
+                        local wpn=wpn_name_rifle
+                        local params_damage=ReadDamage(wpn,rifle)
+                        local params_distance=ReadDistance(wpn,rifle)
+                        local params_txt = game.translate_string("hud_manager_text9").."["..params_damage.."]"
+                        local params_txt_2 = game.translate_string("hud_manager_text10").."["..params_distance..game.translate_string("hud_manager_text13").."]"
+			hud:AddCustomStatic("hud_wpn_params_2",true)
+			hud:GetCustomStatic("hud_wpn_params_2"):wnd():SetTextST(params_txt)
+			hud:AddCustomStatic("hud_wpn_params_2_2",true)
+			hud:GetCustomStatic("hud_wpn_params_2_2"):wnd():SetTextST(params_txt_2)
+                      end
+                      if (active_item==nil or active_slot~=2) and (static_wpn_2~=nil or static_wpn_2_2~=nil) then
+                        hud:RemoveCustomStatic("hud_wpn_params_2_2")
+			hud:RemoveCustomStatic("hud_wpn_params_2")
+                      end
+                      if active_item~=nil and active_slot==3 then
+                        local wpn=wpn_name_granade
+                        local params_explosion=ReadExplosion(wpn)
+                        local params_splinter=ReadSplinter(wpn)
+                        local params_txt = game.translate_string("hud_manager_text11").."["..params_explosion..game.translate_string("hud_manager_text13").."]"
+                        local params_txt_2 = game.translate_string("hud_manager_text12").."["..params_splinter..game.translate_string("hud_manager_text13").."]"
+			hud:AddCustomStatic("hud_wpn_params_3",true)
+			hud:GetCustomStatic("hud_wpn_params_3"):wnd():SetTextST(params_txt)
+			hud:AddCustomStatic("hud_wpn_params_3_3",true)
+			hud:GetCustomStatic("hud_wpn_params_3_3"):wnd():SetTextST(params_txt_2)
+                      end
+                      if (active_item==nil or active_slot~=3) and (static_wpn_3~=nil or static_wpn_3_3~=nil) then
+                        hud:RemoveCustomStatic("hud_wpn_params_3_3")
+			hud:RemoveCustomStatic("hud_wpn_params_3")
+                      end
+    else
+		      local static_wpn_1=hud:GetCustomStatic("hud_wpn_params_1")
+		      local static_wpn_1_1=hud:GetCustomStatic("hud_wpn_params_1")
+		      local static_wpn_2=hud:GetCustomStatic("hud_wpn_params_2")
+		      local static_wpn_2_2=hud:GetCustomStatic("hud_wpn_params_2_2")
+		      local static_wpn_3=hud:GetCustomStatic("hud_wpn_params_3")
+		      local static_wpn_3_3=hud:GetCustomStatic("hud_wpn_params_3_3")
+		      local static_dont=hud:GetCustomStatic("hud_wpn_dont")
+                      if static_wpn_1~=nil or static_wpn_1_1~=nil or static_wpn_2~=nil or static_wpn_2_2~=nil or static_wpn_3~=nil or static_wpn_3_3~=nil or static_dont~=nil then
+                        hud:RemoveCustomStatic("hud_wpn_params_1_1")
+			hud:RemoveCustomStatic("hud_wpn_params_1")
+                        hud:RemoveCustomStatic("hud_wpn_params_2_2")
+			hud:RemoveCustomStatic("hud_wpn_params_2")
+                        hud:RemoveCustomStatic("hud_wpn_params_3_3")
+			hud:RemoveCustomStatic("hud_wpn_params_3")
+			hud:RemoveCustomStatic("hud_wpn_dont")
+                      end
+    end
+   if object_alive(db.actor) and has_alife_info("show_rank_counter") then
+                local data_rank=""..db.actor:character_rank()..""
+		hud:AddCustomStatic("hud_actor_rank_icon",true)
+		hud:AddCustomStatic("hud_actor_rank_text",true)
+		hud:GetCustomStatic("hud_actor_rank_text"):wnd():SetTextST(data_rank)
+    elseif (not has_alife_info("show_rank_counter")) or not object_alive(db.actor) then   
+		if hud:GetCustomStatic("hud_actor_rank_icon")~=nil or hud:GetCustomStatic("hud_actor_rank_text")~=nil then
+       		        hud:RemoveCustomStatic("hud_actor_rank_text")
+       		        hud:RemoveCustomStatic("hud_actor_rank_icon")
+		end       
+   end
+   if sgm_functions.read_variable("satiety_factor")~=nil then
+      if object_alive(db.actor) and not has_alife_info("disable_satiety") then
+           if sgm_functions.read_variable("satiety_factor")>=70 and sgm_functions.read_variable("satiety_factor")<120 then
+              check_hud("hud_hunger2")      
+              check_hud("hud_hunger3")
+	      hud:AddCustomStatic("hud_hunger1",true)
+              sgm_flags.satiety_damage=1
+           elseif sgm_functions.read_variable("satiety_factor")>=120 and sgm_functions.read_variable("satiety_factor")<200 then
+              check_hud("hud_hunger1")      
+              check_hud("hud_hunger3")
+	      hud:AddCustomStatic("hud_hunger2",true)
+              sgm_flags.satiety_damage=2
+           elseif sgm_functions.read_variable("satiety_factor")>=200 then
+              check_hud("hud_hunger1")      
+              check_hud("hud_hunger2")
+	      hud:AddCustomStatic("hud_hunger3",true)
+              sgm_flags.satiety_damage=3
+           elseif sgm_functions.read_variable("satiety_factor")<70 then
+              check_hud("hud_hunger1")      
+              check_hud("hud_hunger2")    
+              check_hud("hud_hunger3")
+              sgm_flags.satiety_damage=0
+           end
+      elseif (not object_alive(db.actor)) or has_alife_info("disable_satiety") then   
+	if hud:GetCustomStatic("hud_hunger1")~=nil or hud:GetCustomStatic("hud_hunger2")~=nil or hud:GetCustomStatic("hud_hunger3")~=nil then
+           hud:RemoveCustomStatic("hud_hunger1")
+       	   hud:RemoveCustomStatic("hud_hunger2")
+           hud:RemoveCustomStatic("hud_hunger3")
+	end       
+      end
+   end
+end
+function ReadExplosion(section)
+	local ltx = system_ini()
+	local value = ltx:r_float(section,"blast_r")
+        return value
+end
+function ReadSplinter(section)
+	local ltx = system_ini()
+	local value = ltx:r_float(section,"frags_r")
+        return value
+end
+function ReadDamage(section,object)
+	local ltx = system_ini()
+	local s_status = ltx:r_float(section,"silencer_status")
+        local param_info=sgm_functions.GetSkillInfo(section)
+        local param_point=sgm_functions.GetSkillPoint(section)
+        if has_alife_info(param_info) then
+          if s_status~=1 and get_installed_addon(object,"silencer")==false then
+	  local value = ltx:r_float(section,"hit_power")
+          return string.format(math.floor(value*100))+string.format(math.floor(param_point*100))
+          elseif s_status~=1 and get_installed_addon(object,"silencer")==true then
+	  local value = ltx:r_float(section,"silencer_hit_power")
+          return string.format(math.floor(value*100))+string.format(math.floor(param_point*100))
+          elseif s_status==1 then
+	  local value = ltx:r_float(section,"silencer_hit_power")
+          return string.format(math.floor(value*100))+string.format(math.floor(param_point*100))
+          end
+        else
+          if s_status~=1 and get_installed_addon(object,"silencer")==false then
+	  local value = ltx:r_float(section,"hit_power")
+          return string.format(math.floor(value*100)) 
+          elseif s_status~=1 and get_installed_addon(object,"silencer")==true then
+	  local value = ltx:r_float(section,"silencer_hit_power")
+          return string.format(math.floor(value*100)) 
+          elseif s_status==1 then
+	  local value = ltx:r_float(section,"silencer_hit_power")
+          return string.format(math.floor(value*100)) 
+          end
+        end
+	return 0
+end
+function ReadDistance(section,object)
+	local ltx = system_ini()
+	local s_status = ltx:r_float(section,"silencer_status")
+        if s_status~=1 and get_installed_addon(object,"silencer")==false then
+	local value = ltx:r_float(section,"fire_distance")
+        return value
+        elseif s_status~=1 and get_installed_addon(object,"silencer")==true then
+	local value = ltx:r_float(section,"silencer_fire_distance")
+        return value
+        elseif s_status==1 then
+	local value = ltx:r_float(section,"silencer_fire_distance")
+        return value
+        end
+	return 0
+end
+function check_hud(hud_name)
+    if get_hud():GetCustomStatic(hud_name)~=nil then 
+       get_hud():RemoveCustomStatic(hud_name) 
+    end
+end
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

@@ -1,0 +1,345 @@
+      <string id="st_info_skill">
+		<text>Информация о предмете:</text>
+      </string>
+      <string id="st_info2_skill">
+		<text>Тактика ведения боя</text>
+      </string>
+      <string id="st_info3_skill">
+		<text>- %c[255,200,60,26]уже изучена.</text>
+      </string>
+      <string id="st_add_skill">
+		<text>Повышен навык ведения боя для:</text>
+      </string>
+      <string id="st_add2_skill">
+		<text>Установлен синхро-елемент:</text>
+      </string>
+      <string id="st_book_for_outfits_descr">
+		<text>Апгрейд позволяющий обеспечить для бронекостюма - сверх прочность. Для установки синхро-елемента - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_ak74_title">
+		<text>Тактика ведения боя «АКМ-74/2»</text>
+      </string>
+      <string id="st_book_for_ak74_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АКМ-74/2. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_ak78_title">
+		<text>Тактика ведения боя «АКМ-78»</text>
+      </string>
+      <string id="st_book_for_ak78_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АКМ-78. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_ak82_title">
+		<text>Тактика ведения боя «АКМ-82»</text>
+      </string>
+      <string id="st_book_for_ak82_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АКМ-82. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_heavy_rpg_title">
+		<text>Тактика ведения боя «РПГ-7 Инферно»</text>
+      </string>
+      <string id="st_book_for_heavy_rpg_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить гранатомет РПГ-7 Инферно. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_ak74u_title">
+		<text>Тактика ведения боя «АКМ-74/2У»</text>
+      </string>
+      <string id="st_book_for_ak74u_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АКМ-74/2У. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_ak78u_title">
+		<text>Тактика ведения боя «АКМ-78/2У»</text>
+      </string>
+      <string id="st_book_for_ak78u_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АКМ-78/2У. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_spp200_title">
+		<text>Тактика ведения боя «СПП-200»</text>
+      </string>
+      <string id="st_book_for_spp200_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить винтовку СПП-200. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_shotgun_title">
+		<text>Тактика ведения боя «Двустолка»</text>
+      </string>
+      <string id="st_book_for_shotgun_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Двустолку. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_berg_title">
+		<text>Тактика ведения боя «Немецкий Берг»</text>
+      </string>
+      <string id="st_book_for_berg_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Немецкий Берг. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_grom_title">
+		<text>Тактика ведения боя «Гром Волнорез»</text>
+      </string>
+      <string id="st_book_for_grom_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Гром Волнорез. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_viper_title">
+		<text>Тактика ведения боя «МП-5 Петушок»</text>
+      </string>
+      <string id="st_book_for_viper_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить МП-5 Петушок. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_commander_pm_title">
+		<text>Тактика ведения боя «Командирский ПМм»</text>
+      </string>
+      <string id="st_book_for_commander_pm_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Командирский ПМм. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_cobra_title">
+		<text>Тактика ведения боя «Кобра»</text>
+      </string>
+      <string id="st_book_for_cobra_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить пистолет Кобра. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_autocolt_title">
+		<text>Тактика ведения боя «Авто-кольт»</text>
+      </string>
+      <string id="st_book_for_autocolt_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Авто-кольт. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_pkm_title">
+		<text>Тактика ведения боя «РП-74»</text>
+      </string>
+      <string id="st_book_for_pkm_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить РП-74. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_abakan_title">
+		<text>Тактика ведения боя «АС-96/2»</text>
+      </string>
+      <string id="st_book_for_abakan_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить автомат АС-96/2. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_beretta_title">
+		<text>Тактика ведения боя «Марта»</text>
+      </string>
+      <string id="st_book_for_beretta_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить пистолет Марта. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_bm16_title">
+		<text>Тактика ведения боя «Обрез»</text>
+      </string>
+      <string id="st_book_for_bm16_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Обрез. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_toz34_title">
+		<text>Тактика ведения боя «Охотничье ружьё»</text>
+      </string>
+      <string id="st_book_for_toz34_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Охотничье ружьё. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_wincheaster1300_title">
+		<text>Тактика ведения боя «Чейзер-13»</text>
+      </string>
+      <string id="st_book_for_wincheaster1300_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Чейзер-13. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_spas12_title">
+		<text>Тактика ведения боя «СПСА-14»</text>
+      </string>
+      <string id="st_book_for_spas12_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СПСА-14. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_svd_title">
+		<text>Тактика ведения боя «СВДм-2»</text>
+      </string>
+      <string id="st_book_for_svd_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СВДм-2. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_svu_title">
+		<text>Тактика ведения боя «СВУмк-2»</text>
+      </string>
+      <string id="st_book_for_svu_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СВУмк-2. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_colt1911_title">
+		<text>Тактика ведения боя «Кора-919»</text>
+      </string>
+      <string id="st_book_for_colt1911_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить пистолет Кора-919. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_desert_eagle_title">
+		<text>Тактика ведения боя «Чёрный ястреб»</text>
+      </string>
+      <string id="st_book_for_desert_eagle_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Чёрный ястреб. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_fn2000_title">
+		<text>Тактика ведения боя «ФТ-200М»</text>
+      </string>
+      <string id="st_book_for_fn2000_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить ФТ-200М. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_fort_title">
+		<text>Тактика ведения боя «Фора-12»</text>
+      </string>
+      <string id="st_book_for_fort_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить пистолет Фора-12. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_hpsa_title">
+		<text>Тактика ведения боя «ХПСС-1м»</text>
+      </string>
+      <string id="st_book_for_hpsa_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить пистолет ХПСС-1м. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_pb_title">
+		<text>Тактика ведения боя «ПБ-1с»</text>
+      </string>
+      <string id="st_book_for_pb_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить ПБ-1с. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_pm_title">
+		<text>Тактика ведения боя «ПМм»</text>
+      </string>
+      <string id="st_book_for_pm_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить ПМм. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_sig220_title">
+		<text>Тактика ведения боя «СИП-т М200»</text>
+      </string>
+      <string id="st_book_for_sig220_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СИП-т М200. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_usp_title">
+		<text>Тактика ведения боя «УДП Компакт»</text>
+      </string>
+      <string id="st_book_for_usp_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить УДП Компакт. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_walther_title">
+		<text>Тактика ведения боя «Волкер-П9м»</text>
+      </string>
+      <string id="st_book_for_walther_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Волкер-П9м. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_g36_title">
+		<text>Тактика ведения боя «ГП37»</text>
+      </string>
+      <string id="st_book_for_g36_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить ГП37. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_gauss_title">
+		<text>Тактика ведения боя «Ружьё ЭМ1»</text>
+      </string>
+      <string id="st_book_for_gauss_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Ружьё ЭМ1. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_groza_title">
+		<text>Тактика ведения боя «Гром-С14»</text>
+      </string>
+      <string id="st_book_for_groza_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Гром-С14. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_l85_title">
+		<text>Тактика ведения боя «ИЛ86»</text>
+      </string>
+      <string id="st_book_for_l85_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить ИЛ86. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_lr300_title">
+		<text>Тактика ведения боя «ТРс-301»</text>
+      </string>
+      <string id="st_book_for_lr300_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить винтовку ТРс-301. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_mp5_title">
+		<text>Тактика ведения боя «Гадюка»</text>
+      </string>
+      <string id="st_book_for_mp5_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Гадюку. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_rg-6_title">
+		<text>Тактика ведения боя «Бульдог-6»</text>
+      </string>
+      <string id="st_book_for_rg-6_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Бульдог-6. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_rpg7_title">
+		<text>Тактика ведения боя «РПГ-7у»</text>
+      </string>
+      <string id="st_book_for_rpg7_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить РПГ-7у. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_sig550_title">
+		<text>Тактика ведения боя «СГИ-5к»</text>
+      </string>
+      <string id="st_book_for_sig550_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СГИ-5к. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_val_title">
+		<text>Тактика ведения боя «СА ЛАВИНА»</text>
+      </string>
+      <string id="st_book_for_val_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить СА ЛАВИНА. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_vintorez_title">
+		<text>Тактика ведения боя «Винтарь-ВС»</text>
+      </string>
+      <string id="st_book_for_vintorez_descr">
+		<text>Документы, чертежи, учебники - все это поможет мне освоить Винтарь-ВС. Для повышения навыка ведения боя - необходимо использовать.</text>
+      </string>
+      <string id="st_book_for_novice_outfit_title">
+		<text>Апгрейд брони «Кожаная куртка»</text>
+      </string>
+      <string id="st_book_for_bandit_outfit_title">
+		<text>Апгрейд брони «Бандитская куртка»</text>
+      </string>
+      <string id="st_book_for_cs_light_outfit_title">
+		<text>Апгрейд брони «Бронежилет ЧН-1»</text>
+      </string>
+      <string id="st_book_for_cs_heavy_outfit_title">
+		<text>Апгрейд брони «Бронежилет ЧН-3а»</text>
+      </string>
+      <string id="st_book_for_stalker_outfit_title">
+		<text>Апгрейд брони «Комбинезон Заря»</text>
+      </string>
+      <string id="st_book_for_svoboda_light_outfit_title">
+		<text>Апгрейд брони «Комбинезон Ветер свободы»</text>
+      </string>
+      <string id="st_book_for_svoboda_heavy_outfit_title">
+		<text>Апгрейд брони «Комбинезон Страж свободы»</text>
+      </string>
+      <string id="st_book_for_dolg_outfit_title">
+		<text>Апгрейд брони «ПС5-М Универсальная защита»</text>
+      </string>
+      <string id="st_book_for_dolg_heavy_outfit_title">
+		<text>Апгрейд брони «ПСЗ-9д Броня «Долга»</text>
+      </string>
+      <string id="st_book_for_scientific_outfit_title">
+		<text>Апгрейд брони «Комбинезон СЕВА»</text>
+      </string>
+      <string id="st_book_for_specops_outfit_title">
+		<text>Апгрейд брони «Бронекостюм Берилл-5М»</text>
+      </string>
+      <string id="st_book_for_military_outfit_title">
+		<text>Апгрейд брони «Бронекостюм Булат»</text>
+      </string>
+      <string id="st_book_for_exo_outfit_title">
+		<text>Апгрейд брони «Экзоскелет»</text>
+      </string>
+      <string id="st_book_for_svoboda_exo_outfit_title">
+		<text>Апгрейд брони «Экзоскелет Свобода»</text>
+      </string>
+      <string id="st_book_for_solar_exo_outfit_title">
+		<text>Апгрейд брони «Экзоскелет Прилив»</text>
+      </string>
+      <string id="st_book_for_novice_cevlar_outfit_title">
+		<text>Апгрейд брони «Кевларовая куртка»</text>
+      </string>
+      <string id="st_book_for_raincoat_outfit_title">
+		<text>Апгрейд брони «Защитный плащ»</text>
+      </string>
+      <string id="st_book_for_killer_outfit_title">
+		<text>Апгрейд брони «Комбинезон найомника»</text>
+      </string>
+      <string id="st_book_for_commander_outfit_title">
+		<text>Апгрейд брони «Бронекостюм Командарм»</text>
+      </string>
+      <string id="st_book_for_dolg_scientific_outfit_title">
+		<text>Апгрейд брони «ПСЗ-9Мд Роса»</text>
+      </string>
+      <string id="st_book_for_space_suit_title">
+		<text>Апгрейд брони «Защитный скафандр»</text>
+      </string>

@@ -1,0 +1,51 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------(Работа с инфопортациями)-----------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function info_work_init()
+  info_work_update()
+end
+function info_work_update()
+     local level_name=level.name()
+     local actor_pos = db.actor:position()
+     if not has_alife_info("start_game_poratation") then
+     db.actor:give_info_portion("start_game_poratation")
+     end
+     if level_name=="darkvalley" and has_alife_info("gar_actor_has_valley_propusk") and not has_alife_info("gar_story_got_info_from_digger") then
+     db.actor:give_info_portion("gar_story_got_info_from_digger")
+     end
+     if has_alife_info("val_deliver_outpost_equipments_reverse") and not has_alife_info("val_deliver_ammo_done") then
+     db.actor:give_info_portion("val_deliver_ammo_done")
+     end
+     --/local fail_dist=actor_pos:distance_to_sqr(vector():set(32.575,-11.735,-273.557),74997,1312)<6
+     --/if level_name=="yantar" and fail_dist and has_alife_info("yan_kill_tunnel_snorks_fire") and not has_alife_info("yan_kill_tunnel_snorks_end") then
+     --/  db.actor:give_info_portion("yan_kill_tunnel_snorks_end")
+     --/end
+     if level_name=="red_forest" and has_alife_info("mil_5_6_5_ambush") and not has_alife_info("mil_stop_invasion_5_5_complete") then
+       db.actor:give_info_portion("mil_stop_invasion_5_5_complete")
+     elseif level_name=="red_forest" and has_alife_info("mil_5_6_5_ambush") and not has_alife_info("mil_stop_invasion_5_6_complete") then
+       db.actor:give_info_portion("mil_stop_invasion_5_6_complete")
+     end
+     local bad_dist=actor_pos:distance_to_sqr(vector():set(40.661,10.968,214.080),48309,1555)<14
+     if level_name=="limansk" and bad_dist and not has_alife_info("lim_stroyka_bad_rel") then
+       relation_registry.set_community_relation("monolith",db.actor:character_community(),tonumber(-3500))
+       db.actor:give_info_portion("lim_stroyka_bad_rel")
+     end
+     if sgm_functions.hero_in_faction("stalker") and level_name=="garbage" and has_alife_info("gar_story_find_diggers_started") and (not has_alife_info("gar_step_5")) and (not has_alife_info("bandit_off")) then
+     db.actor:give_info_portion("bandit_off")
+     elseif sgm_functions.hero_in_faction("stalker") and has_alife_info("gar_step_5") and sgm_functions.is_smart_captured("gar_smart_terrain_3_5","bandit")==true and has_alife_info("bandit_off") and not has_alife_info("gar_actor_has_valley_propusk") then
+     db.actor:disable_info_portion("bandit_off")
+     end
+     if sgm_functions.read_variable("allow_sleep")==nil then
+     sgm_functions.write_variable("allow_sleep",false)
+     end
+     if sgm_functions.read_variable("satiety_factor")==nil then
+     sgm_functions.write_variable("satiety_factor",0)
+     elseif sgm_functions.read_variable("satiety_factor")~=nil and sgm_functions.read_variable("satiety_factor")<0 then
+     sgm_functions.write_variable("satiety_factor",0)
+     end
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

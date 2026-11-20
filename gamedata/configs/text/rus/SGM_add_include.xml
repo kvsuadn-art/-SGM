@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+<!-- Загрузка "SGM" текстов  -->
+#include "text\rus\SGM_character_names.xml"
+#include "text\rus\SGM_communities_name.xml"
+#include "text\rus\SGM_item_af_descr.xml"
+#include "text\rus\SGM_item_anom_descr.xml"
+#include "text\rus\SGM_item_equipment_descr.xml"
+#include "text\rus\SGM_item_flash_descr.xml"
+#include "text\rus\SGM_item_foods_descr.xml"
+#include "text\rus\SGM_item_monsters_descr.xml"
+#include "text\rus\SGM_item_physic_descr.xml"
+#include "text\rus\SGM_item_quest_descr.xml"
+#include "text\rus\SGM_motivator_texts.xml"
+#include "text\rus\SGM_xml_dialogs.xml"
+#include "text\rus\SGM_lua_texts.xml"
+#include "text\rus\SGM_extra_main.xml"
+#include "text\rus\SGM_stories.xml"
+#include "text\rus\SGM_tasks.xml"
+#include "text\rus\SGM_news.xml"
+#include "text\rus\SGM_af_upgrades.xml"
+#include "text\rus\SGM_deserves_texts.xml"
+#include "text\rus\SGM_deserves_items.xml"
+#include "text\rus\SGM_skill_books.xml"
+#include "text\rus\SGM_medals.xml"
+</string_table>

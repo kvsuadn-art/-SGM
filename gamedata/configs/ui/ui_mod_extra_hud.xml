@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<w>
+<!-----Фон------>
+<background x="0" y="0" width="1024" height="768">
+	<texture x="0" y="0" width="1024" height="768">ui\ui_static_mm_back_04</texture>
+</background>
+
+<!-----Форма------>
+<hud_form x="277" y="168" width="558" height="463">
+        <!-----Текстура------>
+        <texture>ui_extra_options_dlg</texture>
+
+        <monitor x="68" y="340" width="84" height="71" complex_mode="0" light_anim="ui_slow_blinking_alpha">
+                <texture>ui_extra_options_monitor</texture>
+	</monitor>
+
+        <!-----Описание------>
+	<title x="65" y="15" width="500" height="25" complex_mode="0" light_anim="ui_slow_blinking_alpha">
+		<text font="graffiti22" r="238" g="153" b="26">sgm_extra_menu_38</text>
+	</title>
+
+        <!-----Кнопки------>
+	<btn_back x="420" y="370" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_back</text>
+	</btn_back>
+	<btn_apply x="300" y="370" width="117" height="29">
+		<texture_e>ui_button_ordinary_e</texture_e>
+		<texture_t>ui_button_ordinary_t</texture_t>
+		<texture_h>ui_button_ordinary_h</texture_h>
+		<text>sgm_extra_menu_apply</text>
+	</btn_apply>
+        <!-----Опции(Лампа)------>
+	<btn_disable_hud_wpn x="58" y="70" width="30" height="21">
+		<options_item entry="disable_hud_wpn" group="extra_hud"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_39</text>
+	</btn_disable_hud_wpn>
+        <text_disable_hud_wpn x="58" y="90" width="10" height="10" complex_mode="0">
+		<text font="letterica16" r="115" g="114" b="112">sgm_extra_menu_73</text>
+	</text_disable_hud_wpn>
+        <!---->
+	<btn_disable_hud_time x="58" y="115" width="30" height="21">
+		<options_item entry="disable_hud_time" group="extra_hud"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_74</text>
+	</btn_disable_hud_time>
+        <!---->
+	<btn_disable_shock_hits x="58" y="140" width="30" height="21">
+		<options_item entry="disable_shock_hits" group="extra_hud"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_43</text>
+	</btn_disable_shock_hits>
+        <!---->
+	<btn_disable_actor_vertigo x="58" y="165" width="30" height="21">
+		<options_item entry="disable_actor_vertigo" group="extra_hud"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_8</text>
+	</btn_disable_actor_vertigo>
+        <!---->
+	<btn_activate_shock_motion x="58" y="190" width="30" height="21">
+		<options_item entry="activate_shock_motion" group="extra_hud"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_78</text>
+	</btn_activate_shock_motion>
+        <!---->
+	<btn_always_hide_sleep_zone x="58" y="215" width="30" height="21">
+		<options_item entry="always_hide_sleep_zone" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_80</text>
+	</btn_always_hide_sleep_zone>
+        <!---->
+	<btn_show_rank_counter x="58" y="240" width="30" height="21">
+		<options_item entry="show_rank_counter" group="extra_options"/>
+		<text font="letterica16" r="115" g="114" b="112"  complex_mode="0">sgm_extra_menu_81</text>
+	</btn_show_rank_counter>
+</hud_form>
+</w>

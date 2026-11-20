@@ -1,0 +1,429 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+---------------------------------(Схема движения к вертексу)---------------------------------------
+--------------------(Разработана из-за невозможности создавать точки walk и look)------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+--/ Моя первая схема
+--/ evaluator - условие
+--/ action - действие
+------------------------------------
+----------/Общие переменные/--------
+------------------------------------
+move_stalker=0
+------------------------------------
+------------/Условие/---------------
+------------------------------------
+class "evaluator_need_move" (property_evaluator)
+function evaluator_need_move:__init(storage, name) super(nil, name)
+  	self.st = storage
+end
+function evaluator_need_move:evaluate()
+        if xr_gainer.currert_gainer2==self.object:id() then
+           return false
+        end
+  	return xr_logic.is_active(self.object, self.st) and xr_gainer.currert_gainer2~=self.object:id()
+end
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_move_to_vector" (action_base)
+function action_move_to_vector:__init (npc, action_name, storage) super(nil, action_name)
+	self.st = storage
+	self.move_mgr = db.storage[npc:id()].move_mgr
+end
+function action_move_to_vector:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.run)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.napravlenie=vector():set(math.random()*6-3,0,math.random()*6-3)
+        self.napravlenie:normalize()
+	self:reset_scheme(nil, self.object)
+end
+function action_move_to_vector:activate_scheme(loading, npc)
+	self.st.signals = {}
+	self:reset_scheme(loading, npc)
+        self.in_center_signalled = false
+        self.play_theme_started = false
+        self.play_dir_started = false
+end
+function action_move_to_vector:reset_scheme(loading,npc)
+end
+function action_move_to_vector:get_target()
+    local look_tbl={}
+    if self.st.look_subject_init==false then
+      self.st.look_subject_position,self.st.look_subject_id,self.st.look_subject_init=load_target(self.object,self.st.look_subject)
+      if st.look_subject_init==false then
+        return nil
+      end
+    end
+    if self.st.look_subject_actor == true then
+        look_tbl.look_object = db.actor
+    end
+    if self.st.look_subject_id then
+        look_tbl.look_object = level.object_by_id(self.st.look_subject_id)
+    end
+    if self.st.look_subject_position then
+        look_tbl.look_position = self.st.look_subject_position
+    end
+    if self.st.look_vertex~="nil" then
+      if self.st.convert_lv_look~=nil then
+         look_tbl.look_position=self.st.convert_lv_look
+      end
+    end
+    return look_tbl
+end
+function action_move_to_vector:turn_end_callback()
+  printf("TURN END CALLBACK CALLED")
+end
+function action_move_to_vector:time_callback()
+  printf("TIME CALLBACK CALLED")
+end
+function action_move_to_vector:death_callback()
+  printf("DEATH CALLBACK CALLED")
+end
+function action_move_to_vector:hit_callback()
+  printf("HIT CALLBACK CALLED")
+end
+function action_move_to_vector:execute()
+	action_base.execute(self)
+	self.move_mgr:update()
+	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
+		return
+	end
+	--/Переменные/--
+        local npc=self.object
+	local get_npc=self.object
+	local get_enemy=self.object:best_enemy()
+        local choose_look=self:get_target()
+        local cb = { obj = self, func = self.time_callback, turn_end_func = self.turn_end_callback }
+        move_stalker=self.object:id()
+	--/Функции/--
+        sgm_modules.scheme_update(self.object)
+        if self.st.stand_time~=nil and self.st.stand_time~=0 and sgm_flags.move_stand_timer==0 then
+           sgm_flags.move_stand_timer=time_global()+self.st.stand_time
+        end
+        if self.st.target_type~=nil and npc~=nil and self.st.dest_number~=nil and self.st.pursue_actor==true then
+                --/Переменные/--
+                local rew_pos=level.vertex_in_direction(db.actor:level_vertex_id(),self.napravlenie,5)
+                local get_utils=utils.send_to_nearest_accessible_vertex(npc,rew_pos)
+                if distance_between_safe(db.actor,npc)>=9 then
+                  if sgm_flags.move_pursue_timer==0 then
+                  if state_mgr.get_state(npc)~=self.st.state_for_move then
+                  state_mgr.set_state(npc,self.st.state_for_move)
+                  end
+                  sgm_flags.move_pursue_timer=time_global()+math.random(200,500)
+                  end
+                elseif distance_between_safe(db.actor,npc)<9 then
+                  if sgm_flags.move_pursue_timer==0 then
+                  if state_mgr.get_state(npc)~=self.st.state_in_center then
+                  state_mgr.set_state(npc,self.st.state_in_center)
+                  end
+                  sgm_flags.move_pursue_timer=time_global()+math.random(200,500)
+                  end
+                end
+        end
+        if self.st.target_type~=nil and npc~=nil and self.st.dest_number~=nil and self.st.pursue_actor~=true and self.st.free_behaviour~=true then
+            if self.st.target_type=="level_vertex" and self.st.dest_number~=0 then
+                --/Переменные/--
+                local new_pos=level.vertex_in_direction(self.st.dest_number,vector():set(0,0,0),5)
+                local get_utils=utils.send_to_nearest_accessible_vertex(npc,new_pos)
+                --/Главная функция/--
+                if npc:level_vertex_id()~=self.st.dest_number and sgm_flags.move_vector_timer==0 then
+                    if sgm_flags.move_state_timer==0 then
+                    if state_mgr.get_state(npc)~=self.st.state_for_move then
+                    state_mgr.set_state(npc,self.st.state_for_move)
+                    end
+                    sgm_flags.move_state_timer=time_global()+math.random(self.st.update_state_a,self.st.update_state_b)
+                    end
+                    if self.st.stop_on_talk==true and npc:is_talking() then   
+                       if state_mgr.get_state(npc)~="wait_trade" then
+                       state_mgr.set_state(npc,"wait_trade",nil,nil,{look_object=db.actor})
+                       end
+                    end
+                    sgm_flags.move_vector_timer=time_global()+math.random(800,900)
+                    if self.play_theme_started==true and npc:active_sound_count()~=nil and npc:active_sound_count()==0 then
+                       self.play_theme_started=false
+                    elseif self.play_dir_started==true and npc:active_sound_count()~=nil and npc:active_sound_count()==0 then
+                       self.play_dir_started=false
+                    end
+                    if self.st.allow_teleport==true then
+                       local save_npc=self.object:profile_name()
+                       alife():release(alife():object(self.object:id()),true)
+                       local param1=self.st.pos_teleport_x
+                       local param2=self.st.pos_teleport_y
+                       local param3=self.st.pos_teleport_z
+                       local param4=self.st.pos_teleport_lv
+                       local param5=self.st.pos_teleport_gv
+                       create(save_npc,param1,param2,param3,param4,param5)
+                    end
+                elseif self.st.miss_center~=true and npc:level_vertex_id()==self.st.dest_number and sgm_flags.move_vector_timer==0 and state_mgr.get_state(npc)~=self.st.state_in_center then
+                    if choose_look~=nil then
+                       if self.st.on_center_info~=nil and not has_alife_info(self.st.on_center_info) then
+                          db.actor:give_info_portion(self.st.on_center_info)
+                       end
+                       if state_mgr.get_state(npc)~=self.st.state_in_center then
+                       state_mgr.set_state(npc,self.st.state_in_center,cb,0,choose_look)
+                       end
+                       if self.st.stop_on_talk==true and npc:is_talking() then  
+                          if state_mgr.get_state(npc)~="wait_trade" then
+                          state_mgr.set_state(npc,"wait_trade",nil,nil,{look_object=db.actor})
+                          end
+                       end
+                       if self.st.play_theme~=nil and self.play_theme_started==false then
+                         self.play_theme_started=true
+                         xr_sound.set_sound_play(self.object:id(),self.st.play_theme)
+                       elseif self.st.play_dir~=nil and self.play_dir_started==false then
+                         if self.st.play_dir_a==0 then
+                           play_snd_at_pos(self.st.play_dir,npc)
+                           self.play_dir_started=true
+                         elseif self.st.play_dir_a>0 then
+                           play_snd_at_pos(self.st.play_dir,npc,self.st.play_dir_a,self.st.play_dir_b)
+                           self.play_dir_started=true
+                         end
+                       end
+                       sgm_flags.move_vector_timer=time_global()+math.random(500,600)
+                       if self.in_center_signalled==false and (self.st.stand_time==nil or self.st.stand_time==0) then
+                            if self.st.send_tip_allow==true then
+                               news_manager.send_tip(db.actor,self.st.send_tip_text,self.st.send_tip_timeout,self.st.send_tip_sender,self.st.send_tip_showtime,nil,self.st.send_tip_title)
+                            end
+                            self.in_center_signalled=true
+                            self.st.signals["in_center"]=true
+                       elseif self.in_center_signalled==false and self.st.stand_time~=nil and self.st.stand_time~=0 then
+                            if time_global()>sgm_flags.move_stand_timer then
+                            if self.st.send_tip_allow==true then
+                               news_manager.send_tip(db.actor,self.st.send_tip_text,self.st.send_tip_timeout,self.st.send_tip_sender,self.st.send_tip_showtime,nil,self.st.send_tip_title)
+                            end
+                            self.in_center_signalled=true
+                            self.st.signals["in_center"]=true
+                            sgm_flags.move_stand_timer=0
+                            end
+                       end
+                    else
+                       if self.st.on_center_info~=nil and not has_alife_info(self.st.on_center_info) then
+                          db.actor:give_info_portion(self.st.on_center_info)
+                       end  
+                       if state_mgr.get_state(npc)~=self.st.state_in_center then
+                       state_mgr.set_state(npc,self.st.state_in_center)
+                       end
+                       if self.st.stop_on_talk==true and npc:is_talking() then    
+                          if state_mgr.get_state(npc)~="wait_trade" then
+                          state_mgr.set_state(npc,"wait_trade",nil,nil,{look_object=db.actor})
+                          end
+                       end
+                       if self.st.play_theme~=nil and self.play_theme_started==false then
+                         self.play_theme_started=true
+                         xr_sound.set_sound_play(self.object:id(),self.st.play_theme)
+                       elseif self.st.play_dir~=nil and self.play_dir_started==false then
+                         if self.st.play_dir_a==0 then
+                           play_snd_at_pos(self.st.play_dir,npc)
+                           self.play_dir_started=true
+                         elseif self.st.play_dir_a>0 then
+                           play_snd_at_pos(self.st.play_dir,npc,self.st.play_dir_a,self.st.play_dir_b)
+                           self.play_dir_started=true
+                         end
+                       end
+                       sgm_flags.move_vector_timer=time_global()+math.random(500,600)
+                       if self.in_center_signalled==false and (self.st.stand_time==nil or self.st.stand_time==0) then
+                            if self.st.send_tip_allow==true then
+                               news_manager.send_tip(db.actor,self.st.send_tip_text,self.st.send_tip_timeout,self.st.send_tip_sender,self.st.send_tip_showtime,nil,self.st.send_tip_title)
+                            end
+                            self.in_center_signalled=true
+                            self.st.signals["in_center"]=true
+                       elseif self.in_center_signalled==false and self.st.stand_time~=nil and self.st.stand_time~=0 then
+                            if time_global()>sgm_flags.move_stand_timer then
+                            if self.st.send_tip_allow==true then
+                               news_manager.send_tip(db.actor,self.st.send_tip_text,self.st.send_tip_timeout,self.st.send_tip_sender,self.st.send_tip_showtime,nil,self.st.send_tip_title)
+                            end
+                            self.in_center_signalled=true
+                            self.st.signals["in_center"]=true
+                            sgm_flags.move_stand_timer=0
+                            end
+                       end
+                    end
+                elseif self.st.miss_center==true and npc:level_vertex_id()==self.st.dest_number and sgm_flags.move_vector_timer2==0 then
+                       if self.st.on_center_info~=nil and not has_alife_info(self.st.on_center_info) then
+                          db.actor:give_info_portion(self.st.on_center_info)
+                       end
+                       if state_mgr.get_state(npc)~=self.st.state_for_move then
+                       state_mgr.set_state(npc,self.st.state_for_move)
+                       end
+                       if self.st.stop_on_talk==true and npc:is_talking() then    
+                          if state_mgr.get_state(npc)~="wait_trade" then
+                          state_mgr.set_state(npc,"wait_trade",nil,nil,{look_object=db.actor})
+                          end
+                       end
+                       if self.st.play_theme~=nil and self.play_theme_started==false then
+                         self.play_theme_started=true
+                         xr_sound.set_sound_play(self.object:id(),self.st.play_theme)
+                       elseif self.st.play_dir~=nil and self.play_dir_started==false then
+                         if self.st.play_dir_a==0 then
+                           play_snd_at_pos(self.st.play_dir,npc)
+                           self.play_dir_started=true
+                         elseif self.st.play_dir_a>0 then
+                           play_snd_at_pos(self.st.play_dir,npc,self.st.play_dir_a,self.st.play_dir_b)
+                           self.play_dir_started=true
+                         end
+                       end
+                       sgm_flags.move_vector_timer2=time_global()+math.random(200,400)
+                       if self.in_center_signalled==false then
+                            if self.st.send_tip_allow==true then
+                               news_manager.send_tip(db.actor,self.st.send_tip_text,self.st.send_tip_timeout,self.st.send_tip_sender,self.st.send_tip_showtime,nil,self.st.send_tip_title)
+                            end
+                            self.in_center_signalled=true
+                            self.st.signals["in_center"]=true
+                       end
+                end
+                --/Конец функции/--
+            end
+        elseif npc~=nil and self.st.pursue_actor~=true and self.st.free_behaviour==true then
+        end  
+end
+function action_move_to_vector:finalize()
+	self.move_mgr:finalize()
+	--/xr_sound.set_sound(self.object:id(),nil)
+	action_base.finalize(self)
+end
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+move_base_eva=stalker_ids.property_script+4580
+move_base_act=stalker_ids.action_script+3882
+function add_to_binder(npc, ini, scheme, section, storage)
+		printf("DEBUG: add_to_binder: scheme='%s', section='%s'", scheme, section)
+  		local operators	= {} 
+	  	local properties  = {}
+	   	local manager = npc:motivation_action_manager()  --/планировщик
+		properties["event"] = xr_evaluators_id.reaction
+	 	properties["need_move"] = move_base_eva+1
+	 	operators["action_move"] = move_base_act+1
+		manager:add_evaluator(properties["need_move"], this.evaluator_need_move(storage, "move_need"))
+                --'Следовать в указаный level vertex
+		local new_action = this.action_move_to_vector(npc, "action_move_to_vector", storage)
+		new_action:add_precondition(world_property(stalker_ids.property_alive, true))
+                if move_exception(npc)==true then
+		new_action:add_precondition(world_property(stalker_ids.property_danger,false))
+		new_action:add_precondition(world_property(stalker_ids.property_enemy, false))
+		new_action:add_precondition(world_property(stalker_ids.property_anomaly,false))
+                end
+		new_action:add_precondition(world_property(properties["need_move"], true))
+		xr_motivator.addCommonPrecondition(new_action)
+	   	new_action:add_effect(world_property(properties["need_move"], false))
+		manager:add_action(operators["action_move"], new_action)
+		xr_logic.subscribe_action_for_events(npc, storage, new_action)
+	  	--'Разрешить раздражители
+	  	new_action = manager:action(xr_actions_id.alife)
+	  	new_action:add_precondition(world_property(properties["need_move"], false))
+end
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	printf("DEBUG: set_scheme: scheme='%s', section='%s'", scheme, section)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	printf("DEBUG: set_scheme: storage assigned")
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+        --/
+	st.target_type     = utils.cfg_get_string(ini,section,"target_type",npc,true,"")         --'Тип цели(Пока только VERTEX)
+        st.dest_number     = utils.cfg_get_number(ini,section,"dest_number",npc,false,0)         --'Вертекс в который НПС будет бежать
+	st.state_in_center = utils.cfg_get_string(ini,section,"state_in_center",npc,false,"")    --'Анимация в центре вертекса
+	st.state_for_move  = utils.cfg_get_string(ini,section,"state_for_move",npc,false,"")     --'Анимация бега к вертексу
+        st.look_subject    = utils.cfg_get_string(ini,section,"look_subject",npc,false,"","nil") --'Цель, на которую НПС смотрит
+        st.look_vertex     = utils.cfg_get_string(ini,section,"look_vertex",npc,false,"","nil")  --'Вертекс, на который НПС смотрит
+        st.miss_center     = utils.cfg_get_bool(ini,section,"miss_center",npc,false,false)       --'Пропуск центра, используется для соединения секций схемы, без остановок в центре вертекса
+        st.stand_time      = utils.cfg_get_number(ini,section,"stand_time",npc,false,0)          --'Задержка перед переходом на другую секцию, работает если нет пропуска центра
+        st.play_theme      = utils.cfg_get_string(ini,section,"play_theme",npc,false,"",nil)     --'Говорить фразу
+        st.play_dir        = utils.cfg_get_string(ini,section,"play_dir",npc,false,"",nil)       --'Воспроизвести путь
+        st.play_dir_a      = utils.cfg_get_number(ini,section,"play_dir_a",npc,false,0)          --'Rnd [От]
+        st.play_dir_b      = utils.cfg_get_number(ini,section,"play_dir_b",npc,false,0)          --'Rnd [До]
+        st.pursue_actor    = utils.cfg_get_bool(ini,section,"pursue_actor",npc,false,false)      --'Охранять ГГ
+        st.stop_on_talk    = utils.cfg_get_bool(ini,section,"stop_on_talk",npc,false,false)      --'При разговоре с ГГ - остановиться и повернуться
+        st.on_center_info  = utils.cfg_get_string(ini,section,"center_info",npc,false,"",nil)    --'Выдать инфу в центре
+        st.update_state_a  = utils.cfg_get_number(ini,section,"update_state_a",npc,false,490)    --'Таймер на установку состояния тела [от]
+        st.update_state_b  = utils.cfg_get_number(ini,section,"update_state_b",npc,false,499)    --'Таймер на установку состояния тела [до]
+        st.free_behaviour  = utils.cfg_get_bool(ini,section,"free_behaviour",npc,false,false)      --'Просто стоять
+        st.send_tip_allow  = utils.cfg_get_bool(ini,section,"send_tip_allow",npc,false,false)    --'Позволить выдачу сообщения в центре вертекса
+        st.send_tip_title  = utils.cfg_get_string(ini,section,"send_tip_title",npc,false,"")     --'В центре вертекса: Заголовок сообщения
+        st.send_tip_text   = utils.cfg_get_string(ini,section,"send_tip_text",npc,false,"")      --'В центре вертекса: Текст сообщения
+        st.send_tip_sender = utils.cfg_get_string(ini,section,"send_tip_sender",npc,false,"")    --'В центре вертекса: Название иконки
+        st.send_tip_timeout = utils.cfg_get_number(ini,section,"send_tip_timeout",npc,false,0)   --'В центре вертекса: Задержка перед выдачай (мс)
+        st.send_tip_showtime = utils.cfg_get_number(ini,section,"send_tip_showtime",npc,false,3000) --'В центре вертекса: Время отображения (мс)
+        st.allow_teleport  = utils.cfg_get_bool(ini,section,"allow_teleport",npc,false,false)
+        st.pos_teleport_x  = utils.cfg_get_number(ini,section,"pos_teleport_x",npc,false,0)
+        st.pos_teleport_y  = utils.cfg_get_number(ini,section,"pos_teleport_y",npc,false,0)
+        st.pos_teleport_z  = utils.cfg_get_number(ini,section,"pos_teleport_z",npc,false,0)
+        st.pos_teleport_lv = utils.cfg_get_number(ini,section,"pos_teleport_lv",npc,false,0)
+        st.pos_teleport_gv = utils.cfg_get_number(ini,section,"pos_teleport_gv",npc,false,0)
+       --/
+       st.look_subject_id = nil
+       st.look_subject_position = nil
+       if st.look_subject and st.look_subject ~= "nil" then
+          if st.look_subject == "actor" then
+             st.look_subject_actor = true
+             st.look_subject_init = true
+          else
+             st.look_subject_actor = false
+             local sid = tonumber(st.look_subject)
+             if sid then
+                st.look_subject_id = id_by_sid(sid)
+                  if not st.look_subject_id then
+                     st.look_subject_id = nil                
+                  end
+                st.look_subject_init = true
+            else
+                st.look_subject_position, st.look_subject_id, st.look_subject_init = load_target(npc, st.look_subject)
+            end
+          end
+       end 
+       st.convert_lv_look=nil
+       if st.look_vertex and st.look_vertex~="nil" then
+          local get_look_vertex_1=tonumber(st.look_vertex)
+          local get_look_vertex_2=tostring(st.look_vertex)
+          if get_look_vertex_1 then
+             st.convert_lv_look=level.vertex_position(st.look_vertex)
+          else
+             st.convert_lv_look=nil
+          end
+       end
+end
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function parse_target(target)
+    local pos=string.find(target,",")
+    if pos then
+        return string.sub(target, 1, pos - 1), string.sub(target, pos + 1)
+    else
+        return target,nil
+    end
+end
+function load_target(npc,target)
+    local gulag = xr_gulag.get_npc_gulag(npc)
+    local param1, param2 = parse_target(target)
+    local wp_id = tonumber(param2)
+    if wp_id then
+      return patrol(param1):point(wp_id), nil, true
+    end
+    if param2 then
+        gulag = xr_gulag.get_gulag_by_name(param2)
+    end
+    if gulag then
+        return nil, gulag:idNPCOnJob(param1), true
+    end
+    return nil, nil, false
+end
+function move_exception(npc)
+     local get_exceptions = 
+     npc:profile_name()=="yan_ecolog_trader" or npc:profile_name()=="yan_ecolog_bankir"
+     if get_exceptions then 
+        return false
+     end
+     return true
+end
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

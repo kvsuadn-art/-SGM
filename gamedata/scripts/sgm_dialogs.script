@@ -1,0 +1,1562 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+-------------------------------------(Функции для диалогов)---------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+local last_add_capital=0
+function precondition_about_story(actor,npc)
+	if xr_wounded.is_wounded(npc) or
+	   xr_wounded.is_heavy_wounded_by_id(npc:id()) or
+	   xr_wounded.is_psy_wounded_by_id(npc:id())
+	then
+		return false
+	end
+	return true
+end
+function precondition_for_dialog(actor,npc)
+	if xr_wounded.is_wounded(npc) or
+	   xr_wounded.is_heavy_wounded_by_id(npc:id()) or
+	   xr_wounded.is_psy_wounded_by_id(npc:id())
+	then
+		return false
+	end
+	return true
+end
+function disable_trade(npc)
+npc:enable_trade()
+end
+function enable_trade(npc)
+npc:enable_trade()
+end
+function disable_input()
+level.disable_input()
+end
+function enable_input()
+level.enable_input()
+end
+function disable_ui()
+level.show_weapon(false)
+level.hide_indicators_safe()
+local hud = get_hud()
+hud:HideActorMenu()
+hud:HidePdaMenu()
+end
+function enable_ui()
+level.show_weapon(true)
+level.show_indicators()
+end
+--/Проверочные функции
+function smart_terrain_5_8_is_captured(actor,npc)
+	return sgm_functions.is_smart_captured("gar_smart_terrain_5_8","stalker")==true
+end
+--/Временные функции
+function is_deposit_time(actor, npc)
+	return level.get_time_hours()==20 and level.get_time_minutes()<=45
+end
+function is_percent_allow(actor, npc)
+	return level.get_time_days()>=sgm_functions.read_variable("actor_ptimer")
+end
+--/Предметные функции
+function mar_pre_unflash(actor,npc)
+	return db.actor:object("af_glass")
+end
+function mar_convert_unflash(actor,npc)
+	dialogs.relocate_item_section(npc,"af_glass","out")
+        dialogs.relocate_money(npc,1000,"in")
+end
+function esc_wolf_help_squad(first_speaker,second_speaker)
+create_force("esc_wolf_novices1","esc_smart_terrain_2_12")
+create_force("esc_wolf_novices2","esc_smart_terrain_2_12")
+end
+function esc_bogdanov_out_svu(first_speaker,second_speaker)
+      if db.actor:object("wpn_quest_svu") then
+      dialogs.relocate_item_section(second_speaker,"wpn_quest_svu","out")
+      end
+end
+function esc_bogdanov_in_svu(first_speaker,second_speaker)
+      dialogs.relocate_item_section(second_speaker,"wpn_quest_svu","in")
+      dialogs.relocate_item_section(second_speaker,"ammo_7.62x54_7h14","in")
+end
+function esc_give_equipments(first_speaker,second_speaker)
+      dialogs.relocate_item_section(second_speaker,"wpn_equipment_svu","in")
+      dialogs.relocate_item_section(second_speaker,"ammo_7.62x54_7h14","in")
+      dialogs.relocate_item_section(second_speaker,"medkit_army","in")
+      dialogs.relocate_item_section(second_speaker,"medkit_army","in")
+end
+function has_shilov_rukzak(actor,npc)
+	return db.actor:object("shilov_rukzak")
+end
+function give_shilov_rukzak(actor,npc)
+	dialogs.relocate_item_section(npc,"shilov_rukzak","out")
+end
+function gar_digger_reward(first_speaker,second_speaker)
+      dialogs.relocate_item_section(second_speaker,"wpn_silencer_5.45x39","in")
+      dialogs.relocate_item_section(second_speaker,"medkit_army","in")
+      dialogs.relocate_item_section(second_speaker,"medkit_army","in")
+end
+function has_valley_propusk(actor,npc)
+	return db.actor:object("valley_propusk")
+end
+function dont_valley_propusk(actor,npc)
+	return not db.actor:object("valley_propusk")
+end
+function give_valley_propusk(actor,npc)
+	dialogs.relocate_item_section(npc,"valley_propusk","out")
+end
+function gar_accompany_reward(actor,npc)
+        dialogs.relocate_money(npc,1600,"in")
+        dialogs.relocate_item_section(npc,"repair_outfit_box","in")
+        dialogs.relocate_item_section(npc,"skill_book_walther","in")
+end
+function gar_master_outfit_has(actor,npc)
+	return db.actor:object("svoboda_light_outfit_up")
+end
+function gar_master_outfit_give(actor,npc)
+	dialogs.relocate_item_section(npc,"svoboda_light_outfit_up","out")
+end
+function gar_master_outfit_reward(actor,npc)
+        dialogs.relocate_money(npc,2000,"in")
+        dialogs.relocate_item_section(npc,"skill_book_wincheaster1300","in")
+end
+function gar_rescue_digger_reward(actor,npc)
+      dialogs.relocate_money(npc,3000,"in")
+      dialogs.relocate_item_section(npc,"medkit_army","in")
+      dialogs.relocate_item_section(npc,"medkit_army","in")
+      dialogs.relocate_item_section(npc,"skill_book_shotgun","in")
+end
+function val_7_6_deliver_weapons(first_speaker,second_speaker)
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"wpn_rpg7_for_blockpost",2)
+end
+function val_7_6_deliver_unpack(actor,npc)
+      dialogs.relocate_item_section(npc,"wpn_rpg7_for_blockpost","out")
+      dialogs.relocate_item_section(npc,"wpn_rpg7_for_blockpost","out")
+end
+function val_borodin_reward(first_speaker,second_speaker)
+      dialogs.relocate_money(second_speaker,300,"in")
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"medkit_army",1)
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"ammo_5.45x39_hr",2)
+end
+function val_krechetov_equipments(first_speaker,second_speaker)
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"medkit_army",4)
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"ammo_5.56x45_ap",4)
+      dialogs.relocate_item_section_to_actor(first_speaker,second_speaker,"grenade_rgd5",4)
+end
+function val_return_propusk(actor,npc)
+      dialogs.relocate_item_section(npc,"valley_propusk","in")
+end
+function val_af_sizer_has(actor,npc)
+      return db.actor:object("af_quest_sizer")
+end
+function val_af_sizer_give(actor,npc)
+      dialogs.relocate_item_section(npc,"af_quest_sizer","out")
+end
+function val_af_sizer_reward(actor,npc)
+      dialogs.relocate_money(npc,3000,"in")
+      dialogs.relocate_item_section(npc,"af_night_star_breeding_2","in")
+end
+function val_af_dummy_has(actor,npc)
+      return db.actor:object("af_dummy_dummy")
+end
+function val_af_dummy_give(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_dummy","out")
+end
+function val_af_dummy_reward(actor,npc)
+      dialogs.relocate_money(npc,6000,"in")
+end
+function val_check_bus_has(actor,npc)
+      return db.actor:object("device_pda_bus_hostage")
+end
+function val_check_bus_dont(actor,npc)
+      return not db.actor:object("device_pda_bus_hostage")
+end
+function val_check_bus_give(actor,npc)
+      dialogs.relocate_item_section(npc,"device_pda_bus_hostage","out")
+end
+function val_check_bus_reward1(actor,npc)
+      dialogs.relocate_money(npc,1000,"in")
+end
+function val_check_bus_reward2(actor,npc)
+      dialogs.relocate_money(npc,5000,"in")
+      dialogs.relocate_item_section(npc,"wpn_ak78","in")
+end
+function val_freedom_leader_reward(actor,npc)
+   local knife_slot=db.actor:item_in_slot(0)
+   if knife_slot~=nil and knife_slot:section()~=nil then
+      remove_inv_item(db.actor,knife_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_knife_up","in")
+   end
+end
+function agr_dolg_leader_reward(actor,npc)
+   if not has_alife_info("agr_defend_dolg_reward") then
+   local knife_slot=db.actor:item_in_slot(0)
+   if knife_slot~=nil and knife_slot:section()~=nil then
+      remove_inv_item(db.actor,knife_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_knife_up2","in")
+      dialogs.relocate_item_section(npc,"skill_book_val","in")
+      db.actor:give_info_portion("agr_defend_dolg_reward")
+   end
+   end
+end
+function agr_outpost_pda_unpack(actor,npc)
+      dialogs.relocate_item_section(npc,"device_pda_exo_victim1","out")
+      dialogs.relocate_item_section(npc,"device_pda_exo_victim2","out")
+end
+function mil_quest_rpg_has(actor,npc)
+      return db.actor:object("mil_quest_wpn_rpg7")
+end
+function mil_quest_rpg_spawn(actor,npc)
+create("mil_quest_wpn_rpg7",3.503,5.977,-61.462,292865,1449)
+end
+function lim_smart_9_set_allies(actor,npc)
+relation_registry.set_community_relation("monolith",db.actor:character_community(),600)
+end
+--/Прекондукции
+function agr_stalker_commander_1_pre(actor,npc)
+   return sgm_functions.is_smart_captured2("agr_smart_terrain_6_4","stalker")==false
+end 
+function agr_stalker_commander_2_pre(actor,npc)
+   return has_alife_info("agr_smart_terrain_4_2_simulation_task_complete") or sgm_functions.is_smart_captured2("agr_smart_terrain_4_2","stalker")
+end
+function agr_stalker_commander_3_pre(actor,npc)
+   return has_alife_info("agr_smart_terrain_6_4_simulation_task_complete") or sgm_functions.is_smart_captured2("agr_smart_terrain_6_4","stalker")
+end 
+function agr_4_2_is_monsters()
+  return xr_conditions.smart_captured_by_faction(nil,nil,{"agr_smart_terrain_4_2","monster"})
+end
+--/Денежные функции
+function actor_something_deposit(actor, npc)
+        local currert=sgm_functions.read_variable("actor_deposit")
+	return currert>0
+end
+function actor_something_percent(actor, npc)
+        local currert=sgm_functions.read_variable("actor_percent")
+	return currert>0
+end
+function actor_have_percent_money(actor, npc)
+        local currert=sgm_functions.read_variable("actor_capital")
+        local percent=math.floor(currert/10)
+	return db.actor:money()>=percent
+end
+function actor_give_percent_money(actor, npc)
+        local currert=sgm_functions.read_variable("actor_capital")
+        local percent=math.floor(currert/10)
+	dialogs.relocate_money(npc,percent,"out")	
+end
+function actor_less_100_money(actor, npc)
+        local currert=sgm_functions.read_variable("actor_capital")
+	return currert<100
+end
+function actor_more_100_money(actor, npc)
+        local currert=sgm_functions.read_variable("actor_capital")
+	return currert>=100
+end
+function actor_have_100_money(actor, npc)
+	return db.actor:money()>=100
+end
+function actor_give_100_money(actor, npc)
+	dialogs.relocate_money(npc,100,"out")	
+end
+function actor_have_200_money(actor, npc)
+	return db.actor:money()>=200
+end
+function actor_give_200_money(actor, npc)
+	dialogs.relocate_money(npc,200,"out")	
+end
+function actor_have_300_money(actor, npc)
+	return db.actor:money()>=300
+end
+function actor_give_300_money(actor, npc)
+	dialogs.relocate_money(npc,300,"out")	
+end
+function actor_have_400_money(actor, npc)
+	return db.actor:money()>=400
+end
+function actor_give_400_money(actor, npc)
+	dialogs.relocate_money(npc,400,"out")	
+end
+function actor_have_500_money(actor, npc)
+	return db.actor:money()>=500
+end
+function actor_give_500_money(actor, npc)
+	dialogs.relocate_money(npc,500,"out")	
+end
+function actor_dont_500_money(actor, npc)
+	return db.actor:money()<500
+end
+function actor_have_800_money(actor, npc)
+	return db.actor:money()>=800
+end
+function actor_give_800_money(actor, npc)
+	dialogs.relocate_money(npc,800,"out")	
+end
+function actor_have_1000_money(actor, npc)
+	return db.actor:money()>=1000
+end
+function actor_less_1000_money(actor, npc)
+	return db.actor:money()<1000
+end
+function actor_give_1000_money(actor, npc)
+	dialogs.relocate_money(npc,1000,"out")	
+end
+function actor_have_1500_money(actor, npc)
+	return db.actor:money()>=1500
+end
+function actor_less_1500_money(actor, npc)
+	return db.actor:money()<1500
+end
+function actor_give_1500_money(actor, npc)
+	dialogs.relocate_money(npc,1500,"out")	
+end
+function actor_have_2500_money(actor, npc)
+	return db.actor:money()>=2500
+end
+function actor_less_2500_money(actor, npc)
+	return db.actor:money()<2500
+end
+function actor_give_2500_money(actor, npc)
+	dialogs.relocate_money(npc,2500,"out")	
+end
+function actor_have_2000_money(actor, npc)
+	return db.actor:money()>=2000
+end
+function actor_less_2000_money(actor, npc)
+	return db.actor:money()<2000
+end
+function actor_give_2000_money(actor, npc)
+	dialogs.relocate_money(npc,2000,"out")	
+end
+function actor_have_3000_money(actor, npc)
+	return db.actor:money()>=3000
+end
+function actor_less_3000_money(actor, npc)
+	return db.actor:money()<3000
+end
+function actor_give_3000_money(actor, npc)
+	dialogs.relocate_money(npc,3000,"out")	
+end
+function actor_have_4000_money(actor, npc)
+	return db.actor:money()>=4000
+end
+function actor_have_4500_money(actor, npc)
+	return db.actor:money()>=4500
+end
+function actor_less_4500_money(actor, npc)
+	return db.actor:money()<4500
+end
+function actor_give_4500_money(actor, npc)
+	dialogs.relocate_money(npc,4500,"out")	
+end
+function actor_have_5000_money(actor, npc)
+	return db.actor:money()>=5000
+end
+function actor_give_5000_money(actor, npc)
+	dialogs.relocate_money(npc,5000,"out")	
+end
+function actor_have_10000_money(actor, npc)
+	return db.actor:money()>=10000
+end
+function actor_have_something_money(actor, npc)
+	return db.actor:money()>0
+end
+function actor_have_20000_money(actor, npc)
+	return db.actor:money()>=20000
+end
+function actor_give_20000_money(actor, npc)
+	dialogs.relocate_money(npc,20000,"out")	
+end
+--/Выдачи квестов
+function mar_csky_kill_baron(actor,npc)
+add_task("storyline","mar_csky_find_baron","csky")
+end
+function mar_csky_kill_baron_reward(actor,npc)
+treasure_manager.give_treasure("mar_treasure_18")
+end
+function gar_find_master_outfit(actor,npc)
+add_task("storyline","gar_find_master_outfit","stalker")
+end
+function gar_rescue_tunel_novice(actor,npc)
+add_task("storyline","gar_rescue_tunnel_novice","stalker")
+end
+function val_searched_impounded(actor,npc)
+add_task("storyline","val_searched_impounded","freedom")
+end
+function val_find_ashot_dummy(actor,npc)
+add_task("storyline","val_find_ashot_dummy","freedom")
+end
+function val_sos_check_bus(actor,npc)
+add_task("storyline","val_sos_check_bus","freedom")
+end
+function agr_go_to_outpost(actor,npc)
+add_task("storyline","agr_go_to_outpost","dolg")
+end
+function agr_kill_wild_giant(actor,npc)
+add_task("storyline","agr_kill_wild_giant","dolg")
+end
+function yan_kill_tunnel_snorks(actor,npc)
+add_task("storyline","yan_kill_tunnel_snorks","stalker")
+end
+function yan_bring_sample_dnk(actor,npc)
+add_task("storyline","yan_bring_sample_dnk","stalker")
+end
+function mil_hog_find_item(actor,npc)
+add_task("storyline","mil_hog_find_item","killer")
+end
+------------------------
+--/Работа с хранением\--
+------------------------
+function bankir_load_money(first_speaker,second_speaker)
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_money").." "..db.actor:money().." "..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_show_money(first_speaker,second_speaker)
+local currert=sgm_functions.read_variable("actor_capital")
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_counter").." "..currert.." "..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+--/db.actor:give_talk_message2("",game.translate_string("st_bankir_last").." "..last_add_capital.." "..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_10_percent_money(first_speaker,second_speaker)
+local currert=sgm_functions.read_variable("actor_capital")
+local percent=math.floor(currert/10)
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_result").." "..currert.." | 10% = "..percent,"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_20_percent_money(first_speaker,second_speaker)
+local currert=sgm_functions.read_variable("actor_capital")
+local percent=math.floor(currert/20)
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_result").." "..currert.." | 20% = "..percent,"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_set_zero_capital(actor,npc)
+ if sgm_functions.read_variable("actor_capital")==nil then
+    sgm_functions.write_variable("actor_capital",0)
+ end
+end
+function bankir_capital_add_1000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+1000)
+last_add_capital=last_add_capital+1000
+dialogs.relocate_money(npc,1000,"out")
+end
+function bankir_capital_add_2000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+2000)
+last_add_capital=last_add_capital+2000
+dialogs.relocate_money(npc,2000,"out")
+end
+function bankir_capital_add_3000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+3000)
+last_add_capital=last_add_capital+3000
+dialogs.relocate_money(npc,3000,"out")
+end
+function bankir_capital_add_4000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+4000)
+last_add_capital=last_add_capital+4000
+dialogs.relocate_money(npc,4000,"out")
+end
+function bankir_capital_add_5000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+5000)
+last_add_capital=last_add_capital+5000
+dialogs.relocate_money(npc,5000,"out")
+end
+function bankir_capital_add_10000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+10000)
+last_add_capital=last_add_capital+10000
+dialogs.relocate_money(npc,10000,"out")
+end
+function bankir_capital_add_all(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+sgm_functions.write_variable("actor_capital",currert+db.actor:money())
+last_add_capital=last_add_capital+db.actor:money()
+dialogs.relocate_money(npc,db.actor:money(),"out")
+end
+function bankir_capital_has_something(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>0
+end
+function bankir_capital_has_1000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=1000
+end
+function bankir_capital_has_2000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=2000
+end
+function bankir_capital_has_3000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=3000
+end
+function bankir_capital_has_4000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=4000
+end
+function bankir_capital_has_5000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=5000
+end
+function bankir_capital_has_10000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+return currert>=10000
+end
+function bankir_capital_10_convert_1000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,900,"in")
+sgm_functions.write_variable("actor_capital",currert-1000)
+end
+function bankir_capital_10_convert_2000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,1800,"in")
+sgm_functions.write_variable("actor_capital",currert-2000)
+end
+function bankir_capital_10_convert_3000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,2700,"in")
+sgm_functions.write_variable("actor_capital",currert-3000)
+end
+function bankir_capital_10_convert_4000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,3600,"in")
+sgm_functions.write_variable("actor_capital",currert-4000)
+end
+function bankir_capital_10_convert_5000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,4500,"in")
+sgm_functions.write_variable("actor_capital",currert-5000)
+end
+function bankir_capital_10_convert_10000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,9000,"in")
+sgm_functions.write_variable("actor_capital",currert-10000)
+end
+function bankir_capital_10_convert_all(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+local percent=math.floor(currert/10)
+local result=currert-percent
+dialogs.relocate_money(npc,result,"in")
+sgm_functions.write_variable("actor_capital",0)
+end
+function bankir_capital_10_convert_all2(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,currert,"in")
+sgm_functions.write_variable("actor_capital",0)
+end
+function bankir_capital_20_convert_1000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,800,"in")
+sgm_functions.write_variable("actor_capital",currert-1000)
+end
+function bankir_capital_20_convert_2000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,1600,"in")
+sgm_functions.write_variable("actor_capital",currert-2000)
+end
+function bankir_capital_20_convert_3000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,2400,"in")
+sgm_functions.write_variable("actor_capital",currert-3000)
+end
+function bankir_capital_20_convert_4000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,3200,"in")
+sgm_functions.write_variable("actor_capital",currert-4000)
+end
+function bankir_capital_20_convert_5000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,4000,"in")
+sgm_functions.write_variable("actor_capital",currert-5000)
+end
+function bankir_capital_20_convert_10000(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,8000,"in")
+sgm_functions.write_variable("actor_capital",currert-10000)
+end
+function bankir_capital_20_convert_all(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+local percent=math.floor(currert/20)
+local result=currert-percent
+dialogs.relocate_money(npc,result,"in")
+sgm_functions.write_variable("actor_capital",0)
+end
+function bankir_capital_20_convert_all2(actor,npc)
+local currert=sgm_functions.read_variable("actor_capital")
+dialogs.relocate_money(npc,currert,"in")
+sgm_functions.write_variable("actor_capital",0)
+end
+-------------------------
+--/Работа с депозитами\--
+-------------------------
+function bankir_show_deposit(first_speaker,second_speaker)
+local currert=sgm_functions.read_variable("actor_deposit")
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_counter2")..currert..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_10_percent_money(first_speaker,second_speaker)
+local percent=sgm_functions.read_variable("actor_percent")
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_percent")..percent,"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_show_deposit_and_10_percent(first_speaker,second_speaker)
+local currert=sgm_functions.read_variable("actor_deposit")
+local percent=sgm_functions.read_variable("actor_percent")
+local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_counter2").." "..currert.." "..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+db.actor:give_talk_message2("",game.translate_string("st_bankir_percent").." "..percent,"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function bankir_set_zero_deposit(actor,npc)
+ if sgm_functions.read_variable("actor_deposit")==nil then
+    sgm_functions.write_variable("actor_deposit",0)
+ end
+ if sgm_functions.read_variable("actor_percent")==nil then
+    sgm_functions.write_variable("actor_percent",0)
+ end
+ if sgm_functions.read_variable("actor_ptimer")==nil then
+    sgm_functions.write_variable("actor_ptimer",0)
+ end
+ if sgm_functions.read_variable("actor_btimer")==nil then
+    sgm_functions.write_variable("actor_btimer",0)
+ end
+end
+function bankir_deposit_add_1000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+1000)
+dialogs.relocate_money(npc,1000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+200)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_2000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+2000)
+dialogs.relocate_money(npc,2000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+400)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_3000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+3000)
+dialogs.relocate_money(npc,3000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+600)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_4000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+4000)
+dialogs.relocate_money(npc,4000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+800)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_5000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+5000)
+dialogs.relocate_money(npc,5000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+1000)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_10000(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+10000)
+dialogs.relocate_money(npc,10000,"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+2000)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_add_all(actor,npc)
+local percent=math.floor(db.actor:money()/10)+math.floor(db.actor:money()/10)
+local currert=sgm_functions.read_variable("actor_deposit")
+sgm_functions.write_variable("actor_deposit",currert+db.actor:money())
+dialogs.relocate_money(npc,db.actor:money(),"out")
+--/local currert2=sgm_functions.read_variable("actor_percent")
+--/sgm_functions.write_variable("actor_percent",currert2+percent)
+local currert3=sgm_functions.read_variable("actor_ptimer")
+    if currert3==level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+      elseif currert3~=level.get_time_days() then
+      sgm_functions.write_variable("actor_ptimer",level.get_time_days()+1)
+    end
+end
+function bankir_deposit_convert_10_percent(actor,npc)
+local percent=sgm_functions.read_variable("actor_percent")
+dialogs.relocate_money(npc,percent,"in")
+sgm_functions.write_variable("actor_percent",0)
+end
+function bankir_deposit_convert_all(actor,npc)
+local currert=sgm_functions.read_variable("actor_deposit")
+dialogs.relocate_money(npc,currert,"in")
+sgm_functions.write_variable("actor_deposit",0)
+sgm_functions.write_variable("actor_percent",0)
+end
+--/Работа с организацией рейдов
+function mar_vector_pre_on_6_4(actor, npc)
+return db.actor:money()>=300 and sgm_functions.is_smart_captured("mar_smart_terrain_6_4","csky")==false and (has_alife_info("mar_follower_6_4_squad_deaths") or not has_alife_info("mar_follower_6_4_squad_init"))
+end
+function mar_vector_pre_on_6_11(actor, npc)
+return db.actor:money()>=300 and sgm_functions.is_smart_captured("mar_smart_terrain_6_11","csky")==false and (has_alife_info("mar_follower_6_11_squad_deaths") or not has_alife_info("mar_follower_6_11_squad_init"))
+end
+function mar_vector_pre_on_11_3(actor, npc)
+return db.actor:money()>=300 and sgm_functions.is_smart_captured("mar_smart_terrain_11_3","csky")==false and (has_alife_info("mar_follower_11_3_squad_deaths") or not has_alife_info("mar_follower_11_3_squad_init"))
+end
+function mar_vector_pre_on_4_5(actor, npc)
+return db.actor:money()>=300 and sgm_functions.is_smart_captured("mar_smart_terrain_4_5","csky")==false and (has_alife_info("mar_follower_4_5_squad_deaths") or not has_alife_info("mar_follower_4_5_squad_init"))
+end
+function mar_vector_pre_on_3_10(actor, npc)
+return db.actor:money()>=300 and sgm_functions.is_smart_captured("mar_smart_terrain_3_10","csky")==false and (has_alife_info("mar_follower_3_10_squad_deaths") or not has_alife_info("mar_follower_3_10_squad_init"))
+end
+function mar_vector_create_on_6_4(actor, npc)
+create_force("mar_follower_6_4_squad","mar_smart_terrain_5_12")
+dialogs.relocate_money(npc,300,"out")
+end
+function mar_vector_create_on_6_11(actor, npc)
+create_force("mar_follower_6_11_squad","mar_smart_terrain_5_12")
+dialogs.relocate_money(npc,300,"out")
+end
+function mar_vector_create_on_11_3(actor, npc)
+create_force("mar_follower_11_3_squad","mar_smart_terrain_5_12")
+dialogs.relocate_money(npc,300,"out")
+end
+function mar_vector_create_on_4_5(actor, npc)
+create_force("mar_follower_4_5_squad","mar_smart_terrain_5_12")
+dialogs.relocate_money(npc,300,"out")
+end
+function mar_vector_create_on_3_10(actor, npc)
+create_force("mar_follower_3_10_squad","mar_smart_terrain_5_12")
+dialogs.relocate_money(npc,300,"out")
+end
+function esc_vector_pre_on_4_9(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_4_9","stalker")==false and (has_alife_info("esc_follower_4_9_squad_deaths") or not has_alife_info("esc_follower_4_9_squad_init"))
+end
+function esc_vector_pre_on_5_9(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_5_9","stalker")==false and (has_alife_info("esc_follower_5_9_squad_deaths") or not has_alife_info("esc_follower_5_9_squad_init"))
+end
+function esc_vector_pre_on_5_10(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_5_10","stalker")==false and (has_alife_info("esc_follower_5_10_squad_deaths") or not has_alife_info("esc_follower_5_10_squad_init"))
+end
+function esc_vector_pre_on_6_7(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_6_7","stalker")==false and (has_alife_info("esc_follower_6_7_squad_deaths") or not has_alife_info("esc_follower_6_7_squad_init"))
+end
+function esc_vector_pre_on_6_8(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_6_8","stalker")==false and (has_alife_info("esc_follower_6_8_squad_deaths") or not has_alife_info("esc_follower_6_8_squad_init"))
+end
+function esc_vector_pre_on_7_11(actor, npc)
+return sgm_functions.is_smart_captured("esc_smart_terrain_7_11","stalker")==false and (has_alife_info("esc_follower_7_11_squad_deaths") or not has_alife_info("esc_follower_7_11_squad_init"))
+end
+function esc_vector_create_on_4_9(actor, npc)
+create_force("esc_follower_4_9_squad","esc_smart_terrain_5_7")
+end
+function esc_vector_create_on_5_9(actor, npc)
+create_force("esc_follower_5_9_squad","esc_smart_terrain_5_7")
+end
+function esc_vector_create_on_5_10(actor, npc)
+create_force("esc_follower_5_10_squad","esc_smart_terrain_5_7")
+end
+function esc_vector_create_on_6_7(actor, npc)
+create_force("esc_follower_6_7_squad","esc_smart_terrain_5_7")
+end
+function esc_vector_create_on_6_8(actor, npc)
+create_force("esc_follower_6_8_squad","esc_smart_terrain_5_7")
+end
+function esc_vector_create_on_7_11(actor, npc)
+create_force("esc_follower_7_11_squad","esc_smart_terrain_5_7")
+end
+function gar_vector_pre_on_5_5(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("gar_smart_terrain_5_5","stalker")==false and (has_alife_info("gar_follower_5_5_squad_deaths") or not has_alife_info("gar_follower_5_5_squad_init"))
+end
+function gar_vector_pre_on_3_7(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("gar_smart_terrain_3_7","stalker")==false and (has_alife_info("gar_follower_3_7_squad_deaths") or not has_alife_info("gar_follower_3_7_squad_init"))
+end
+function gar_vector_pre_on_3_8(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("gar_smart_terrain_3_8","stalker")==false and (has_alife_info("gar_follower_3_8_squad_deaths") or not has_alife_info("gar_follower_3_8_squad_init"))
+end
+function gar_vector_pre_on_1_5(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("gar_smart_terrain_1_5","stalker")==false and (has_alife_info("gar_follower_1_5_squad_deaths") or not has_alife_info("gar_follower_1_5_squad_init"))
+end
+function gar_vector_pre_on_3_5(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("gar_smart_terrain_3_5","stalker")==false and (has_alife_info("gar_follower_3_5_squad_deaths") or not has_alife_info("gar_follower_3_5_squad_init"))
+end
+function gar_vector_create_on_5_5(actor, npc)
+create_force("gar_follower_5_5_squad","gar_smart_terrain_5_8")
+dialogs.relocate_money(npc,500,"out")
+end
+function gar_vector_create_on_3_7(actor, npc)
+create_force("gar_follower_3_7_squad","gar_smart_terrain_5_8")
+dialogs.relocate_money(npc,500,"out")
+end
+function gar_vector_create_on_3_8(actor, npc)
+create_force("gar_follower_3_8_squad","gar_smart_terrain_5_8")
+dialogs.relocate_money(npc,500,"out")
+end
+function gar_vector_create_on_1_5(actor, npc)
+create_force("gar_follower_1_5_squad","gar_smart_terrain_5_8")
+dialogs.relocate_money(npc,500,"out")
+end
+function gar_vector_create_on_3_5(actor, npc)
+create_force("gar_follower_3_5_squad","gar_smart_terrain_5_8")
+dialogs.relocate_money(npc,500,"out")
+end
+function val_vector_pre_on_9_6(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("val_smart_terrain_9_6","freedom")==false and (has_alife_info("val_follower_9_6_squad_deaths") or not has_alife_info("val_follower_9_6_squad_init"))
+end
+function val_vector_pre_on_8_7(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("val_smart_terrain_8_7","freedom")==false and (has_alife_info("val_follower_8_7_squad_deaths") or not has_alife_info("val_follower_8_7_squad_init"))
+end
+function val_vector_pre_on_1_2(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("val_smart_terrain_1_2","freedom")==false and (has_alife_info("val_follower_1_2_squad_deaths") or not has_alife_info("val_follower_1_2_squad_init"))
+end
+function val_vector_pre_on_4_0(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("val_smart_terrain_4_0","freedom")==false and (has_alife_info("val_follower_4_0_squad_deaths") or not has_alife_info("val_follower_4_0_squad_init"))
+end
+function val_vector_pre_on_3_0(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("val_smart_terrain_3_0","freedom")==false and (has_alife_info("val_follower_3_0_squad_deaths") or not has_alife_info("val_follower_3_0_squad_init"))
+end
+function val_vector_create_on_9_6(actor, npc)
+create_force("val_follower_9_6_squad","val_smart_terrain_7_4")
+dialogs.relocate_money(npc,500,"out")
+end
+function val_vector_create_on_8_7(actor, npc)
+create_force("val_follower_8_7_squad","val_smart_terrain_7_4")
+dialogs.relocate_money(npc,500,"out")
+end
+function val_vector_create_on_1_2(actor, npc)
+create_force("val_follower_1_2_squad","val_smart_terrain_7_4")
+dialogs.relocate_money(npc,500,"out")
+end
+function val_vector_create_on_4_0(actor, npc)
+create_force("val_follower_4_0_squad","val_smart_terrain_7_4")
+dialogs.relocate_money(npc,500,"out")
+end
+function val_vector_create_on_3_0(actor, npc)
+create_force("val_follower_3_0_squad","val_smart_terrain_7_4")
+dialogs.relocate_money(npc,500,"out")
+end
+function agr_vector_pre_on_6_4(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("agr_smart_terrain_6_4","dolg")==false and (has_alife_info("agr_follower_6_4_squad_deaths") or not has_alife_info("agr_follower_6_4_squad_init"))
+end
+function agr_vector_pre_on_5_4(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("agr_smart_terrain_5_4","dolg")==false and (has_alife_info("agr_follower_5_4_squad_deaths") or not has_alife_info("agr_follower_5_4_squad_init"))
+end
+function agr_vector_pre_on_4_6(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("agr_smart_terrain_4_6","dolg")==false and (has_alife_info("agr_follower_4_6_squad_deaths") or not has_alife_info("agr_follower_4_6_squad_init"))
+end
+function agr_vector_pre_on_2_3(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("agr_smart_terrain_2_3","dolg")==false and (has_alife_info("agr_follower_2_3_squad_deaths") or not has_alife_info("agr_follower_2_3_squad_init"))
+end
+function agr_vector_pre_on_2_2(actor, npc)
+return db.actor:money()>=500 and sgm_functions.is_smart_captured("agr_smart_terrain_2_2","dolg")==false and (has_alife_info("agr_follower_2_2_squad_deaths") or not has_alife_info("agr_follower_2_2_squad_init"))
+end
+function agr_vector_create_on_6_4(actor, npc)
+create_force("agr_follower_6_4_squad","agr_smart_terrain_1_6")
+dialogs.relocate_money(npc,500,"out")
+end
+function agr_vector_create_on_5_4(actor, npc)
+create_force("agr_follower_5_4_squad","agr_smart_terrain_1_6")
+dialogs.relocate_money(npc,500,"out")
+end
+function agr_vector_create_on_4_6(actor, npc)
+create_force("agr_follower_4_6_squad","agr_smart_terrain_1_6")
+dialogs.relocate_money(npc,500,"out")
+end
+function agr_vector_create_on_2_3(actor, npc)
+create_force("agr_follower_2_3_squad","agr_smart_terrain_1_6")
+dialogs.relocate_money(npc,500,"out")
+end
+function agr_vector_create_on_2_2(actor, npc)
+create_force("agr_follower_2_2_squad","agr_smart_terrain_1_6")
+dialogs.relocate_money(npc,500,"out")
+end
+--------/Селекция: предметные функции/----------
+function pre_3500_money(actor, npc)
+return db.actor:money()>=3500
+end
+function give_3500_money(actor, npc)
+dialogs.relocate_money(npc,3500,"out")	
+end
+function pre_3000_money(actor, npc)
+return db.actor:money()>=3000
+end
+function give_3000_money(actor, npc)
+dialogs.relocate_money(npc,3000,"out")	
+end
+function pre_6000_money(actor, npc)
+return db.actor:money()>=6000
+end
+function give_6000_money(actor, npc)
+dialogs.relocate_money(npc,6000,"out")	
+end
+function pre_2100_money(actor, npc)
+return db.actor:money()>=2100
+end
+function give_2100_money(actor, npc)
+dialogs.relocate_money(npc,2100,"out")	
+end
+function pre_1800_money(actor, npc)
+return db.actor:money()>=1800
+end
+function give_1800_money(actor, npc)
+dialogs.relocate_money(npc,1800,"out")	
+end
+function pre_3600_money(actor, npc)
+return db.actor:money()>=3600
+end
+function give_3600_money(actor, npc)
+dialogs.relocate_money(npc,3600,"out")	
+end
+function pre_2500_money(actor, npc)
+return db.actor:money()>=2500
+end
+function give_2500_money(actor, npc)
+dialogs.relocate_money(npc,2500,"out")	
+end
+function pre_5500_money(actor, npc)
+return db.actor:money()>=5500
+end
+function give_5500_money(actor, npc)
+dialogs.relocate_money(npc,5500,"out")	
+end
+---
+function breeder_has_1(actor,npc)
+	return db.actor:object("af_medusa")
+end
+function breeder_lost_1(actor,npc)
+	dialogs.relocate_item_section(npc,"af_medusa","out")
+end
+function breeder_recover_1_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_medusa_breeding_1","in")
+end
+function breeder_recover_1_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_medusa_breeding_2","in")
+end
+function breeder_recover_1_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_medusa_breeding_3","in")
+end
+function breeder_has_2(actor,npc)
+	return db.actor:object("af_cristall_flower")
+end
+function breeder_lost_2(actor,npc)
+	dialogs.relocate_item_section(npc,"af_cristall_flower","out")
+end
+function breeder_recover_2_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_flower_breeding_1","in")
+end
+function breeder_recover_2_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_flower_breeding_2","in")
+end
+function breeder_recover_2_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_flower_breeding_3","in")
+end
+function breeder_has_3(actor,npc)
+	return db.actor:object("af_night_star")
+end
+function breeder_lost_3(actor,npc)
+	dialogs.relocate_item_section(npc,"af_night_star","out")
+end
+function breeder_recover_3_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_night_star_breeding_1","in")
+end
+function breeder_recover_3_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_night_star_breeding_2","in")
+end
+function breeder_recover_3_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_night_star_breeding_3","in")
+end
+function breeder_has_4(actor,npc)
+	return db.actor:object("af_vyvert")
+end
+function breeder_lost_4(actor,npc)
+	dialogs.relocate_item_section(npc,"af_vyvert","out")
+end
+function breeder_recover_4_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_vyvert_breeding_1","in")
+end
+function breeder_recover_4_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_vyvert_breeding_2","in")
+end
+function breeder_recover_4_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_vyvert_breeding_3","in")
+end
+function breeder_has_5(actor,npc)
+	return db.actor:object("af_gravi")
+end
+function breeder_lost_5(actor,npc)
+	dialogs.relocate_item_section(npc,"af_gravi","out")
+end
+function breeder_recover_5_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gravi_breeding_1","in")
+end
+function breeder_recover_5_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gravi_breeding_2","in")
+end
+function breeder_recover_5_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gravi_breeding_3","in")
+end
+function breeder_has_6(actor,npc)
+	return db.actor:object("af_gold_fish")
+end
+function breeder_lost_6(actor,npc)
+	dialogs.relocate_item_section(npc,"af_gold_fish","out")
+end
+function breeder_recover_6_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gold_fish_breeding_1","in")
+end
+function breeder_recover_6_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gold_fish_breeding_2","in")
+end
+function breeder_recover_6_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_gold_fish_breeding_3","in")
+end
+function breeder_has_7(actor,npc)
+	return db.actor:object("af_cristall")
+end
+function breeder_lost_7(actor,npc)
+	dialogs.relocate_item_section(npc,"af_cristall","out")
+end
+function breeder_recover_7_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_breeding_1","in")
+end
+function breeder_recover_7_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_breeding_2","in")
+end
+function breeder_recover_7_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_cristall_breeding_3","in")
+end
+function breeder_has_8(actor,npc)
+	return db.actor:object("af_fireball")
+end
+function breeder_lost_8(actor,npc)
+	dialogs.relocate_item_section(npc,"af_fireball","out")
+end
+function breeder_recover_8_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fireball_breeding_1","in")
+end
+function breeder_recover_8_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fireball_breeding_2","in")
+end
+function breeder_recover_8_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fireball_breeding_3","in")
+end
+function breeder_has_9(actor,npc)
+	return db.actor:object("af_dummy_glassbeads")
+end
+function breeder_lost_9(actor,npc)
+	dialogs.relocate_item_section(npc,"af_dummy_glassbeads","out")
+end
+function breeder_recover_9_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_glassbeads_breeding_1","in")
+end
+function breeder_recover_9_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_glassbeads_breeding_2","in")
+end
+function breeder_recover_9_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_glassbeads_breeding_3","in")
+end
+function breeder_has_10(actor,npc)
+	return db.actor:object("af_eye")
+end
+function breeder_lost_10(actor,npc)
+	dialogs.relocate_item_section(npc,"af_eye","out")
+end
+function breeder_recover_10_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_eye_breeding_1","in")
+end
+function breeder_recover_10_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_eye_breeding_2","in")
+end
+function breeder_recover_10_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_eye_breeding_3","in")
+end
+function breeder_has_11(actor,npc)
+	return db.actor:object("af_fire")
+end
+function breeder_lost_11(actor,npc)
+	dialogs.relocate_item_section(npc,"af_fire","out")
+end
+function breeder_recover_11_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fire_breeding_1","in")
+end
+function breeder_recover_11_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fire_breeding_2","in")
+end
+function breeder_recover_11_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fire_breeding_3","in")
+end
+function breeder_has_12(actor,npc)
+	return db.actor:object("af_blood")
+end
+function breeder_lost_12(actor,npc)
+	dialogs.relocate_item_section(npc,"af_blood","out")
+end
+function breeder_recover_12_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_blood_breeding_1","in")
+end
+function breeder_recover_12_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_blood_breeding_2","in")
+end
+function breeder_recover_12_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_blood_breeding_3","in")
+end
+function breeder_has_13(actor,npc)
+	return db.actor:object("af_mincer_meat")
+end
+function breeder_lost_13(actor,npc)
+	dialogs.relocate_item_section(npc,"af_mincer_meat","out")
+end
+function breeder_recover_13_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_mincer_meat_breeding_1","in")
+end
+function breeder_recover_13_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_mincer_meat_breeding_2","in")
+end
+function breeder_recover_13_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_mincer_meat_breeding_3","in")
+end
+function breeder_has_14(actor,npc)
+	return db.actor:object("af_soul")
+end
+function breeder_lost_14(actor,npc)
+	dialogs.relocate_item_section(npc,"af_soul","out")
+end
+function breeder_recover_14_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_soul_breeding_1","in")
+end
+function breeder_recover_14_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_soul_breeding_2","in")
+end
+function breeder_recover_14_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_soul_breeding_3","in")
+end
+function breeder_has_15(actor,npc)
+	return db.actor:object("af_fuzz_kolobok")
+end
+function breeder_lost_15(actor,npc)
+	dialogs.relocate_item_section(npc,"af_fuzz_kolobok","out")
+end
+function breeder_recover_15_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fuzz_kolobok_breeding_1","in")
+end
+function breeder_recover_15_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fuzz_kolobok_breeding_2","in")
+end
+function breeder_recover_15_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_fuzz_kolobok_breeding_3","in")
+end
+function breeder_has_16(actor,npc)
+	return db.actor:object("af_baloon")
+end
+function breeder_lost_16(actor,npc)
+	dialogs.relocate_item_section(npc,"af_baloon","out")
+end
+function breeder_recover_16_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_baloon_breeding_1","in")
+end
+function breeder_recover_16_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_baloon_breeding_2","in")
+end
+function breeder_recover_16_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_baloon_breeding_3","in")
+end
+function breeder_has_17(actor,npc)
+	return db.actor:object("af_glass")
+end
+function breeder_lost_17(actor,npc)
+	dialogs.relocate_item_section(npc,"af_glass","out")
+end
+function breeder_recover_17_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_glass_breeding_1","in")
+end
+function breeder_recover_17_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_glass_breeding_2","in")
+end
+function breeder_recover_17_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_glass_breeding_3","in")
+end
+function breeder_has_18(actor,npc)
+	return db.actor:object("af_electra_sparkler")
+end
+function breeder_lost_18(actor,npc)
+	dialogs.relocate_item_section(npc,"af_electra_sparkler","out")
+end
+function breeder_recover_18_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_sparkler_breeding_1","in")
+end
+function breeder_recover_18_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_sparkler_breeding_2","in")
+end
+function breeder_recover_18_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_sparkler_breeding_3","in")
+end
+function breeder_has_19(actor,npc)
+	return db.actor:object("af_electra_flash")
+end
+function breeder_lost_19(actor,npc)
+	dialogs.relocate_item_section(npc,"af_electra_flash","out")
+end
+function breeder_recover_19_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_flash_breeding_1","in")
+end
+function breeder_recover_19_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_flash_breeding_2","in")
+end
+function breeder_recover_19_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_flash_breeding_3","in")
+end
+function breeder_has_20(actor,npc)
+	return db.actor:object("af_electra_moonlight")
+end
+function breeder_lost_20(actor,npc)
+	dialogs.relocate_item_section(npc,"af_electra_moonlight","out")
+end
+function breeder_recover_20_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_moonlight_breeding_1","in")
+end
+function breeder_recover_20_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_moonlight_breeding_2","in")
+end
+function breeder_recover_20_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_electra_moonlight_breeding_3","in")
+end
+function breeder_has_21(actor,npc)
+	return db.actor:object("af_dummy_battery")
+end
+function breeder_lost_21(actor,npc)
+	dialogs.relocate_item_section(npc,"af_dummy_battery","out")
+end
+function breeder_recover_21_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_battery_breeding_1","in")
+end
+function breeder_recover_21_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_battery_breeding_2","in")
+end
+function breeder_recover_21_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_battery_breeding_3","in")
+end
+function breeder_has_22(actor,npc)
+	return db.actor:object("af_dummy_dummy")
+end
+function breeder_lost_22(actor,npc)
+	dialogs.relocate_item_section(npc,"af_dummy_dummy","out")
+end
+function breeder_recover_22_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_dummy_breeding_1","in")
+end
+function breeder_recover_22_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_dummy_breeding_2","in")
+end
+function breeder_recover_22_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_dummy_dummy_breeding_3","in")
+end
+function breeder_has_23(actor,npc)
+	return db.actor:object("af_ice")
+end
+function breeder_lost_23(actor,npc)
+	dialogs.relocate_item_section(npc,"af_ice","out")
+end
+function breeder_recover_23_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_ice_breeding_1","in")
+end
+function breeder_recover_23_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_ice_breeding_2","in")
+end
+function breeder_recover_23_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_ice_breeding_3","in")
+end
+function breeder_has_24(actor,npc)
+	return db.actor:object("af_monolit")
+end
+function breeder_lost_24(actor,npc)
+	dialogs.relocate_item_section(npc,"af_monolit","out")
+end
+function breeder_recover_24_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_monolit_breeding_1","in")
+end
+function breeder_recover_24_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_monolit_breeding_2","in")
+end
+function breeder_recover_24_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_monolit_breeding_3","in")
+end
+function breeder_has_25(actor,npc)
+	return db.actor:object("af_geliy")
+end
+function breeder_lost_25(actor,npc)
+	dialogs.relocate_item_section(npc,"af_geliy","out")
+end
+function breeder_recover_25_b1(actor,npc)
+      dialogs.relocate_item_section(npc,"af_geliy_breeding_1","in")
+end
+function breeder_recover_25_b2(actor,npc)
+      dialogs.relocate_item_section(npc,"af_geliy_breeding_2","in")
+end
+function breeder_recover_25_b3(actor,npc)
+      dialogs.relocate_item_section(npc,"af_geliy_breeding_3","in")
+end
+--------/Торговля: функции заказа/----------
+local loaded_cost=0
+function write_order(cost)
+  if present_night() then
+  local result=math.floor(cost/6)
+  loaded_cost=result
+  else
+  local result=math.floor(cost/3)
+  loaded_cost=result
+  end
+end
+function custom_order(cost)
+  if present_night() then
+  loaded_cost=math.floor(cost/2)
+  else
+  loaded_cost=cost
+  end
+end
+function gar_s_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_ak78u"))
+end
+function gar_s_trader_w_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_shotgun"))
+end
+function gar_s_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("stalker_outfit"))
+end
+function gar_s_trader_o_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("killer_outfit"))
+end
+function gar_f_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_viper"))
+end
+function gar_f_trader_w_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_l85"))
+end
+function gar_f_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("svoboda_light_outfit"))
+end
+function gar_f_trader_o_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("raincoat_outfit"))
+end
+function val_f_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_spp200"))
+end
+function val_f_trader_w_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_sig550"))
+end
+function val_f_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("svoboda_heavy_outfit"))
+end
+function agr_d_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_ak82"))
+end
+function agr_d_trader_w_2(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_berg"))
+end
+function agr_d_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("dolg_outfit"))
+end
+function agr_s_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_ak74_up2"))
+end
+function agr_s_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("stalker_outfit_up_stalk"))
+end
+function yan_e_trader_w_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("wpn_grom"))
+end
+function yan_e_trader_o_1(first_speaker,second_speaker)
+  custom_order(5125)
+end
+function red_d_trader_w_1(first_speaker,second_speaker)
+  custom_order(3620)
+end
+function red_d_trader_o_1(first_speaker,second_speaker)
+  custom_order(2420)
+end
+function mil_k_trader_w_1(first_speaker,second_speaker)
+  custom_order(5200)
+end
+function mil_k_trader_o_1(first_speaker,second_speaker)
+  write_order(sgm_functions.ReadCost("commander_outfit"))
+end
+function show_order_costs(first_speaker,second_speaker)
+  local task_texture,task_rect = get_texture_info("ui_iconsTotal_found_thing")
+  db.actor:give_talk_message2("",game.translate_string("st_order_cost").." "..loaded_cost.." "..game.translate_string("st_bankir_ru"),"ui_iconsTotal_found_thing","iconed_answer_item")
+end
+function order_has_money(actor, npc)
+	return db.actor:money()>=loaded_cost
+end
+function order_less_money(actor, npc)
+	return db.actor:money()<loaded_cost
+end
+function order_give_money(actor, npc)
+	dialogs.relocate_money(npc,loaded_cost,"out")	
+end
+--------/Квесты на поиск/----------
+local mar_need_items = {
+{"wpn_toz34",900},
+{"wpn_bm16",780}
+}
+function pre_need_items(actor,npc)
+   local level_name=level.name()
+   if level_name=="marsh" then
+        if (not has_alife_info("wpn_toz34")) or (not has_alife_info("wpn_bm16")) then
+           return true
+        end
+   end
+   return false
+end
+function get_need_item(actor,npc)
+   local level_name=level.name()
+   if level_name=="marsh" then
+      for k,v in pairs(mar_need_items) do
+        if not has_alife_info(v[1]) then
+          currert_caption=sgm_functions.ReadCaption(v[1])
+          db.actor:give_talk_message2("","Найти предмет :".." "..game.translate_string(currert_caption),"ui_iconsTotal_found_thing","iconed_answer_item")
+        end
+      end
+   end
+end
+function has_need_item(actor,npc)
+   local level_name=level.name()
+   if level_name=="marsh" then
+      for k,v in pairs(mar_need_items) do
+        if db.actor:object(v[1]) and not has_alife_info(v[1]) then
+          return true
+        end
+      end
+   end
+   return false
+end
+function nohas_need_item(actor,npc)
+   local level_name=level.name()
+   if level_name=="marsh" then
+      for k,v in pairs(mar_need_items) do
+        if not db.actor:object(v[1]) and not has_alife_info(v[1]) then
+          return true
+        end
+      end
+   end
+   return false
+end
+function give_need_item(actor,npc)
+   local level_name=level.name()
+   if level_name=="marsh" then
+      for k,v in pairs(mar_need_items) do
+        if db.actor:object(v[1]) and not has_alife_info(v[1]) then
+          dialogs.relocate_item_section(npc,v[1],"out")
+          dialogs.relocate_money(npc,v[2],"in")
+          db.actor:give_info_portion(v[1])
+        end
+      end
+   end
+end
+--------/Торговля: установка бинокля/----------
+function val_show_binos(first_speaker,second_speaker)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()=="wpn_binoc" then
+   db.actor:give_talk_message2("",game.translate_string("st_binocular_m1"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   db.actor:give_talk_message2("",game.translate_string("st_binocular_m2"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   elseif bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()=="wpn_binocular_m1" then
+   db.actor:give_talk_message2("",game.translate_string("st_binocular_m2"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   db.actor:give_talk_message2("",game.translate_string("st_binocular"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   elseif bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()=="wpn_binocular_m2" then
+   db.actor:give_talk_message2("",game.translate_string("st_binocular_m1"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   db.actor:give_talk_message2("",game.translate_string("st_binocular"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   end
+end
+function agr_show_binos(first_speaker,second_speaker)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()=="wpn_binoc" then
+   db.actor:give_talk_message2("",game.translate_string("st_binocular_m3"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   elseif bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()=="wpn_binocular_m3" then
+   db.actor:give_talk_message2("",game.translate_string("st_binocular"),"ui_iconsTotal_binoculars","iconed_answer_item")
+   end
+end
+function selected_other_bino(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()~="wpn_binoc" then
+   return true
+   end
+   return false
+end
+function dont_installed_m1(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()~="wpn_binocular_m1" then
+   return true
+   end
+   return false
+end
+function dont_installed_m2(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()~="wpn_binocular_m2" then
+   return true
+   end
+   return false
+end
+function dont_installed_m3(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil and bino_slot:section()~="wpn_binocular_m3" then
+   return true
+   end
+   return false
+end
+function install_bino_def(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil then
+      remove_inv_item(db.actor,bino_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_binoc","in")
+   end
+end
+function install_bino_m1(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil then
+      remove_inv_item(db.actor,bino_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_binocular_m1","in")
+   end
+end
+function install_bino_m2(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil then
+      remove_inv_item(db.actor,bino_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_binocular_m2","in")
+   end
+end
+function install_bino_m3(actor,npc)
+   local bino_slot=db.actor:item_in_slot(4)
+   if bino_slot~=nil and bino_slot:section()~=nil then
+      remove_inv_item(db.actor,bino_slot:section())
+      dialogs.relocate_item_section(npc,"wpn_binocular_m3","in")
+   end
+end
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------
+

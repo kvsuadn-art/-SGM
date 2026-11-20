@@ -1,0 +1,197 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------(Система помощи ГГ, в появлении (не)дружественных НПС)------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function update_reinforcement()
+   local level_name=level.name()
+   local actor_pos=db.actor:position()
+----------------------------------------------------------------
+----------------------------'Болота'----------------------------
+----------------------------------------------------------------
+if level_name=="marsh" then
+   local level_name=level.name()
+   local actor_pos = db.actor:position()
+   local mar_village_p0=actor_pos:distance_to_sqr(vector():set(-58.469,1.206,286.588),108669,76)<30
+   local mar_village_p1=actor_pos:distance_to_sqr(vector():set(-52.812,0.416,245.475),112713,192)<15
+   local mar_village_p2=actor_pos:distance_to_sqr(vector():set(-102.329,0.184,328.920),91534,78)<15
+   local mar_village_p3=actor_pos:distance_to_sqr(vector():set(-41.942,0.278,271.818),161110,81)<15
+   if (mar_village_p0 or mar_village_p1 or mar_village_p2 or mar_village_p3) and not has_alife_info("mar_village_explorers") then
+      db.actor:give_info_portion("mar_village_explorers")
+      create("mar_explorer_village1",17.802,1.035,289.947,147504,81)
+      create("mar_explorer_village2",12.559,0.716,272.578,144850,81)
+      create("mar_explorer_village3",15.999,0.935,279.397,146736,81)
+   end
+   local mar_crossing_p0=actor_pos:distance_to_sqr(vector():set(543.218,0.154,437.899),506858,132)<15
+   local mar_crossing_p1=actor_pos:distance_to_sqr(vector():set(596.613,2.986,428.989),521289,134)<15
+   local mar_crossing_p2=actor_pos:distance_to_sqr(vector():set(611.665,2.818,422.551),523814,226)<15
+   local mar_crossing_p3=actor_pos:distance_to_sqr(vector():set(587.137,2.948,415.997),519335,134)<30
+   if (mar_crossing_p0 or mar_crossing_p1 or mar_crossing_p2 or mar_crossing_p3) and not has_alife_info("mar_crossing_explorers") then
+      db.actor:give_info_portion("mar_crossing_explorers")
+      create("mar_explorer_crossing1",641.903,8.729,458.324,527912,226)
+      create("mar_explorer_crossing3",641.903,8.729,458.324,527912,226)
+      create("mar_explorer_crossing2",635.714,8.686,462.506,527171,226)
+      create("mar_explorer_crossing4",635.714,8.686,462.506,527171,226)
+   end
+   local mar_railway_p0=actor_pos:distance_to_sqr(vector():set(150.472,1.589,486.371),225078,89)<40
+   if (mar_railway_p0) and not has_alife_info("mar_railway_explorers") then
+      db.actor:give_info_portion("mar_railway_explorers")
+      create("mar_explorer_railway1",228.686,2.295,503.743,279604,219)
+      create("mar_explorer_railway2",228.686,2.295,503.743,279604,219)
+   end
+   if has_alife_info("mar_capture_pump_station_complete") and has_alife_info("mar_capture_church_complete") and not has_alife_info("mar_csky_force_spawner") then
+      db.actor:give_info_portion("mar_csky_force_spawner")
+      create("mar_csky_force1",470.054,0.813,134.154,455101,96)
+      create("mar_csky_force2",463.614,0.697,140.377,449029,96)
+      create("mar_csky_force3",467.998,0.951,142.518,453743,96)
+      create("mar_csky_force4",471.658,0.989,138.547,457048,96)
+      create("mar_csky_force_leader",463.899,0.371,133.689,449685,96)
+   end
+   if has_alife_info("mar_csky_force_talk_a") and not has_alife_info("mar_spec_reinforcement_spawner") then
+      db.actor:give_info_portion("mar_spec_reinforcement_spawner")
+      create("mar_spec_reinforcement1",392.019,0.727,99.589,397124,95)
+      create("mar_spec_reinforcement2",396.1208,0.759,106.754,400465,95)
+      create("mar_spec_reinforcement3",392.019,0.727,99.589,397124,95)
+      create("mar_spec_reinforcement4",396.1208,0.759,106.754,400465,95)
+   end
+   if has_alife_info("mar_hold_renagade_base_init") and not has_alife_info("mar_recapture_spawner") then
+      db.actor:give_info_portion("mar_recapture_spawner")
+      create("mar_recapture_renagad1",470.136,1.457,355.984,456029,128)
+      create("mar_recapture_renagad2",458.660,1.301,359.548,444760,129)
+      create("mar_recapture_renagad3",470.136,1.457,355.984,456029,128)
+      create("mar_recapture_renagad4",458.660,1.301,359.548,444760,129)
+   end
+   local mar_khutor_p0=actor_pos:distance_to_sqr(vector():set(-232.739,0.6707,386.273),27602,80)<20
+   local mar_khutor_p1=actor_pos:distance_to_sqr(vector():set(-165.1503,0.2883,371.254),61066,198)<20
+   local mar_khutor_p2=actor_pos:distance_to_sqr(vector():set(-172.481,2.463,418.208),56447,80)<20
+   if (mar_khutor_p0 or mar_khutor_p1 or mar_khutor_p2) and not has_alife_info("mar_khutor_explorers") then
+      db.actor:give_info_portion("mar_khutor_explorers")
+      create("mar_explorer_khutor1",-246.442,1.024,346.327,20612,80)
+      create("mar_explorer_khutor2",-246.442,1.024,346.327,20612,80)
+      create("mar_explorer_khutor3",-246.442,1.024,346.327,20612,80)
+      create("mar_explorer_khutor4",-246.442,1.024,346.327,20612,80)
+   end
+end
+----------------------------------------------------------------
+----------------------------'Кордон'----------------------------
+----------------------------------------------------------------
+if level_name=="escape" then
+end
+----------------------------------------------------------------
+----------------------------'Свалка'----------------------------
+----------------------------------------------------------------
+if level_name=="garbage" then
+   --/if sgm_functions.is_squad_no_spawned("gar_capture_reinf3") then
+   --/create_force("gar_capture_reinf3","gar_smart_terrain_3_5")
+   --/end
+end
+----------------------------------------------------------------
+----------------------------'Долина'----------------------------
+----------------------------------------------------------------
+if level_name=="darkvalley" then
+   local val_on_exit_base=actor_pos:distance_to_sqr(vector():set(-45.518,-0.114,-5.543),119432,794)<10
+   if has_alife_info("val_kill_flesh") and (val_on_exit_base) and (not has_alife_info("val_kill_flesh_done")) and (not has_alife_info("val_rpg_support_actor")) then
+       db.actor:give_info_portion("val_rpg_support_actor")
+   end
+end
+----------------------------------------------------------------
+--------------------------'Агропром'----------------------------
+----------------------------------------------------------------
+if level_name=="agroprom" then
+   if not has_alife_info("agr_base_defender1_spawner") then
+       db.actor:give_info_portion("agr_base_defender1_spawner")
+       create("agr_base_defender1",-48.698,-0.004,-4.847,113563,1131)
+   elseif not has_alife_info("agr_base_defender2_spawner") then
+       db.actor:give_info_portion("agr_base_defender2_spawner")
+       create("agr_base_defender2",-50.847,-0.005,0.305,111794,1131)
+   end
+   if sgm_functions.is_smart_captured2("agr_smart_terrain_6_4","stalker")==true and not has_alife_info("agr_tunnel_captured") then
+       db.actor:give_info_portion("agr_tunnel_captured")
+       db.actor:give_info_portion("agr_tunnel_defender1_spawner")
+       db.actor:give_info_portion("agr_tunnel_defender2_spawner")
+       create("agr_tunnel_defender1",172.945,-0.198,45.563,296623,1200)
+       create("agr_tunnel_defender2",172.945,-0.198,45.563,296623,1200)
+   elseif has_alife_info("agr_tunnel_captured") and not has_alife_info("agr_tunnel_defender1_spawner") then
+       db.actor:give_info_portion("agr_tunnel_defender1_spawner")
+       create("agr_tunnel_defender1",236.870,-0.065,61.811,348596,1105)
+   elseif has_alife_info("agr_tunnel_captured") and not has_alife_info("agr_tunnel_defender2_spawner") then
+       db.actor:give_info_portion("agr_tunnel_defender2_spawner")
+       create("agr_tunnel_defender2",240.271,-0.195,56.191,350910,1105)
+   end
+   if sgm_functions.is_smart_captured2("agr_smart_terrain_2_3","stalker")==true and not has_alife_info("agr_coverture_captured") then
+       db.actor:give_info_portion("agr_coverture_captured")
+       db.actor:give_info_portion("agr_coverture_defender1_spawner")
+       db.actor:give_info_portion("agr_coverture_defender2_spawner")
+       create("agr_coverture_defender1",-77.944,1.908,25.335,92278,1130)
+       create("agr_coverture_defender2",-77.944,1.908,25.335,92278,1130)
+   elseif has_alife_info("agr_coverture_captured") and not has_alife_info("agr_coverture_defender1_spawner") then
+       db.actor:give_info_portion("agr_coverture_defender1_spawner")
+       create("agr_coverture_defender1",-127.796,10.833,41.710,58137,1079)
+   elseif has_alife_info("agr_coverture_captured") and not has_alife_info("agr_coverture_defender2_spawner") then
+       db.actor:give_info_portion("agr_coverture_defender2_spawner")
+       create("agr_coverture_defender2",-129.118,10.719,49.156,57690,1128)
+   end
+   if not has_alife_info("agr_going_force_spawner") then
+       db.actor:give_info_portion("agr_going_force_spawner")
+       create("agr_rush_soldier1",222.434,0.310,-5.411,338369,1089)
+       create("agr_rush_soldier2",225.675,0.307,-7.970,340522,1089)
+       create("agr_rush_soldier3",226.053,0.313,-3.262,341057,1089)
+   end
+   if has_alife_info("agr_tunnel_captured") and sim_board.get_sim_board().smarts_by_names["agr_smart_terrain_6_4"].player_name=="bandit" then
+       sim_board.get_sim_board().smarts_by_names["agr_smart_terrain_6_4"].player_name="none"
+   end
+end
+----------------------------------------------------------------
+----------------------------'Янтарь'----------------------------
+----------------------------------------------------------------
+if level_name=="yantar" then
+end
+----------------------------------------------------------------
+------------------------'Заповедник'----------------------------
+----------------------------------------------------------------
+if level_name=="red_forest" then
+   if has_alife_info("red_buy_specforce") and not has_alife_info("red_specforce_spawner") then
+       create("red_reinforcement_rpg",-119.081,0.175,-276.131,7683,1013)
+       --/create("red_reinforcement2_rpg",-122.019,4.718,-257.032,7360,1013)
+       create("red_reinforcement3_sniper",-119.860,0.034,-262.757,7594,1013)
+       db.actor:give_info_portion("red_specforce_spawner")
+   end
+end
+----------------------------------------------------------------
+------------------------'Военные Склады'------------------------
+----------------------------------------------------------------
+if level_name=="military" then
+   local mil_bridge_dist1=actor_pos:distance_to_sqr(vector():set(-5.577,-6.176,64.598),284736,1457)<10
+   local mil_bridge_dist2=actor_pos:distance_to_sqr(vector():set(-9.236,-6.186,63.786),281226,1457)<10
+   if (mil_bridge_dist1 or mil_bridge_dist2) and not has_alife_info("mil_rpg_ambush_allow") then
+       db.actor:give_info_portion("mil_rpg_ambush_allow")
+   end
+end
+----------------------------------------------------------------
+-------------------------'Лиманск'------------------------------
+----------------------------------------------------------------
+if level_name=="limansk" then
+   local lim_stroyka=actor_pos:distance_to_sqr(vector():set(-4.460,8.999,156.402),22522,1554)<10
+   if (lim_stroyka) and (not has_alife_info("lim_stroyka_choose_a")) and (not has_alife_info("lim_stroyka_reinf_spawner")) then
+       create("lim_team_breakout1",-20.384,-4.001,98.539,15160,1551)
+       create("lim_team_breakout2",-33.433,-4.000,149.488,8973,1553)
+       create("lim_team_breakout3",20.165,-2.001,120.002,37190,1553)
+       db.actor:give_info_portion("lim_stroyka_reinf_spawner")
+   end
+end
+----------------------------------------------------------------
+----------------------------'Разное'----------------------------
+----------------------------------------------------------------
+if sgm_functions.is_smart_captured("gar_smart_terrain_3_5","stalker")==true and not has_alife_info("gar_depo_defender1_spawner") then
+       db.actor:give_info_portion("gar_depo_defender1_spawner")
+       create("gar_depo_defender1",-114.721,0.369,15.729,89467,329)
+elseif sgm_functions.is_smart_captured("gar_smart_terrain_3_5","stalker")==true and not has_alife_info("gar_depo_defender2_spawner") then
+       db.actor:give_info_portion("gar_depo_defender2_spawner")
+       create("gar_depo_defender2",-113.768,0.426,5.344,90037,329)
+end
+--============================================================--
+end
+
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

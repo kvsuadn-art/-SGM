@@ -1,0 +1,63 @@
+[logic]
+active = move@squad_init
+
+[move@squad_init]
+target_type        = level_vertex
+dest_number        = 338369
+state_in_center    = guard
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 325341
+meet               = no_meet
+combat_ignore_cond = always
+on_info            = {+agr_actor_inside_3} move@squad_wait
+
+[move@squad_wait]
+target_type        = level_vertex
+dest_number        = 338369
+state_in_center    = guard
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 325341
+on_timer           = 3000|remark@squad_cheer
+meet               = no_meet
+combat_ignore_cond = always
+
+[remark@squad_cheer]
+anim               = press
+snd                = attack_begin
+on_signal          = sound_end|move@squad_ready %+agr_rush_1_commander_ready%
+meet               = no_meet
+combat_ignore_cond = always
+look_vertex        = 325341
+
+[move@squad_ready]
+target_type        = level_vertex
+dest_number        = 338369
+state_in_center    = guard
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 325341
+meet               = no_meet
+combat_ignore_cond = always
+on_info            = {=agr_7_4_squad_ready} move@squad_rush1 %+agr_rush_7_4_start%
+
+[move@squad_rush1]
+target_type        = level_vertex
+dest_number        = 293125
+state_in_center    = guard
+state_for_move     = assault
+miss_center        = false
+meet               = no_meet
+miss_center        = true
+on_signal          = in_center | move@squad_rush2
+
+[move@squad_rush2]
+target_type        = level_vertex
+dest_number        = 169579
+state_in_center    = guard
+state_for_move     = assault
+miss_center        = false
+look_vertex        = 191857
+on_timer           = 60000 | nil
+

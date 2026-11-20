@@ -1,0 +1,351 @@
+;-------------------------------------------------------------------------------------------------------------------------;
+;--------------------------------------------Вещи лидеров:----------------------------------------------------------------;
+;-------------------------------------------------------------------------------------------------------------------------;
+;------------------------------------------===============-----------------------------------------------------;
+;------------------------------------------'Загрузка .LTX'-----------------------------------------------------;
+;------------------------------------------===============-----------------------------------------------------;
+#include "deserve_items\dv_outfits.ltx"
+#include "deserve_items\dv_weapons.ltx"
+#include "deserve_items\dv_others.ltx"
+;---------------------------------------=====================--------------------------------------------------;
+;---------------------------------------'Оригинальные секции'--------------------------------------------------;
+;---------------------------------------=====================--------------------------------------------------;
+[generic_deserve]
+GroupControlSection	= spawn_group
+discovery_dependency    =
+$spawn 			= "devices\treasure_rukzak"
+class			= O_INVBOX
+cform			= skeleton
+visual			= dynamics\devices\dev_rukzak\dev_rukzak.ogf
+script_binding          = bind_physic_object.init
+radius                  = 3
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x		= 26
+inv_grid_y		= 13
+cost			= 1000
+can_take		= true
+inv_weight		= 1.14
+description		= 
+inv_name		= 
+inv_name_short		= 
+[deserve_case]:generic_deserve
+$prefetch 		= 32
+class			= II_ANTIR
+eat_health              = 0
+eat_satiety             = 0
+eat_power               = 0
+eat_radiation           = 0
+wounds_heal_perc        = 0
+eat_portions_num        = 1
+animation_slot		= 4
+cost			= 10000
+inv_weight		= 1.14
+hud                     = wpn_vodka_hud
+can_trade	        = false
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Болота'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+;--------------«Хабар Сифона»------------;
+[dv_renegade_boss_case]:deserve_case,identity_immunities
+$spawn 			= "devices\renegade_boss_case"
+inv_name		= renegade_boss_case_title
+inv_name_short		= renegade_boss_case_title
+description		= renegade_boss_case_descr
+create_deserve_x        = -364.385
+create_deserve_y        = 0.460
+create_deserve_z        = -68.848
+create_deserve_lv       = 1954
+create_deserve_gv       = 156
+deserve_title           = renegade_boss_unpack_title
+deserve_descr           = renegade_boss_unpack_descr
+deserve_items           = raincoat_outfit_sifon,wpn_mp5_sifon,grenade_f1_sifon,4,af_gravi,medkit,5,antirad,3,wild_drink,ammo_9x19_pbp,60
+[dv_renegade_boss_case_unpack]:generic_deserve
+;--------------«Хабар Барона»------------;
+[dv_renegade_baron_case]:deserve_case,identity_immunities
+$spawn 			= "devices\renegade_baron_case"
+inv_name		= renegade_baron_case_title
+inv_name_short		= renegade_baron_case_title
+description		= renegade_baron_case_descr
+create_deserve_x        = -289.634
+create_deserve_y        = 0.863
+create_deserve_z        = 28.983
+create_deserve_lv       = 3991
+create_deserve_gv       = 153
+deserve_title           = renegade_baron_unpack_title
+deserve_descr           = renegade_baron_unpack_descr
+deserve_items           = bandit_outfit_baron,medkit,3,antirad,2,wpn_beretta_baron
+[dv_renegade_baron_case_unpack]:generic_deserve
+;--------------«Хабар Коваленко»------------;
+[dv_csky_kovalenko_case]:deserve_case,identity_immunities
+$spawn 			= "devices\csky_kovalenko_case"
+inv_name		= csky_kovalenko_case_title
+inv_name_short		= csky_kovalenko_case_title
+description		= csky_kovalenko_case_descr
+create_deserve_x        = -181.440
+create_deserve_y        = 2.194
+create_deserve_z        = 536.022
+create_deserve_lv       = 119553
+create_deserve_gv       = 116
+deserve_title           = csky_kovalenko_unpack_title
+deserve_descr           = csky_kovalenko_unpack_descr
+deserve_items           = cs_light_outfit_kovalenko,medkit,2
+[dv_csky_kovalenko_case_unpack]:generic_deserve
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Кордон'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+;--------------«Хабар Свиридова»------------;
+[dv_army_sviridov_case]:deserve_case,identity_immunities
+$spawn 			= "devices\army_sviridov_case"
+inv_name		= army_sviridov_case_title
+inv_name_short		= army_sviridov_case_title
+description		= army_sviridov_case_descr
+create_deserve_x        = 113.717
+create_deserve_y        = 0.208
+create_deserve_z        = -24.837
+create_deserve_lv       = 442724
+create_deserve_gv       = 556
+deserve_title           = army_sviridov_unpack_title
+deserve_descr           = army_sviridov_unpack_descr
+deserve_items           = wpn_ak74_sviridov,ammo_vog-25,5,wpn_addon_grenade_launcher,medkit_army,3,novice_cevlar_outfit_sviridov
+[dv_army_sviridov_case_unpack]:generic_deserve
+;--------------«Хабар водителя Халецкого»------------;
+[dv_army_driver_case]:deserve_case,identity_immunities
+$spawn 			= "devices\army_driver_case"
+inv_name		= army_driver_case_title
+inv_name_short		= army_driver_case_title
+description		= army_driver_case_descr
+create_deserve_x        = 36.752
+create_deserve_y        = 16.197
+create_deserve_z        = 680.151
+create_deserve_lv       = 350298
+create_deserve_gv       = 683
+deserve_title           = army_driver_unpack_title
+deserve_descr           = army_driver_unpack_descr
+deserve_items           = wpn_l85_driver,ammo_m209,2,repair_outfit_box
+[dv_army_driver_case_unpack]:generic_deserve
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Свалка'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+;--------------«Хабар Йоги»------------;
+[dv_bandit_boss_case]:deserve_case,identity_immunities
+$spawn 			= "devices\bandit_boss_case"
+inv_name		= bandit_boss_case_title
+inv_name_short		= bandit_boss_case_title
+description		= bandit_boss_case_descr
+create_deserve_x        = -72.436
+create_deserve_y        = 21.578
+create_deserve_z        = 118.824
+create_deserve_lv       = 85970
+create_deserve_gv       = 327
+deserve_title           = bandit_boss_unpack_title
+deserve_descr           = bandit_boss_unpack_descr
+deserve_items           = raincoat_outfit_yoga,wpn_toz34_yoga,wpn_hpsa_yoga,ammo_12x76_quadro,50,ammo_9x19_spp,60,af_night_star
+[dv_bandit_boss_case_unpack]:generic_deserve
+;--------------«Хабар Звягинцева»------------;
+[dv_freedom_zvagincev_case]:deserve_case,identity_immunities
+$spawn 			= "devices\freedom_zvagincev_case"
+inv_name		= freedom_zvagincev_case_title
+inv_name_short		= freedom_zvagincev_case_title
+description		= freedom_zvagincev_case_descr
+create_deserve_x        = -75.346
+create_deserve_y        = -0.235
+create_deserve_z        = -2.344
+create_deserve_lv       = 113753
+create_deserve_gv       = 330
+deserve_title           = freedom_zvagincev_unpack_title
+deserve_descr           = freedom_zvagincev_unpack_descr
+deserve_items           = svoboda_light_outfit_zvagincev,wpn_addon_scope,ammo_9x19_pbp,60,af_fuzz_kolobok,medkit_army,3
+[dv_freedom_zvagincev_case_unpack]:generic_deserve
+;--------------«Хабар Авоськи»------------;
+[dv_stalker_avoska_case]:deserve_case,identity_immunities
+$spawn 			= "devices\stalker_avoska_case"
+inv_name		= stalker_avoska_case_title
+inv_name_short		= stalker_avoska_case_title
+description		= stalker_avoska_case_descr
+create_deserve_x        = 242.944
+create_deserve_y        = -2.105
+create_deserve_z        = -165.370
+create_deserve_lv       = 342947
+create_deserve_gv       = 449
+deserve_title           = stalker_avoska_unpack_title
+deserve_descr           = stalker_avoska_unpack_descr
+deserve_items           = repair_arms_box,wpn_ak74u,wpn_pm,wpn_walther,wpn_fort,wpn_bm16,novice_outfit,antirad,2
+[dv_stalker_avoska_case_unpack]:generic_deserve
+;--------------«Хабар Напра»------------;
+[dv_stalker_wild_napr_case]:deserve_case,identity_immunities
+$spawn 			= "devices\stalker_wild_napr_case"
+inv_name		= stalker_wild_napr_case_title
+inv_name_short		= stalker_wild_napr_case_title
+description		= stalker_wild_napr_case_descr
+create_deserve_x        = -276.572
+create_deserve_y        = 0.424
+create_deserve_z        = 26.152
+create_deserve_lv       = 1549
+create_deserve_gv       = 295
+deserve_title           = stalker_wild_napr_unpack_title
+deserve_descr           = stalker_wild_napr_unpack_descr
+deserve_items           = personal_rukzak,bio_bandage,25,detector_advanced
+[dv_stalker_wild_napr_case_unpack]:generic_deserve
+;--------------«Хабар Васяна»------------;
+[dv_stalker_messenger_case]:deserve_case,identity_immunities
+$spawn 			= "devices\stalker_messenger_case"
+inv_name		= stalker_messenger_case_title
+inv_name_short		= stalker_messenger_case_title
+description		= stalker_messenger_case_descr
+create_deserve_x        = -168.707
+create_deserve_y        = 4.880
+create_deserve_z        = 8.051
+create_deserve_lv       = 26656
+create_deserve_gv       = 401
+deserve_title           = stalker_messenger_unpack_title
+deserve_descr           = stalker_messenger_unpack_descr
+deserve_items           = af_electra_flash,medkit,2
+[dv_stalker_messenger_case_unpack]:generic_deserve
+;------------------------------------------========-------------------------------------------------------------;
+;------------------------------------------'Долина'-------------------------------------------------------------;
+;------------------------------------------========-------------------------------------------------------------;
+;--------------«Хабар вольного бандита»------------;
+[dv_bandit_killer_case]:deserve_case,identity_immunities
+$spawn 			= "devices\bandit_killer_case"
+inv_name		= bandit_killer_case_title
+inv_name_short		= bandit_killer_case_title
+description		= bandit_killer_case_descr
+create_deserve_x        = 12.431
+create_deserve_y        = -4.894
+create_deserve_z        = -366.941
+create_deserve_lv       = 176038
+create_deserve_gv       = 773
+deserve_title           = bandit_killer_unpack_title
+deserve_descr           = bandit_killer_unpack_descr
+deserve_items           = wild_drink,3,bio_bandage,5,medkit,3,antirad,2,bandit_outfit,wpn_pb,ammo_9x18_hpm,60
+[dv_bandit_killer_case_unpack]:generic_deserve
+;--------------«Хабар Щукина»------------;
+[dv_freedom_comendant_case]:deserve_case,identity_immunities
+$spawn 			= "devices\freedom_comendant_case"
+inv_name		= freedom_comendant_case_title
+inv_name_short		= freedom_comendant_case_title
+description		= freedom_comendant_case_descr
+create_deserve_x        = -3.552
+create_deserve_y        = -3.048
+create_deserve_z        = -31.418
+create_deserve_lv       = 162751
+create_deserve_gv       = 796
+deserve_title           = freedom_comendant_unpack_title
+deserve_descr           = freedom_comendant_unpack_descr
+deserve_items           = killer_outfit_comendant,medkit_elite,bio_bandage,bandage,wpn_addon_scope_susat
+[dv_freedom_comendant_case_unpack]:generic_deserve
+;--------------«Хабар Кадочкина»------------;
+[dv_freedom_kadochkin_case]:deserve_case,identity_immunities
+$spawn 			= "devices\freedom_kadochkin_case"
+inv_name		= freedom_kadochkin_case_title
+inv_name_short		= freedom_kadochkin_case_title
+description		= freedom_kadochkin_case_descr
+create_deserve_x        = 149.928
+create_deserve_y        = 10.311
+create_deserve_z        = -250.471
+create_deserve_lv       = 320980
+create_deserve_gv       = 800
+deserve_title           = freedom_kadochkin_unpack_title
+deserve_descr           = freedom_kadochkin_unpack_descr
+deserve_items           = af_geliy,ammo_7.62x54_7h14,50
+[dv_freedom_kadochkin_case_unpack]:generic_deserve
+;--------------«Хабар Чехова»------------;
+[dv_freedom_boss_case]:deserve_case,identity_immunities
+$spawn 			= "devices\freedom_boss_case"
+inv_name		= freedom_boss_case_title
+inv_name_short		= freedom_boss_case_title
+description		= freedom_boss_case_descr
+create_deserve_x        = 42.453
+create_deserve_y        = 4.542
+create_deserve_z        = -85.762
+create_deserve_lv       = 186784
+create_deserve_gv       = 849
+deserve_title           = freedom_boss_unpack_title
+deserve_descr           = freedom_boss_unpack_descr
+deserve_items           = af_geliy_breeding_3,af_monolit_breeding_2
+[dv_freedom_boss_case_unpack]:generic_deserve
+;-----------------------------------------==========------------------------------------------------------------;
+;-----------------------------------------'Агропром'------------------------------------------------------------;
+;-----------------------------------------==========------------------------------------------------------------;
+;--------------«Хабар Чекана»------------;
+[dv_bandit_checan_case]:deserve_case,identity_immunities
+$spawn 			= "devices\bandit_checan_case"
+inv_name		= bandit_checan_case_title
+inv_name_short		= bandit_checan_case_title
+description		= bandit_checan_case_descr
+create_deserve_x        = -189.782
+create_deserve_y        = 5.177
+create_deserve_z        = 28.634
+create_deserve_lv       = 23536
+create_deserve_gv       = 1161
+deserve_title           = bandit_checan_unpack_title
+deserve_descr           = bandit_checan_unpack_descr
+deserve_items           = wpn_shotgun,medkit_army,7,raincoat_outfit,af_dummy_glassbeads,wpn_silencer_9x39
+[dv_bandit_checan_case_unpack]:generic_deserve
+;--------------«Хабар сержанта Наливайко»------------;
+[dv_dolg_holeman_case]:deserve_case,identity_immunities
+$spawn 			= "devices\dolg_holeman_case"
+inv_name		= dolg_holeman_case_title
+inv_name_short		= dolg_holeman_case_title
+description		= dolg_holeman_case_descr
+create_deserve_x        = 77.009
+create_deserve_y        = 15.065
+create_deserve_z        = 155.731
+create_deserve_lv       = 215375
+create_deserve_gv       = 1120
+deserve_title           = dolg_holeman_unpack_title
+deserve_descr           = dolg_holeman_unpack_descr
+deserve_items           = wpn_commander_pm_holeman,medkit,medkit,medkit,wild_drink,bio_bandage,bio_bandage,bio_bandage
+[dv_dolg_holeman_case_unpack]:generic_deserve
+;-------------------------------------------========------------------------------------------------------------;
+;-------------------------------------------'Долина'------------------------------------------------------------;
+;-------------------------------------------========------------------------------------------------------------;
+;--------------«Хабар Громобоя»------------;
+[dv_army_gromoboy_case]:deserve_case,identity_immunities
+$spawn 			= "devices\army_gromoboy_case"
+inv_name		= army_gromoboy_case_title
+inv_name_short		= army_gromoboy_case_title
+description		= army_gromoboy_case_descr
+create_deserve_x        = 104.315
+create_deserve_y        = -8.604
+create_deserve_z        = 166.292
+create_deserve_lv       = 370013
+create_deserve_gv       = 1368
+deserve_title           = army_gromoboy_unpack_title
+deserve_descr           = army_gromoboy_unpack_descr
+deserve_items           = cev_plastin_3,wpn_heavy_rpg,ammo_og-7b,3,medkit_army,3,af_geliy
+[dv_army_gromoboy_case_unpack]:generic_deserve
+;--------------«Хабар Сарматова»------------;
+[dv_zombied_sarmatov_case]:deserve_case,identity_immunities
+$spawn 			= "devices\zombied_sarmatov_case"
+inv_name		= zombied_sarmatov_case_title
+inv_name_short		= zombied_sarmatov_case_title
+description		= zombied_sarmatov_case_descr
+create_deserve_x        = 118.252
+create_deserve_y        = -11.388
+create_deserve_z        = 155.718
+create_deserve_lv       = 376822
+create_deserve_gv       = 1368
+deserve_title           = zombied_sarmatov_unpack_title
+deserve_descr           = zombied_sarmatov_unpack_descr
+deserve_items           = skill_book_gauss,ammo_gauss,10,personal_rukzak,medkit_elite,2
+[dv_zombied_sarmatov_case_unpack]:generic_deserve
+;-------------------------------------------=========-----------------------------------------------------------;
+;-------------------------------------------'Лиманск'-----------------------------------------------------------;
+;-------------------------------------------=========-----------------------------------------------------------;
+;--------------«Хабар Сивохи»------------;
+[dv_monolith_sivoha_case]:deserve_case,identity_immunities
+$spawn 			= "devices\monolith_sivoha_case"
+inv_name		= monolith_sivoha_case_title
+inv_name_short		= monolith_sivoha_case_title
+description		= monolith_sivoha_case_descr
+create_deserve_x        = 36.277
+create_deserve_y        = 28.540
+create_deserve_z        = 198.735
+create_deserve_lv       = 46122
+create_deserve_gv       = 1536
+deserve_title           = monolith_sivoha_unpack_title
+deserve_descr           = monolith_sivoha_unpack_descr
+deserve_items           = wpn_grom_sivoha,ammo_gauss,10,personal_rukzak,medkit_elite,5
+[dv_monolith_sivoha_case_unpack]:generic_deserve

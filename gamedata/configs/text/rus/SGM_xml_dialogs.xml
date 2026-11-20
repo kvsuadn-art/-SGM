@@ -1,0 +1,3585 @@
+        <!-----------------"Болота"--------------->
+        <string id="mar_csky_patrol_dialog_0">
+		<text>Понял.</text>
+	</string>
+        <string id="mar_specnaz_leader_dialog_0">
+		<text>Да, зона опасная штука.</text>
+	</string>
+        <string id="mar_specnaz_leader_dialog_1">
+		<text>Ты еще здесь!?.. Поспеши, нето ребята погибнут.</text>
+	</string>
+        <string id="mar_specnaz_leader_dialog_2">
+		<text>Спасибо, наёмник, за то что хотя б ребятам частично помог.</text>
+	</string>
+        <string id="mar_specnaz_leader_dialog_3">
+		<text>Спасибо, наёмник, что ребят вернул.</text>
+	</string>
+        <string id="mar_csky_patrol_dialog_1">
+		<text>Спасибо, наёмник, не зря я надеялся.</text>
+	</string>
+        <string id="mar_csky_patrol_dialog_2">
+		<text>Не за что.</text>
+	</string>
+        <string id="mar_csky_patrol_dialog_3">
+		<text>Вот это спасибо! Теперь как по договору, координаты тайника, и Суслову скажу чтобы выдал тебе награду.</text>
+	</string>
+        <string id="mar_csky_patrol_dialog_4">
+		<text>Да.</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_1">
+		<text>Мне нужна работа, есть что на примете?</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_2">
+		<text>Да, есть, одно знатное дельце. Нужно устранить одного ренегата, Бароном кличут, координаты я тебе зброшу. Я бы и сам отправился, но я на дежурстве. Ну как, уберешь ублюдка?</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_3">
+		<text>А польза мне от этого, какая?</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_4">
+		<text>Да есть у меня заначка, на болотах, если поможешь расскажу. Да и Суслов тебе что нибудь даст.</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_5">
+		<text>Ладно, я согласен. Загружай данные..</text>
+	</string>
+        <string id="mar_csky_patrol_jobs_dialog_6">
+		<text>В другой раз.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_0">
+		<text>Приветствую тебя, наёмник, ты вовремя. Мы собираемся штурмовать базу ренегатов, и твоя компания не помешала бы!?</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_1">
+		<text>Да, я с вами.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_2">
+		<text>Отлично. У меня к тебе возникло предложение: Если хочешь чтобы к нам примкнули еще 4 человека, нужно чтоб ты внес плату 500 рублей.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_3">
+		<text>Само собой. Держи.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_4">
+		<text>Нет. Обойдемся без поддержки.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_5">
+		<text>В другой раз.</text>
+	</string>
+        <string id="mar_csky_force_leader_dialog_6">
+		<text>Спасибо. Отряд скоро будет нас поддерживать.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_0">
+		<text>Все! База ренегатов захвачена, надеюсь больше мы их на болоте не увидим.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_1">
+		<text>Да, наёмник, выручил ты ребят моих, за это благодарность тебе. Но расслабляться, пока, скорее рано, нужно выбить ренегатов из дальних хуторов. А не то, сволочи, отобьют ферму.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_2">
+		<text>Я к вашим услугам.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_3">
+		<text>Извените, я пока не могу.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_4">
+		<text>Я так и думал. Теперь приступим к заданию. Первой, и самой важной для нас целью, является контроль над "северным хутором". Второй целью, будет "стоянка под насыпью". Ну и последняя, тоже очень немаловажная точка, это "лодочная станция". Это все, теперь отправляйся.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_5">
+		<text>Отправляюсь.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_6">
+		<text>Все разговоры потом, я отправляюсь.</text>
+	</string>
+        <string id="mar_csky_leader_jobs_dialog_7">
+		<text>Да так, просто зашол.</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_0">
+		<text>Есть работёнка для меня?</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_1">
+		<text>Да. Есть одна работа. Задание серьезное, поэтому потребует огромного мастерства. Слушай что нужно зделать: 1)Встретить наш отряд возле "временного лагеря" 2)Сопроводить отряд на "остров валунов" 3)Доправить отряд к рыбацкому хутору. Потери не допустимы.</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_2">
+		<text>В другой раз.</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_3">
+		<text>Я берусь.</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_4">
+		<text>Отлично, координаты я тебе сейчас передам, а ты поспеши. Отряд долго не протянет. Говорю сразу, все нужно сделать в кротчайшые сроки.</text>
+	</string>
+        <string id="mar_specnaz_leader_jobs_dialog_5">
+		<text>Да, я пошел.</text>
+	</string>
+        <string id="mar_rescue_leader_dialog_0">
+		<text>Приветствуем тебя, наёмник, мы заждались тебя! Выходим с минуты на минуту.</text>
+	</string>
+        <string id="mar_rescue_leader_dialog_1">
+		<text>Отлично.</text>
+	</string>
+        <string id="mar_rescue_leader_dialog_2">
+		<text>По какому плану будем обходить опасные территории?</text>
+	</string>
+        <string id="mar_rescue_leader_dialog_3">
+		<text>Двигаемся по плану "А". Соединяемся.</text>
+	</string>
+        <string id="mar_rescue_leader_dialog_4">
+		<text>Двигаемся по плану "Б". Идем в сторону "деревни".</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 10% от обьема вклада.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Лисом. Здесь, на Болотах, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 10% от общей суммы збережения.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 100 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 200 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 300 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 400 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 500 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% = 1000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю тебе. Получается что 10% будет вот сколько:</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 10% сумму, забирай так.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 20% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_63">
+		<text>Вот, как договаривались 20%, держи.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="mar_csky_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_1">
+		<text>Отряд организован. Через минуту они будут выдвигаться, их место дислокации - "рыбацкий хутор".</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_2">
+		<text>Отлично.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_3">
+		<text>Нет, в другой раз. Вражеские точки пока не обнаружены.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_4">
+		<text>Привет.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_5">
+		<text>Взаимно.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_6">
+		<text>С чем пожаловал, по делу, или просто поболтать?</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_7">
+		<text>Я от Лебедева, нужно организовать спец. отряд.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_8">
+		<text>Понял. Ребят у нас мало, но если очень нужно, могуть выступить. Цена организации 300 рублей. Нужно опредилить пункт назначения.</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_9">
+		<text>"Временный лагерь"</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_10">
+		<text>"Смотровая вышка"</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_11">
+		<text>"Стоянка у грузовика"</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_12">
+		<text>"Руины деревни"</text>
+	</string>
+        <string id="mar_csky_force_leader_squads_dialog_13">
+		<text>"Развилка троп"</text>
+	</string>
+        <!--------------"Кордон"----------------->
+        <string id="esc_wolf_about_reinforcements_dialog_1">
+		<text>Я от Валерьяна. Сейчас будем штурмовать военный блокпост, в одиночку без поддержки нам никак, понимаешь о чем я?</text>
+	</string>
+        <string id="esc_wolf_about_reinforcements_dialog_2">
+		<text>Да не вопрос, брат, ты помог мне, а я взнак благодарности - помогу тебе. Мои ребята в твоем расспоряжении, что прикажешь им делать?</text>
+	</string>
+        <string id="esc_wolf_about_reinforcements_dialog_3">
+		<text>Пускай блокпост штурмуют, вместе с моим отрядом.</text>
+	</string>
+        <string id="esc_wolf_about_reinforcements_dialog_4">
+		<text>Команда принята, ребята уже выполняют...</text>
+	</string>
+        <string id="esc_wolf_about_reinforcements_dialog_5">
+		<text>Спасибо за помощь. Бывай.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Колчаком. Здесь, на Кордоне, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="esc_stalker_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_1">
+		<text>Стоять, проход на базу запрещен. Тебя я здесь раньше не видал, поэтому пройти я тебе не дам. Понял?</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_2">
+		<text>Да. Но только вот по делу я пришол, от Сидоровича.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_3">
+		<text>Я наверное тихо сказал!?..тебе проход запрещен.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_4">
+		<text>Как мне получить ваше признание? Надеюсь если я вам чем-то помогу, то пройти все же выйдет.?</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_5">
+		<text>Ладно, так уж и быть, я вижу ты и в правду от Сидоровича. Если поможешь - сможешь пройти, а нет - тогда проваливай от сюда. Тебе слово!</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_6">
+		<text>Я передумал.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_7">
+		<text>Я соглашаюсь помочь, в обмен на проход.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_8">
+		<text>Отлично! Задание такое: Отправиться на к военному блокпосту, и нейтрализировать полковника Свиридова. Координаты я уже загружаю, а ты отправляйся.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_9">
+		<text>Отправляюсь.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_10">
+		<text>Ты еще здесь?.. Я же сказал отправляйся.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_11">
+		<text>Понял.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_12">
+		<text>Ну что, мочканул Свиридова?</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_13">
+		<text>Да, он готов.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_14">
+		<text>Ого, наёмник, молодец. Не ожидал что справишся, но у тебя вышло, это дело заслуживает уважения. Теперь можешь проходить.</text>
+	</string>
+        <string id="esc_stalker_bogdanov_dialog_15">
+		<text>Спасибо.</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_1">
+		<text>Помощь нужна?</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_2">
+		<text>Да. Твоя помощь нужна. наёмник, как ты знаешь помимо бандитского отродия, для нас представляют опасность и военные. После того как мы захватили АТП, они подняли уши в остро, и немедля занялись организацией поисковой группы. Необходимо раз и навсегда выбить военных из Кордона, а их блокпост взять в свои руки. Как только возьмешся за задание, поговоришь с нашим торговцем, он выдаст тебе все необходимое. И еще, забыл сказать, как будешь с моими ребятами проходить через лагерь одиночек - обязательно загляни туда, Волк сказал что может помочь отрядом добротным, так что смотри.. Ну так что, помогать так помогать!?</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_3">
+		<text>Да, я помогу.</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_4">
+		<text>Нет, слишком большой риск.</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_5">
+		<text>Я от Валерьяна. Пришол за снаряжением.</text>
+	</string>
+        <string id="esc_leader_heavy_job_dialog_6">
+		<text>Я в курсе, вот держи.. Удачи тебе!</text>
+	</string>
+        <string id="esc_bodyguards_dialog_1">
+		<text>Здраствуй, наёмник. Я телохранитель. Мне доводилось охранять даже нашего Валерьяна. Так как наш лидер "Валерьян", тебе доверяет, я бы мог и тебе службу сослужить. Мой тариф не высок, оплачивай мне 1000 рублей, и я стану твоим братом по оружию. Ну что, будешь меня нанимать?</text>
+	</string>
+        <string id="esc_bodyguards_dialog_2">
+		<text>Здраствуй, наёмник. Я телохранитель. Мне доводилось охранять даже "Волка". Я могу сослужить тебе службу. Мой тариф не высок, оплачивай мне 800 рублей, и я стану твоим братом по оружию. Ну что, будешь меня нанимать?</text>
+	</string>
+        <string id="esc_bodyguards_dialog_3">
+		<text>Я согласен, держи.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_4">
+		<text>Мне не нужна твоя помощь.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_5">
+		<text>Что мне нужно делать?</text>
+	</string>
+        <string id="esc_bodyguards_dialog_55">
+		<text>Наёмник, не сейчас, я же тебя охраняю.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_6">
+		<text>Охраняй меня.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_7">
+		<text>Здраствуй, наёмник. Я телохранитель. Мог бы сослужить тебе службу. Мой тариф не высок, оплачивай 800 рублей, и я стану твоим братом по оружию. Ну как?</text>
+	</string>
+        <string id="esc_bodyguards_dialog_8">
+		<text>Не применяй оружие.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_9">
+		<text>Стой здесь.</text>
+	</string>
+        <string id="esc_bodyguards_dialog_9_5">
+		<text>Уходи.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_1">
+		<text>Отряд организован. Надеюсь это укрепит наше положение на Кордоне.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_2">
+		<text>Безусловно.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_3">
+		<text>Нет, в другой раз. Вражеские точки пока не обнаружены.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_4">
+		<text>Нам нужно организовать рейд.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_5">
+		<text>Ясно. Ребята готовы, ждут приказов. Нужно опредилить точку зачистки.</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_6">
+		<text>"Костёр у моста"</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_7">
+		<text>"Элеватор"</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_8">
+		<text>"Автобусная остановка"</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_9">
+		<text>"Привал на склоне"</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_10">
+		<text>"Блокпост под мостом"</text>
+	</string>
+        <string id="esc_leader_vector_squads_dialog_11">
+		<text>"АТП"</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_1">
+		<text>Чем я могу тебе помочь?</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_2">
+		<text>Да ничем вроде. Но если хочешь чем-то помочь, принеси мне мой рюкзак. Я кажется оставил его в лагере одиночек. Ладно, сейчас скину координаты. Берешся?</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_3">
+		<text>Да.</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_4">
+		<text>Нет.</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_5">
+		<text>Я принес твой рюкзак. Держи.</text>
+	</string>
+        <string id="esc_shilov_find_rukzak_dialog_6">
+		<text>Отличная работа, сталкер!</text>
+	</string>
+        <!--------------"Свалка"----------------->
+        <string id="gar_stalker_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Заводилой. Здесь, на Свалке, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="gar_stalker_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="gar_bodyguards_dialog_1">
+		<text>Здраствуй, наёмник. Я телохранитель. Мой тариф не высок, оплачивай мне 800 рублей, и я стану твоим братом по оружию. Ну что, будешь меня нанимать?</text>
+	</string>
+        <string id="gar_bodyguards_dialog_2">
+		<text>Здраствуй, наёмник. Я телохранитель. Мой тариф не высок, оплачивай мне 1000 рублей, и я стану твоим братом по оружию. Ну что, будешь меня нанимать?</text>
+	</string>
+        <string id="gar_bodyguards_dialog_3">
+		<text>Здраствуй, наёмник. Я телохранитель. Мой тариф не высок, оплачивай мне 1500 рублей, и я стану твоим братом по оружию. Ну что, будешь меня нанимать?</text>
+	</string>
+        <string id="gar_bodyguards_dialog_4">
+		<text>Приветствую тебя, наёмник. Я телохранитель. Всего за 1500 рублей - стану твоим братом по оружию. Ну что?</text>
+	</string>
+        <string id="gar_bodyguards_dialog_5">
+		<text>Приветствую тебя, наёмник. Я телохранитель. Всего за 1000 рублей - стану твоим братом по оружию. Ну что?</text>
+	</string>
+        <string id="gar_traders_dialog_1">
+		<text>Чего тебе?</text>
+	</string>
+        <string id="gar_traders_dialog_2">
+		<text>Мне бы поторговать. Есть желание.</text>
+	</string>
+        <string id="gar_traders_dialog_3">
+		<text>Ясненько. Ну тогда дерзай..</text>
+	</string>
+        <string id="gar_traders_dialog_4">
+		<text>Ничего.</text>
+	</string>
+        <string id="gar_traders_dialog_5">
+		<text>Мне ничего не нужно.</text>
+	</string>
+        <string id="gar_traders_dialog_6">
+		<text>Нет, отменять заказ я не буду.</text>
+	</string>
+        <string id="gar_traders_dialog_7">
+		<text>Все! Подойдешь через час, к тому времени доставка будет у меня.</text>
+	</string>
+        <string id="gar_traders_dialog_8">
+		<text>Ясно.</text>
+	</string>
+        <string id="gar_traders_dialog_9">
+		<text>Нельзя, я же тебе говорил, заказ может быть только один.  Для того чтобы снова заказать, тебе прийдется оплатить не большой штрафик в размере 500 рублей.</text>
+	</string>
+        <string id="gar_traders_dialog_10">
+		<text>Ладно, платить так платить, держи.</text>
+	</string>
+        <string id="gar_traders_dialog_11">
+		<text>Последний заказ я сейчас отменю, а ты пока выбирай следующий.</text>
+	</string>
+        <string id="gar_traders_dialog_12">
+		<text>А можно снова оформить заказ?</text>
+	</string>
+        <string id="gar_traders_dialog_13">
+		<text>Слишком дорого.</text>
+	</string>
+        <string id="gar_traders_dialog_14">
+		<text>Я передумал.</text>
+	</string>
+        <string id="gar_traders_dialog_15">
+		<text>Хорошо. Держи.</text>
+	</string>
+        <string id="gar_traders_dialog_16">
+		<text>Прекрасно, заказ оформлен, теперь тебе осталось оплатить доставку, и дело в шляпе.</text>
+	</string>
+        <string id="gar_traders_dialog_17">
+		<text>Не вопрос, на какой товар? Только учти: Активный заказ может быть только один. Ты можешь отменять заказы, но при этом накладываются штрафные санкции.</text>
+	</string>
+        <string id="gar_traders_dialog_18">
+		<text>Хотелось бы оформить заказ на товар.</text>
+	</string>
+        <string id="gar_traders_dialog_19">
+		<text>Понятно. Выбирай тип товара.</text>
+	</string>
+        <string id="gar_traders_dialog_20">
+		<text>Арсенал.</text>
+	</string>
+        <string id="gar_traders_dialog_21">
+		<text>Бронекостюм.</text>
+	</string>
+        <string id="gar_traders_dialog_22">
+		<text>«АКМ-78/2У»</text>
+	</string>
+        <string id="gar_traders_dialog_23">
+		<text>«Двустолка»</text>
+	</string>
+        <string id="gar_traders_dialog_24">
+		<text>«Комбинезон Заря»</text>
+	</string>
+        <string id="gar_traders_dialog_25">
+		<text>«Комбинезон наёмника»</text>
+	</string>
+        <string id="gar_traders_dialog_26">
+		<text>«МП-5 Петушок»</text>
+	</string>
+        <string id="gar_traders_dialog_27">
+		<text>«ИЛ86»</text>
+	</string>
+        <string id="gar_traders_dialog_28">
+		<text>«Комбинезон Ветер свободы»</text>
+	</string>
+        <string id="gar_traders_dialog_29">
+		<text>«Защитный плащ»</text>
+	</string>
+        <string id="gar_traders_dialog_30">
+		<text>«СПП-200»</text>
+	</string>
+        <string id="gar_traders_dialog_31">
+		<text>«СГИ-5к»</text>
+	</string>
+        <string id="gar_traders_dialog_32">
+		<text>«Комбинезон Страж свободы»</text>
+	</string>
+        <string id="gar_traders_dialog_33">
+		<text>«АК-82»</text>
+	</string>
+        <string id="gar_traders_dialog_34">
+		<text>«Немецкий Берг»</text>
+	</string>
+        <string id="gar_traders_dialog_35">
+		<text>«ПС5-М Универсальная защита»</text>
+	</string>
+        <string id="gar_traders_dialog_36">
+		<text>«АКВ-74»</text>
+	</string>
+        <string id="gar_traders_dialog_37">
+		<text>«Комбинезон Хранитель»</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_1">
+		<text>Отлично поработали. Мужик, ты нас просто спас! Вот, держи за труды. И сейчас же спешу тебе сообщить кое-что.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_2">
+		<text>Слушаю тебя.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_3">
+		<text>Я в курсе кого сейчас хочешь разискать, и более того, знаю что Клык отправился в Темную Долину. Могу с увереностью сообщить, о том, что не так давно на входе в Темную Долину, группировкой СВОБОДА был обоснован пропускной пункт. Это значит, что без спец. пропуска тебя конечно же не пропустят.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_4">
+		<text>И как же мне этот пропуск достать.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_5">
+		<text>Как достать пропуск я к сожелению не знаю, но совет могу дать. Есть у меня один старый друг, уже года два как служит в группировке СВОБОДА, недавно получил звания лейтенанта, и был отправлен на Свалку для несения службы. Наверное обладая таким почетным рангом, он мог бы тебе помочь с пропуском. Поговори с ним, он человек хорошый, думаю поможет. Координаты его я тебе дам.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_6">
+		<text>Ну и отлично. Спасибо тебе.</text>
+	</string>
+        <string id="gar_digger_leader_info_dialog_7">
+		<text>Бывай.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_1">
+		<text>Приветствую тебя, сталкер. С чем пожаловал?</text>
+	</string>
+        <string id="gar_barier_commander_dialog_2">
+		<text>Я от Дикого Напра, только что помогал освобождать сталкеров из концлагеря.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_3">
+		<text>Понял, отличная работа. Я так понял ты по делу пришол, раз с Напром не остался, ну отмечать, да?</text>
+	</string>
+        <string id="gar_barier_commander_dialog_4">
+		<text>Да. Мне нужно пройти в Темную Долину, а Напр говорит что там, на входе в Долину, поставили блокпост, и мол так просто они не пропустят.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_5">
+		<text>Было дело. Стоит там блокпост, и никого не пропукают. Для прохода необходим спец. пропуск.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_6">
+		<text>Имеет ли место альтернатива.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_7">
+		<text>Нет, без пропуска тебе не пройти. Ладно, сталкер, так уж и быть, помогу тебе. Свой пропук я тебе конечно не отдам, и его копий у меня нет, но сказать тебе где его можно достать - смогу. Вот тебе координаты поста, в нем ты возможно найдешь что ищешь.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_8">
+		<text>Понял, очень вам благодарен.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_9">
+		<text>Да не за что, сталкер, ты ведь сталкерам помог, я тебя и отблагодарил.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_10">
+		<text>Бывай.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_11">
+		<text>Нопасаран.</text>
+	</string>
+        <string id="gar_barier_commander_dialog_12">
+		<text>Буенос диес.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_1">
+		<text>Отряд организован. Через минуту они будут выдвигаться, их место дислокации - "блокпост-приемник".</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_2">
+		<text>Отлично.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_3">
+		<text>Нет, в другой раз. Вражеские точки пока не обнаружены.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_4">
+		<text>Привет.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_5">
+		<text>Взаимно.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_6">
+		<text>С чем пожаловал, по делу, или просто поболтать?</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_7">
+		<text>Нужна поддержка спец. отрядов</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_8">
+		<text>Понял. Ребят у нас мало, но если очень нужно, могуть выступить. Цена организации 500 рублей. Нужно опредилить пункт назначения.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_9">
+		<text>"Лагерь кладоискателей"</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_10">
+		<text>"Кладбище техники"</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_11">
+		<text>"Стоянка за концлагерем"</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_12">
+		<text>"Баррикады"</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_13">
+		<text>"Депо"</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_14">
+		<text>Могу я чем то помочь?</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_15">
+		<text>Да. Нужно найти мастерский бронекостюм "Ветер Свободы". Примерное местоположение: северный блокпост "СВОБОДЫ".</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_16">
+		<text>Понял. Найду.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_17">
+		<text>В другой раз.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_18">
+		<text>Я принес бронекостюм.</text>
+	</string>
+        <string id="gar_stalker_squads_commander_dialog_19">
+		<text>Спасибо, товарищ. Вот держи, тебе пригодится.</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_1">
+		<text>Похоже тебя покусали твари. Сопроводить тебя к нашим.</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_2">
+		<text>Да, слепые псы покусали немного. Что проведешь меня?</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_3">
+		<text>Да, пошли.</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_4">
+		<text>Нет.</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_5">
+		<text>Отлично. Мы на месте. Ребята окажут тебе помощь.</text>
+	</string>
+        <string id="gar_digger_messanger_accompany_dialog_6">
+		<text>Спасибо что довел меня, теперь я с тобой расплачусь. Держи..</text>
+	</string>
+        <string id="gar_breeder_work_dialog_1">
+		<text>Бывай.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_2">
+		<text>Нет.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_3">
+		<text>Я передумал.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_4">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_5">
+		<text>Я передумал.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_6">
+		<text>Здоров будь, братан! Что спросить хочешь, а?</text>
+	</string>
+        <string id="gar_breeder_work_dialog_7">
+		<text>Расскажи о себе.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_8">
+		<text>Расказываю. Я занимаюсь хим. обработкой артефактов или как говорят местные - селекцией. Звать меня доктор Аполонов, на Свалке я не так давно. Рассказать о селекции по подробнее?</text>
+	</string>
+        <string id="gar_breeder_work_dialog_9">
+		<text>Да.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_10">
+		<text>Селекция - химическая обработка атомов, которая приводит к изменению структуры атома. Селекция происходит очень быстро, где-то в течении 10 секунд, этого достаточно чтобы обьект начал изменяется. Для артефактов в часности можно использовать 3 типа селекции:\n1)Радиационная.\n2)Весовая.\n3)Востановительная.\n Стоимость селекции соответственно - 3500, 3000, 6000 рублей. Любой артефакт может выдержать только одну хим. обработку, иначе - разрушение.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_11">
+		<text>Понял. Очень познавательно.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_12">
+		<text>Можно провести селекцию?</text>
+	</string>
+        <string id="gar_breeder_work_dialog_13">
+		<text>Да. Выбирай артефакт для селекции, и не забывай, что любой артефакт выдерживает селекцию лишь одинажды.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_14">
+		<text>«Медуза»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_15">
+		<text>Артефакт выбран. теперь выбирай тип селекции.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_16">
+		<text>Радиационная. Стоимость 3500.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_17">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 3500 рублей.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_18">
+		<text>Держи.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_19">
+		<text>Отлично. Теперь подожди.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_20">
+		<text>Жду.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_21">
+		<text>Все, селекция окончена. Артефакт успешно изменен, можешь забирать..</text>
+	</string>
+        <string id="gar_breeder_work_dialog_22">
+		<text>Давайте.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_23">
+		<text>Заходи ко мне еще, помогу чем смогу.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_24">
+		<text>Обязательно.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_25">
+		<text>Весовая. Стоимость 3000.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_26">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 3000 рублей.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_27">
+		<text>Востановительная. Стоимость 6000.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_28">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 6000 рублей.</text>
+	</string>
+        <string id="gar_breeder_work_dialog_29">
+		<text>«Каменный цветок»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_30">
+		<text>«Ночная звезда»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_31">
+		<text>«Выверт»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_32">
+		<text>«Грави»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_33">
+		<text>«Золотая рыбка»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_34">
+		<text>«Кристалл»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_35">
+		<text>«Огенный шар»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_36">
+		<text>«Мамины бусы»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_37">
+		<text>«Глаз»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_38">
+		<text>«Пламя»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_39">
+		<text>«Кровь камня»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_40">
+		<text>«Ломоть мяса»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_41">
+		<text>«Душа»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_42">
+		<text>«Колобок»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_43">
+		<text>«Пузырь»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_44">
+		<text>«Светляк»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_45">
+		<text>«Бенгальский огонь»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_46">
+		<text>«Вспышка»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_47">
+		<text>«Лунный свет»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_48">
+		<text>«Батарейка»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_49">
+		<text>«Пустышка»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_50">
+		<text>«Снежинка»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_51">
+		<text>«Монолит»</text>
+	</string>
+        <string id="gar_breeder_work_dialog_52">
+		<text>«Гелий»</text>
+	</string>
+        <string id="gar_tunel_novice_dialog_1">
+		<text>Сталкер.. Да, сталкер. Сразу не разглядел, думал что бандюк идет. Как ты сюда попал, надеюсь бандиты тебя не заметили?</text>
+	</string>
+        <string id="gar_tunel_novice_dialog_2">
+		<text>Вроде нет. Но если мы не поспешим - они окажутся здесь. Нужно сматываться.</text>
+	</string>
+        <string id="gar_tunel_novice_dialog_3">
+		<text>Тогда вперед.</text>
+	</string>
+        <string id="gar_tunel_novice_dialog_4">
+		<text>Вперед.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_1">
+		<text>Друг, прошу, узнай что к чему, иначе мы потеряем еще одного диггера.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_2">
+		<text>Только что получил сиганал SOS. Он исходит из ЖД тунеля. Мне удалось идентифицировать владельца КПК из которого исходил сигнал, и если я не ошибаюсь - сигнал послал один из пропавшых диггеров. Если бы ты смог пробить что к чему, я был бы тебе признателен.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_3">
+		<text>Хорошо, я посмотрю.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_4">
+		<text>Нет. Мне нужно следовать за Клыком.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_5">
+		<text>Задание выполено. Диггер со мной.</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_6">
+		<text>Вот спасибо. Теперь смело можно собирать диггеров, и отправлятся на Кордон. А тебе причетается..</text>
+	</string>
+        <string id="gar_napr_about_help_dialog_7">
+		<text>Удачи.</text>
+	</string>
+        <!--------------"Долина"----------------->
+        <string id="val_freedom_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Спекулянтом. Здесь, в Темной Долине, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_freedom_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_1">
+		<text>Отряд организован. Через минуту они будут выдвигаться.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_2">
+		<text>Отлично.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_3">
+		<text>Нет, в другой раз. Вражеские точки пока не обнаружены.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_4">
+		<text>Привет.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_5">
+		<text>Взаимно.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_6">
+		<text>С чем пожаловал, по делу, или просто поболтать?</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_7">
+		<text>Нужна поддержка спец. отрядов</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_77">
+		<text>Бывай.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_8">
+		<text>Понял. Ребят у нас мало, но если очень нужно, могуть выступить. Цена организации 500 рублей. Нужно опредилить пункт назначения.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_9">
+		<text>"Старый вагончик"</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_10">
+		<text>"Остановка"</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_11">
+		<text>"Холл завода"</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_12">
+		<text>"Стоянка на ферме"</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_13">
+		<text>"Баррикада у моста"</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_14">
+		<text>Командир, помощь нужна?</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_15">
+		<text>Да, наёмник, твоя помощь нам нужна. Только что получил сигнал SOS. Я то сразу бы и отправил кого, проверить что к чему, но на базе карантин, ребят отпускать нельзя, если бы ты мог проверить, было бы отлично.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_16">
+		<text>Хорошо, я возьмусь.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_17">
+		<text>Нет, я отказываюсь.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_18">
+		<text>Я ответил на сигнал SOS.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_19">
+		<text>Ясно. Ну и что там произошло?</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_20">
+		<text>Вообщем засада там была, бандит который стоял за автобусом держал на прицеле свободовца, и в момент когда я подошел близко, бандюк зараза такая - убил нашего.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_21">
+		<text>Вот как получается, бандиты все-таки попали в Темную Долину. Ну а КПК того свободовца ты захватил с собой?</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_22">
+		<text>Да, держи.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_23">
+		<text>Отлично. Задание ты выполнил, теперь вот возьми свою награду.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_24">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_25">
+		<text>Вообщем засада там была, бандит держал на прицеле свободовца, и если бы я подошел близко или бандит бы меня заметил - свободовец мог бы погибнуть, но я не подошел. Мне удалось убрать бандита, и спасти свободовца.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_26">
+		<text>Слушай, наёмник, ты настоящий герой, такое не проходет без достойной награды. На вот, за проделаную работу.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_27">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_freedom_squads_commander_dialog_28">
+		<text>От черт, забыл забрать флешку. Сейчас сгоняю.</text>
+	</string>
+        <string id="val_freedom_medic_dialog_0">
+		<text>Здаров, браток.</text>
+	</string>
+        <string id="val_freedom_medic_dialog_1">
+		<text>Я от Коменданта, за медикаментами и боеприпасами.</text>
+	</string>
+        <string id="val_freedom_medic_dialog_2">
+		<text>Понял. Комендант мне докладывал. Посылочку я собрал, вот она, держи.</text>
+	</string>
+        <string id="val_freedom_medic_dialog_3">
+		<text>Спасибо, ну я побежал.</text>
+	</string>
+        <string id="val_freedom_medic_dialog_4">
+		<text>Как твоё ничего, дружище?</text>
+	</string>
+        <string id="val_freedom_medic_dialog_5">
+		<text>Да отлично.</text>
+	</string>
+        <string id="val_comendant_add_dialog_0">
+		<text>Ну, как дела на форпосту?</text>
+	</string>
+        <string id="val_comendant_add_dialog_1">
+		<text>Я только с форпоста. Вообщем они сказали что позарез нужны медикаменты и патроны. Что мне делать?</text>
+	</string>
+        <string id="val_comendant_add_dialog_2">
+		<text>Усно. Сейчас я свяжусь с Кречетовым, скажу чтобы приготовил все необходимое, а ты пока отправляйся к нему. Как заберешь у него посылку - сразу дуй к ребятам, на форпост.</text>
+	</string>
+        <string id="val_comendant_add_dialog_3">
+		<text>Понял.</text>
+	</string>
+        <string id="val_comendant_add_dialog_4">
+		<text>Я же сказал, дуй к Кречетову!</text>
+	</string>
+        <string id="val_comendant_add_dialog_5">
+		<text>Отвали. С вопросами потом, а сейчас не мешай нам.</text>
+	</string>
+        <string id="val_comendant_add_dialog_6">
+		<text>Я же сказал, отправляйся к на базу, доложи о том что нам нужно снаряжение.</text>
+	</string>
+        <string id="val_comendant_add_dialog_7">
+		<text>Отправляюсь.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_1">
+		<text>Ты от Бородина?</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_2">
+		<text>Да, принес вам два гранатомета.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_3">
+		<text>Отлично. Давай.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_4">
+		<text>Держите.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_5">
+		<text>Спасибо тебе, сталкер.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_6">
+		<text>Да было бы за что.</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_7">
+		<text>Спасибо за помощь!</text>
+	</string>
+        <string id="val_freedom_7_6_commander_dialog_8">
+		<text>Не за что.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_1">
+		<text>Здоров будь, хлопец. Что привело тебя к нам на базу, надеюсь ты к нам с хорошыми намереньями?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_2">
+		<text>Безусловно. Я вообщем по делу пришол.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_3">
+		<text>Выкладывай, что за дела.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_4">
+		<text>Мне нужен сталкер по прозвищу Клык. Слыхал о таком?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_5">
+		<text>О таком не слыхал, но что за сегодня к нам подобные лица заходили - отрицать не буду. Вообщем точно сказать не могу. Я ж ведь не буду у каждого нового - спрашивать его прозвище, да и не в моей это компетенции.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_6">
+		<text>А у кого еще можно спросить о Клыке?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_7">
+		<text>Спросить можно у нашего коменданта - Щукина. Он вообще с кем попало не разговаривает, только со своими. Я бы мог с ним поговорить насчет тебя, а ты в свою очередь - помог бы мне, вот такой рассклад вполне подошел бы. Ну что, рассказывать?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_8">
+		<text>Да, говори.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_9">
+		<text>Нужно доставить два гранатомета на блокпост у элеватора. Вот держи. Как доставишь - вернешься ко мне. Понял?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_10">
+		<text>Да.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_11">
+		<text>Ну как там, отнес то что я просил?</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_12">
+		<text>Да. Уже доставил.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_13">
+		<text>Молодец. За оказаную помощь - вот тебе вознаграждение. Ну и ближе к делу, я договорился насчет тебя, можешь идти к коменданту, он уже ждет.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_14">
+		<text>Спасибо за помощь.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_15">
+		<text>Пока нет.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_16">
+		<text>Иди к коменданту.</text>
+	</string>
+        <string id="val_freedom_guard_leader_dialog_17">
+		<text>Хорошо.</text>
+	</string>
+        <string id="val_return_propusk_dialog_1">
+		<text>Я хотел бы вернуть свой пропуск.</text>
+	</string>
+        <string id="val_return_propusk_dialog_2">
+		<text>В связи с чем?</text>
+	</string>
+        <string id="val_return_propusk_dialog_3">
+		<text>Мне нужно на Свалку.</text>
+	</string>
+        <string id="val_return_propusk_dialog_4">
+		<text>Понятно. Держи свой пропуск.</text>
+	</string>
+        <string id="val_return_propusk_dialog_5">
+		<text>До встречи.</text>
+	</string>
+        <string id="val_breeder_work_dialog_1">
+		<text>Есть ли для меня какая работёнка?</text>
+	</string>
+        <string id="val_breeder_work_dialog_2">
+		<text>Да, но прежде я хотел бы тебя опросить. Я знаю что ты еще не проводил селекции, и возможно даже не знаешь как это, но все же ответь мне: ты хотел бы с моей помощью провести селекцию?</text>
+	</string>
+        <string id="val_breeder_work_dialog_3">
+		<text>Да.</text>
+	</string>
+        <string id="val_breeder_work_dialog_4">
+		<text>Нет.</text>
+	</string>
+        <string id="val_breeder_work_dialog_5">
+		<text>Отлично, ответ принят. Сталкер, не удивляйся моим вопросам, ведь я психолог, и мне часто нужно искать свой подход к людям. Зачем я задал тебе такой вопрос? да потому что я знаю что ты успешно выполнишь мое задание, а твой ответ показал как с тобой нужно расплачиватся.</text>
+	</string>
+        <string id="val_breeder_work_dialog_6">
+		<text>Ясно. Давай ближе к делу.</text>
+	</string>
+        <string id="val_breeder_work_dialog_7">
+		<text>Хорошо. Твоя задача будет заключатся в поиске недавно пропавшего свободовца. По слухам он, этот сталкер, нашол легендарный артефакт "Гиря", и сразу погиб от лучевой болезни, видно артефакт очень радиоктивен. Сдешние сталкеры говорят что видели его в южной части нашей базы, проверь.</text>
+	</string>
+        <string id="val_breeder_work_dialog_8">
+		<text>Хорошо.</text>
+	</string>
+        <string id="val_breeder_work_dialog_9">
+		<text>Я выполнил твое задание, вот все что было у бедняги.</text>
+	</string>
+        <string id="val_breeder_work_dialog_10">
+		<text>Вот это да, сталкеры не врали, он все же нашол этот артефакт. Отлично, наёмник, тебе причетается, вот твоя награда. Спасибо тебе.</text>
+	</string>
+        <string id="val_breeder_work_dialog_11">
+		<text>Вот это да, сталкеры не врали, он все же нашол этот артефакт. Наёмник, ты мне здорово помог, я не могу оставить тебя без достойной награды.. Так как ты мне очень помог, и перед тем как я тебе дал задание, ответил мне что хотел бы провести селекцию, я даю тебе 40% скидку на мои услуги.</text>
+	</string>
+        <string id="val_breeder_work_dialog_12">
+		<text>Бывай.</text>
+	</string>
+        <string id="val_breeder_work_dialog_13">
+		<text>Селекция - химическая обработка атомов, которая приводит к изменению структуры атома. Селекция происходит очень быстро, где-то в течении 10 секунд, этого достаточно чтобы обьект начал изменяется. Для артефактов в часности можно использовать 3 типа селекции:\n1)Радиационная.\n2)Весовая.\n3)Востановительная.\n Стоимость селекции со скидкой соответственно - 2100, 1800, 3600 рублей. Любой артефакт может выдержать только одну хим. обработку, иначе - разрушение.</text>
+	</string>
+        <string id="val_breeder_work_dialog_14">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции со скидкой 2100 (без 3500) рублей.</text>
+	</string>
+        <string id="val_breeder_work_dialog_15">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции со скидкой 1800 (без 3000) рублей.</text>
+	</string>
+        <string id="val_breeder_work_dialog_16">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции со скидкой 3600 (без 6000) рублей.</text>
+	</string>
+        <string id="val_breeder_work_dialog_17">
+		<text>Радиационная. Стоимость 2100.</text>
+	</string>
+        <string id="val_breeder_work_dialog_18">
+		<text>Весовая. Стоимость 1800.</text>
+	</string>
+        <string id="val_breeder_work_dialog_19">
+		<text>Востановительная. Стоимость 3600.</text>
+	</string>
+        <string id="val_breeder_work_dialog_20">
+		<text>Расказываю. Я занимаюсь хим. обработкой артефактов или как говорят местные - селекцией. Кличут меня доктором Мамаевым. Рассказать о селекции по подробнее?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_1">
+		<text>Ашотик, помощь нужна?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_2">
+		<text>Вах, какие люди, помочь говоришь можешь? Есь хочешь помочь, то принеси мне артефактик один, "Пустышкой" зовется, а я в свою очередь отблагодарю тебя скидочкой пристойной. Лады?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_3">
+		<text>Да, Ашотик, помогу тебе.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_4">
+		<text>Нет, Ашотик, скидочка мне не нужна, ты мне лучше деньгами вернешь, понял?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_5">
+		<text>В другой раз, у меня заботы по важнее.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_6">
+		<text>Отлично, дорогой, как артефакт будет у тебя - приходи ко мне.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_7">
+		<text>Ясно.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_8">
+		<text>Не вопрос, деньгами так деньгами.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_9">
+		<text>Ладно, жди меня, я скоро вернусь.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_10">
+		<text>Я по поводу задания.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_11">
+		<text>Насчет какого задания?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_12">
+		<text>Насчет артефакта «Пустышка»</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_13">
+		<text>Ну и что, принес мне артефакт?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_14">
+		<text>Да, держи.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_15">
+		<text>Спасибо, дорогой. Теперь я должен с тобой расплатится. Вообщем у тебя теперь огоромная скидка на все мои товары.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_16">
+		<text>Понял.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_17">
+		<text>Да, держи.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_18">
+		<text>Спасибо, дорогой. Теперь я должен с тобой расплатится. Вот держи, как договаривались, денежная сумма.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_19">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_20">
+		<text>Я отказываюсь от задания.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_21">
+		<text>Ты уверен?</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_22">
+		<text>Да.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_23">
+		<text>Нет.</text>
+	</string>
+        <string id="val_ashot_find_dummy_dialog_24">
+		<text>Еще нет.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_1">
+		<text>Биноклями торгуеш?</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_2">
+		<text>Да, дорогой, все есть у Ашота, подходи не стесняйся. Вот что у меня есть:</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_3">
+		<text>Мне не интересно, слишком маленький выбор.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_4">
+		<text>Хороший выбор, стоимость бинокля: 3000 рублей. Брать будем?</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_5">
+		<text>Нормальный выбор, стоимость бинокля: 2000 рублей. Брать будем?</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_6">
+		<text>Стандартный я тебе и так могу отдать, у меня таких навалом, забирай.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_7">
+		<text>Давай.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_8">
+		<text>Вот, держи.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_9">
+		<text>Спасибо.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_10">
+		<text>Не надо.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_11">
+		<text>Отлично, дорогой, вот твой бинокль.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_12">
+		<text>Благодарю.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_14">
+		<text>Нет.</text>
+	</string>
+        <string id="val_setup_binoculars_dialog_15">
+		<text>Слишком дорого.</text>
+	</string>
+        <!--------------"Агропром"----------------->
+        <string id="agr_dolg_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Лукашыным. Здесь, на Агропроме, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="agr_dolg_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_1">
+		<text>Отряд организован. Через минуту они будут выдвигаться.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_2">
+		<text>Отлично.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_3">
+		<text>Нет, в другой раз. Вражеские точки пока не обнаружены.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_4">
+		<text>Привет.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_5">
+		<text>Взаимно.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_6">
+		<text>С чем пожаловал, по делу, или просто поболтать?</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_7">
+		<text>Можно организовать отряд?</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_77">
+		<text>Бывай.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_8">
+		<text>Да. Ребят у нас мало, но если очень нужно, могуть выступить. Цена организации 500 рублей. Нужно опредилить пункт назначения.</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_9">
+		<text>"Тупик тоннеля"</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_10">
+		<text>"Развилка"</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_11">
+		<text>"Блокпост на дороге"</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_12">
+		<text>"Укрытие из камней"</text>
+	</string>
+        <string id="agr_dolg_squads_commander_dialog_13">
+		<text>"Стоянка у валуна"</text>
+	</string>
+        <string id="agr_breeder_work_dialog_1">
+		<text>Бывай.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_2">
+		<text>Нет.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_3">
+		<text>Я передумал.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_4">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_5">
+		<text>Я передумал.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_6">
+		<text>Здоров будь, братан! Что спросить хочешь, а?</text>
+	</string>
+        <string id="agr_breeder_work_dialog_7">
+		<text>Расскажи о себе.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_8">
+		<text>Расказываю. Я занимаюсь хим. обработкой артефактов или как говорят местные - селекцией. Звать меня доктор Селезнев, на Агропроме я уже давно. Рассказать о селекции по подробнее?</text>
+	</string>
+        <string id="agr_breeder_work_dialog_9">
+		<text>Да.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_10">
+		<text>Селекция - химическая обработка атомов, которая приводит к изменению структуры атома. Селекция происходит очень быстро, где-то в течении 10 секунд, этого достаточно чтобы обьект начал изменяется. Для артефактов в часности можно использовать 3 типа селекции:\n1)Радиационная.\n2)Весовая.\n3)Востановительная.\n Стоимость селекции соответственно - 3500, 3000, 6000 рублей. Любой артефакт может выдержать только одну хим. обработку, иначе - разрушение.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_11">
+		<text>Понял. Очень познавательно.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_12">
+		<text>Можно провести селекцию?</text>
+	</string>
+        <string id="agr_breeder_work_dialog_13">
+		<text>Да. Выбирай артефакт для селекции, и не забывай, что любой артефакт выдерживает селекцию лишь одинажды.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_14">
+		<text>«Медуза»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_15">
+		<text>Артефакт выбран. теперь выбирай тип селекции.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_16">
+		<text>Радиационная. Стоимость 3500.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_17">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 3500 рублей.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_18">
+		<text>Держи.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_19">
+		<text>Отлично. Теперь подожди.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_20">
+		<text>Жду.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_21">
+		<text>Все, селекция окончена. Артефакт успешно изменен, можешь забирать..</text>
+	</string>
+        <string id="agr_breeder_work_dialog_22">
+		<text>Давайте.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_23">
+		<text>Заходи ко мне еще, помогу чем смогу.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_24">
+		<text>Обязательно.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_25">
+		<text>Весовая. Стоимость 3000.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_26">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 3000 рублей.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_27">
+		<text>Востановительная. Стоимость 6000.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_28">
+		<text>Теперь оставляй деньги и артефакт. Напоминаю: стоимость селекции 6000 рублей.</text>
+	</string>
+        <string id="agr_breeder_work_dialog_29">
+		<text>«Каменный цветок»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_30">
+		<text>«Ночная звезда»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_31">
+		<text>«Выверт»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_32">
+		<text>«Грави»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_33">
+		<text>«Золотая рыбка»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_34">
+		<text>«Кристалл»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_35">
+		<text>«Огенный шар»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_36">
+		<text>«Мамины бусы»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_37">
+		<text>«Глаз»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_38">
+		<text>«Пламя»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_39">
+		<text>«Кровь камня»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_40">
+		<text>«Ломоть мяса»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_41">
+		<text>«Душа»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_42">
+		<text>«Колобок»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_43">
+		<text>«Пузырь»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_44">
+		<text>«Светляк»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_45">
+		<text>«Бенгальский огонь»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_46">
+		<text>«Вспышка»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_47">
+		<text>«Лунный свет»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_48">
+		<text>«Батарейка»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_49">
+		<text>«Пустышка»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_50">
+		<text>«Снежинка»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_51">
+		<text>«Монолит»</text>
+	</string>
+        <string id="agr_breeder_work_dialog_52">
+		<text>«Гелий»</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Касимом. Здесь, на Агропроме, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="agr_stalker_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="agr_stalker_leader_about_1">
+		<text>Привет, наёмник. С чем пожаловал?</text>
+	</string>
+        <string id="agr_stalker_leader_about_2">
+		<text>Мне нужно найти вход в подземелье НИИ «Агропром».</text>
+	</string>
+        <string id="agr_stalker_leader_about_3">
+		<text>Та-ак... и куда это мы собрались? Что ты там забыл? Ты разве не в курсе что из этого самого подземелья снорки вылазят, и что каждый день у меня из-за них погибает с десяток парней, неужели в самом деле страх потерял.</text>
+	</string>
+        <string id="agr_stalker_leader_about_4">
+		<text>Страх у меня остался, а вот про мутантов - не знал. Но все же скажи, как мне туда попасть?</text>
+	</string>
+        <string id="agr_stalker_leader_about_5">
+		<text>Извени что напугал тебя, наёмник, от фактов далеко не уйдешь, а насчет того как туда попасть я не в курсе, могу лишь дать тебе совет. Поговори с лидером «Долга», он точно должен знать про подземелье.</text>
+	</string>
+        <string id="agr_stalker_leader_about_6">
+		<text>Спасибо за помощь.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_1">
+		<text>Нет.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_2">
+		<text>Здоров будь, парень. Хотиш заработать?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_3">
+		<text>Наверное, только каким образом?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_4">
+		<text>Работенку могу предложить: час назад пропал сигнал с нашего южного форпоста, ребята просто не отвечали. Я решил отправить одного нашего - проверить что там, но он что-то пока не возвращяется - не нравится мне все это, нужно чтобы кто-то серьезно проверил, да так чтобы тихо было. Сходи, да проверь, что там у них, хорошо?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_5">
+		<text>Да, схожу.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_6">
+		<text>Брат, я же сказал тебе, проверь что на форпосту произошло, а ты тут светишся, скорее!</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_7">
+		<text>Ясно.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_8">
+		<text>Ну что там, уже смотрел?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_9">
+		<text>Да. Ребята твои - погибли. Я когда пришол, увидил двух бандюков в екзоскелетах, наверное их рук дело. Вообщем было не легко, они же в екзиках, да еще и со стволами не хилыми, но я с ними справился.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_10">
+		<text>Плохи дела, раньше бандитюки нас боялись, и близко не подходили, знали что пулю в зад схлопочут, а теперь.. сам видишь. А ребят.. ребят КПК ты принес?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_11">
+		<text>Да, принес КПК, держи.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_12">
+		<text>Спасибо тебе, наёмник, что проверил, да бандюков на тот свет отправил. Я что сказать хочу: если бы я тебя не встретил - отправил бы еще ребят своих, а они бы в одиночку с бандитами не справились. Пока ты ходил на форпост, я приготовил тебе достойное вознаграждение - сходи к Митяю. И еще, я занимаюсь продажей биноклей, могу и тебе помочь, вообщем если что - имей в виду.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_13">
+		<text>Понял.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_14">
+		<text>Привет, наёмник, чем я могу тебе помочь?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_15">
+		<text>Мне нужен бинокль, что ты можешь мне предложить?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_16">
+		<text>Хорошо, вот что у меня есть:</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_17">
+		<text>Мне не интересно.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_18">
+		<text>Хороший выбор, стоимость бинокля: 4500 рублей. Брать будем?</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_19">
+		<text>Нет.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_20">
+		<text>Слишком дорого.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_21">
+		<text>Да.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_22">
+		<text>Отлично, наёмник, вот твой бинокль.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_23">
+		<text>Благодарю.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_24">
+		<text>Стандартный я тебе и так могу отдать, у меня таких навалом, забирай.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_25">
+		<text>Давай.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_26">
+		<text>Вот, держи.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_27">
+		<text>Благодарствую.</text>
+	</string>
+        <string id="agr_dolg_agent_dialog_28">
+		<text>Нет необходимости.</text>
+	</string>
+        <string id="agr_dolg_leader_job_dialog_1">
+		<text>Чем я могу помочь группировке «ДОЛГ»?</text>
+	</string>
+        <string id="agr_dolg_leader_job_dialog_2">
+		<text>Святой вопрос, конечно можешь, такие ребята как ты - нужны всегда. Зделай вот что: проучи одного псевдо-гиганта, который досаждает нашему блокпосту на дороге. Награду я тебе обеспечю, а ты - разберись с этим нарушителем порядка.</text>
+	</string>
+        <string id="agr_dolg_leader_job_dialog_3">
+		<text>Не вопрос, будет зделано.</text>
+	</string>
+        <string id="agr_dolg_leader_job_dialog_4">
+		<text>Не сейчас.</text>
+	</string>
+        <!-----------------"Янтарь"--------------->
+        <string id="yan_breeder_work_dialog_1">
+		<text>До встречи.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_2">
+		<text>Нет.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_3">
+		<text>Я передумал.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_4">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_5">
+		<text>Я передумал.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_6">
+		<text>А вы эксперименты проводите?</text>
+	</string>
+        <string id="yan_breeder_work_dialog_7">
+		<text>Да, уважаемый, проводим. А что именно вас интерисует?</text>
+	</string>
+        <string id="yan_breeder_work_dialog_8">
+		<text>Ничего.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_9">
+		<text>Да.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_10">
+		<text>Селекция - химическая обработка атомов, которая приводит к изменению структуры атома. Селекция происходит очень быстро, где-то в течении 10 секунд, этого достаточно чтобы обьект начал изменяется. Для артефактов в часности можно использовать 3 типа селекции:\n1)Радиационная.\n2)Весовая.\n3)Востановительная.\n Стоимость селекции соответственно - 3000, 2500, 5500 рублей. Любой артефакт может выдержать только одну хим. обработку, иначе - разрушение.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_11">
+		<text>Понял. Очень познавательно.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_12">
+		<text>Селекция.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_13">
+		<text>Хорошо. Выбирайте артефакт для селекции, и не забывайте, любой артефакт выдерживает селекцию лишь одинажды.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_14">
+		<text>«Медуза»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_15">
+		<text>Артефакт выбран. теперь выбирайте тип селекции.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_16">
+		<text>Радиационная. Стоимость 3000.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_17">
+		<text>Теперь оставляйте деньги и артефакт. Напоминаю: стоимость селекции 3000 рублей.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_18">
+		<text>Держи.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_19">
+		<text>Отлично. Подождите пожалуйста.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_20">
+		<text>Жду.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_21">
+		<text>Все, селекция окончена. Артефакт успешно изменен, можете забирать..</text>
+	</string>
+        <string id="yan_breeder_work_dialog_22">
+		<text>Давайте.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_23">
+		<text>Заходи ко мне еще, помогу чем смогу.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_24">
+		<text>Обязательно.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_25">
+		<text>Весовая. Стоимость 2500.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_26">
+		<text>Теперь оставляйте деньги и артефакт. Напоминаю: стоимость селекции 2500 рублей.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_27">
+		<text>Востановительная. Стоимость 5500.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_28">
+		<text>Теперь оставляйте деньги и артефакт. Напоминаю: стоимость селекции 5500 рублей.</text>
+	</string>
+        <string id="yan_breeder_work_dialog_29">
+		<text>«Каменный цветок»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_30">
+		<text>«Ночная звезда»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_31">
+		<text>«Выверт»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_32">
+		<text>«Грави»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_33">
+		<text>«Золотая рыбка»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_34">
+		<text>«Кристалл»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_35">
+		<text>«Огенный шар»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_36">
+		<text>«Мамины бусы»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_37">
+		<text>«Глаз»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_38">
+		<text>«Пламя»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_39">
+		<text>«Кровь камня»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_40">
+		<text>«Ломоть мяса»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_41">
+		<text>«Душа»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_42">
+		<text>«Колобок»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_43">
+		<text>«Пузырь»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_44">
+		<text>«Светляк»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_45">
+		<text>«Бенгальский огонь»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_46">
+		<text>«Вспышка»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_47">
+		<text>«Лунный свет»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_48">
+		<text>«Батарейка»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_49">
+		<text>«Пустышка»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_50">
+		<text>«Снежинка»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_51">
+		<text>«Монолит»</text>
+	</string>
+        <string id="yan_breeder_work_dialog_52">
+		<text>«Гелий»</text>
+	</string>
+        <string id="yan_traders_dialog_1">
+		<text>Что вам нужно?</text>
+	</string>
+        <string id="yan_traders_dialog_2">
+		<text>Мне бы поторговать. Есть желание.</text>
+	</string>
+        <string id="yan_traders_dialog_3">
+		<text>Ясненько. Ну тогда дерзайте..</text>
+	</string>
+        <string id="yan_traders_dialog_4">
+		<text>Ничего.</text>
+	</string>
+        <string id="yan_traders_dialog_5">
+		<text>Мне ничего не нужно.</text>
+	</string>
+        <string id="yan_traders_dialog_6">
+		<text>Нет, отменять заказ я не буду.</text>
+	</string>
+        <string id="yan_traders_dialog_7">
+		<text>Все! Подойдете через час, к тому времени доставка будет у меня.</text>
+	</string>
+        <string id="yan_traders_dialog_8">
+		<text>Ясно.</text>
+	</string>
+        <string id="yan_traders_dialog_9">
+		<text>Нельзя, я же вам говорил, заказ может быть только один.  Для того чтобы снова заказать, вам прийдется оплатить не большой штрафик в размере 500 рублей.</text>
+	</string>
+        <string id="yan_traders_dialog_10">
+		<text>Ладно, платить так платить, держите.</text>
+	</string>
+        <string id="yan_traders_dialog_11">
+		<text>Последний заказ я сейчас отменю, а вы пока выбирайте следующий.</text>
+	</string>
+        <string id="yan_traders_dialog_12">
+		<text>А можно снова оформить заказ?</text>
+	</string>
+        <string id="yan_traders_dialog_13">
+		<text>Слишком дорого.</text>
+	</string>
+        <string id="yan_traders_dialog_14">
+		<text>Я передумал.</text>
+	</string>
+        <string id="yan_traders_dialog_15">
+		<text>Хорошо. Держите.</text>
+	</string>
+        <string id="yan_traders_dialog_16">
+		<text>Прекрасно, заказ оформлен, теперь вам осталось оплатить доставку, и дело зделано.</text>
+	</string>
+        <string id="yan_traders_dialog_17">
+		<text>Не вопрос, на какой товар? Только учти: Активный заказ может быть только один. Ты можешь отменять заказы, но при этом накладываются штрафные санкции.</text>
+	</string>
+        <string id="yan_traders_dialog_18">
+		<text>Хотелось бы оформить заказ на товар.</text>
+	</string>
+        <string id="yan_traders_dialog_19">
+		<text>Понятно. Выбирайте тип товара.</text>
+	</string>
+        <string id="yan_traders_dialog_20">
+		<text>Арсенал.</text>
+	</string>
+        <string id="yan_traders_dialog_21">
+		<text>Бронекостюм.</text>
+	</string>
+        <string id="yan_traders_dialog_22">
+		<text>«Гром Волнорез»</text>
+	</string>
+        <string id="yan_traders_dialog_23">
+		<text>«Защитный скафандр»</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_3">
+		<text>Отлично, теперь ваш сберегательный капитал составляет:</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_5">
+		<text>Спасибо вам. Приходите еще.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 10% от обьема вклада.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_18">
+		<text>Сколько будете оставлять?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_26">
+		<text>Здраствуйте, наёмник. Что вы хотели?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_27">
+		<text>Я по поводу ваших услуг.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_28">
+		<text>Что именно вы хотите, положить или забрать?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_32">
+		<text>Ну тогда сколько намереваетесь забрать? На вашем счету:</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 100 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 200 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 300 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 400 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 500 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% = 1000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 10% от суммы сбора, а остаток возвращяю вам. Получается что 10% будет вот сколько:</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можете не платить мне 10% сумму, забирайте так.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_44">
+		<text>Прекрасно, вы выбираете депозит. Напомню вам, что когда вы кладете на депозитный счет, ваши деньги передаются в мое распоряжение, и забрать вы их в любое время не можете. Забирать деньги можно только с 20:00 и до 20:45. После того как вы положете на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 20% сумма, которую вы можете забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_48">
+		<text>Ваш депозит успешно пополнен. Теперь приходите с 20:00 до 20:45, и забирайте свой процент.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_61">
+		<text>Что именно будете забирать, проценты или вклад?</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_63">
+		<text>Вот, как договаривались 20%, держите.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_66">
+		<text>Вот, здесь все что вы оставляли, держите.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="yan_ecolog_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_1">
+		<text>Чем я могу вам помочь?</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_2">
+		<text>Есть одно задание. Наёмник, появилась информация о новом виде мутации, я назвал его "Лейкозным". Он проявляется очень просто, заразившийся сталкер начинает уталять жажду с помощью крови. Для того чтобы досконально изучить тип мутации, мне необходим образец ДНК, но его у меня нет. Если бы вы могли мне его принести, я бы вас хорошо отблагодарил.?</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_3">
+		<text>Я пока не готов.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_4">
+		<text>Хорошо, я вам помогу.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_5">
+		<text>Вот вам колба, заполните её кровью мутанта.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_6">
+		<text>Понял. Я пошел.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_7">
+		<text>Я принес образец ДНК.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_8">
+		<text>О, хорошие новости, огромное вам спасибо.</text>
+	</string>
+        <string id="yan_sample_dnk_task_dialog_9">
+		<text>Не за что.</text>
+	</string>
+        <!-----------------"Заповедник"--------------->
+        <string id="red_dolg_bankir_dialog_1">
+		<text>Нет, в другой раз.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_2">
+		<text>У меня мало денег, в другой раз.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_3">
+		<text>Отлично, теперь твой сберегательный капитал составляет:</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_4">
+		<text>Я передумал.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_5">
+		<text>Спасибо тебе. Приходи еще.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_6">
+		<text>Обязательно.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_7">
+		<text>А я и не ухожу.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_8">
+		<text>Спасибо за услуги.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_9">
+		<text>Не за что! наёмник, не забывай: Для того чтобы забрать свое сбережение, необходимо оплатить 20% от обьема вклада.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_10">
+		<text>Само собой, до встречи.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_11">
+		<text>А можно я еще оставлю?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_12">
+		<text>Да не вопрос, оставляй.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_13">
+		<text>Да.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_14">
+		<text>Здраствуй, наёмник. Я местный сберегатель, кличут меня Кнутом. Здесь, в Рыжем Лесу, практически каждый сталкер пользуется моими услугами. Сталкеры оставляют у меня свои збережения, а потом когда захотят - забирают их. За свои услуги я беру всего 20% от общей суммы збережения.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_15">
+		<text>О, мне пригодились бы твои услуги.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_16">
+		<text>Вот и прекрасно, можешь прямо сейчас оставить свои деньги. А уж за ними прослежу.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_17">
+		<text>Да, я бы хотел оставить парочку тисяч.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_18">
+		<text>Сколько будешь оставлять?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_19">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_20">
+		<text>• 1000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_21">
+		<text>• 2000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_22">
+		<text>• 3000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_23">
+		<text>• 4000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_24">
+		<text>• 5000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_25">
+		<text>• 10000 р.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_26">
+		<text>Здраствуй, наёмник. Говори, зачем пришол!?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_27">
+		<text>Я по поводу твоих услуг.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_28">
+		<text>Что именно ты хочешь, положить или забрать?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_29">
+		<text>Положить.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_30">
+		<text>Ничего.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_31">
+		<text>Забрать.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_32">
+		<text>Ну тогда сколько намереваешься забрать? На твоем счету:</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_33">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 200 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_34">
+		<text>Понял. Отбирай свою долю, и давай мое.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_35">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 400 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_36">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 600 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_37">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 800 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_38">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 1000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_39">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% = 2000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_40">
+		<text>Я забераю все деньги.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_41">
+		<text>Отлично. А теперь как договаривались, я отбераю 20% от суммы сбора, а остаток возвращяю тебе. Получается что 20% будет вот сколько:</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_42">
+		<text>Отлично. Так как на счету менее 100 рублей, можешь не платить мне 20% сумму, забирай так.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_43">
+		<text>Благодарю.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_44">
+		<text>Прекрасно, ты выбираеш депозит. Напомню тебе, что когда ты кладешь на депозитный счет, твои деньги передаются в мое распоряжение, и забрать ты их в любое время не можешь. Забирать деньги можно только с 20:00 и до 20:45. После того как ты положешь на депозитный счет, стартует депозитное время расчитаное на мой процент Депозита, он составляет 20% от суммы, оно работает таким образом: Через каждий день, на итоговый счет приходит 10% сумма, которую ты можешь забрать в придачю к основному. Что будем делать?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_45">
+		<text>Депозит</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_46">
+		<text>Ничего.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_47">
+		<text>Положу-ка я на депозитный счет.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_48">
+		<text>Твой депозит успешно пополнен. Теперь приходи с 20:00 до 20:45, и забирай свой процент.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_49">
+		<text>Понял.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_50">
+		<text>Пополню-ка я еще.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_51">
+		<text>Сколько?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_52">
+		<text>У меня мало денег.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_53">
+		<text>Я оставляю все деньги.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_54">
+		<text>1000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_55">
+		<text>2000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_56">
+		<text>3000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_57">
+		<text>4000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_58">
+		<text>5000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_59">
+		<text>10000 рублей.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_60">
+		<text>Хотелось бы вернуть свой вклад.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_61">
+		<text>Что именно будешь забирать, проценты или вклад?</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_62">
+		<text>Проценты.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_63">
+		<text>Вот, как договаривались 10%, держи.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_64">
+		<text>Спасибо.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_65">
+		<text>Вклад.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_66">
+		<text>Вот, здесь все что ты оставлял, держи.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_67">
+		<text>Спасибо.</text>
+	</string>
+        <string id="red_dolg_bankir_dialog_68">
+		<text>Покажи мои проценты.</text>
+	</string>
+        <string id="red_traders_dialog_1">
+		<text>Что тебе нужно?</text>
+	</string>
+        <string id="red_traders_dialog_2">
+		<text>Мне бы поторговать. Есть желание.</text>
+	</string>
+        <string id="red_traders_dialog_3">
+		<text>Ясненько. Ну тогда дерзай..</text>
+	</string>
+        <string id="red_traders_dialog_4">
+		<text>Ничего.</text>
+	</string>
+        <string id="red_traders_dialog_5">
+		<text>Мне ничего не нужно.</text>
+	</string>
+        <string id="red_traders_dialog_6">
+		<text>Нет, отменять заказ я не буду.</text>
+	</string>
+        <string id="red_traders_dialog_7">
+		<text>Все! Подойдешь через час, к тому времени доставка будет у меня.</text>
+	</string>
+        <string id="red_traders_dialog_8">
+		<text>Ясно.</text>
+	</string>
+        <string id="red_traders_dialog_9">
+		<text>Нельзя, я же тебе говорил, заказ может быть только один.  Для того чтобы снова заказать, нужно оплатить не большой штрафик в размере 500 рублей.</text>
+	</string>
+        <string id="red_traders_dialog_10">
+		<text>Ладно, платить так платить, держи.</text>
+	</string>
+        <string id="red_traders_dialog_11">
+		<text>Последний заказ я сейчас отменю, а ты пока выбирай следующий.</text>
+	</string>
+        <string id="red_traders_dialog_12">
+		<text>А можно снова оформить заказ?</text>
+	</string>
+        <string id="red_traders_dialog_13">
+		<text>Слишком дорого.</text>
+	</string>
+        <string id="red_traders_dialog_14">
+		<text>Я передумал.</text>
+	</string>
+        <string id="red_traders_dialog_15">
+		<text>Хорошо. Держи.</text>
+	</string>
+        <string id="red_traders_dialog_16">
+		<text>Прекрасно, заказ оформлен, теперь нужно оплатить доставку, и дело зделано.</text>
+	</string>
+        <string id="red_traders_dialog_17">
+		<text>Не вопрос, на какой товар? Только учти: Активный заказ может быть только один. Ты можешь отменять заказы, но при этом накладываются штрафные санкции.</text>
+	</string>
+        <string id="red_traders_dialog_18">
+		<text>Хотелось бы оформить заказ на товар.</text>
+	</string>
+        <string id="red_traders_dialog_19">
+		<text>Понятно. Выбирай тип товара.</text>
+	</string>
+        <string id="red_traders_dialog_20">
+		<text>Арсенал.</text>
+	</string>
+        <string id="red_traders_dialog_21">
+		<text>Бронекостюм.</text>
+	</string>
+        <string id="red_traders_dialog_22">
+		<text>«СПП-200 Стрела»</text>
+	</string>
+        <string id="red_traders_dialog_23">
+		<text>«ПСЗ-9Мд Роса»</text>
+	</string>
+        <string id="red_tactik_commander_dialog_1">
+		<text>Здоров будь, наёмник, помощь нужна?</text>
+	</string>
+        <string id="red_tactik_commander_dialog_2">
+		<text>Никак - нет.</text>
+	</string>
+        <string id="red_tactik_commander_dialog_3">
+		<text>Нужна, а чем вы можете помочь?</text>
+	</string>
+        <string id="red_tactik_commander_dialog_4">
+		<text>Только что послал спец. отряд в тоннель, только что они прошли первый сектор, за отдельную плату я могу отменить приказ - вернув своих ребят сюда. Если хочешь чтобы они вернулись и помогли опустить мост - заплати мне 5 тисяч рублей. Добро?</text>
+	</string>
+        <string id="red_tactik_commander_dialog_5">
+		<text>Нет, слишком дорого.</text>
+	</string>
+        <string id="red_tactik_commander_dialog_6">
+		<text>Добро. Вот, держи..</text>
+	</string>
+        <string id="red_tactik_commander_dialog_7">
+		<text>Отлично! Теперь подожди, пока я отменю заказ...все они уже здесь - можете работать.</text>
+	</string>
+        <string id="red_tactik_commander_dialog_8">
+		<text>Понял.</text>
+	</string>
+        <string id="red_tactik_commander_dialog_9">
+		<text>Приветствую тебя, ну как там мои ребята?</text>
+	</string>
+        <string id="red_tactik_commander_dialog_10">
+		<text>Нормал.</text>
+	</string>
+        <!------------"Военные склады"--------------->
+        <string id="mil_traders_dialog_1">
+		<text>Что тебе нужно?</text>
+	</string>
+        <string id="mil_traders_dialog_2">
+		<text>Мне бы поторговать. Есть желание.</text>
+	</string>
+        <string id="mil_traders_dialog_3">
+		<text>Ясненько. Ну тогда дерзай..</text>
+	</string>
+        <string id="mil_traders_dialog_4">
+		<text>Ничего.</text>
+	</string>
+        <string id="mil_traders_dialog_5">
+		<text>Мне ничего не нужно.</text>
+	</string>
+        <string id="mil_traders_dialog_6">
+		<text>Нет, отменять заказ я не буду.</text>
+	</string>
+        <string id="mil_traders_dialog_7">
+		<text>Все! Подойдешь через час, к тому времени доставка будет у меня.</text>
+	</string>
+        <string id="mil_traders_dialog_8">
+		<text>Ясно.</text>
+	</string>
+        <string id="mil_traders_dialog_9">
+		<text>Нельзя, я же тебе говорил, заказ может быть только один.  Для того чтобы снова заказать, нужно оплатить не большой штрафик в размере 500 рублей.</text>
+	</string>
+        <string id="mil_traders_dialog_10">
+		<text>Ладно, платить так платить, держи.</text>
+	</string>
+        <string id="mil_traders_dialog_11">
+		<text>Последний заказ я сейчас отменю, а ты пока выбирай следующий.</text>
+	</string>
+        <string id="mil_traders_dialog_12">
+		<text>А можно снова оформить заказ?</text>
+	</string>
+        <string id="mil_traders_dialog_13">
+		<text>Слишком дорого.</text>
+	</string>
+        <string id="mil_traders_dialog_14">
+		<text>Я передумал.</text>
+	</string>
+        <string id="mil_traders_dialog_15">
+		<text>Хорошо. Держи.</text>
+	</string>
+        <string id="mil_traders_dialog_16">
+		<text>Прекрасно, заказ оформлен, теперь нужно оплатить доставку, и дело зделано.</text>
+	</string>
+        <string id="mil_traders_dialog_17">
+		<text>Не вопрос, на какой товар? Только учти: Активный заказ может быть только один. Ты можешь отменять заказы, но при этом накладываются штрафные санкции.</text>
+	</string>
+        <string id="mil_traders_dialog_18">
+		<text>Хотелось бы оформить заказ на товар.</text>
+	</string>
+        <string id="mil_traders_dialog_19">
+		<text>Понятно. Выбирай тип товара.</text>
+	</string>
+        <string id="mil_traders_dialog_20">
+		<text>Арсенал.</text>
+	</string>
+        <string id="mil_traders_dialog_21">
+		<text>Бронекостюм.</text>
+	</string>
+        <string id="mil_traders_dialog_22">
+		<text>«СВД Тигр»</text>
+	</string>
+        <string id="mil_traders_dialog_23">
+		<text>«Бронекостюм Командарм»</text>
+	</string>
+        <string id="mil_stalker_upgrader_dialog_1">
+		<text>Чего тебе?</text>
+	</string>
+        <string id="mil_stalker_upgrader_dialog_2">
+		<text>Мне бы поторговать. Есть желание.</text>
+	</string>
+        <string id="mil_stalker_upgrader_dialog_3">
+		<text>Ясненько. Ну тогда дерзай.. Только помни: апгрейды используются только один раз, поэтому одинаковые не покупай.</text>
+	</string>
+        <string id="mil_stalker_upgrader_dialog_4">
+		<text>Ничего.</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_1">
+		<text>Вот, я вернул, то что ты просил.</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_2">
+		<text>Спасибо, наёмник, чтоб я делал без тебя. Тебе причетается..</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_3">
+		<text>Бывай.</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_4">
+		<text>Чем я могу помочь вам?</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_5">
+		<text>Да есть одно задание: принеси мне трофейный гранатомет - тогда и наградку нехилую тебе подкину, хорошо?</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_6">
+		<text>Занят я, позже поговорим.</text>
+	</string>
+        <string id="mil_hog_find_item_dialog_7">
+		<text>Хорошо, сбрасывай координаты и я пошел.</text>
+	</string>
+        <!------------"Лиманск"--------------->
+        <string id="lim_robbery_leader_dialog_1">
+		<text>Здаров, падла, куда собрался, небойсь через постройку идти вздумал? Короче не тяни: Или ты сейчас отдаешь мне 20 тисяч, или я позову ребят. Решай давай, даю тебя ровно 10 секунд, время пошло..</text>
+	</string>
+        <string id="lim_robbery_leader_dialog_2">
+		<text>Да хорошо, держи.</text>
+	</string>
+        <string id="lim_robbery_leader_dialog_3">
+		<text>Струсанул, ха-ха, небоись, можешь проходить - ребята не тронут.</text>
+	</string>
+        <string id="lim_robbery_leader_dialog_4">
+		<text>Спасибо.</text>
+	</string>
+        <string id="lim_robbery_leader_dialog_5">
+		<text>Отвали, козёл, нето схлопочешь пулю в лоб.</text>
+	</string>

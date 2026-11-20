@@ -1,0 +1,47 @@
+[logic]
+active = move@novice
+on_death = death
+
+[death]
+on_info = %+gar_rescue_tunnel_novice_fail%
+
+[move@novice]
+target_type     = level_vertex
+dest_number     = 1626
+state_in_center = sleep_noweap
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 3591
+on_actor_dist_le_nvis = 18| move@can_see
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+
+[move@can_see]
+target_type     = level_vertex
+dest_number     = 1626
+state_in_center = hello
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 3591
+on_info         = {+gar_rescue_tunnel_novice_find} move@rush
+
+[move@rush]
+target_type     = level_vertex
+dest_number     = 253167
+state_in_center = sit
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 251574
+center_info     = gar_rescue_tunnel_novice_return
+on_info         = {+gar_rescue_tunnel_novice_return} move@rescued
+meet            = no_meet
+update_state_a  = 10000
+update_state_b  = 15000
+
+[move@rescued]
+target_type     = level_vertex
+dest_number     = 253167
+state_in_center = sit_ass
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 251574

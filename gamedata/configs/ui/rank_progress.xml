@@ -1,0 +1,9 @@
+<window>
+
+	<rank_bar x="37" y="6" width="256" height="10" horz="1" min="0" max="500">
+		<progress>
+			<texture>ui_sega_healph_progress</texture>
+		</progress>
+	</rank_bar>
+
+</window>

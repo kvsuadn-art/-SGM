@@ -1,0 +1,15 @@
+[logic]
+active = move@baron_sit
+on_death = death
+
+[death]
+on_info = %+mar_renegate_baron_death%
+
+[move@baron_sit]
+target_type     = level_vertex
+dest_number     = 222050
+state_in_center = sit_ass
+state_for_move  = assault
+miss_center     = false
+on_actor_dist_le_nvis = 70| {-mar_renegate_baron_see} %+mar_renegate_baron_see%
+look_vertex     = 223580

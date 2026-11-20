@@ -1,0 +1,404 @@
+tips_icons = {
+        bankir 	        = "ui_iconsTotal_tutorial_help_wounded",
+        medal 	        = "ui_iconsTotal_medals",
+        bodyguard       = "ui_iconsTotal_weapons",
+        agr_dolg_chief  = "ui_npc_dolg_chief",
+        bandit 		= "ui_npc_small_bandit_1",
+	csky     	= "ui_npc_small_nebo_1",
+	dolg		= "ui_npc_small_dolg_1",
+	ecolog   	= "ui_iconsNpc_ecolog",
+	freedom		= "ui_npc_small_freedom_1",
+	killer		= "ui_npc_small_merc_2",
+	army 		= "ui_npc_small_soldier_2",
+	monolith	= "ui_npc_small_monolith_1",
+        stalker		= "ui_npc_small_neutral_1",
+	trader   	= "ui_iconsNpc_trader",
+	zombied		= "ui_npc_small_zombied_1",
+        renegade 	= "ui_npc_small_bandit_1",
+	mar_csky_commander_name 		= "ui_npc_small_nebo_2_face_1",
+	mar_csky_scientist_name 		= "ui_npc_small_nebo_2_face_2",
+	mar_csky_tech_name			= "ui_npc_small_nebo_2_face_3",
+	mar_csky_barman				= "ui_npc_small_nebo_2_face_4",
+	escape_trader_name			= "ui_npc_small_trader_1",
+	esc_leader_stalkerbase_name		= "ui_npc_small_neutral_2_face_2",
+	esc_driver_name				= "ui_npc_small_soldier_1",
+	esc_zak_stalkerbase_name		= "ui_npc_small_soldier_2_face_1",
+	gar_bandit_leader_name			= "ui_npc_small_bandit_3_face_1",
+	gar_bandit_barman_name			= "ui_npc_small_bandit_3_face_2",
+	gar_digger_quester_name			= "ui_npc_small_neutral_2_face_1",
+	agr_duty_base_commander_name 	        = "ui_npc_small_dolg_2_face_1",
+	agr_weaponmaster_name			= "ui_npc_small_dolg_2_mask",
+        agr_barman_name				= "ui_npc_u_dolg_2_face_2",
+	val_freedom_leader_name			= "ui_npc_small_freedom_2_face_2",
+	val_freedom_trader_name			= "ui_npc_small_freedom_2_mask",
+	red_forester_name			= "ui_npc_small_lesnik_1",
+	yan_st_sakharov_name			= "ui_npc_small_ucheniy_1",
+}
+
+
+function send_tip(actor, news_id, timeout, sender, showtime, sender_id, title_id)
+	if news_id == nil then return false end
+	if sender_id ~= nil then
+		local sim = alife()
+		if sim ~= nil then
+			local npc = sim:story_object(sender_id)
+			if npc ~= nil then
+				if npc.online then
+					if xr_wounded.is_heavy_wounded_by_id(npc.id) then
+						printf("[PDA]Cannot send tips [%s], sender is heavy wounded", tostring(news_id))
+						return false
+					end
+				end
+				-- в других случаях только на смерть
+				if npc:alive() == 1 then
+					printf("[PDA]Cannot send tips [%s], sender is dead", tostring(news_id))
+					return false
+				end
+			end
+		end
+	end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5000 end
+        xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+        local texture = "ui_iconsTotal_grouping"
+        if sender ~= nil then
+		if type(sender) == "string" then
+	        if tips_icons[sender] then
+	            texture = tips_icons[sender]
+	        end
+ 		elseif is_npc_stalker(sender:clsid()) then
+            texture = sender:character_icon()
+		end
+	end
+        if title_id~=nil then
+        local news_caption = game.translate_string(title_id)
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        else
+	local news_caption = game.translate_string("st_tip")
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        end
+	return true
+end
+
+function send_silence_tip(actor, news_id, timeout, sender, showtime, sender_id, title_id)
+	if news_id == nil then return false end
+	if sender_id ~= nil then
+		local sim = alife()
+		if sim ~= nil then
+			local npc = sim:story_object(sender_id)
+			if npc ~= nil then
+				if npc.online then
+					if xr_wounded.is_heavy_wounded_by_id(npc.id) then
+						printf("[PDA]Cannot send tips [%s], sender is heavy wounded", tostring(news_id))
+						return false
+					end
+				end
+				-- в других случаях только на смерть
+				if npc:alive() == 1 then
+					printf("[PDA]Cannot send tips [%s], sender is dead", tostring(news_id))
+					return false
+				end
+			end
+		end
+	end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5000 end
+        local texture = "ui_iconsTotal_grouping"
+        if sender ~= nil then
+		if type(sender) == "string" then
+	        if tips_icons[sender] then
+	            texture = tips_icons[sender]
+	        end
+ 		elseif is_npc_stalker(sender:clsid()) then
+            texture = sender:character_icon()
+		end
+	end
+        if title_id~=nil then
+        local news_caption = game.translate_string(title_id)
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        else
+	local news_caption = game.translate_string("st_tip")
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        end
+	return true
+end
+
+function bodyguard_tip(actor, news_id, timeout, sender, showtime, sender_id, title_id)
+	if news_id == nil then return false end
+	if sender_id ~= nil then
+		local sim = alife()
+		if sim ~= nil then
+			local npc = sim:story_object(sender_id)
+			if npc ~= nil then
+				if npc.online then
+					if xr_wounded.is_heavy_wounded_by_id(npc.id) then
+						printf("[PDA]Cannot send tips [%s], sender is heavy wounded", tostring(news_id))
+						return false
+					end
+				end
+				-- в других случаях только на смерть
+				if npc:alive() == 1 then
+					printf("[PDA]Cannot send tips [%s], sender is dead", tostring(news_id))
+					return false
+				end
+			end
+		end
+	end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5000 end
+        xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+        local texture = "ui_iconsTotal_grouping"
+        if sender ~= nil then
+		if type(sender) == "string" then
+	        if tips_icons[sender] then
+	            texture = tips_icons[sender]
+	        end
+ 		elseif is_npc_stalker(sender:clsid()) then
+            texture = sender:character_icon()
+		end
+	end
+        if title_id~=nil then
+        local news_caption = game.translate_string(title_id)
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        else
+	local news_caption = "%c[110,128,128,255]"..game.translate_string("st_tip")
+	local news_text = game.translate_string(news_id)
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        end
+	return true
+end
+
+function bankir_tip(actor,timeout,sender,showtime,sender_id,title_id,message0,message1,numb1,message2,numb2)
+	if sender_id ~= nil then
+		local sim = alife()
+		if sim ~= nil then
+			local npc = sim:story_object(sender_id)
+			if npc ~= nil then
+				if npc.online then
+					if xr_wounded.is_heavy_wounded_by_id(npc.id) then
+						return false
+					end
+				end
+				-- в других случаях только на смерть
+				if npc:alive() == 1 then
+					return false
+				end
+			end
+		end
+	end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5000 end
+        xr_sound.set_sound_play(db.actor:id(), "pda_tips")
+        local texture = "ui_iconsTotal_grouping"
+        if sender ~= nil then
+		if type(sender) == "string" then
+	        if tips_icons[sender] then
+	            texture = tips_icons[sender]
+	        end
+ 		elseif is_npc_stalker(sender:clsid()) then
+            texture = sender:character_icon()
+		end
+	end
+        if title_id~=nil then
+        local news_caption = game.translate_string(title_id)
+	local news_text = game.translate_string(message0)..game.translate_string("\\n")..game.translate_string(message1).." "..numb1..game.translate_string("\\n")..game.translate_string(message2).." "..numb2
+	actor:give_game_news(news_caption, news_text, texture, timeout*1000, showtime, 1)
+        end
+	return true
+end
+
+function send_sound(npc, faction, point, str, str2)
+	if faction ~= nil then
+        local point_name = ""
+		if point ~= nil then
+			local smart = sim_board.get_sim_board().smarts[point]
+			if smart then
+		        point_name = smart_names.get_smart_terrain_name(smart.smrt)
+			else
+				point_name = game.translate_string(point)
+			end
+		end
+		local txt = ""
+        if str2 == nil then
+	        txt = string.gsub(str, "(characters_voice\\human_..\\)([^\\]*)", "%2")
+	        txt = string.gsub(txt, "[\\]([^\\]*)", "_%1")
+		else
+			txt = str2
+		end
+		local news_text = game.translate_string(txt)
+		if news_text == txt then
+			return
+		end
+		--' Играем дефолтный звук
+	        local texture = "ui_iconsTotal_grouping"
+		if npc ~= nil and is_npc_stalker(npc:clsid()) then
+                texture = npc:character_icon()
+		else
+	        if tips_icons[faction] then
+	            texture = tips_icons[faction]
+	        end
+	        if tips_icons[point] then
+	            texture = tips_icons[point]
+	        end
+		end
+		local news_caption = game.translate_string("st_tip").." "..game.translate_string(faction)
+		if point_name ~= "" then
+			news_caption = news_caption..". "..point_name..":"
+		else
+			news_caption = news_caption..":"
+		end
+		db.actor:give_game_news(news_caption, news_text, texture, 1000, 5000, 1)
+		return true
+    end
+end
+
+function is_npc_stalker(class_id)
+	if class_id==clsid.script_stalker or
+	   class_id==clsid.stalker or
+	   class_id==clsid.script_trader or
+	   class_id==clsid.trader then
+	    return true
+	end
+    return false
+end
+
+local action_descr_by_type = {
+	                            new = "general_new_task",
+	                            complete = "general_complete_task",
+	                            fail = "general_fail_task",
+	                            reversed = "general_reverse_task"
+	                         }
+
+function send_task(actor, type, task)
+	if db.actor == nil then
+		return false
+	end
+        xr_sound.set_sound_play(db.actor:id(), "pda_task")
+	local news_caption = game.translate_string(action_descr_by_type[type])
+	local news_text = game.translate_string(task:get_title())
+	local task_type = task_manager.get_task_manager():get_task_by_entity_id(tonumber(task:get_id())).type
+        db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_"..task_type, 0, 15000)
+end
+
+function send_treasure(name)
+        if     string.find(name,"mar_")    then Where="news_manager_text9"
+        elseif string.find(name,"esc_")    then Where="news_manager_text5"
+        elseif string.find(name,"gar_")    then Where="news_manager_text6"
+        elseif string.find(name,"valley_") or string.find(name,"val_") then Where="news_manager_text7"
+        elseif string.find(name,"agr_")    then Where="news_manager_text8"
+        elseif string.find(name,"agru_")   then Where="news_manager_text16"
+        elseif string.find(name,"yantar_") or string.find(name,"yan_") then Where="news_manager_text11"
+        elseif string.find(name,"red_")    then Where="news_manager_text10"
+        elseif string.find(name,"mil_")    then Where="news_manager_text12"
+        elseif string.find(name,"lim_")    then Where="news_manager_text14"
+        elseif string.find(name,"hos_")    then Where="news_manager_text17"
+        else Where=""
+        end
+	local news_caption = game.translate_string("news_manager_text18")
+	local news_text = "%c[110,230,25,100]"..game.translate_string(Where).."%c[default]"..game.translate_string(name)
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_found_thing",0,3000)
+end
+
+function send_deserve(name)
+	local news_caption = game.translate_string("send_deserve_title")
+	local news_text = game.translate_string(name)
+        play_folder_snd([[device\pda\pda_news]])
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_bar_darklab_documents2",0,5000)
+end
+
+function send_repair(item_name,item_cond)
+	local news_caption = game.translate_string("st_repair_title")
+	local news_text = game.translate_string(item_name).."["..game.translate_string("st_repair_cond")..item_cond.."]"
+        play_folder_snd([[device\pda\pda_news]])
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_weapons",0,4000)
+end
+
+function send_add_skill(item_name)
+	local news_caption = game.translate_string("st_add_skill")
+	local news_text = "«"..game.translate_string(item_name).."»"
+        play_folder_snd([[device\pda\pda_news]])
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_weapons",0,5000)
+end
+
+function send_add2_skill(item_name)
+	local news_caption = game.translate_string("st_add2_skill")
+	local news_text = "«"..game.translate_string(item_name).."»"
+        play_folder_snd([[device\pda\pda_news]])
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_weapons",0,5000)
+end
+
+function send_currert_skill(item_name)
+	local news_caption = game.translate_string("st_info_skill")
+	local news_text = game.translate_string("st_info2_skill").."%c[255,153,238,26]".." "..game.translate_string(item_name).." "..game.translate_string("st_info3_skill")
+	db.actor:give_game_news(news_caption,news_text,"ui_iconsTotal_weapons",0,5000)
+end
+
+function get_inv_name(section)
+	return system_ini():r_string(section,"inv_name")
+end
+
+function relocate_item(actor, type, item, amount)
+	if db.actor == nil then return false end
+	--' Играем дефолтный звук
+	if not amount then
+		amount = 1
+	end
+	local news_caption = ""
+	local news_text = ""
+	if type == "in" then
+		if amount == 1 then
+			news_caption = game.translate_string("general_in_item")
+			news_text = game.translate_string(get_inv_name(item))
+		else
+			news_caption = game.translate_string("general_in_item")
+			news_text = game.translate_string(get_inv_name(item)).." x"..amount
+		end
+		if db.actor:is_talking() then
+	        db.actor:give_talk_message2(news_caption, news_text, "ui_iconsTotal_found_thing", "iconed_answer_item")
+		else
+            db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_found_thing", 0, 3000)
+		end
+	elseif type == "out" then
+		if amount == 1 then
+			news_caption = game.translate_string("general_out_item")
+			news_text = game.translate_string(get_inv_name(item))
+		else
+			news_caption = game.translate_string("general_out_item")
+			news_text = game.translate_string(get_inv_name(item)).." x"..amount
+		end
+		if db.actor:is_talking() then
+	        db.actor:give_talk_message2(news_caption, news_text, "ui_iconsTotal_lost_thing", "iconed_answer_item")
+		else
+			db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_lost_thing", 0, 3000)
+		end
+	end
+end
+
+function relocate_money(actor, type, amount)
+	if db.actor == nil then return false end
+	--' Играем дефолтный звук
+	if type == "in" then
+		local news_caption = game.translate_string("general_in_money")
+		local news_text = game.translate_string(tostring(amount)).." рублей"
+
+		if db.actor:is_talking() then
+	        db.actor:give_talk_message2(news_caption, news_text, "ui_iconsTotal_found_money", "iconed_answer_item")
+		else
+			db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_found_money", 0, 3000)
+		end
+	elseif type == "out" then
+		local news_caption = game.translate_string("general_out_money")
+		local news_text = game.translate_string(tostring(amount)).." рублей"
+
+		if db.actor:is_talking() then
+	        db.actor:give_talk_message2(news_caption, news_text, "ui_iconsTotal_lost_money", "iconed_answer_item")
+		else
+			db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_lost_money", 0, 3000)
+		end
+	end
+end

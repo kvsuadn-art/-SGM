@@ -1,0 +1,286 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+--------------------------(Схема лечения сталкерами - союзников)-----------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+------------------------------------
+----------/Общие функции/-----------
+------------------------------------
+local allow_doctor=false
+local there_is_wounded=false
+local heal_doctor=false
+local preparate_doctor=false
+local woundeds_list={}
+local unheal_list = {
+{"esc_wolf","true"},
+{"esc_fox","true"},
+{"esc_tutorial_wounded","true"},
+{"esc_shustryi","true"},
+{"esc_plemiannik","true"},
+{"esc_provodnik","true"},
+{"gar_dram_novice","true"},
+{"gar_stalker_general","true"},
+{"agr_krot","true"},
+{"agr_ratcatcher","true"},
+{"val_escort_halfdead","true"},
+{"val_dolg_prisoner","true"},
+{"yan_Semenov","true"},
+{"yan_ecolog_help","true"},
+{"esc_military_captive","true"},
+{"esc_wounded_partizan","true"},
+{"esc_vagrant","true"}
+}
+function add_wounded(victim_id)
+  if woundeds_list[victim_id]==nil then
+	woundeds_list[victim_id]=true
+  end
+end
+function add_doctor(wounded_id,doctor_id)
+    local actor_id=db.actor:id()
+    woundeds_list[wounded_id]=doctor_id
+end
+function delete_wounded(victim_id)
+  if woundeds_list[victim_id]~=nil then
+   woundeds_list[victim_id]=nil
+  end
+end
+function get_wounded(victim_id)
+   return woundeds_list[victim_id]==true or woundeds_list[victim_id]~=nil
+end
+function check_woundeds()
+   return woundeds_list
+end
+function get_doctor(wounded_id)
+  if woundeds_list[wounded_id]~=true and woundeds_list[wounded_id]~=nil then
+	return woundeds_list[wounded_id]
+  end
+  return false
+end
+function is_not_unique(by_id)
+     for k,v in pairs(unheal_list) do
+        local unique=level.object_by_id(by_id)
+        if unique and unique:profile_name()==v[1] then
+           return false
+	end
+     end
+     return true
+end
+function checker_exception(npc)
+     local get_exceptions = 
+     npc:character_community()=="zombied"     or 
+     npc:character_community()=="arena_enemy" or
+     npc:profile_name()=="actor_bodyguard_soldier1" or
+     npc:profile_name()=="actor_bodyguard_soldier2" or 
+     npc:profile_name()=="actor_bodyguard_soldier3"
+     if get_exceptions then 
+        return false
+     end
+     return true
+end
+function play_preparate_doctor(npc)
+   if npc:character_community()=="csky" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\csky\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="bandit" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\bandit\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="dolg" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\dolg\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="freedom" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\freedom\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="killer" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\killer\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="renegade" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\bandit\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="army" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\army\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="monolit" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\monolit\medkit_]]..math.random(1,3),npc)
+   elseif npc:character_community()=="stalker" then
+      play_snd_at_pos([[characters_voice\medkit_sounds\stalker\medkit_]]..math.random(1,3),npc)
+   end
+end
+------------------------------------
+------------/Условия/---------------
+------------------------------------
+class "evaluator_allow" (property_evaluator)
+function evaluator_allow:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_allow:evaluate()
+	local doctor=self.object
+	local enemy=self.object:best_enemy()
+	local npc=self.object
+        local get_woundeds=check_woundeds()
+        local doctor_id=doctor:id()
+        if allow_doctor==true and sgm_flags.doctor_allow_timer~=0 and time_global()>=sgm_flags.doctor_allow_timer then
+            allow_doctor=false
+            preparate_doctor=false
+            sgm_flags.doctor_allow_timer=0
+        end
+        if doctor~=nil and xr_wounded.is_wounded(npc)==false and allow_doctor==false and checker_exception(doctor) then
+           local doctor_id=doctor:id()
+              if get_woundeds then
+                    for k,v in pairs(get_woundeds) do
+                        local wounded=level.object_by_id(k)
+                        if wounded and wounded:alive()==true and wounded:relation(doctor)~=game_object.enemy and is_not_unique(k) then
+                              if doctor:accessible(wounded:level_vertex_id()) and doctor:clsid()==clsid.script_stalker and doctor:alive()==true and wounded:alive()==true then
+                                  local dist_to_wounded=doctor:position():distance_to(wounded:position())<=50
+                                  if woundeds_list[k]==true and dist_to_wounded then
+                                     add_doctor(k,doctor_id)
+                                  end
+                                  if enemy~=nil then
+                                     local dist_to_enemy=doctor:position():distance_to(enemy:position())>25
+                                     if get_doctor(k)==doctor_id and dist_to_enemy then
+                                        --/give_quick_news("Враги есть! true    "..level.object_by_id(get_doctor(k)):character_name())
+                                        return true
+                                     end
+                                  elseif enemy==nil then
+                                     if get_doctor(k)==doctor_id then
+                                        --/give_quick_news("Врагов нет! true    "..level.object_by_id(get_doctor(k)):character_name())
+                                        return true
+                                     end
+                                  end
+                              end
+                        end
+                    end
+              end
+	end
+        return false
+end
+
+
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_doctor" (action_base)
+function action_doctor:__init (npc,action_name,storage) super (nil,action_name)
+	self.st = storage
+end
+function action_doctor:initialize()
+	action_base.initialize(self)
+	local doctor=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.run)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.object:disable_talk()
+end
+function action_doctor:execute()
+	action_base.execute(self)
+	local npc=self.object
+	local doctor=self.object
+        if db.actor~=nil then
+                local get_woundeds=check_woundeds()
+                if get_woundeds then
+                     for k,v in pairs(get_woundeds) do
+                         local wounded=level.object_by_id(k)
+                         if wounded then
+                           --/give_quick_news("Пациент["..level.object_by_id(k):character_name().."]  доктор["..level.object_by_id(get_doctor(k)):character_name().."]")
+                           if allow_doctor==false then
+                             if distance_between_safe(doctor,wounded)<=1.3 then
+                                   if preparate_doctor==false and sgm_flags.doctor_preparate_timer==0 then
+                                       state_mgr.set_state(npc,"dynamite",nil,nil,{look_object=wounded},{animation=true})
+                                       play_preparate_doctor(npc)
+                                       preparate_doctor=true
+                                       sgm_flags.doctor_preparate_timer=time_global()+math.random(6000,7800)
+                                   end
+                                   if preparate_doctor==true and sgm_flags.doctor_preparate_timer~=0 and time_global()>=sgm_flags.doctor_preparate_timer then
+                                       heal_doctor=true
+                                       alife():create("medkit",wounded:position(),wounded:level_vertex_id(),wounded:game_vertex_id(),wounded:id())
+                                       if wounded:profile_name()=="esc_wounded_partizan" then
+                                          db.actor:give_info_portion("esc_vagrant_heal")
+                                       elseif wounded:profile_name()=="esc_tutorial_wounded" then
+                                          db.actor:give_info_portion("tutorial_wounded_help")
+                                       end
+                                       --/npc:clear_animations()
+                                       xr_wounded.unlock_medkit(wounded)
+                                       heal_doctor=false
+                                       allow_doctor=true
+                                       sgm_flags.doctor_preparate_timer=0
+                                       sgm_flags.doctor_allow_timer=time_global()+math.random(12000,15000)
+                                   end
+                             elseif distance_between_safe(doctor,wounded)>1.3 and distance_between_safe(doctor,wounded)<=8 then
+                                   if sgm_flags.doctor_move_timer==0 then
+                                       local doctor_target=level.vertex_in_direction(wounded:level_vertex_id(),vector():set(0,0,0),3)
+                                       local get_utils=utils.send_to_nearest_accessible_vertex(npc,doctor_target)
+                                       npc:disable_talk()
+                                       state_mgr.set_state(npc,"walk")
+                                       sgm_flags.doctor_move_timer=time_global()+math.random(700,800)
+                                   end
+                             elseif distance_between_safe(doctor,wounded)>8 then
+                                   if sgm_flags.doctor_move_timer==0 then
+                                       local doctor_target=level.vertex_in_direction(wounded:level_vertex_id(),vector():set(0,0,0),3)
+                                       local get_utils=utils.send_to_nearest_accessible_vertex(npc,doctor_target)
+                                       npc:disable_talk()
+                                       state_mgr.set_state(npc,"sprint")
+                                       sgm_flags.doctor_move_timer=time_global()+math.random(1000,1200)
+                                   end
+                             end
+                           end
+                         end
+                     end
+                end
+        end
+end
+function action_doctor:finalize()
+	action_base.finalize (self)
+        allow_doctor=false
+        heal_doctor=false
+        preparate_doctor=false
+        sgm_flags.doctor_allow_timer=0
+        sgm_flags.doctor_preparate_timer=0
+end
+
+
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+property_allow              = 71450
+act_doctor                  = property_allow
+
+function add_to_binder(object,ini,scheme,section,storage)
+     if checker_exception(object)==true and not has_alife_info("deactivate_scheme_doctor") then
+        --'Эвалуаторы
+	local manager = object:motivation_action_manager() --/планировщик
+        manager:add_evaluator(property_allow,evaluator_allow("property_allow",storage))
+        --============================--
+        --""""Следовать к раненому""""--
+        --============================--
+        --/"Если дистанция между доктором и раненым<=50 метров"/
+        --/"Если есть раненые"/
+        --/"Если флаг allow_doctor равен true"/
+	local action = action_doctor(object,"action_doctor",storage)
+	action:add_precondition(world_property(stalker_ids.property_alive,true))
+	action:add_precondition(world_property(property_allow,true))
+	action:add_effect(world_property(property_allow,false))
+	manager:add_action(act_doctor,action)
+	--'Разрешить раздражители
+	action = manager:action (xr_actions_id.alife)
+	action:add_precondition (world_property(property_allow,false))
+	action = manager:action (stalker_ids.action_combat_planner)
+	action:add_precondition (world_property(property_allow,false))
+	action = manager:action (stalker_ids.action_danger_planner)
+	action:add_precondition (world_property(property_allow,false))
+     end
+end
+
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function set_scheme(npc, ini, scheme, section)
+ local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+end
+function disable_scheme(npc, scheme)
+ local st = db.storage[npc:id()][scheme]
+ if st then
+  st.enabled = false
+ end
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

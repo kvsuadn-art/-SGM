@@ -1,0 +1,41 @@
+[logic]
+active = shooter@rpg_wait
+
+[shooter@rpg_wait]
+shooter_pos         = 115288
+shooter_fire_look   = 26481,24080,31708,31690
+shooter_idle_look   = 26481
+shooter_clip        = 4
+shooter_reload      = 4800
+shooter_type_wpn    = grenade_launcher
+shooter_move_state  = walk
+shooter_idle_state  = threat
+shooter_fire_state  = threat_fire
+shooter_allow_info  = val_rpg_support_actor
+shooter_switch      = stage_end | move@rpg_2
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+
+[move@rpg_2]
+target_type     = level_vertex
+dest_number     = 26481
+state_in_center = dynamite
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 24085
+on_signal       = in_center | move@rpg_3
+stand_time      = 10000
+
+[move@rpg_3]
+target_type     = level_vertex
+dest_number     = 116122
+state_in_center = guard
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 26481
+
+
+
+
+
+

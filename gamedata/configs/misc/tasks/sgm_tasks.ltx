@@ -1,0 +1,1392 @@
+[list_tm_sgm]
+mar_entry_csky_force
+mar_meet_csky_force
+mar_hold_renagade_base
+mar_csky_find_baron
+mar_csky_kill_baron
+mar_csky_reward_baron
+mar_capture_pumping_station
+;mar_capture_watch_tower
+mar_capture_church
+mar_capture_boat_station
+mar_capture_embankment
+mar_capture_north_khutor
+mar_last_intensify_reward
+mar_accompany_rescue_meet
+mar_accompany_rescue_talk
+mar_accompany_rescue_island
+mar_accompany_rescue_home
+esc_kill_blockpost_leader
+esc_kill_blockpost_talk
+esc_take_equipments
+esc_capture_army_blockpost
+esc_shilov_find_rukzak
+esc_shilov_talk_rukzak
+gar_wild_napr_talk
+gar_wild_napr_assistance
+gar_wild_napr_get_info
+gar_get_propusk_having_talk
+gar_find_valley_propusk
+gar_fail_valley_propusk
+gar_searched_commander_body
+gar_digger_messanger_accompany
+gar_digger_messanger_reward
+gar_find_master_outfit
+gar_reward_master_outfit
+gar_rescue_tunnel_novice
+gar_return_tunnel_novice
+gar_reward_tunnel_novice
+val_go_to_outpost
+val_talk_to_outpost_leader
+val_speak_about
+val_talk_to_medic
+val_deliver_outpost_equipments
+val_talk_to_chief_guard
+val_7_6_deliver_weapons
+val_reward_chief_guard
+val_return_propusk
+val_searched_impounded
+val_reward_impounded
+val_find_ashot_dummy
+val_bring_ashot_dummy
+val_sos_check_bus
+val_sos_rescue_bus
+val_sos_searched_bus
+val_sos_reward_bus
+agr_talk_to_stalker_leader
+agr_fake_talk_to_leader
+agr_occupy_north_position
+agr_hold_north_position
+agr_destroy_snork_hole
+agr_occupy_east_position
+agr_hold_east_position
+agr_go_to_outpost
+agr_eliminate_outpost
+agr_search_lieutenant_body
+agr_search_ordinary_body
+agr_return_outpost_pda
+agr_kill_wild_giant
+yan_kill_tunnel_snorks
+yan_reward_tunnel_snorks
+yan_bring_sample_dnk
+yan_take_sample_dnk
+yan_reward_sample_dnk
+mil_hog_find_item
+mil_hog_reward_item
+mil_stop_invasion_5_5
+mil_stop_invasion_5_6
+;--------------------------------------;
+;------------SGM[Первичные]------------;
+;--------------------------------------;
+;Захватить насосную станцию
+[mar_capture_pumping_station]
+type = eliminate_smart
+task_type = storyline
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_pumping_station
+text = mar_capture_pumping_station_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 14
+target_cond = {-mar_capture_pump_station_complete =target_smart_name(mar_smart_terrain_5_8)} true
+wait_time = -1
+on_complete = %+mar_capture_pump_station_complete +mar_story_empower_csky_done%
+on_reversed = %+mar_capture_pump_station_complete +mar_story_empower_csky_done%
+on_fail     = %+mar_capture_pump_station_complete +mar_story_empower_csky_done%
+community_relation_delta_complete=+100
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Захватить смотровую вышку
+[mar_capture_watch_tower]
+type = eliminate_smart
+task_type = storyline
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_watch_tower
+text = mar_capture_watch_tower_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 16
+target_cond = {-mar_capture_watch_tower_complete =target_smart_name(mar_smart_terrain_6_11)} true
+wait_time = -1
+on_complete = %+mar_capture_watch_tower_complete +mar_story_empower_csky_done%
+on_reversed = %+mar_capture_watch_tower_complete +mar_story_empower_csky_done%
+on_fail     = %+mar_capture_watch_tower_complete +mar_story_empower_csky_done%
+community_relation_delta_complete=+100
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Захватить старую церковь
+[mar_capture_church]
+type = eliminate_smart
+task_type = storyline
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_church
+text = mar_capture_church_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 15
+target_cond = {-mar_capture_church_complete =target_smart_name(mar_smart_terrain_8_11)} true
+wait_time = -1
+on_complete = %+mar_capture_church_complete +mar_story_empower_csky_done%
+on_reversed = %+mar_capture_church_complete +mar_story_empower_csky_done%
+on_fail     = %+mar_capture_church_complete +mar_story_empower_csky_done%
+community_relation_delta_complete=+100
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Встретится c отрядом ЧН
+[mar_entry_csky_force]
+type = storyline
+task_type = storyline
+target_cond = true
+condlist_0 = {+mar_entry_csky_force_see} complete
+condlist_1 = {+mar_story_capture_bandit_base_reward} complete
+condlist_2 = {+mar_story_go_to_escape_done} fail
+prior = 30
+name = mar_entry_csky_force
+text = mar_entry_csky_force_text
+auto_name = true
+target_profile = mar_csky_force_leader
+no_sid_x     = 463.899
+no_sid_y     = 0.371
+no_sid_z     = 133.689
+no_sid_lv    = 449685
+no_sid_gv    = 96
+no_sid_shift = false
+on_complete = %+mar_entry_csky_force_complete =give_inited_task(storyline:mar_meet_csky_force:csky)%
+;Присоединится к отряду ЧН
+[mar_meet_csky_force]
+type = storyline
+task_type = storyline
+target_cond = true
+condlist_0 = {+mar_csky_force_talk_end} complete
+condlist_1 = {+mar_story_capture_bandit_base_reward} complete
+prior = 23
+name = mar_meet_csky_force
+text = mar_meet_csky_force_text
+auto_name = true
+target_profile = mar_csky_force_leader
+no_sid_x     = 463.899
+no_sid_y     = 0.371
+no_sid_z     = 133.689
+no_sid_lv    = 449685
+no_sid_gv    = 96
+no_sid_shift = false
+on_complete = %+mar_meet_csky_force_complete%
+;Удержать ферму до прибытия подкрепления
+[mar_hold_renagade_base]
+type = storyline
+task_type = storyline
+target_cond = true
+target_story_ids = 310
+condlist_0 = {+mar_story_capture_bandit_base_reward} complete
+condlist_1 = {+mar_story_go_to_escape_done} fail
+prior = 17
+name = mar_hold_renagade_base
+text = mar_hold_renagade_base_text
+auto_name = true
+on_complete = %+mar_hold_renagade_base_complete%
+;--------------"Кордон"--------------;
+;Нейтрализировать Свиридова винтовкой СВУ
+[esc_kill_blockpost_leader]
+type = storyline
+task_type = storyline
+target_cond = true
+condlist_0 = {+esc_kill_blockpost_leader_killed} complete
+prior = 40
+name = esc_kill_blockpost_leader
+text = esc_kill_blockpost_leader_text
+auto_name = true
+target_profile = esc_army_polkovnik
+no_sid_x     = -150.523
+no_sid_y     = -30.436
+no_sid_z     = -350.477
+no_sid_lv    = 101915
+no_sid_gv    = 564
+no_sid_shift = false
+on_complete = %+esc_kill_blockpost_leader_complete =give_inited_task(storyline:esc_kill_blockpost_talk:stalker)%
+;Поговорить с Богдановым
+[esc_kill_blockpost_talk]
+type = storyline
+task_type = storyline
+target_cond = true
+condlist_0 = {+esc_kill_blockpost_leader_reward} complete
+prior = 40
+name = esc_kill_blockpost_talk
+text = esc_kill_blockpost_talk_text
+auto_name = true
+target_profile = esc_stalker_bogdanov
+no_sid_x     = 21.326
+no_sid_y     = 0.321
+no_sid_z     = 276.488
+no_sid_lv    = 332472
+no_sid_gv    = 520
+no_sid_shift = false
+on_complete = %=add_500_stalker_relation%
+reward_item = skill_book_fort
+;--------------"Свалка"--------------;
+;Поговорить с лидером диггеров
+[gar_wild_napr_talk]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_wild_napr_talk
+text = gar_wild_napr_talk_text
+condlist_0 = {+gar_wild_napr_talk_complete} complete
+condlist_1 = {+gar_flea_market_stop_quest_line} fail
+target_story_ids = logic@work5, gar_smart_terrain_6_3
+auto_name = true
+on_complete = %=give_inited_task(storyline:gar_wild_napr_assistance:csky)%
+on_fail     = %=give_inited_task(storyline:gar_wild_napr_assistance:csky)%
+;Помочь лидеру диггеров
+[gar_wild_napr_assistance]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_wild_napr_assistance
+text = gar_wild_napr_assistance_text
+condlist_0 = {+gar_quest_liberate_conc_camp_done +gar_quest_liberate_conc_camp_told} complete
+condlist_1 = {+gar_flea_market_stop_quest_line} fail
+target_story_ids = logic@work5, gar_smart_terrain_6_3
+auto_name = true
+on_complete = %=give_inited_task(storyline:gar_wild_napr_get_info:csky) =create_squad(gar_stalker_reinforcements:gar_smart_terrain_5_8)%
+on_fail     = %=give_inited_task(storyline:gar_wild_napr_get_info:csky)%
+reward_item = skill_book_ak74
+;Получить нужную информацию от Напра
+[gar_wild_napr_get_info]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_wild_napr_get_info
+text = gar_wild_napr_get_info_text
+condlist_0 = {+gar_wild_napr_get_info_end} complete
+condlist_1 = {+gar_flea_market_stop_quest_line} fail
+target_story_ids = logic@work5, gar_smart_terrain_6_3
+auto_name = true
+on_complete = %=give_inited_task(storyline:gar_get_propusk_having_talk:csky) =create_squad(gar_rush_reinforcements:gar_smart_terrain_5_8)%
+on_fail     = %=give_inited_task(storyline:gar_fail_valley_propusk:csky)%
+;Поговорить с командиром местного барьера
+[gar_get_propusk_having_talk]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_get_propusk_having_talk
+text = gar_get_propusk_having_talk_text
+condlist_0 = {+gar_get_propusk_having_talks} complete
+condlist_1 = {+gar_barier_commander_fail} fail
+auto_name = true
+target_profile = gar_barier_commander
+no_sid_x     = 248.374
+no_sid_y     = 0.535
+no_sid_z     = 140.750
+no_sid_lv    = 345247
+no_sid_gv    = 286
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:gar_find_valley_propusk:csky)%
+on_fail     = %=give_inited_task(storyline:gar_searched_commander_body:csky)%
+;Получить пропуск через блокпост
+[gar_find_valley_propusk]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_find_valley_propusk
+text = gar_find_valley_propusk_text
+condlist_0 = {=has_valley_propusk} complete
+auto_name = true
+target_profile = valley_propusk
+on_complete = %=give_inited_task(storyline:gar_story_go_to_freedom:csky) +gar_actor_has_valley_propusk%
+;Резервный пропуск
+[gar_fail_valley_propusk]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_fail_valley_propusk
+text = gar_fail_valley_propusk_text
+condlist_0 = {=has_valley_propusk} complete
+auto_name = true
+target_profile = logic@work5, gar_smart_terrain_6_3
+on_complete = %=give_inited_task(storyline:gar_story_go_to_freedom:csky) +gar_actor_has_valley_propusk%
+;Обыскать тело лейтенанта Звягинцева
+[gar_searched_commander_body]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = gar_searched_commander_body
+text = gar_searched_commander_body_text
+condlist_0 = {=has_valley_propusk} complete
+auto_name = true
+target_profile = gar_barier_commander
+no_sid_x     = 248.374
+no_sid_y     = 0.535
+no_sid_z     = 140.750
+no_sid_lv    = 345247
+no_sid_gv    = 286
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:gar_story_go_to_freedom:csky) +gar_actor_has_valley_propusk%
+;--------------"Долина"--------------;
+;Прийти на форпост
+[val_go_to_outpost]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_go_to_outpost
+text = val_go_to_outpost_text
+condlist_0 = {+val_go_to_outpost_distance} complete
+auto_name = true
+target_story_ids = 1105
+on_complete = %+val_go_to_outpost_complete =give_inited_task(storyline:val_talk_to_outpost_leader:freedom)%
+;Узнать у свободовцев о ситуации
+[val_talk_to_outpost_leader]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_talk_to_outpost_leader
+text = val_talk_to_outpost_leader_text
+condlist_0 = {+val_talk_to_outpost_leader_talk} complete
+auto_name = true
+target_story_ids = 1105
+on_complete = %+val_talk_to_outpost_leader_complete =give_inited_task(storyline:val_speak_about:freedom)%
+;Доложить о ситуации на форпосту
+[val_speak_about]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_speak_about
+text = val_speak_about_text
+condlist_0 = {+val_speak_about_talk} complete
+auto_name = true
+target_story_ids = 1103
+on_complete = %+val_speak_about_complete =give_inited_task(storyline:val_talk_to_medic:freedom)%
+;Поговорить с Кречетовым
+[val_talk_to_medic]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_talk_to_medic
+text = val_talk_to_medic_text
+condlist_0 = {+val_talk_to_medic_end} complete
+condlist_1 = {+gar_talk_to_medic_end} complete
+auto_name = true
+target_profile = val_freedom_medic
+no_sid_x  = 25.867
+no_sid_y  = 5.122
+no_sid_z  = 29.030
+no_sid_lv = 190925
+no_sid_gv = 795
+on_complete = %+val_talk_to_medic_complete%
+;Доставить медикаменты и боеприпасы на форпост
+[val_deliver_outpost_equipments]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_deliver_outpost_equipments
+text = val_deliver_outpost_equipments_text
+condlist_0 = {+val_deliver_ammo_complete} complete
+auto_name = true
+target_story_ids = 1105
+on_complete = %+val_deliver_outpost_equipments_reverse%
+;Поговорить с начальником охраны
+[val_talk_to_chief_guard]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_talk_to_chief_guard
+text = val_talk_to_chief_guard_text
+condlist_0 = {+val_talk_to_guard_leader_talk} complete
+auto_name = true
+target_profile = val_freedom_guard_leader
+no_sid_x  = -46.181
+no_sid_y  = 9.191
+no_sid_z  = -24.311
+no_sid_lv = 118582
+no_sid_gv = 794
+on_complete = %+val_talk_to_guard_leader_complete =give_inited_task(storyline:val_7_6_deliver_weapons:freedom)%
+;Доставить оружие на блокпост у элеватора
+[val_7_6_deliver_weapons]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_7_6_deliver_weapons
+text = val_7_6_deliver_weapons_text
+condlist_0 = {+val_7_6_deliver_weapon_talk} complete
+auto_name = true
+target_profile = val_freedom_7_6_commander
+no_sid_x  = 0.1002
+no_sid_y  = 0.012
+no_sid_z  = -163.020
+no_sid_lv = 166083
+no_sid_gv = 801
+on_complete = %+val_7_6_deliver_weapon_complete =give_inited_task(storyline:val_reward_chief_guard:freedom)%
+;Вернуться к начальнику охраны за наградой
+[val_reward_chief_guard]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 15
+name = val_reward_chief_guard
+text = val_reward_chief_guard_text
+condlist_0 = {+val_reward_chief_guard_talk} complete
+auto_name = true
+target_profile = val_freedom_guard_leader
+no_sid_x  = -46.181
+no_sid_y  = 9.191
+no_sid_z  = -24.311
+no_sid_lv = 118582
+no_sid_gv = 794
+on_complete = %+val_reward_chief_guard_complete%
+reward_item = skill_book_pb
+;Вернуть свой пропук
+[val_return_propusk]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 40
+name = val_return_propusk
+text = val_return_propusk_text
+condlist_0 = {+val_return_propusk_talk} complete
+condlist_1 = {+val_return_propusk_fail} fail
+auto_name = true
+target_story_ids = logic@work3, val_smart_terrain_5_7
+on_complete = %+val_return_propusk_complete%
+reward_item = skill_book_sig550
+;--------------"Агропром"--------------;
+;Поговорить с командиром сталкеров
+[agr_talk_to_stalker_leader]
+type = storyline
+prior = 45
+task_type = storyline
+icon = ui_mt_image_attack_tower
+name = agr_talk_to_stalker_leader
+text = agr_talk_to_stalker_leader_text
+target_profile = agr_stalker_base_leader
+no_sid_x  = -1.762
+no_sid_y  = 7.499
+no_sid_z  = 17.591
+no_sid_lv = 149333
+no_sid_gv = 1207
+condlist_0 = {+agr_stalker_leader_talk_end} complete
+auto_faction = true
+;Поговорить с лидером «Долга»
+[agr_fake_talk_to_leader]
+type = storyline
+prior = 45
+task_type = storyline
+icon = ui_mt_image_attack_tower
+name = agr_at_blokpost_name
+text = agr_at_blokpost_text
+target_story_ids = 1001
+condlist_0 = {+agr_defend_dolg_tip} reversed
+auto_faction = true
+;Помочь «Долгу» защитить базу
+[agr_occupy_north_position]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 45
+name = agr_occupy_north_position
+text = agr_occupy_north_position_text
+condlist_0 = {+agr_defend_dolg_north} complete
+auto_name = true
+target_profile = agr_dolg_north_position
+no_sid_x  = -191.140
+no_sid_y  = -0.101
+no_sid_z  = -125.825
+no_sid_lv = 22561
+no_sid_gv = 1102
+on_complete = %=give_inited_task(storyline:agr_hold_north_position:dolg) +agr_defend_dolg_n_allow%
+;Удержать северный рубеж
+[agr_hold_north_position]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 45
+name = agr_hold_north_position
+text = agr_hold_north_position_text
+condlist_0 = {+agr_n_wave2_giant_death} complete
+auto_name = true
+target_profile = agr_dolg_north_position
+no_sid_x  = -191.140
+no_sid_y  = -0.101
+no_sid_z  = -125.825
+no_sid_lv = 22561
+no_sid_gv = 1102
+on_complete = %=agr_chief_commander_tip2 =give_inited_task(storyline:agr_destroy_snork_hole:dolg) +agr_defend_dolg_hole_init%
+;Уничтожить окопавшихся мутантов
+[agr_destroy_snork_hole]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 45
+name = agr_destroy_snork_hole
+text = agr_destroy_snork_hole_text
+condlist_0 = {+agr_defend_dolg_north_h1_end +agr_defend_dolg_north_h2_end} complete
+auto_name = true
+target_profile = agr_dolg_north_holes
+no_sid_x  = -211.957
+no_sid_y  = 1.558
+no_sid_z  = -20.619
+no_sid_lv = 14360
+no_sid_gv = 1134
+on_complete = %+agr_defend_dolg_tip2%
+reward_item = skill_book_spas12
+;Занять восточный рубеж
+[agr_occupy_east_position]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 45
+name = agr_occupy_east_position
+text = agr_occupy_east_position_text
+condlist_0 = {+agr_defend_dolg_east} complete
+auto_name = true
+target_profile = agr_dolg_east_position
+no_sid_x  = -99.459
+no_sid_y  = 0.010
+no_sid_z  = -182.903
+no_sid_lv = 76654
+no_sid_gv = 1103
+on_complete = %=give_inited_task(storyline:agr_hold_east_position:dolg) +agr_defend_dolg_e_allow%
+;Удержать восточный рубеж
+[agr_hold_east_position]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 45
+name = agr_hold_north_position
+text = agr_hold_north_position_text
+condlist_0 = {+agr_defend_dolg_end} complete
+auto_name = true
+target_profile = agr_dolg_east_position
+no_sid_x  = -99.459
+no_sid_y  = 0.010
+no_sid_z  = -182.903
+no_sid_lv = 76654
+no_sid_gv = 1103
+reward_money = 8000
+on_complete = %+agr_defend_dolg_open_door +agr_defend_dolg_complete%
+reward_item = skill_book_groza:skill_book_ak78
+;--------------"Янтарь"---------------;
+;Уничтожить мутантов в туннеле
+[yan_kill_tunnel_snorks]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 30
+name = yan_kill_tunnel_snorks
+text = yan_kill_tunnel_snorks_text
+condlist_0 = {+yan_kill_tunnel_snorks_end} complete
+auto_name = true
+target_profile = yan_road_tunnel
+no_sid_x  = 127.993
+no_sid_y  = -8.778
+no_sid_z  = -165.259
+no_sid_lv = 124057
+no_sid_gv = 1266
+on_complete = %=give_inited_task(storyline:yan_reward_tunnel_snorks:stalker)%
+;Вернуться к Сахарову
+[yan_reward_tunnel_snorks]
+type = storyline
+task_type = storyline
+icon = ui_mt_image_attack_tower
+target_cond = true
+prior = 30
+name = yan_reward_tunnel_snorks
+text = yan_reward_tunnel_snorks_text
+condlist_0 = {+yan_kill_tunnel_snorks_set} complete
+auto_name = true
+target_story_ids = 808
+immediate_reward = true
+reward_money = 2000
+on_complete = %+yan_kill_tunnel_snorks_complete%
+;-------------"Заповедник"------------;
+;--------------"Склады"---------------;
+;Остановить вторжение военных на базу
+[mil_stop_invasion_5_6]
+type = eliminate_smart
+task_type = storyline
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mil_stop_invasion_5_6
+text = mil_stop_invasion_5_6_text
+condlist_1 = {=actor_on_level(red_forest)} fail
+condlist_2 = {=actor_on_level(garbage)} fail
+prior = 31
+target_cond = {-mil_stop_invasion_5_6_complete =target_smart_name(mil_smart_terrain_5_6)} true
+wait_time = -1
+on_complete = %+mil_stop_invasion_5_6_complete%
+on_reversed = %+mil_stop_invasion_5_6_complete%
+on_fail     = %+mil_stop_invasion_5_6_complete%
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+complete_info = mil_stop_invasion_5_6_complete
+;Остановить вторжение военных на базу
+[mil_stop_invasion_5_5]
+type = eliminate_smart
+task_type = storyline
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mil_stop_invasion_5_5
+text = mil_stop_invasion_5_5_text
+condlist_1 = {=actor_on_level(red_forest)} fail
+condlist_2 = {=actor_on_level(garbage)} fail
+prior = 30
+target_cond = {-mil_stop_invasion_5_5_complete =target_smart_name(mil_smart_terrain_5_5)} true
+wait_time = -1
+on_complete = %+mil_stop_invasion_5_5_complete%
+on_reversed = %+mil_stop_invasion_5_5_complete%
+on_fail     = %+mil_stop_invasion_5_5_complete%
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+complete_info = mil_stop_invasion_5_5_complete
+;--------------------------------------;
+;------------SGM[Вторичные]------------;
+;--------------------------------------;
+;Захватить лодочную станцию
+[mar_capture_boat_station]
+type = eliminate_smart
+task_type = additional
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_boat_station
+text = mar_capture_boat_station_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 23
+target_cond = {-mar_capture_boat_station_complete +mar_last_intensify_start =target_smart_name(mar_smart_terrain_3_3)} true
+wait_time   = -1
+on_complete = %+mar_capture_boat_station_complete%
+on_reversed = %+mar_capture_boat_station_complete%
+on_fail     = %+mar_capture_boat_station_complete%
+community_relation_delta_complete=+100
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Захватить стоянку под насыпью
+[mar_capture_embankment]
+type = eliminate_smart
+task_type = additional
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_embankment
+text = mar_capture_embankment_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 24
+target_cond = {-mar_capture_embankment_complete +mar_last_intensify_start =target_smart_name(mar_smart_terrain_7_3)} true
+wait_time   = -1
+on_complete = %+mar_capture_embankment_complete%
+on_reversed = %+mar_capture_embankment_complete%
+on_fail     = %+mar_capture_embankment_complete%
+community_relation_delta_complete=+100
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Захватить северный хутор
+[mar_capture_north_khutor]
+type = eliminate_smart
+task_type = additional
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = mar_capture_north_khutor
+text = mar_capture_north_khutor_text
+condlist_0 = {+mar_story_go_to_escape_done} fail
+prior = 25
+target_cond = {-mar_capture_embankment_complete +mar_last_intensify_start =target_smart_name(mar_smart_terrain_12_2)} true
+wait_time   = -1
+on_complete = %+mar_capture_north_khutor_complete%
+on_reversed = %+mar_capture_north_khutor_complete%
+on_fail     = %+mar_capture_north_khutor_complete%
+community_relation_delta_complete=+150
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+;Получение награды за получение полного контроля
+[mar_last_intensify_reward]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 15
+name = mar_last_intensify_reward
+text = mar_last_intensify_reward_text
+condlist_0 = {+mar_capture_north_khutor_complete +mar_capture_embankment_complete +mar_capture_boat_station_complete} complete
+auto_name = true
+on_complete = %+mar_intensify_reward_complete%
+on_reversed = %+mar_intensify_reward_complete%
+on_fail     = %+mar_intensify_reward_complete%
+community_relation_delta_complete=+400
+reward_money = 4000
+reward_item  = cs_heavy_outfit:flesh_up_ac_mp5:medkit_scientic:skill_book_mp5
+;Найти лидера ренегатов "Барона"
+[mar_csky_find_baron]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 15
+name = mar_csky_find_baron
+text = mar_csky_find_baron_text
+condlist_0 = {+mar_renegate_baron_see} complete
+condlist_1 = {+mar_renegate_baron_death} complete
+condlist_2 = {+mar_story_go_to_escape_done} fail
+auto_name = true
+target_profile = mar_renegate_baron
+no_sid_x     = 144.582
+no_sid_y     = 2.099
+no_sid_z     = 493.792
+no_sid_lv    = 222051
+no_sid_gv    = 89
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:mar_csky_kill_baron:csky)%
+;Нейтрализировать "Барона"
+[mar_csky_kill_baron]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 15
+name = mar_csky_kill_baron
+text = mar_csky_kill_baron_text
+condlist_0 = {+mar_renegate_baron_death} complete
+condlist_1 = {+mar_story_go_to_escape_done} fail
+auto_name = true
+target_profile = mar_renegate_baron
+no_sid_x     = 144.582
+no_sid_y     = 2.099
+no_sid_z     = 493.792
+no_sid_lv    = 222051
+no_sid_gv    = 89
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:mar_csky_reward_baron:csky)%
+;Доложить "Патрульному" о выполнении
+[mar_csky_reward_baron]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 16
+name = mar_csky_reward_baron
+text = mar_csky_reward_baron_text
+condlist_0 = {+mar_renegate_baron_complete} complete
+auto_name = true
+target_profile = mar_csky_patrol
+no_sid_x     = -205.429
+no_sid_y     = 0.824
+no_sid_z     = -292.610
+no_sid_lv    = 38659
+no_sid_gv    = 135
+no_sid_shift = false
+reward_money = 2000
+reward_item  = skill_book_pm:skill_book_bm16
+;Встретится c остатками отряда ЧН
+[mar_accompany_rescue_meet]
+type = storyline
+task_type = additional
+target_cond = true
+condlist_0 = {+mar_rescue_specnaz_see} complete
+condlist_1 = {=mar_help_rescue_fail} fail
+prior = 20
+name = mar_accompany_rescue_meet
+text = mar_accompany_rescue_meet_text
+auto_name = true
+target_profile = mar_csky_specnaz_rescue
+no_sid_x     = 99.059
+no_sid_y     = 1.402
+no_sid_z     = 338.973
+no_sid_lv    = 194576
+no_sid_gv    = 84
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:mar_accompany_rescue_talk:csky)%
+on_fail     = %+mar_rescue_specnaz_fail%
+;Поговорить с лидером отряда
+[mar_accompany_rescue_talk]
+type = storyline
+task_type = additional
+target_cond = true
+condlist_0 = {+mar_rescue_specnaz_plan_a} complete
+condlist_1 = {+mar_rescue_specnaz_plan_b} complete
+condlist_2 = {=mar_help_rescue_fail} fail
+prior = 20
+name = mar_accompany_rescue_talk
+text = mar_accompany_rescue_talk_text
+auto_name = true
+target_profile = mar_csky_specnaz_rescue
+no_sid_x     = 99.059
+no_sid_y     = 1.402
+no_sid_z     = 338.973
+no_sid_lv    = 194576
+no_sid_gv    = 84
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:mar_accompany_rescue_island:csky)%
+on_fail     = %+mar_rescue_specnaz_fail%
+;Довести отряд к острову с валунами
+[mar_accompany_rescue_island]
+type = storyline
+task_type = additional
+target_cond = true
+condlist_0 = {+mar_rescue_specnaz_step_0_end} complete
+condlist_1 = {=mar_help_rescue_fail} fail
+prior = 20
+name = mar_accompany_rescue_island
+text = mar_accompany_rescue_island_text
+auto_name = true
+target_profile = explosive_dinamit
+on_complete = %=give_inited_task(storyline:mar_accompany_rescue_home:csky)%
+on_fail     = %+mar_rescue_specnaz_fail%
+;Сопроводить отряд к рыбацкому хутору
+[mar_accompany_rescue_home]
+type = storyline
+task_type = additional
+target_cond = true
+condlist_0 = {+mar_rescue_specnaz_rescue} complete
+condlist_1 = {=mar_help_rescue_fail} fail
+prior = 20
+name = mar_accompany_rescue_home
+text = mar_accompany_rescue_home_text
+auto_name = true
+target_profile = explosive_mobiltank
+on_complete = %+mar_rescue_specnaz_complete%
+on_fail     = %+mar_rescue_specnaz_fail%
+community_relation_delta_complete=+200
+reward_money = 5000
+reward_item  = af_dummy_battery:wpn_silencer_5.45x39:skill_book_toz34
+;--------------"Кордон"--------------;
+;Взять снаряжение у торговца
+[esc_take_equipments]
+type = storyline
+task_type = additional
+target_cond = true
+condlist_0 = {+esc_eliminate_blockpost_talk} complete
+prior = 26
+name = esc_take_equipments
+text = esc_take_equipments_text
+auto_name = true
+target_story_ids = 438
+on_complete = %+esc_eliminate_blockpost_needs%
+;Захватить военный блокпост
+[esc_capture_army_blockpost]
+type = eliminate_smart
+task_type = additional
+auto_name = true
+icon = ui_mt_image_defend_tower
+name = esc_capture_army_blockpost
+text = esc_capture_army_blockpost_text
+condlist_0 = {=actor_on_level(garbage)} fail
+prior = 25
+target_cond = {-esc_eliminate_blockpost_complete +esc_eliminate_blockpost_needs =target_smart_name(esc_smart_terrain_3_16)} true
+wait_time   = -1
+on_complete = %+esc_eliminate_blockpost_complete =create_squad(esc_army_blockpost_explorers:esc_smart_terrain_2_12)%
+on_reversed = %+esc_eliminate_blockpost_complete =create_squad(esc_army_blockpost_explorers:esc_smart_terrain_2_12)%
+on_fail     = %+esc_eliminate_blockpost_complete =create_squad(esc_army_blockpost_explorers:esc_smart_terrain_2_12)%
+community_relation_delta_complete=+300
+play_regard = nil
+auto_faction = true
+hide_smart_name = true
+reward_money = 3000
+reward_item  = stalker_outfit:wpn_autocolt:skill_book_abakan:skill_book_ak74u
+;Найти рюкзак Шилова
+[esc_shilov_find_rukzak]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 10
+name = esc_shilov_find_rukzak
+text = esc_shilov_find_rukzak_text
+condlist_0 = {=has_shilov_rukzak} complete
+auto_name = true
+target_profile = shilov_rukzak
+on_complete = %=give_inited_task(storyline:esc_shilov_talk_rukzak:stalker) +esc_shilov_find_rukzak_complete%
+;Вернуть рюкзак Шилову
+[esc_shilov_talk_rukzak]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 10
+name = esc_shilov_talk_rukzak
+text = esc_shilov_talk_rukzak_text
+condlist_0 = {+esc_shilov_find_rukzak_reward} complete
+auto_name = true
+target_story_ids = 437
+reward_money = 2000
+reward_item  = medkit:skill_book_commander_pm
+;--------------"Свалка"--------------;
+;Сопроводить Васяна
+[gar_digger_messanger_accompany]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 10
+name = gar_digger_messanger_accompany
+text = gar_digger_messanger_accompany_text
+condlist_0 = {+gar_digger_messanger_accompany_moved} complete
+condlist_1 = {+gar_digger_messanger_accompany_fail} fail
+auto_name = true
+target_profile = explosive_barrel
+on_complete = %=give_inited_task(storyline:gar_digger_messanger_reward:stalker)%
+;Поговорить с Васяном
+[gar_digger_messanger_reward]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 10
+name = gar_digger_messanger_reward
+text = gar_digger_messanger_reward_text
+condlist_0 = {+gar_digger_messanger_accompany_reward} complete
+condlist_1 = {+gar_digger_messanger_accompany_fail} fail
+auto_name = true
+target_profile = gar_digger_messenger_man
+no_sid_x     = 37.380
+no_sid_y     = 0.439
+no_sid_z     = -297.345
+no_sid_lv    = 196698
+no_sid_gv    = 261
+no_sid_shift = false
+on_complete = %+gar_digger_messanger_accompany_complete%
+;Найти мастерский бронекостюм
+[gar_find_master_outfit]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 12
+name = gar_find_master_outfit
+text = gar_find_master_outfit_text
+condlist_0 = {=has_master_outfit} complete
+auto_name = true
+target_profile = svoboda_light_outfit_up
+no_sid_x     = 23.968
+no_sid_y     = 4.592
+no_sid_z     = 212.699
+no_sid_lv    = 182959
+no_sid_gv    = 341
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:gar_reward_master_outfit:stalker) +gar_find_svoboda_up_outfit_find%
+;Вернуть бронекостюм
+[gar_reward_master_outfit]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 12
+name = gar_reward_master_outfit
+text = gar_reward_master_outfit_text
+condlist_0 = {+gar_find_svoboda_up_outfit_complete} complete
+auto_name = true
+target_profile = gar_stalker_squads_commander
+no_sid_x     = 39.833
+no_sid_y     = 0.413
+no_sid_z     = -312.899
+no_sid_lv    = 199806
+no_sid_gv    = 261
+no_sid_shift = false
+;Разискать пропавшего диггера
+[gar_rescue_tunnel_novice]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 20
+name = gar_rescue_tunnel_novice
+text = gar_rescue_tunnel_novice_text
+condlist_0 = {+gar_rescue_tunnel_novice_find} complete
+condlist_1 = {+gar_rescue_tunnel_novice_fail} fail
+condlist_2 = {+gar_flea_market_stop_quest_line} fail
+auto_name = true
+target_profile = gar_tunnel_novice
+no_sid_x     = -275.499
+no_sid_y     = 0.375
+no_sid_z     = 28.433
+no_sid_lv    = 1626
+no_sid_gv    = 295
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:gar_return_tunnel_novice:stalker)%
+;Вернуться с диггером на базу 
+[gar_return_tunnel_novice]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 20
+name = gar_return_tunnel_novice
+text = gar_return_tunnel_novice_text
+condlist_0 = {+gar_rescue_tunnel_novice_return} complete
+condlist_1 = {+gar_rescue_tunnel_novice_fail} fail
+condlist_2 = {+gar_flea_market_stop_quest_line} fail
+auto_name = true
+target_story_ids = logic@work5, gar_smart_terrain_6_3
+on_complete = %=give_inited_task(storyline:gar_reward_tunnel_novice:stalker)%
+;Поговорить с Диким Напром о диггере 
+[gar_reward_tunnel_novice]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 20
+name = gar_reward_tunnel_novice
+text = gar_reward_tunnel_novice_text
+condlist_0 = {+gar_rescue_tunnel_novice_reward} complete
+condlist_1 = {+gar_flea_market_stop_quest_line} fail
+auto_name = true
+target_story_ids = logic@work5, gar_smart_terrain_6_3
+on_complete = %+gar_rescue_tunnel_novice_complete%
+;--------------"Долина"--------------;
+;Найти тело пропавшего свободовца
+[val_searched_impounded]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 16
+name = val_searched_impounded
+text = val_searched_impounded_text
+condlist_0 = {=has_af_sizer} complete
+auto_name = true
+target_profile = val_impounded_corpse
+no_sid_x     = -6.543
+no_sid_y     = 7.011
+no_sid_z     = -158.918
+no_sid_lv    = 178873
+no_sid_gv    = 849
+on_complete = %=give_inited_task(storyline:val_reward_impounded:freedom) +val_searched_impounded_check%
+;Отнести найденное доктору Мамаеву
+[val_reward_impounded]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 16
+name = val_reward_impounded
+text = val_reward_impounded_text
+condlist_0 = {+val_searched_impounded_reward} complete
+auto_name = true
+target_profile = val_freedom_breeder
+no_sid_x     = -20.942
+no_sid_y     = 0.090
+no_sid_z     = -2.966
+no_sid_lv    = 146468
+no_sid_gv    = 855
+on_complete  = %+val_searched_impounded_complete%
+reward_item  = skill_book_viper
+;Найти Ашоту артефакт «Пустышка»
+[val_find_ashot_dummy]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 13
+name = val_find_ashot_dummy
+text = val_find_ashot_dummy_text
+condlist_0 = {=has_af_dummy} complete
+condlist_1 = {+val_bring_ashot_dummy_refuse} fail
+auto_name = true
+on_complete = %=give_inited_task(storyline:val_bring_ashot_dummy:freedom) +val_bring_ashot_dummy_has%
+on_fail     = %+val_bring_ashot_dummy_fail%
+;Отдать Ашоту артефакт «Пустышка»
+[val_bring_ashot_dummy]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 13
+name = val_bring_ashot_dummy
+text = val_bring_ashot_dummy_text
+condlist_0 = {+val_bring_ashot_dummy_reward} complete
+condlist_1 = {+val_bring_ashot_dummy_refuse} fail
+auto_name = true
+target_story_ids = 1104
+on_complete = %+val_bring_ashot_dummy_complete%
+on_fail     = %+val_bring_ashot_dummy_fail%
+reward_item = skill_book_g36
+;Отправится на сигнал SOS
+[val_sos_check_bus]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 21
+name = val_sos_check_bus
+text = val_sos_check_bus_text
+condlist_0 = {+val_check_bus_on_zone} complete
+target_profile = val_bus_hostage
+no_sid_x     = 59.798
+no_sid_y     = 0.201
+no_sid_z     = -187.310
+no_sid_lv    = 222893
+no_sid_gv    = 959
+on_complete = %=give_inited_task(storyline:val_sos_rescue_bus:freedom)%
+;Спасти свободовца
+[val_sos_rescue_bus]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 21
+name = val_sos_rescue_bus
+text = val_sos_rescue_bus_text
+condlist_0 = {+val_bus_killer_death -val_bus_hostage_death} complete
+condlist_1 = {+val_bus_hostage_death} fail
+target_profile = val_bus_hostage
+no_sid_x     = 59.798
+no_sid_y     = 0.201
+no_sid_z     = -187.310
+no_sid_lv    = 222893
+no_sid_gv    = 959
+on_complete = %=give_inited_task(storyline:val_sos_reward_bus:freedom) +val_check_bus_complete%
+on_fail     = %=give_inited_task(storyline:val_sos_searched_bus:freedom) +val_check_bus_fail%
+;Забрать у погибшего КПК
+[val_sos_searched_bus]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 21
+name = val_sos_searched_bus
+text = val_sos_searched_bus_text
+condlist_0 = {=has_bus_hostage_pda} complete
+target_profile = val_bus_hostage
+no_sid_x     = 59.798
+no_sid_y     = 0.201
+no_sid_z     = -187.310
+no_sid_lv    = 222893
+no_sid_gv    = 959
+on_complete = %=give_inited_task(storyline:val_sos_reward_bus:freedom) +val_check_bus_searched%
+;Доложить Барановскому о выполнении
+[val_sos_reward_bus]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 21
+name = val_sos_reward_bus
+text = val_sos_reward_bus_text
+condlist_0 = {+val_check_bus_reward} complete
+target_profile = val_freedom_squads_commander
+no_sid_x     = 19.066
+no_sid_y     = 0.133
+no_sid_z     = -2.351
+no_sid_lv    = 184135
+no_sid_gv    = 811
+on_complete = %+val_check_bus_end%
+reward_item = skill_book_l85
+;--------------"Агропром"--------------;
+;Добраться до форпоста
+[agr_go_to_outpost]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 23
+name = agr_go_to_outpost
+text = agr_go_to_outpost_text
+condlist_0 = {+agr_find_squad_distance} complete
+condlist_1 = {+agr_exo_bandit1_death} complete
+condlist_2 = {+agr_exo_bandit2_death} complete
+target_profile = agr_south_outpost
+no_sid_x     = -37.609
+no_sid_y     = -4.385
+no_sid_z     = -301.328
+no_sid_lv    = 120722
+no_sid_gv    = 1058
+on_complete = %=give_inited_task(storyline:agr_eliminate_outpost:dolg)%
+;Очистить форпост от бандюков-ветеранов
+[agr_eliminate_outpost]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 23
+name = agr_eliminate_outpost
+text = agr_eliminate_outpost_text
+condlist_0 = {+agr_exo_bandit1_death +agr_exo_bandit2_death} complete
+target_profile = agr_south_outpost
+no_sid_x     = -37.609
+no_sid_y     = -4.385
+no_sid_z     = -301.328
+no_sid_lv    = 120722
+no_sid_gv    = 1058
+on_complete = %=give_inited_task(storyline:agr_search_ordinary_body:dolg) =give_inited_task(storyline:agr_search_lieutenant_body:dolg)%
+;Обыскать тело лейтенанта
+[agr_search_lieutenant_body]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 25
+name = agr_search_lieutenant_body
+text = agr_search_lieutenant_body_text
+condlist_0 = {=has_exo_victim2_pda} complete
+target_profile = agr_bandit_victim2
+no_sid_x     = -35.325
+no_sid_y     = -4.390
+no_sid_z     = -299.174
+no_sid_lv    = 122667
+no_sid_gv    = 1058
+on_complete = %+agr_find_squad_find2 =agr_outpost_search_bodyes%
+;Обыскать тело рядового
+[agr_search_ordinary_body]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 24
+name = agr_search_ordinary_body
+text = agr_search_ordinary_body_text
+condlist_0 = {=has_exo_victim1_pda} complete
+target_profile = agr_bandit_victim1
+no_sid_x     = -37.787
+no_sid_y     = -4.133
+no_sid_z     = -290.333
+no_sid_lv    = 120737
+no_sid_gv    = 1058
+on_complete = %+agr_find_squad_find1 =agr_outpost_search_bodyes%
+;Вернуть найденые КПК сержанту Маклакову
+[agr_return_outpost_pda]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 26
+name = agr_return_outpost_pda
+text = agr_return_outpost_pda_text
+condlist_0 = {+agr_find_squad_reward} complete
+target_profile = agr_dolg_agent
+no_sid_x     = -146.599
+no_sid_y     = 4.999
+no_sid_z     = -201.909
+no_sid_lv    = 45827
+no_sid_gv    = 1168
+community_relation_delta_complete=+200
+on_complete  = %+agr_find_squad_complete%
+reward_money = 6000
+reward_item  = personal_rukzak:bio_bandage:bio_bandage:wpn_lr300_up2:ammo_5.56x45_gd:ammo_5.56x45_gd:skill_book_spp200
+;Уничтожить «дикого псевдо-гиганта»
+[agr_kill_wild_giant]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 17
+name = agr_kill_wild_giant
+text = agr_kill_wild_giant_text
+condlist_0 = {+agr_wild_giant_death} complete
+target_profile = agr_wild_giant
+no_sid_x     = -41.336
+no_sid_y     = 7.072
+no_sid_z     = -93.258
+no_sid_lv    = 118246
+no_sid_gv    = 1159
+on_complete  = %+agr_kill_wild_giant_complete%
+reward_money = 1000
+reward_item  = af_eye:skill_book_vintorez
+;--------------"Янтарь"--------------;
+;Обезглавить зомби-кровососа
+[yan_bring_sample_dnk]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 18
+name = yan_bring_sample_dnk
+text = yan_bring_sample_dnk_text
+condlist_0 = {+yan_bring_sample_dnk_death} complete
+target_profile = yan_zombie_bloodsucker
+no_sid_x     = 62.813
+no_sid_y     = 0.604
+no_sid_z     = 40.940
+no_sid_lv    = 90537
+no_sid_gv    = 1272
+on_complete  = %=give_inited_task(storyline:yan_take_sample_dnk:stalker)%
+;Взять образец ДНК
+[yan_take_sample_dnk]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 18
+name = yan_take_sample_dnk
+text = yan_take_sample_dnk_text
+condlist_0 = {+yan_bring_sample_dnk_has_dnk} complete
+target_profile = yan_zombie_bloodsucker
+no_sid_x     = 62.813
+no_sid_y     = 0.604
+no_sid_z     = 40.940
+no_sid_lv    = 90537
+no_sid_gv    = 1272
+on_complete  = %=give_inited_task(storyline:yan_reward_sample_dnk:stalker)%
+;Отнести Сахарову образец ДНК
+[yan_reward_sample_dnk]
+type = storyline
+task_type = additional
+target_cond = true
+auto_name = true
+prior = 18
+name = yan_reward_sample_dnk
+text = yan_reward_sample_dnk_text
+condlist_0 = {+yan_bring_sample_dnk_reward} complete
+target_story_ids = 808
+immediate_reward = true
+on_complete  = %+yan_bring_sample_dnk_complete%
+reward_money = 4000
+reward_item  = skill_book_fn2000
+;------------"Заповедник"------------;
+;----------"Военные склады"----------;
+;Найти РПГ-7 «Резонанс»
+[mil_hog_find_item]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 12
+name = mil_hog_find_item_name
+text = mil_hog_find_item_text
+condlist_0 = {=has_quest_rpg} complete
+condlist_1 = {+mil_hog_death} fail
+auto_name = true
+target_profile = mil_quest_wpn_rpg7
+no_sid_x     = 3.503
+no_sid_y     = 5.977
+no_sid_z     = -61.462
+no_sid_lv    = 292865
+no_sid_gv    = 1449
+no_sid_shift = false
+on_complete = %=give_inited_task(storyline:mil_hog_reward_item:killer) +mil_hog_find_item_find%
+;Вернуть РПГ-7 «Резонанс»
+[mil_hog_reward_item]
+type = storyline
+task_type = additional
+target_cond = true
+prior = 12
+name = mil_hog_reward_item_name
+text = mil_hog_reward_item_text
+condlist_0 = {+mil_hog_find_item_reward} complete
+condlist_1 = {+mil_hog_death} fail
+auto_name = true
+target_story_ids = 1207
+immediate_reward = true
+reward_money = 4500
+reward_item = ammo_7.62x54_7h14
+on_complete = %+mil_hog_find_item_complete%
+;------------SGM------------; 

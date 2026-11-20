@@ -1,0 +1,187 @@
+        <!-----------------"Болота"--------------->
+	<string id="sgm_baron_name">
+		<text>Барон</text>
+	</string>
+	<string id="sgm_csky_patrol_name">
+		<text>Патрульный</text>
+	</string>
+	<string id="sgm_csky_force_leader_name">
+		<text>Коваленко</text>
+	</string>
+	<string id="sgm_csky_orlov_name">
+		<text>Орлов</text>
+	</string>
+	<string id="sgm_csky_bankir_name">
+		<text>Лис</text>
+	</string>
+	<string id="sgm_csky_squads_commander_name">
+		<text>Федорчук</text>
+	</string>
+	<string id="mar_bodyguard_csky_name">
+		<text>Бойченко</text>
+	</string>
+	<string id="mar_renegate_boss_name">
+		<text>Главарь ренегатов «Сифон»</text>
+	</string>
+        <!-----------------"Кордон"--------------->
+	<string id="sgm_stalker_bankir_name">
+		<text>Колчак</text>
+	</string>
+	<string id="sgm_stalker_defender_name">
+		<text>Богданов</text>
+	</string>
+	<string id="sgm_army_sviridov_name">
+		<text>Полковник Свиридов</text>
+	</string>
+	<string id="esc_bodyguard_stalker_name">
+		<text>Грицай</text>
+	</string>
+	<string id="esc_bodyguard_novice_name">
+		<text>Павел Горохин</text>
+	</string>
+        <!-----------------"Свалка"--------------->
+	<string id="sgm_gar_stalker_trader_name">
+		<text>Демократ</text>
+	</string>
+	<string id="sgm_gar_freedom_trader_name">
+		<text>Рошенко</text>
+	</string>
+	<string id="sgm_stalker_bankir2_name">
+		<text>Заводило</text>
+	</string>
+	<string id="sgm_barier_commander_name">
+		<text>Лейтенант Звягинцев</text>
+	</string>
+	<string id="sgm_stalker_squads_commander_name">
+		<text>Майор Казаков</text>
+	</string>
+	<string id="sgm_stalker_breeder_name">
+		<text>Доктор Аполонов</text>
+	</string>
+	<string id="gar_tunnel_novice_name">
+		<text>Федька</text>
+	</string>
+	<string id="gar_bodyguard_freedom_name">
+		<text>Сержант Воронцов</text>
+	</string>
+	<string id="gar_bodyguard_stalker_name">
+		<text>Зарубин</text>
+	</string>
+        <!------------------"Долина"------------------->
+	<string id="sgm_freedom_bankir_name">
+		<text>Спекулянт</text>
+	</string>
+	<string id="sgm_freedom_squads_commander_name">
+		<text>Майор Барановский</text>
+	</string>
+	<string id="sgm_freedom_breeder_name">
+		<text>Доктор Мамаев</text>
+	</string>
+	<string id="val_freedom_medic_name">
+		<text>Кречетов</text>
+	</string>
+	<string id="val_freedom_guard_leader_name">
+		<text>Полковник Бородин</text>
+	</string>
+	<string id="val_freedom_7_6_commander_name">
+		<text>Лейтенант Кадочкин</text>
+	</string>
+	<string id="val_4_0_trader_name">
+		<text>Ванько Тракторист</text>
+	</string>
+	<string id="val_bodyguard_freedom_name">
+		<text>Лейтенант Сорокин</text>
+	</string>
+        <!------------------"Агропром"-------------->
+	<string id="agr_dolg_agent_name">
+		<text>Сержант Маклаков</text>
+	</string>
+	<string id="agr_dolg_trader_name">
+		<text>Копейкин</text>
+	</string>
+	<string id="agr_dolg_breeder_name">
+		<text>Доктор Селезнев</text>
+	</string>
+	<string id="agr_dolg_squads_commander_name">
+		<text>Майор Сарматов</text>
+	</string>
+	<string id="agr_dolg_bankir_name">
+		<text>Лукашын</text>
+	</string>
+	<string id="agr_stalker_bankir_name">
+		<text>Касим</text>
+	</string>
+	<string id="agr_stalker_trader_name">
+		<text>Прохор</text>
+	</string>
+	<string id="agr_bodyguard_dolg_name">
+		<text>Майор Татарчук</text>
+	</string>
+	<string id="agr_bodyguard_stalker_name">
+		<text>Галкин</text>
+	</string>
+	<string id="agr_7_4_commander_name">
+		<text>Полковник Ворохаев</text>
+	</string>
+	<string id="agr_exo_bandit_leader_name">
+		<text>Чекан</text>
+	</string>
+        <!------------------"Янтарь"------------------->
+	<string id="yan_ecolog_trader_name">
+		<text>Васильев</text>
+	</string>
+	<string id="yan_ecolog_bankir_name">
+		<text>Вальдемар</text>
+	</string>
+        <!---------------"Заповедник"------------------>
+	<string id="red_dolg_bankir_name">
+		<text>Кнут</text>
+	</string>
+	<string id="red_freedom_bankir_name">
+		<text>Нестор Махно</text>
+	</string>
+	<string id="red_dolg_trader_name">
+		<text>Глухарь</text>
+	</string>
+	<string id="red_csky_force_commander_name">
+		<text>Ледокол</text>
+	</string>
+        <!------------------"Склады"------------------->
+	<string id="mil_army_boss_name">
+		<text>Генерал Громобой</text>
+	</string>
+	<string id="mil_zombied_boss_name">
+		<text>Полковник Сарматов</text>
+	</string>
+	<string id="mil_killer_trader_name">
+		<text>Вепрь</text>
+	</string>
+	<string id="mil_stalker_upgrader_name">
+		<text>Старец</text>
+	</string>
+        <!-----------------"Лиманск"------------------->
+	<string id="lim_construction_robbery_leader_name">
+		<text>Сивоха</text>
+	</string>
+        <!-----------------"Общие имена"--------------->
+	<string id="sgm_bodyguard_name">
+		<text>Телохранитель</text>
+	</string>
+	<string id="sgm_commander_squads_name">
+		<text>Организатор отрядов</text>
+	</string>
+	<string id="sgm_bankir_name">
+		<text>Сберегатель</text>
+	</string>
+	<string id="sgm_trader_name">
+		<text>Торговец: Предметы</text>
+	</string>
+	<string id="sgm_breeder_name">
+		<text>Селекционер</text>
+	</string>
+	<string id="sgm_upgrader_name">
+		<text>Торговец: Апгрейды</text>
+	</string>
+	<string id="sgm_picker_name">
+		<text>Собиратель предметов[пока не реализован]</text>
+	</string>

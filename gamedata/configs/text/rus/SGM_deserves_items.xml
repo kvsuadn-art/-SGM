@@ -1,0 +1,59 @@
+	<string id="sgm_deserve_weapon_descr">
+		<text>Данное оружие изготовлено под заказ, именно поэтому о характеристиках ничего не известно.</text>
+	</string>
+	<string id="sgm_deserve_outfit_descr">
+		<text>Бронекостюм изготовлен под заказ, именно поэтому о характеристиках ничего не известно.</text>
+	</string>
+	<string id="sgm_deserve_other_descr">
+		<text>О характеристиках данного предмета ничего не известно.</text>
+	</string>
+        <!--------------"Бронекостюмы"----------->
+	<string id="st_sifon_outfit_name">
+		<text>Плащ «Сифона»</text>
+	</string>
+	<string id="st_baron_outfit_name">
+		<text>Кевларовая куртка «Барона»</text>
+	</string>
+	<string id="st_kovalenko_outfit_name">
+		<text>Бронежилет «Сержанта Коваленко»</text>
+	</string>
+	<string id="st_sviridov_outfit_name">
+		<text>Кевларовая куртка «Полковника Свиридова»</text>
+	</string>
+	<string id="st_yoga_outfit_name">
+		<text>Плащ «Йоги»</text>
+	</string>
+	<string id="st_zvagincev_outfit_name">
+		<text>Комбинезон «Лейтенанта Звягинцева»</text>
+	</string>
+	<string id="st_comendant_outfit_name">
+		<text>Комбинезон «Коменданта»</text>
+	</string>
+        <!----------------"Оружие"--------------->
+	<string id="st_sifon_weapon_name">
+		<text>Гадюка «Сифона»</text>
+	</string>
+	<string id="st_sifon_granade_name">
+		<text>Граната Ф1 «Сифона»</text>
+	</string>
+	<string id="st_baron_weapon_name">
+		<text>Марта «Барона»</text>
+	</string>
+	<string id="st_sviridov_weapon_name">
+		<text>АКМ-74/2 «Полковника Свиридова»</text>
+	</string>
+	<string id="st_driver_weapon_name">
+		<text>ИЛ86 «Халецкого»</text>
+	</string>
+	<string id="st_yoga_weapon_name">
+		<text>Охотничье ружьё «Йоги»</text>
+	</string>
+	<string id="st_yoga_weapon2_name">
+		<text>ХПСС-1м «Йоги»</text>
+	</string>
+	<string id="st_wpn_commander_pm_holeman">
+		<text>ПМм «Сержанта Наливайко»</text>
+	</string>
+	<string id="st_wpn_grom_sivoha">
+		<text>Гром Волнорез «Сивохи»</text>
+	</string>

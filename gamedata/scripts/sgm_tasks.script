@@ -1,0 +1,254 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+-------------------------------------(Функции для квестов)----------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function sgm_task_init()
+   sgm_task_update()
+end
+
+function sgm_task_update()
+   local level_name=level.name()
+   local actor_pos = db.actor:position()
+----------------------------------------------------------------
+----------------------------'Болота'----------------------------
+----------------------------------------------------------------
+if level_name=="marsh" then
+     local mar_to_pump_p0=actor_pos:distance_to_sqr(vector():set(-3.427,0.747,-21.838),137195,19)<25
+     local mar_to_pump_p1=actor_pos:distance_to_sqr(vector():set(-0.663,4.357,32.756),138558,65)<25
+     local mar_to_pump_p2=actor_pos:distance_to_sqr(vector():set(11.556,2.154,14.563),144438,36)<25
+     if sgm_functions.is_smart_captured("mar_smart_terrain_5_8","csky")==true and not has_alife_info("mar_capture_pump_station_complete") then
+      db.actor:give_info_portion("mar_capture_pump_station_complete")
+     elseif sgm_functions.is_smart_captured("mar_smart_terrain_8_11","csky")==true and not has_alife_info("mar_capture_church_complete") then
+      db.actor:give_info_portion("mar_capture_church_complete")
+     end
+     if has_alife_info("mar_csky_force_spawner") and not has_alife_info("mar_entry_csky_force_init") then
+      db.actor:give_info_portion("mar_entry_csky_force_init")
+      add_task("storyline","mar_entry_csky_force","csky")
+     end
+     if has_alife_info("mar_entry_csky_force_free") and not has_alife_info("mar_hold_renagade_base_init") then
+      db.actor:give_info_portion("mar_hold_renagade_base_init")
+      --/add_task("storyline","mar_hold_renagade_base","csky")
+     end
+     if sgm_functions.is_smart_captured("mar_smart_terrain_8_11","csky")==false and has_alife_info("mar_captures_allow") and not has_alife_info("mar_captures_init1") then
+      add_eliminate_task("eliminate_smart","mar_capture_church","csky","mar_smart_terrain_8_11")
+      db.actor:give_info_portion("mar_captures_init1")
+     elseif sgm_functions.is_smart_captured("mar_smart_terrain_5_8","csky")==false and has_alife_info("mar_capture_church_complete") and not has_alife_info("mar_captures_init2") then
+      add_eliminate_task("eliminate_smart","mar_capture_pumping_station","csky","mar_smart_terrain_5_8")
+      db.actor:give_info_portion("mar_captures_init2")
+     elseif sgm_functions.is_smart_captured("mar_smart_terrain_5_8","csky")==false and (mar_to_pump_p0 or mar_to_pump_p1 or mar_to_pump_p2) and not has_alife_info("mar_captures_init2") then
+      db.actor:give_info_portion("mar_captures_init2")
+      add_eliminate_task("eliminate_smart","mar_capture_pumping_station","csky","mar_smart_terrain_5_8")
+     end
+     if has_alife_info("mar_last_intensify_start") and not has_alife_info("mar_captures_init4") then
+      add_eliminate_task("eliminate_smart","mar_capture_boat_station","csky","mar_smart_terrain_3_3")
+      db.actor:give_info_portion("mar_captures_init4")
+     elseif has_alife_info("mar_captures_init4") and not has_alife_info("mar_captures_init5") then
+      add_eliminate_task("eliminate_smart","mar_capture_embankment","csky","mar_smart_terrain_7_3")
+      db.actor:give_info_portion("mar_captures_init5")
+     elseif has_alife_info("mar_captures_init5") and not has_alife_info("mar_captures_init6") then
+      add_eliminate_task("eliminate_smart","mar_capture_north_khutor","csky","mar_smart_terrain_12_2")
+      db.actor:give_info_portion("mar_captures_init6")
+     elseif has_alife_info("mar_capture_north_khutor_complete") and has_alife_info("mar_capture_embankment_complete") and has_alife_info("mar_capture_boat_station_complete") and not has_alife_info("mar_captures_init7") then
+      add_task("storyline","mar_last_intensify_reward","csky")
+      db.actor:give_info_portion("mar_captures_init7")
+     end
+     if has_alife_info("mar_rescue_specnaz_start") and not has_alife_info("mar_rescue_specnaz_init") then
+      db.actor:give_info_portion("mar_rescue_specnaz_init")
+      add_task("storyline","mar_accompany_rescue_meet","csky")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Кордон'----------------------------
+----------------------------------------------------------------
+if level_name=="escape" then
+     local esc_to_base1=actor_pos:distance_to_sqr(vector():set(-2.570,0.489,274.567),298232,550)<20
+     local esc_to_base2=actor_pos:distance_to_sqr(vector():set(8.817,0.408,275.820),313992,520)<20
+     if (not has_alife_info("esc_kill_blockpost_leader_reward")) and (esc_to_base1 or esc_to_base2) and (not has_alife_info("esc_kill_blockpost_leader_relation")) then
+        relation_registry.change_community_goodwill("stalker",db.actor:id(),tonumber(-2500))
+        db.actor:give_info_portion("esc_kill_blockpost_leader_relation")
+     end
+     if has_alife_info("esc_kill_blockpost_leader_start") and not has_alife_info("esc_kill_blockpost_leader_init") then
+      db.actor:give_info_portion("esc_kill_blockpost_leader_init")
+      add_task("storyline","esc_kill_blockpost_leader","stalker")
+     end
+     if has_alife_info("esc_eliminate_blockpost_start") and not has_alife_info("esc_eliminate_blockpost_init") then
+      add_task("storyline","esc_take_equipments","stalker")
+      db.actor:give_info_portion("esc_eliminate_blockpost_init")
+     elseif has_alife_info("esc_eliminate_blockpost_needs") and not has_alife_info("esc_eliminate_blockpost_init2") then
+      add_eliminate_task("eliminate_smart","esc_capture_army_blockpost","stalker","esc_smart_terrain_3_16")
+      db.actor:give_info_portion("esc_eliminate_blockpost_init2")
+     end
+     if has_alife_info("esc_shilov_find_rukzak_start") and not has_alife_info("esc_shilov_find_rukzak_init") then
+      db.actor:give_info_portion("esc_shilov_find_rukzak_init")
+      add_task("storyline","esc_shilov_find_rukzak","stalker")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Свалка'----------------------------
+----------------------------------------------------------------
+if level_name=="garbage" then
+     if has_alife_info("gar_digger_messanger_accompany_start") and not has_alife_info("gar_digger_messanger_accompany_init") then
+      db.actor:give_info_portion("gar_digger_messanger_accompany_init")
+      add_task("storyline","gar_digger_messanger_accompany","stalker")
+     end
+     if hero_in_stalker()==true and sgm_functions.is_smart_captured("gar_smart_terrain_3_5","stalker")==true and not has_alife_info("bandit_off") then
+      db.actor:give_info_portion("bandit_off")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Долина'----------------------------
+----------------------------------------------------------------
+if level_name=="darkvalley" then
+end
+----------------------------------------------------------------
+--------------------------'Агропром'----------------------------
+----------------------------------------------------------------
+if level_name=="agroprom" then
+     --/Выдача таска/--
+     local entry_base=actor_pos:distance_to_sqr(vector():set(-139.221,-0.202,-188.336),50313,1170)<10
+     if entry_base and has_alife_info("agr_duty_open") and not has_alife_info("agr_defend_dolg_tip") then
+      db.actor:give_info_portion("agr_defend_dolg_tip")
+     end
+     --/Занятие рубежей/--
+     local north_hear_dist=actor_pos:distance_to_sqr(vector():set(-191.140,-0.101,-125.825),22561,1102)<10
+     if north_hear_dist and has_alife_info("agr_defend_dolg_tip") and not has_alife_info("agr_defend_dolg_north") then
+      db.actor:give_info_portion("agr_defend_dolg_north")
+     end
+     local east_hear_dist=actor_pos:distance_to_sqr(vector():set(-99.459,0.010,-182.903),76654,1103)<10
+     if east_hear_dist and has_alife_info("agr_defend_dolg_tip3") and not has_alife_info("agr_defend_dolg_east") then
+      db.actor:give_info_portion("agr_defend_dolg_east")
+     end
+     --/Восточая волна/--
+     if has_alife_info("agr_defend_dolg_n_allow") and not has_alife_info("agr_defend_dolg_n_wave") then
+      db.actor:give_info_portion("agr_defend_dolg_n_wave")
+      create_force("agr_monsters_n_wave1","agr_smart_terrain_1_3")
+      create_force("agr_monsters_n_wave2","agr_smart_terrain_1_3")
+      create("agr_n_wave1_pseudodog1",-197.547,-0.271,-59.087,19357,1178)
+      create("agr_n_wave1_pseudodog2",-197.547,-0.271,-59.087,19357,1178)
+      create("agr_n_wave1_pseudodog3",-197.547,-0.271,-59.087,19357,1178)
+      create("agr_n_wave1_snork1",-173.682,0.364,-67.224,31011,1166)
+      create("agr_n_wave1_snork2",-173.682,0.364,-67.224,31011,1166)
+      create("agr_n_wave1_snork3",-197.547,-0.271,-59.087,19357,1178)
+      create("agr_n_wave1_snork4",-173.682,0.364,-67.224,31011,1166)
+      create("agr_n_wave1_snork5",-173.682,0.364,-67.224,31011,1166)
+     end
+     if has_alife_info("agr_defend_dolg_north_wave2_allow") and not has_alife_info("agr_defend_dolg_north_wave2_start") then
+      db.actor:give_info_portion("agr_defend_dolg_north_wave2_start")
+      create("agr_n_wave2_giant",-178.278,-0.074,-35.885,28878,1135)
+     end
+     if has_alife_info("agr_defend_dolg_tip3") and sgm_functions.is_squad_spawned("agr_smart_terrain_7_4_duty_2_squad") and not has_alife_info("agr_defend_dolg_road_post") then
+      db.actor:give_info_portion("agr_defend_dolg_road_post")
+      delete_force("agr_smart_terrain_7_4_duty_2_squad")
+     end
+     if has_alife_info("agr_defend_dolg_hole_init") and (sgm_functions.is_squad_no_spawned("agr_monsters_n_wave1") or sgm_functions.is_squad_no_spawned("agr_monsters_n_wave2")) and ((not has_alife_info("agr_defend_dolg_north_h1_end")) or (not has_alife_info("agr_defend_dolg_north_h2_end"))) then
+      db.actor:give_info_portion("agr_defend_dolg_north_h1_end")
+      db.actor:give_info_portion("agr_defend_dolg_north_h2_end")
+     elseif (sgm_functions.is_smart_captured("agr_smart_terrain_1_3","stalker")==true or sgm_functions.is_smart_captured("agr_smart_terrain_1_3","dolg")==true) and ((not has_alife_info("agr_defend_dolg_north_h1_end")) or (not has_alife_info("agr_defend_dolg_north_h2_end"))) then
+      db.actor:give_info_portion("agr_defend_dolg_north_h1_end")
+      db.actor:give_info_portion("agr_defend_dolg_north_h2_end")
+     end
+     --/Восточная волна/--
+     if has_alife_info("agr_defend_dolg_e_allow") and not has_alife_info("agr_defend_dolg_e_wave") then
+      db.actor:give_info_portion("agr_defend_dolg_e_wave")
+      db.actor:give_info_portion("agr_defend_dolg_n_wave0")
+     elseif has_alife_info("agr_defend_dolg_n_wave0") and not has_alife_info("agr_defend_dolg_n_wave0_init") then
+      db.actor:give_info_portion("agr_defend_dolg_n_wave0_init")
+      create("agr_e_wave0_pseudodog1",-19.196,-2.355,-197.200,134903,1171)
+      create("agr_e_wave0_pseudodog2",-25.912,-1.505,-169.745,129337,1096)
+      create("agr_e_wave0_pseudodog3",-25.037,-2.278,-181.758,129852,1096)
+      create("agr_e_wave0_dog1",-16.629,0.029,-152.168,136693,1171)
+      create("agr_e_wave0_dog2",-34.332,-0.671,-226.706,123203,1202)
+      create("agr_e_wave0_dog3",10.195,0.425,-145.292,159946,1137)
+     elseif has_alife_info("agr_defend_dolg_n_wave1") and not has_alife_info("agr_defend_dolg_n_wave1_init") then
+      db.actor:give_info_portion("agr_defend_dolg_n_wave1_init")
+      create("agr_e_wave1_pseudodog1",-16.629,0.029,-152.168,136693,1171)
+      create("agr_e_wave1_pseudodog2",-34.332,-0.671,-226.706,123203,1202)
+      create("agr_e_wave1_pseudodog3",10.195,0.425,-145.292,159946,1137)
+      create("agr_e_wave1_boar1",-19.196,-2.355,-197.200,134903,1171)
+      create("agr_e_wave1_boar2",-25.912,-1.505,-169.745,129337,1096)
+      create("agr_e_wave1_boar3",-25.037,-2.278,-181.758,129852,1096)
+     elseif has_alife_info("agr_defend_dolg_n_wave2") and not has_alife_info("agr_defend_dolg_n_wave2_init") then
+      db.actor:give_info_portion("agr_defend_dolg_n_wave2_init")
+      create("agr_e_wave2_flesh1",-16.629,0.029,-152.168,136693,1171)
+      create("agr_e_wave2_flesh2",-34.332,-0.671,-226.706,123203,1202)
+      create("agr_e_wave2_flesh3",10.195,0.425,-145.292,159946,1137)
+      create("agr_e_wave2_boar1",-19.196,-2.355,-197.200,134903,1171)
+      create("agr_e_wave2_boar2",-25.912,-1.505,-169.745,129337,1096)
+      create("agr_e_wave2_boar3",-25.037,-2.278,-181.758,129852,1096)
+      create("agr_giant_hunter1",-106.949,7.278,-204.346,71694,1103)
+      create("agr_giant_hunter2",-104.271,4.410,-154.062,73636,1103)
+      create("agr_giant_hunter3",-68.881,7.256,-139.111,98716,1063)
+     elseif has_alife_info("agr_defend_dolg_n_wave3") and not has_alife_info("agr_defend_dolg_n_wave3_init") then
+      db.actor:give_info_portion("agr_defend_dolg_n_wave3_init")
+      create("agr_e_wave3_giant1",-16.629,0.029,-152.168,136693,1171)
+      create("agr_e_wave3_giant2",10.195,0.425,-145.292,159946,1137)
+      --/create("agr_e_wave3_giant3",-25.912,-1.505,-169.745,129337,1096)
+     end
+end
+----------------------------------------------------------------
+----------------------------'Янтарь'----------------------------
+----------------------------------------------------------------
+if level_name=="yantar" then
+     --/Тунель под дорогой/--
+     if has_alife_info("yan_kill_tunnel_snorks_start") and not has_alife_info("yan_kill_tunnel_snorks_spawn") then
+       create("yan_tunnel_rpg",106.527,-8.865,-212.760,110614,1231)
+       db.actor:give_info_portion("yan_kill_tunnel_snorks_spawn")
+     end
+     if has_alife_info("yan_kill_tunnel_snorks_fire") and not has_alife_info("yan_kill_tunnel_snorks_wave1") then
+       create("yan_tunnel_snork1",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork2",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork3",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork4",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork5",127.993,-8.778,-165.259,124057,1266)
+       db.actor:give_info_portion("yan_kill_tunnel_snorks_wave1")
+     elseif has_alife_info("yan_kill_tunnel_snorks_wave2_a") and not has_alife_info("yan_kill_tunnel_snorks_wave2") then
+       create("yan_tunnel_snork6",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork7",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork8",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork9",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork10",127.993,-8.778,-165.259,124057,1266)
+       db.actor:give_info_portion("yan_kill_tunnel_snorks_wave2")
+     elseif has_alife_info("yan_kill_tunnel_snorks_wave3_a") and not has_alife_info("yan_kill_tunnel_snorks_wave3") then
+       create("yan_tunnel_snork11",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork12",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork13",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork14",127.993,-8.778,-165.259,124057,1266)
+       create("yan_tunnel_snork15",127.993,-8.778,-165.259,124057,1266)
+       db.actor:give_info_portion("yan_kill_tunnel_snorks_wave3")
+     end
+     --/Убийство зомби-кровососа/--
+     if has_alife_info("yan_bring_sample_dnk_start") and not has_alife_info("yan_bring_sample_dnk_spawn") then
+       create("yan_zombie_bloodsucker",62.813,0.604,40.940,90537,1272)
+       db.actor:give_info_portion("yan_bring_sample_dnk_spawn")
+     end
+end
+----------------------------------------------------------------
+------------------------'Заповедник'----------------------------
+----------------------------------------------------------------
+if level_name=="red_forest" then
+end
+----------------------------------------------------------------
+------------------------'Военные Склады'------------------------
+----------------------------------------------------------------
+if level_name=="military" then
+     if has_alife_info("mil_stop_invasion_start") and sgm_functions.is_smart_captured2("mil_smart_terrain_5_6","army") and not has_alife_info("mil_stop_invasion_task1") then
+      add_eliminate_task("eliminate_smart","mil_stop_invasion_5_6","csky","mil_smart_terrain_5_6")
+      db.actor:give_info_portion("mil_stop_invasion_task1")
+     elseif has_alife_info("mil_stop_invasion_start") and sgm_functions.is_smart_captured2("mil_smart_terrain_5_5","army") and not has_alife_info("mil_stop_invasion_task2") then
+      add_eliminate_task("eliminate_smart","mil_stop_invasion_5_5","csky","mil_smart_terrain_5_5")
+      db.actor:give_info_portion("mil_stop_invasion_task2")
+     end
+end
+----------------------------------------------------------------
+----------------------------------------------------------------
+----------------------------'Разное'----------------------------
+----------------------------------------------------------------
+if (has_alife_info("val_return_propusk_start") and not has_alife_info("val_return_propusk_talk")) and (level_name=="garbage" or level_name=="escape") and not has_alife_info("val_return_propusk_fail") then
+   db.actor:give_info_portion("val_return_propusk_fail")
+end
+--============================================================--
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------
+

@@ -1,0 +1,79 @@
+[logic]
+active = move@dolg_agent1
+
+[move@dolg_agent1]
+target_type        = level_vertex
+dest_number        = 45827
+state_in_center    = hello
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 45854
+combat_ignore_cond = always
+meet               = meet@dolg_agent1
+on_info            = {+agr_find_squad_finds} move@dolg_agent2
+
+[move@dolg_agent2]
+target_type        = level_vertex
+dest_number        = 45827
+state_in_center    = hello
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 45854
+combat_ignore_cond = always
+meet               = meet@dolg_agent2
+on_info            = {+agr_find_squad_reward} move@dolg_agent3
+
+[move@dolg_agent3]
+target_type        = level_vertex
+dest_number        = 45827
+state_in_center    = guard
+state_for_move     = walk
+miss_center        = false
+look_vertex        = 45854
+combat_ignore_cond = always
+meet               = meet@dolg_agent3
+
+[meet@dolg_agent1]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\agroprom\agr_base_kpp_dolg_1
+sound_stop 	= characters_voice\scenario\agroprom\agr_duty_leader_meet_bye_1
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true
+trade_enable    = false
+allow_break     = false
+
+[meet@dolg_agent2]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\agroprom\agr_base_kpp_dolg_3
+sound_stop 	= characters_voice\scenario\agroprom\agr_duty_leader_meet_bye_1
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true
+trade_enable    = false
+allow_break     = false
+
+[meet@dolg_agent3]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\agroprom\agr_base_kpp_dolg_1
+sound_stop 	= characters_voice\scenario\agroprom\agr_duty_leader_meet_bye_1
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true
+trade_enable    = false
+allow_break     = true

@@ -1,0 +1,24 @@
+[logic]
+active = move@sviridov_p0
+on_death = death
+
+[death]
+on_info = %+esc_kill_blockpost_leader_killed%
+
+[move@sviridov_p0]
+target_type     = level_vertex
+dest_number     = 101915
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center | move@sviridov_p1
+look_vertex     = 90329
+
+[move@sviridov_p1]
+target_type     = level_vertex
+dest_number     = 85698
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center | move@sviridov_p0
+look_vertex     = 90329

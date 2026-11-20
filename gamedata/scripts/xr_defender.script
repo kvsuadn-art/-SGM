@@ -1,0 +1,310 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+-----------------------------------(Схема телохранителей)------------------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+local medkit_status=false
+local launch_medkit=false
+local teleport_list = {
+{70,"mar_bodyguard_csky"},
+{70,"esc_bodyguard_stalker"},
+{70,"esc_bodyguard_novice"},
+{70,"gar_bodyguard_stalker"},
+{70,"gar_bodyguard_freedom"},
+{70,"gar_stalker_bankir"},
+{70,"val_bodyguard_freedom"},
+{70,"agr_bodyguard_dolg"},
+{70,"agr_bodyguard_stalker"}
+}
+------------------------------------
+------------/Условие/---------------
+------------------------------------
+class "evaluator_defender" (property_evaluator)
+function evaluator_defender:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_defender:evaluate()
+        if xr_logic.is_active(self.object,self.st) then
+		return true
+	end
+	return false
+end
+
+class "evaluator_medical" (property_evaluator)
+function evaluator_medical:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_medical:evaluate()
+	local get_npc=self.object
+        if self.st.defend_victim=="actor" and self.st.cure_actor==true and db.actor~=nil and db.actor.health<0.40 and medkit_status==false then
+	   return true
+	end
+        if db.actor~=nil and db.actor.health<0.40 and medkit_status==true then
+	   return false
+	end
+        if db.actor~=nil and db.actor.health>=0.40 then
+	   return false
+	end
+end
+
+
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_defender" (action_base)
+function action_defender:__init (npc,action_name,storage) super (nil,action_name)
+	self.st = storage
+end
+function action_defender:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.walk)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.napravlenie=vector():set(math.random()*6-3,0,math.random()*6-3)
+        self.napravlenie:normalize()
+        self.play_dir_started = false
+end
+function action_defender:execute()
+    action_base.execute(self)
+    local npc=self.object
+    local get_npc=self.object
+    local actor_pos=db.actor:position() 
+    local get_enemy=self.object:best_enemy()
+        if self.st.defend_victim=="actor" and self.st.use_command~="stop" then
+           local restore_pos=level.vertex_in_direction(db.actor:level_vertex_id(),self.napravlenie,5)
+           local get_actor_lv=db.actor:level_vertex_id()  
+           local get_utils=utils.send_to_nearest_accessible_vertex(npc,restore_pos)
+           for k,v in pairs(teleport_list) do
+                 if npc:profile_name()==v[2] and distance_between_safe(db.actor,npc)>v[1] then
+                    alife():release(alife():object(npc:id()),true)
+                    create(v[2],actor_pos.x+2,actor_pos.y,actor_pos.z-2,db.actor:level_vertex_id(),db.actor:game_vertex_id())
+	         end
+           end
+           if distance_between_safe(db.actor,npc)>60 then
+             if sgm_flags.defender_vector_timer==0 then
+             if state_mgr.get_state(npc)~="run" then
+             state_mgr.set_state(npc,"run")
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           elseif distance_between_safe(db.actor,npc)>10 and distance_between_safe(db.actor,npc)<=60 then
+             if sgm_flags.defender_vector_timer==0 then
+             if state_mgr.get_state(npc)~="assault" then
+             state_mgr.set_state(npc,"assault")
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           elseif distance_between_safe(db.actor,npc)<=10 then
+             if sgm_flags.defender_vector_timer==0 then     
+             if state_mgr.get_state(npc)~="guard" then
+             state_mgr.set_state(npc,"guard")
+             end
+             if self.st.play_dir~=nil and self.play_dir_started==false then
+                  if self.st.play_dir_a==0 then
+                           play_snd_at_pos(self.st.play_dir,npc)
+                           self.play_dir_started=true
+                  elseif self.st.play_dir_a>0 then
+                           play_snd_at_pos(self.st.play_dir,npc,self.st.play_dir_a,self.st.play_dir_b)
+                           self.play_dir_started=true
+                  end
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           end
+           if launch_medkit==true and sgm_flags.defender_launch_timer~=0 and time_global()>=sgm_flags.defender_launch_timer then
+                 local medical_title = game.translate_string("general_in_item")
+                 local medical_text  = "%c[default]".."• "..game.translate_string("st_medkit").." •"
+                 db.actor:give_game_news(medical_title,medical_text,"ui_iconsTotal_found_thing",0,4000)
+                 alife():create("medkit",db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+                 launch_medkit=false
+                 sgm_flags.defender_launch_timer=0
+           end
+           if medkit_status==true and sgm_flags.defender_status_timer~=0 and time_global()>=sgm_flags.defender_status_timer then
+                 medkit_status=false
+                 sgm_flags.defender_status_timer=0
+           end
+         elseif self.st.defend_victim~="actor" and self.st.defend_victim~=nil then
+           local restore_pos=level.vertex_in_direction(level_object_by_sid(self.st.defend_victim):level_vertex_id(),self.napravlenie,5)
+           local get_sid_lv=level_object_by_sid(self.st.defend_victim):level_vertex_id()  
+           local get_utils=utils.send_to_nearest_accessible_vertex(npc,restore_pos)
+           if distance_between_safe(level_object_by_sid(self.st.defend_victim),npc)>60 then
+             if sgm_flags.defender_vector_timer==0 then
+             if state_mgr.get_state(npc)~="run" then
+             state_mgr.set_state(npc,"run")
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           elseif distance_between_safe(level_object_by_sid(self.st.defend_victim),npc)>10 and distance_between_safe(level_object_by_sid(self.st.defend_victim),npc)<=60 then
+             if sgm_flags.defender_vector_timer==0 then
+             if state_mgr.get_state(npc)~="assault" then
+             state_mgr.set_state(npc,"assault")
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           elseif distance_between_safe(level_object_by_sid(self.st.defend_victim),npc)<=10 then
+             if sgm_flags.defender_vector_timer==0 then
+             if state_mgr.get_state(npc)~="guard" then
+             state_mgr.set_state(npc,"guard")
+             end
+             if self.st.play_dir~=nil and self.play_dir_started==false then
+                  if self.st.play_dir_a==0 then
+                           play_snd_at_pos(self.st.play_dir,npc)
+                           self.play_dir_started=true
+                  elseif self.st.play_dir_a>0 then
+                           play_snd_at_pos(self.st.play_dir,npc,self.st.play_dir_a,self.st.play_dir_b)
+                           self.play_dir_started=true
+                  end
+             end
+             sgm_flags.defender_vector_timer=time_global()+math.random(900,1200)
+             end
+           end
+         end
+end
+function action_defender:death_callback()
+end
+function action_defender:hit_callback()
+end
+function action_defender:reset_scheme()
+	action_base.finalize(self)
+end
+
+--/
+
+class "action_medical" (action_base)
+function action_medical:__init (npc,action_name,storage) super (nil,action_name)
+	self.st = storage
+end
+function action_medical:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.run)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.object:disable_talk()
+end
+function action_medical:execute()
+	action_base.execute(self)
+	local npc=self.object
+	local get_npc=self.object
+        if medkit_status==false then
+         if distance_between_safe(db.actor,npc)>10 then
+          if sgm_flags.defender_medical_timer2==0 then
+          local medical_pos=level.vertex_in_direction(db.actor:level_vertex_id(),vector():set(0,0,0),3)
+          local get_utils=utils.send_to_nearest_accessible_vertex(npc,medical_pos)
+          npc:disable_talk()
+          npc:set_mental_state(anim.free)
+          state_mgr.set_state(npc,"sprint")
+          sgm_flags.defender_medical_timer2=time_global()+math.random(1000,1200)
+          end
+         elseif distance_between_safe(db.actor,npc)>2.2 and distance_between_safe(db.actor,npc)<=10 then
+          if sgm_flags.defender_medical_timer2==0 then
+          local medical_pos=level.vertex_in_direction(db.actor:level_vertex_id(),vector():set(0,0,0),3)
+          local get_utils=utils.send_to_nearest_accessible_vertex(npc,medical_pos)
+          npc:disable_talk()
+          npc:set_mental_state(anim.free)
+          state_mgr.set_state(npc,"walk")
+          sgm_flags.defender_medical_timer2=time_global()+math.random(1000,1200)
+          end
+         elseif distance_between_safe(db.actor,npc)<=2.2 and db.actor.health<0.40 then
+          if sgm_flags.defender_medical_timer==0 then
+          npc:disable_talk()
+          npc:set_mental_state(anim.stand_idle)
+          state_mgr.set_state(npc,"search",nil,nil,{look_object=db.actor},{animation=true})
+          launch_medkit=true
+          medkit_status=true
+          sgm_flags.defender_medical_timer=time_global()+math.random(20000,30000)
+          sgm_flags.defender_launch_timer=time_global()+math.random(2500,4500)
+          sgm_flags.defender_status_timer=time_global()+math.random(8000,12000)
+          xr_sound.set_sound_play(npc,"defenders_heal",2000)
+          end
+         end
+        end
+        if launch_medkit==true and sgm_flags.defender_launch_timer~=0 and time_global()>=sgm_flags.defender_launch_timer then
+              local medical_title = game.translate_string("general_in_item")
+              local medical_text  = "%c[default]".."• "..game.translate_string("st_medkit").." •"
+              db.actor:give_game_news(medical_title,medical_text,"ui_iconsTotal_found_thing",0,4000)
+              alife():create("medkit",db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+              launch_medkit=false
+              sgm_flags.defender_launch_timer=0
+        end
+        if medkit_status==true and sgm_flags.defender_status_timer~=0 and time_global()>=sgm_flags.defender_status_timer then
+              medkit_status=false
+              sgm_flags.defender_status_timer=0
+        end
+end
+function action_medical:death_callback()
+end
+function action_medical:hit_callback()
+end
+function action_medical:reset_scheme()
+	action_base.finalize(self)
+        self.medical_is_give = false
+end
+
+
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+property_defender  = 71425
+add_to_defender    = property_defender
+property_medical   = 71427
+add_to_medical     = property_medical
+
+function add_to_binder(object,ini,scheme,section,storage)
+        --'Эвалуаторы
+	local manager = object:motivation_action_manager() --/планировщик
+	manager:add_evaluator(property_defender,evaluator_defender("defender",storage))
+	local action = action_defender(object,"defender",storage)
+	action:add_precondition(world_property(stalker_ids.property_alive,true))
+	action:add_precondition(world_property(stalker_ids.property_enemy,false))
+	action:add_precondition(world_property(stalker_ids.property_danger,false))
+	action:add_precondition(world_property(xr_evaluators_id.sidor_wounded_base,false))
+	action:add_precondition(world_property(property_defender,true))
+	action:add_effect(world_property(property_defender,false))
+	manager:add_action(add_to_defender,action)
+        xr_logic.subscribe_action_for_events(object,storage,action)
+	--'Разрешить раздражители
+	action = manager:action(xr_actions_id.alife)	
+	action:add_precondition(world_property(property_defender,false))
+end
+
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function set_scheme(npc, ini, scheme, section, gulag_name)
+	printf("DEBUG: set_scheme: scheme='%s', section='%s'", scheme, section)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	printf("DEBUG: set_scheme: storage assigned")
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+        --/
+	st.defend_victim   = utils.cfg_get_string(ini,section,"defend_victim",npc,true,"")     --'Кого нужно охранять
+        st.cure_actor      = utils.cfg_get_bool(ini,section,"cure_actor",npc,false,false)      --'Лечить ГГ
+        st.use_command     = utils.cfg_get_string(ini,section,"use_command",npc,false,"",nil)  --'Использовать команду
+        st.play_dir        = utils.cfg_get_string(ini,section,"play_dir",npc,false,"",nil)     --'Воспроизвести путь
+        st.play_dir_a      = utils.cfg_get_number(ini,section,"play_dir_a",npc,false,0)        --'Rnd [От]
+        st.play_dir_b      = utils.cfg_get_number(ini,section,"play_dir_b",npc,false,0)        --'Rnd [До]
+        --/
+end
+function disable_scheme(npc, scheme)
+ local st = db.storage[npc:id()][scheme]
+ if st then
+  st.enabled = false
+ end
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

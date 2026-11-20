@@ -1,0 +1,104 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------------(Чит-Меню-мода)-------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+
+class "extra_modes" (CUIScriptWnd)
+
+function extra_modes:__init(owner) super()
+	self.owner=owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function extra_modes:__finalize()
+end
+
+function extra_modes:InitControls()
+	---Фон---
+        self:SetWndRect(Frect():set(0,0,1024,768))
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mod_extra_modes.xml")
+        xml:InitStatic("background",self)
+
+	---Формы---
+	self.modes_form = xml:InitStatic("modes_form",self)
+
+	---Кнопки---
+	self:Register(xml:Init3tButton("modes_form:btn_back",self.modes_form),"btn_back")
+	self:Register(xml:Init3tButton("modes_form:btn_apply",self.modes_form),"btn_apply")
+
+        ---Функции---(Лампа)
+        local btn
+	btn = xml:InitCheck("modes_form:btn_use_immortal",self.modes_form)
+	self:Register(btn,"btn_use_immortal")
+	self.btn_use_immortal=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_immortal"))
+        -->
+        local btn
+	btn = xml:InitCheck("modes_form:btn_use_power",self.modes_form)
+	self:Register(btn,"btn_use_power")
+	self.btn_use_power=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_power"))
+        -->
+        local btn
+	btn = xml:InitCheck("modes_form:btn_use_bleeding",self.modes_form)
+	self:Register(btn,"btn_use_bleeding")
+	self.btn_use_bleeding=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_bleeding"))
+        -->
+        local btn
+	btn = xml:InitCheck("modes_form:btn_use_repair",self.modes_form)
+	self:Register(btn,"btn_use_repair")
+	self.btn_use_repair=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_repair"))
+end
+
+function extra_modes:InitCallBacks()
+        self:AddCallback("btn_back",ui_events.BUTTON_CLICKED,self.press_back,self)
+        self:AddCallback("btn_apply",ui_events.BUTTON_CLICKED,self.press_apply,self)
+end
+
+
+function extra_modes:press_apply()
+        --'Бессмертие
+	local btn_use_immortal=self.btn_use_immortal:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_use_immortal,"activate_immortal")
+        --'Беск. энергия
+	local btn_use_power=self.btn_use_power:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_use_power,"activate_power")
+        --'Без кровотечения
+	local btn_use_bleeding=self.btn_use_bleeding:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_use_bleeding,"activate_bleeding")
+        --'Авторемонт
+	local btn_use_repair=self.btn_use_repair:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_use_repair,"activate_repair")
+        --'Назад
+	self:press_back()
+end
+
+
+function extra_modes:press_back()
+	self:GetHolder():start_stop_menu(self.owner,true)
+	self:GetHolder():start_stop_menu(self,true)
+	self.owner:Show(true)
+end
+
+
+function extra_modes:OnKeyboard(dik,keyboard_action)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action==ui_events.WINDOW_KEY_PRESSED then
+		if dik==DIK_keys.DIK_ESCAPE then
+                   self:press_back()
+		end
+	end
+        return true
+end
+
+
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------
+
+
+
+

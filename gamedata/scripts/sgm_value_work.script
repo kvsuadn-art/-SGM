@@ -1,0 +1,182 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+-----------------------------------(Работа с Переменными)-----------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function values_init()
+   values_update() 
+end
+function values_update() 
+   local level_name=level.name()
+   if sgm_flags.satiety_timer~=0 then
+      if time_global()>=sgm_flags.satiety_timer then
+         sgm_flags.satiety_timer=0
+      end
+   end
+   if sgm_flags.satiety_kick~=0 then
+      if time_global()>=sgm_flags.satiety_kick then
+         sgm_flags.satiety_kick=0
+      end
+   end
+   if sgm_flags.sleep_value~=99 then
+      if sgm_flags.sleep_value2~=0 then
+        if time_global()>=sgm_flags.sleep_value2 then
+           sgm_flags.sleep_value2=0
+           level.add_pp_effector("black.ppe",76470,true)
+        end
+      end
+      if sgm_flags.sleep_value>23 then
+         sgm_flags.sleep_value=4
+      end
+   end
+   if sgm_flags.launcher_timer~=0 then
+      if time_global()>=sgm_flags.launcher_timer then
+         sgm_flags.launcher_timer=0
+      end
+   elseif sgm_flags.launcher_timer2~=0 and sgm_flags.launcher_timer2~=1 then
+      if time_global()>=sgm_flags.launcher_timer2 then
+         sgm_flags.launcher_timer2=1
+      end
+   elseif sgm_flags.shooter_delay_timer~=0 and sgm_flags.shooter_delay_timer~=1 then
+      if time_global()>=sgm_flags.shooter_delay_timer then
+         sgm_flags.shooter_delay_timer=1
+      end
+   end
+   if sgm_flags.doctor_move_timer~=0 then
+      if time_global()>=sgm_flags.doctor_move_timer then
+         sgm_flags.doctor_move_timer=0
+      end
+   end
+   if sgm_flags.geiner_move_timer~=0 then
+      if time_global()>=sgm_flags.geiner_move_timer then
+         sgm_flags.geiner_move_timer=0
+      end
+   end
+   if sgm_flags.picker_move_timer~=0 then
+      if time_global()>=sgm_flags.picker_move_timer then
+         sgm_flags.picker_move_timer=0
+      end
+   end
+   if sgm_flags.outfit_upgrade_timer~=0 then
+      if time_global()>=sgm_flags.outfit_upgrade_timer then
+         sgm_flags.outfit_upgrade_timer=0
+      end
+   end
+   if sgm_flags.defender_vector_timer~=0 then
+      if time_global()>=sgm_flags.defender_vector_timer then
+         sgm_flags.defender_vector_timer=0
+      end
+   elseif sgm_flags.defender_death_timer~=0 then
+      if time_global()>=sgm_flags.defender_death_timer then
+         sgm_flags.defender_death_timer=0
+      end
+   elseif sgm_flags.defender_hit_timer~=0 then
+      if time_global()>=sgm_flags.defender_hit_timer then
+         sgm_flags.defender_hit_timer=0
+      end
+   elseif sgm_flags.defender_medical_timer~=0 then
+      if time_global()>=sgm_flags.defender_medical_timer then
+         sgm_flags.defender_medical_timer=0
+      end
+   elseif sgm_flags.defender_medical_timer2~=0 then
+      if time_global()>=sgm_flags.defender_medical_timer2 then
+         sgm_flags.defender_medical_timer2=0
+      end
+   end
+   if sgm_flags.move_vector_timer~=0 then
+      if time_global()>=sgm_flags.move_vector_timer then
+         sgm_flags.move_vector_timer=0
+      end
+   elseif sgm_flags.move_vector_timer2~=0 then
+      if time_global()>=sgm_flags.move_vector_timer2 then
+         sgm_flags.move_vector_timer2=0
+      end
+   elseif sgm_flags.move_state_timer~=0 then
+      if time_global()>=sgm_flags.move_state_timer then
+         sgm_flags.move_state_timer=0
+      end
+   elseif sgm_flags.move_pursue_timer~=0 then
+      if time_global()>=sgm_flags.move_pursue_timer then
+         sgm_flags.move_pursue_timer=0
+      end
+   elseif sgm_flags.theatre_timer~=0 then
+      if time_global()>=sgm_flags.theatre_timer then
+         sgm_flags.theatre_timer=0
+      end
+   elseif sgm_flags.theatre_timer2~=0 then
+      if time_global()>=sgm_flags.theatre_timer2 then
+         sgm_flags.theatre_timer2=0
+      end
+   elseif sgm_flags.theatre_timer3~=0 then
+      if time_global()>=sgm_flags.theatre_timer3 then
+         sgm_flags.theatre_timer3=0
+      end
+   elseif sgm_flags.theatre_timer4~=0 then
+      if time_global()>=sgm_flags.theatre_timer4 then
+         sgm_flags.theatre_timer4=0
+      end
+   elseif sgm_flags.theatre_timer5~=1 and sgm_flags.theatre_timer5~=0 then
+      if time_global()>=sgm_flags.theatre_timer5 then
+         sgm_flags.theatre_timer5=1
+      end
+   elseif sgm_flags.theatre_timer6~=0 then
+      if time_global()>=sgm_flags.theatre_timer6 then
+         sgm_flags.theatre_timer6=0
+      end
+   elseif sgm_flags.theatre_timer7~=1 and sgm_flags.theatre_timer7~=0 then
+      if time_global()>=sgm_flags.theatre_timer7 then
+         sgm_flags.theatre_timer7=0
+      end
+   elseif sgm_flags.theatre_loop~=0 then
+      if time_global()>=sgm_flags.theatre_loop then
+         sgm_flags.theatre_loop=0
+      end
+   elseif sgm_flags.theatre_loop2~=0 then
+      if time_global()>=sgm_flags.theatre_loop2 then
+         sgm_flags.theatre_loop2=0
+      end
+   elseif sgm_flags.theatre_loop3~=0 then
+      if time_global()>=sgm_flags.theatre_loop3 then
+         sgm_flags.theatre_loop3=0
+      end
+   elseif sgm_flags.theatre_loop4~=0 then
+      if time_global()>=sgm_flags.theatre_loop4 then
+         sgm_flags.theatre_loop4=0
+      end
+   elseif sgm_flags.theatre_shot~=0 then
+      if time_global()>=sgm_flags.theatre_shot then
+         sgm_flags.theatre_shot=0
+      end
+   elseif sgm_flags.theatre_shot2~=0 then
+      if time_global()>=sgm_flags.theatre_shot2 then
+         sgm_flags.theatre_shot2=0
+      end
+   elseif sgm_flags.check_state_timer~=0 then
+      if time_global()>=sgm_flags.check_state_timer then
+         sgm_flags.check_state_timer=0
+      end
+   elseif sgm_flags.picker_vector_timer~=0 then
+      if time_global()>=sgm_flags.picker_vector_timer then
+         sgm_flags.picker_vector_timer=0
+      end
+   end
+   local percent_timer=sgm_functions.read_variable("actor_btimer")
+   local percent_data=sgm_functions.read_variable("actor_percent")
+   local deposit_data=sgm_functions.read_variable("actor_deposit")
+   if level.get_time_hours()==19 and percent_timer~=nil and deposit_data~=nil and deposit_data~=0 then
+      if percent_timer==0 then
+         sgm_functions.write_variable("actor_btimer","true")
+      elseif percent_timer=="true" then
+         local currert=sgm_functions.read_variable("actor_deposit")
+         local new_percent=math.floor(currert/10)+math.floor(currert/10)
+         sgm_functions.write_variable("actor_percent",percent_data+new_percent)
+         sgm_functions.write_variable("actor_btimer","false")
+      end
+   elseif level.get_time_hours()==23 and percent_timer~=nil and percent_timer=="false" then
+      sgm_functions.write_variable("actor_btimer","true")
+   end
+end
+
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

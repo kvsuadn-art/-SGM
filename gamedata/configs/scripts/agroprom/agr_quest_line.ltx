@@ -1,0 +1,68 @@
+[logic]
+active = sr_idle@line_0
+
+[sr_idle@line_0]
+on_info = sr_idle@line_1
+
+[sr_idle@line_1]
+on_info = {=actor_on_level(agroprom) +agr_actor_inside_1 +agr_garbage_end} sr_idle@line_2 %=give_inited_task(storyline:agr_start_quest:stalker) +agr_actor_on_agroprom%
+
+[sr_idle@line_2]
+on_info = {+agr_actor_inside_3} sr_idle@line_2_5 %=give_inited_task(storyline:agr_talk_to_stalker_leader:stalker)%
+
+[sr_idle@line_2_5]
+on_info = {+agr_stalker_leader_talk_end} sr_idle@line_3_add1 %=give_inited_task(storyline:agr_fake_talk_to_leader:dolg) +agr_duty_open%
+
+[sr_idle@line_3_add1]
+on_info = {+agr_defend_dolg_tip} sr_idle@line_3_add2 %=agr_chief_commander_tip%
+
+[sr_idle@line_3_add2]
+on_timer = 10000 | sr_idle@line_3_add3 %=give_inited_task(storyline:agr_occupy_north_position:dolg) +agr_defend_dolg_start%
+
+[sr_idle@line_3_add3]
+on_info = {+agr_defend_dolg_tip2} sr_idle@line_3_add4
+
+[sr_idle@line_3_add4]
+on_timer = 5000 | sr_idle@line_3_add5 %=agr_chief_commander_tip3 +agr_defend_dolg_tip3%
+
+[sr_idle@line_3_add5]
+on_timer = 6000 | sr_idle@line_3_add6 %=give_inited_task(storyline:agr_occupy_east_position:dolg)%
+
+[sr_idle@line_3_add6]
+on_info = {+agr_defend_dolg_n_wave0_init} sr_idle@line_3_add7
+
+[sr_idle@line_3_add7]
+on_timer = 40000 | sr_idle@line_3_add8 %+agr_defend_dolg_n_wave1%
+
+[sr_idle@line_3_add8]
+on_timer = 45000 | sr_idle@line_3_add9 %+agr_defend_dolg_n_wave2%
+
+[sr_idle@line_3_add9]
+on_timer = 50000 | sr_idle@line_3_add9_1 %+agr_defend_dolg_n_wave3%
+
+[sr_idle@line_3_add9_1]
+on_timer = 7500 | sr_idle@line_3_add9_2 %+agr_defend_dolg_rpg1_allow%
+
+[sr_idle@line_3_add9_2]
+on_timer = 1800 | sr_idle@line_3_add9_3 %+agr_defend_dolg_rpg2_allow%
+
+[sr_idle@line_3_add9_3]
+on_timer = 1800 | sr_idle@line_3_add10 %+agr_defend_dolg_rpg3_allow%
+
+[sr_idle@line_3_add10]
+on_info = {=agr_pre_wave3_end} sr_idle@line_3_add11 %+agr_defend_dolg_end -agr_defend_dolg_rpg1_allow -agr_defend_dolg_rpg2_allow -agr_defend_dolg_rpg3_allow%
+
+[sr_idle@line_3_add11]
+on_info = {+agr_defend_dolg_open_door} sr_idle@line_4 %=give_inited_task(storyline:agr_blokpost_1:dolg)%
+
+[sr_idle@line_4]
+on_info = {+agr_actor_inside_5} sr_idle@line_5 %=give_inited_task(storyline:agr_go_to_hole:csky)%
+
+[sr_idle@line_5]
+on_info = {+agr_actor_inside_9} sr_idle@line_6 %=give_inited_task(storyline:agr_go_in_hole:csky) =sgm_activate_blackday%
+
+[sr_idle@line_6]
+on_info = {+agru_find_secret_task_complete =actor_on_level(agroprom)} sr_idle@line_7 %+agru_go_out_end_task_complete =give_inited_task(storyline:yan_actor_go_base_science:stalker)%
+on_info2 = {+agru_end_agroprom_underhround =actor_on_level(agroprom)} sr_idle@line_7 %+agru_go_out_end_task_complete =give_inited_task(storyline:yan_actor_go_base_science:stalker)%
+
+[sr_idle@line_7]

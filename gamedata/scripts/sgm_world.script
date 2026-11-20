@@ -1,0 +1,354 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+---------------------------(Система создания новых НПС, монстров или обьектов)--------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function all_secrets_spawn()
+create("medkit",-137.870,1.325,-318.818,76920,136)
+create("ammo_12x76_quadro",-167.213,2.943,-324.442,58274,136)
+create("wpn_silencer_9x18",-188.292,0.042,-335.365,46800,140)
+create("af_medusa",-250.245,0.423,54.711,18443,155)
+create("af_vyvert",-109.535,-0.604,301.107,91988,210)
+create("af_blood",524.180,0.163,474.942,496760,207)
+create("af_electra_sparkler",-84.999,0.927,467.555,119948,116)
+create("af_gravi",39.109,0.744,468.318,160158,215)
+create("cev_plastin_1",21.024,1.724,269.862,327979,520)
+create("cev_plastin_2",-62.531,-7.018,-37.000,234818,1447)
+create("af_blood",-1.409,2.599,87.060,299822,511)
+create("af_dummy_dummy",39.254,4.542,-84.811,186784,849)
+create("wpn_addon_grenade_launcher_m203",153.759,0.170,-219.599,323938,760)
+create("outfit_upgrade_space_suit",-9.461,-0.080,-353.009,20583,1540)
+create("wpn_fort_up",191.717,4.869,-367.770,359508,839)
+create("raincoat_outfit",109.304,0.157,-276.914,279318,812)
+create("af_fireball",132.275,-4.601,-232.831,296665,812)
+create("wpn_heavy_rpg",12.921,-5.547,-328.220,168655,765)
+create("military_outfit",51.452,-19.405,-171.930,996,1511)
+create("af_eye",118.660,-7.928,-24.330,4136,1513)
+create("af_dummy_dummy",87.905,-9.038,-5.463,1848,1513)
+create("skill_book_usp",13.310,-3.639,-201.531,69550,1303)
+create("skill_book_cobra",28.454,-5.943,-272.322,73105,1312)
+create("skill_book_heavy_rpg",-79.478,-4.918,-165.760,13739,1013)
+create("skill_book_rg-6",144.241,-0.205,-186.154,104810,975)
+end
+function all_objects_spawn()
+end
+function all_animals_spawn()
+end
+function all_npc_spawn()
+create("mar_csky_sleeper",-152.701,0.595,-319.306,68913,136)
+create("mar_csky_patrol",-186.328,0.508,-301.489,47767,135)
+create("mar_renegate_boss",419.984,3.338,231.515,417277,98)
+create("esc_camp_stalker1",-14.055,0.924,259.319,283322,557)
+create("esc_camp_stalker2",-17.313,0.957,259.844,278640,557)
+create("esc_camp_stalker3",-17.156,0.974,254.365,278633,557)
+create("esc_camp_stalker4",-13.446,0.927,255.917,284214,557)
+create("esc_stalker_bogdanov",21.326,0.321,276.488,332472,520)
+create("esc_sidorovich_guard1",-252.277,-19.338,-130.477,11362,488)
+create("esc_sidorovich_guard2",-252.150,-18.974,-124.316,11365,488)
+end
+function all_functions_spawn()
+sgm_functions.write_variable("zatm_h_rnd",math.random(10,19))
+sgm_functions.write_variable("zatm_m_rnd",math.random(2,57))
+sgm_functions.write_variable("actor_capital",0)
+sgm_functions.write_variable("actor_deposit",0)
+sgm_functions.write_variable("actor_percent",0)
+sgm_functions.write_variable("actor_ptimer",0)
+sgm_functions.write_variable("actor_btimer",0)
+sgm_functions.write_variable("allow_sleep",false)
+sgm_functions.write_variable("satiety_factor",0)
+end
+function update_spawn()
+   local level_name=level.name()
+   if not has_alife_info("spawner_3") then
+       db.actor:give_info_portion("spawner_3")
+   end
+----------------------------------------------------------------
+----------------------------'Болота'----------------------------
+----------------------------------------------------------------
+if level_name=="marsh" then
+   if not has_alife_info("mar_secret_ruksack") then
+       db.actor:give_info_portion("mar_secret_ruksack")
+       create("personal_rukzak",-155.128,0.457,-266.931,67017,142)
+   end
+   if has_alife_info("mar_renegate_baron_allow") and not has_alife_info("mar_baron_spawner") then
+       db.actor:give_info_portion("mar_baron_spawner")
+       create("mar_renegate_baron",144.582,2.099,493.792,222051,89)
+   end
+   if has_alife_info("mar_story_capture_bandit_base_reward") and not has_alife_info("mar_csky_specnaz_leader_spawner") then
+       db.actor:give_info_portion("mar_csky_specnaz_leader_spawner")
+       create("mar_csky_specnaz_leader",-175.029,0.418,-289.318,54242,135)
+   elseif has_alife_info("mar_story_capture_bandit_base_reward") and not has_alife_info("mar_bankir_spawner") then
+       db.actor:give_info_portion("mar_bankir_spawner")
+       create("mar_csky_bankir",-144.337,1.335,-277.379,73573,139)
+   end
+   if has_alife_info("mar_rescue_specnaz_allow") and not has_alife_info("mar_rescue_specnaz_spawner") then
+       db.actor:give_info_portion("mar_rescue_specnaz_spawner")
+       create("mar_rescue_soldier1",99.059,1.402,338.973,194576,84)
+       create("mar_rescue_soldier2",108.305,0.999,343.557,198698,84)
+       create("mar_rescue_soldier3",103.771,1.340,344.854,196852,84)
+       create("mar_rescue_soldier4",101.670,1.456,343.098,195443,84)
+       create("mar_rescue_soldier5",100.198,1.447,341.262,194578,84)
+       create("explosive_dinamit",-164.483,0.829,89.998,61381,72)
+       create("explosive_dinamit",-156.183,0.698,78.150,66680,72)
+       create("mar_hindrance_renagad1",-67.659,0.626,-90.305,103463,27)
+       create("mar_hindrance_renagad2",-58.986,0.623,-84.340,108456,64)
+       create("mar_hindrance_renagad3",-67.659,0.626,-90.305,103463,27)
+       create("mar_hindrance_renagad4",-58.986,0.623,-84.340,108456,64)
+       create("mar_hindrance_renagad5",-67.659,0.626,-90.305,103463,27)
+       create("mar_hindrance_renagad6",-58.986,0.623,-84.340,108456,64)
+   elseif has_alife_info("mar_rescue_specnaz_allow_spot") and not has_alife_info("mar_rescue_specnaz_spot") then
+       db.actor:give_info_portion("mar_rescue_specnaz_spot")
+       create("explosive_dinamit",-148.179,0.823,93.652,71537,72)
+   elseif has_alife_info("mar_rescue_specnaz_step_0_work") and not has_alife_info("mar_rescue_specnaz_spot2") then
+       db.actor:give_info_portion("mar_rescue_specnaz_spot2")
+       create("explosive_mobiltank",31.092,3.084,-249.301,154930,2)
+   end
+   if has_alife_info("mar_meet_csky_force_complete") and not has_alife_info("mar_csky_squads_commander_spawner") then
+       db.actor:give_info_portion("mar_csky_squads_commander_spawner")
+       create("mar_csky_squads_commander",42.643,3.060,-232.324,161311,13)
+   end
+   if not has_alife_info("mar_bodyguards") then
+       db.actor:give_info_portion("mar_bodyguards")
+       create("mar_bodyguard_csky",35.376,2.994,-239.025,157697,2)
+   end
+   if has_alife_info("mar_meet_csky_force_complete") and not has_alife_info("mar_outpost_renegades") then
+       db.actor:give_info_portion("mar_outpost_renegades")
+       create("mar_outpost_renegate1",-285.228,0.892,29.852,5827,153)
+       create("mar_outpost_renegate2",-297.026,0.828,12.240,2513,154)
+   end
+end
+----------------------------------------------------------------
+----------------------------'Кордон'----------------------------
+----------------------------------------------------------------
+if level_name=="escape" then
+   if not has_alife_info("esc_tunnel_scout_spawner") then
+       db.actor:give_info_portion("esc_tunnel_scout_spawner")
+       create("esc_tunnel_scout",-255.085,-22.382,-288.393,9952,473)
+   elseif not has_alife_info("esc_stalker_bankir_spawner") then
+       db.actor:give_info_portion("esc_stalker_bankir_spawner")
+       create("esc_stalker_bankir",-8.782,0.855,296.525,289817,562)
+   end
+   if has_alife_info("esc_kill_blockpost_leader_allow") and not has_alife_info("esc_army_sviridov_spawner") then
+       db.actor:give_info_portion("esc_army_sviridov_spawner")
+       create("esc_army_polkovnik",-150.523,-30.436,-350.477,101915,564)
+   end
+   if has_alife_info("esc_shilov_find_rukzak_allow") and not has_alife_info("esc_shilov_find_rukzak_spawn") then
+       db.actor:give_info_portion("esc_shilov_find_rukzak_spawn")
+       create("shilov_rukzak",-200.732,-16.617,-160.797,51907,569)
+   end
+   if not has_alife_info("esc_bodyguards") then
+       db.actor:give_info_portion("esc_bodyguards")
+       create("esc_bodyguard_stalker",17.350,0.465,264.386,325157,520)
+       create("esc_bodyguard_novice",-234.116,-20.038,-154.811,23678,570)
+   end
+end
+----------------------------------------------------------------
+----------------------------'Свалка'----------------------------
+----------------------------------------------------------------
+if level_name=="garbage" then
+   if not has_alife_info("gar_bodyguards") then
+       db.actor:give_info_portion("gar_bodyguards")
+       create("gar_bodyguard_freedom",44.396,0.913,243.144,204648,289)
+   elseif not has_alife_info("gar_bankirs") then
+       db.actor:give_info_portion("gar_bankirs")
+       create("gar_stalker_bankir",104.315,3.673,165.949,255326,359)
+       create("gar_freedom_trader",27.340,0.397,219.037,186182,341)
+   elseif not has_alife_info("gar_base_rpgs_spawner") then
+       db.actor:give_info_portion("gar_base_rpgs_spawner")
+       create("gar_base_rpg_bandit1",-114.721,0.369,15.729,89467,329)
+       create("gar_base_rpg_bandit2",-113.768,0.426,5.344,90037,329)
+   end
+   if sgm_functions.is_smart_captured("gar_smart_terrain_5_8","stalker")==true and not has_alife_info("gar_priemnik_spawner") then
+       db.actor:give_info_portion("gar_priemnik_spawner")
+       create("gar_bodyguard_stalker",47.614,0.511,-306.372,207514,261)
+       create("gar_stalker_trader",31.370,0.396,-298.745,190301,261)
+   elseif has_alife_info("gar_quest_liberate_conc_camp_done") and sgm_functions.is_smart_captured("gar_smart_terrain_6_3","stalker")==true and not has_alife_info("gar_baraholka_spawner") then
+       db.actor:give_info_portion("gar_baraholka_spawner")
+       create("gar_stalker_squads_commander",39.833,0.413,-312.899,199806,261)
+   end
+   if has_alife_info("gar_propusk_allow") and not has_alife_info("gar_propusk_spawn") then
+       db.actor:give_info_portion("gar_propusk_spawn")
+       create("valley_propusk",-43.128,0.539,-205.427,131468,258)
+   elseif has_alife_info("gar_barier_commander_allow") and not has_alife_info("gar_barier_commander_spawn") then
+       db.actor:give_info_portion("gar_barier_commander_spawn")
+       create("gar_barier_commander",248.374,0.535,140.750,345247,286)
+   elseif has_alife_info("gar_digger_messanger_accompany_allow") and not has_alife_info("gar_digger_messanger_accompany_spot") then
+       db.actor:give_info_portion("gar_digger_messanger_accompany_spot")
+       create("explosive_barrel",37.662,0.476,-304.382,197497,261)
+   elseif has_alife_info("gar_find_svoboda_up_outfit_allow") and not has_alife_info("gar_find_svoboda_up_outfit_spawn") then
+       db.actor:give_info_portion("gar_find_svoboda_up_outfit_spawn")
+       create("svoboda_light_outfit_up",23.968,4.592,212.699,182959,341)
+   end
+   if has_alife_info("gar_quest_liberate_conc_camp_done") and not has_alife_info("gar_breeders") then
+       db.actor:give_info_portion("gar_breeders")
+       create("gar_stalker_breeder",78.829,0.086,185.553,235470,336)
+   elseif has_alife_info("gar_rescue_tunnel_novice_allow") and not has_alife_info("gar_rescue_tunnel_novice_spawn") then
+       db.actor:give_info_portion("gar_rescue_tunnel_novice_spawn")
+       create("gar_tunnel_novice",-275.499,0.375,28.433,1626,295)
+   end
+end
+----------------------------------------------------------------
+----------------------------'Долина'----------------------------
+----------------------------------------------------------------
+if level_name=="darkvalley" then
+   if not has_alife_info("val_bodyguards") then
+       db.actor:give_info_portion("val_bodyguards")
+       create("val_bodyguard_freedom",32.270,0.0808,-17.870,196647,811)
+   elseif not has_alife_info("val_bankirs") then
+       db.actor:give_info_portion("val_bankirs")
+       create("val_freedom_bankir",44.154,0.035,40.455,207627,795)
+   elseif not has_alife_info("val_breeders") then
+       db.actor:give_info_portion("val_breeders")
+       create("val_freedom_breeder",-20.942,0.090,-2.966,146468,855)
+   elseif not has_alife_info("val_rpg_troopers_spawner") then
+       db.actor:give_info_portion("val_rpg_troopers_spawner")
+       create("val_freedom_rpg_tower1",49.999,11.219,4.684,213085,853)
+       create("val_freedom_rpg_tower2",49.414,11.354,47.012,213139,810)
+       create("val_freedom_rpg_tower3",-49.254,11.204,6.965,115323,794)
+   elseif not has_alife_info("val_scenes") then
+       db.actor:give_info_portion("val_scenes")
+       --/create("val_freedom_suicide",100.339,0.045,-72.702,268469,934)
+   elseif not has_alife_info("val_spawn_killer_secrets") then
+       db.actor:give_info_portion("val_spawn_killer_secrets")
+       create("specops_outfit",154.221,0.184,-295.551,325362,817)
+       create("personal_rukzak",181.885,-3.302,-289.398,353578,817)
+   end
+   if has_alife_info("val_pursuit_comendant_complete") and not has_alife_info("val_squad_commander_spawner") then
+       db.actor:give_info_portion("val_squad_commander_spawner")
+       create("val_freedom_squads_commander",19.066,0.133,-2.351,184135,811)
+   elseif has_alife_info("val_talk_to_medic_allow") and not has_alife_info("val_talk_to_medic_spawner") then
+       db.actor:give_info_portion("val_talk_to_medic_spawner")
+       create("val_freedom_medic",25.256,5.116,27.183,190243,795)
+   elseif has_alife_info("val_talk_to_guard_leader_allow") and not has_alife_info("val_talk_to_guard_leader_spawner") then
+       db.actor:give_info_portion("val_talk_to_guard_leader_spawner")
+       create("val_freedom_guard_leader",-44.385,9.191,-25.075,121064,794)
+   elseif has_alife_info("val_7_6_deliver_weapon_allow") and not has_alife_info("val_7_6_deliver_weapon_spawner") then
+       db.actor:give_info_portion("val_7_6_deliver_weapon_spawner")
+       create("val_freedom_7_6_commander",1.364,0.046,-164.671,167432,801)
+   elseif has_alife_info("val_searched_impounded_allow") and not has_alife_info("val_searched_impounded_spawn") then
+       db.actor:give_info_portion("val_searched_impounded_spawn")
+       create("val_impounded_corpse",-6.543,7.011,-158.918,178873,849)
+   elseif has_alife_info("val_check_bus_allow") and not has_alife_info("val_bus_ambush") then
+       db.actor:give_info_portion("val_bus_ambush")
+       create("val_bus_hostage",59.798,0.201,-187.310,222893,959)
+       create("val_bus_killer",59.798,0.201,-187.310,222893,959)
+   end
+   if has_alife_info("val_kill_flesh") and not has_alife_info("val_test_spawner") then
+       db.actor:give_info_portion("val_test_spawner")
+       create("val_freedom_rpg_trooper",-47.972,9.649,-11.795,116122,794)
+   end
+   if sgm_functions.is_smart_captured("val_smart_terrain_4_0","freedom")==true and not has_alife_info("val_traders") then
+       db.actor:give_info_portion("val_traders")
+       create("val_4_0_trader",-126.791,0.862,-494.961,31088,883)
+   end
+end
+----------------------------------------------------------------
+--------------------------'Агропром'----------------------------
+----------------------------------------------------------------
+if level_name=="agroprom" then
+   if not has_alife_info("agr_bodyguards") then
+       db.actor:give_info_portion("agr_bodyguards")
+       create("agr_bodyguard_dolg",-121.230,-0.123,-175.711,62627,1210)
+       create("agr_bodyguard_stalker",-2.891,2.497,18.726,148649,1207)
+   elseif not has_alife_info("agr_squad_commander_spawner") then
+       db.actor:give_info_portion("agr_squad_commander_spawner")
+       create("agr_dolg_squads_commander",-171.487,5.315,-171.879,31916,1169)
+   elseif not has_alife_info("agr_traders") then
+       db.actor:give_info_portion("agr_traders")
+       create("agr_dolg_trader",-121.365,-0.002,-152.037,62638,1210)
+       create("agr_stalker_trader",-7.759,11.756,18.171,144208,1207)
+   elseif not has_alife_info("agr_bankirs") then
+       db.actor:give_info_portion("agr_bankirs")
+       create("agr_dolg_bankir",-155.270,1.1015,-174.823,40302,1104)
+       create("agr_stalker_bankir",70.041,0.556,20.442,208655,1107)
+   elseif not has_alife_info("agr_breeders") then
+       db.actor:give_info_portion("agr_breeders")
+       create("agr_dolg_breeder",-178.166,-0.001,-180.473,28736,1208)
+   elseif not has_alife_info("agr_dolg_agent_spawner") then
+       db.actor:give_info_portion("agr_dolg_agent_spawner")
+       create("agr_dolg_agent",-146.599,4.999,-201.909,45827,1168)
+   end
+   if has_alife_info("agr_garbage_end") and not has_alife_info("agr_replace_commander_spawner") then
+       db.actor:give_info_portion("agr_replace_commander_spawner")
+       create("agr_7_4_commander",251.765,0.311,-5.691,359558,1090)
+   elseif has_alife_info("agr_find_squad_allow") and not has_alife_info("agr_find_squad_spawn") then
+       db.actor:give_info_portion("agr_find_squad_spawn")
+       create("agr_bandit_victim1",-36.312,-4.307,-291.163,121721,1058)
+       create("agr_bandit_victim2",-37.609,-4.385,-301.328,120722,1058)
+       create("agr_exo_bandit1",-37.787,-4.133,-290.333,120737,1058)
+       create("agr_exo_bandit2",-35.325,-4.390,-299.174,122667,1058)
+   elseif has_alife_info("agr_kill_wild_giant_allow") and not has_alife_info("agr_kill_wild_giant_spawn") then
+       db.actor:give_info_portion("agr_kill_wild_giant_spawn")
+       create("agr_wild_giant",-41.336,7.072,-93.258,118246,1159)
+   end
+end
+----------------------------------------------------------------
+----------------------------'Янтарь'----------------------------
+----------------------------------------------------------------
+if level_name=="yantar" then
+   if not has_alife_info("yan_traders") then
+       db.actor:give_info_portion("yan_traders")
+       create("yan_ecolog_trader",27.338,-11.881,-240.895,72448,1229)
+   elseif not has_alife_info("yan_bankirs") then
+       db.actor:give_info_portion("yan_bankirs")
+       create("yan_ecolog_bankir",42.863,-11.890,-249.559,79658,1229)
+   end
+end
+----------------------------------------------------------------
+------------------------'Заповедник'----------------------------
+----------------------------------------------------------------
+if level_name=="red_forest" then
+   if not has_alife_info("red_bankirs") then
+       create("red_dolg_bankir",-73.655,0.227,50.543,15696,990)
+       db.actor:give_info_portion("red_bankirs")
+   elseif not has_alife_info("red_traders") then
+       create("red_dolg_trader",29.286,-0.000,25.267,81443,1033)
+       db.actor:give_info_portion("red_traders")
+   elseif not has_alife_info("red_af_monolit_spawner") then
+       create_rukzak_item("af_monolit",-120.583,-6.250,-44.999,7562,993)
+       db.actor:give_info_portion("red_af_monolit_spawner")
+   end
+   if has_alife_info("red_bridge_scene_begin") and (not has_alife_info("skill_book_svd")) and (not has_alife_info("red_svd_book_spawner")) then
+       create("skill_book_svd",-115.695,0.463,-257.831,8253,1013)
+       db.actor:give_info_portion("red_svd_book_spawner")
+   elseif has_alife_info("mil_actor_inside_wtower") and not has_alife_info("red_freedom_bankir_spawner") then
+       create("red_freedom_bankir",-73.655,0.227,50.543,15696,990)
+       db.actor:give_info_portion("red_freedom_bankir_spawner")
+   elseif has_alife_info("mil_actor_go_to_limansk") and not has_alife_info("red_force_commander_spawner") then
+       create("red_csky_squads_commander",-117.816,-0.642,-230.165,7945,1013)
+       db.actor:give_info_portion("red_force_commander_spawner")
+   end
+end
+----------------------------------------------------------------
+---------------------------'Склады'-----------------------------
+----------------------------------------------------------------
+if level_name=="military" then
+   if not has_alife_info("mil_leaders_spawner") then
+       create("mil_army_boss",-18.786,-4.112,-24.056,272037,1445)
+       create("mil_zombied_boss",-78.712,-11.349,28.336,221716,1503)
+       db.actor:give_info_portion("mil_leaders_spawner")
+   elseif not has_alife_info("mil_traders") then
+       create("mil_killer_trader",-323.516,-22.427,195.744,24133,1376)
+       db.actor:give_info_portion("mil_traders")
+   elseif not has_alife_info("mil_upgrader_spawner") then
+       create("mil_stalker_upgrader",-237.872,-12.653,46.285,88259,1451)
+       db.actor:give_info_portion("mil_upgrader_spawner")
+   elseif not has_alife_info("mil_rpg_ambush_spawner") then
+       create("mil_rpg_ambush",82.455,5.214,12.366,355027,1510)
+       db.actor:give_info_portion("mil_rpg_ambush_spawner")
+   end
+end
+----------------------------------------------------------------
+--------------------------'Лиманск'-----------------------------
+----------------------------------------------------------------
+if level_name=="limansk" then
+   if not has_alife_info("lim_robbery_leader_spawner") then
+       create("lim_construction_robbery_leader",6.004,2.998,141.711,28498,1552)
+       db.actor:give_info_portion("lim_robbery_leader_spawner")
+   end
+end
+--============================================================--
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

@@ -1,0 +1,34 @@
+[logic]
+active = move@scout
+on_death = death
+
+[death]
+on_info = %+esc_tunnel_scout_death%
+
+[move@scout]
+target_type     = level_vertex
+dest_number     = 10894
+state_in_center = binocular
+state_for_move  = raid
+miss_center     = false
+look_vertex     = 15424
+meet            = no_meet
+on_actor_dist_le_nvis = 4| move@preparate
+
+[move@preparate]
+target_type     = level_vertex
+dest_number     = 10894
+state_in_center = binocular
+state_for_move  = raid
+miss_center     = false
+look_vertex     = 15424
+meet            = no_meet
+on_timer        = 4000 | move@meat %=play_s2d_sound(characters_voice\human_01\csky\alife\attack\we_spotted_2) +esc_install_target_scout%
+
+[move@meat]
+target_type     = level_vertex
+dest_number     = 119689
+state_in_center = hide
+state_for_move  = sneak
+miss_center     = false
+meet            = no_meet

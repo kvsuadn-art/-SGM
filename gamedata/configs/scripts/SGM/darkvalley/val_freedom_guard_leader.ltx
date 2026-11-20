@@ -1,0 +1,40 @@
+[logic]
+active = move@guarder
+on_death = death
+
+[death]
+on_info = {=actor_is_no_enemy} %=respawn_val_guard_leader%
+
+[move@guarder]
+target_type     = level_vertex
+dest_number     = 121064
+state_in_center = binocular
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 115222
+look_subject    = nil
+meet            = meet@guarder
+on_actor_dist_le_nvis = 5| move@guarder2
+
+[move@guarder2]
+target_type     = level_vertex
+dest_number     = 121064
+state_in_center = guard
+state_for_move  = walk
+miss_center     = false
+look_subject    = actor
+meet            = meet@guarder
+on_actor_dist_ge_nvis = 5| move@guarder
+
+[meet@guarder]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\marsh\mar_csky_trader_meet_greet_2
+sound_stop 	= characters_voice\scenario\marsh\mar_csky_trader_meet_bye_2
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true

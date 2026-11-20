@@ -1,0 +1,31 @@
+[logic]
+active = shooter@rpg_wait
+
+[shooter@rpg_wait]
+shooter_pos         = 98716
+shooter_fire_look   = 102384,111611,112998
+shooter_idle_look   = 102384
+shooter_clip        = 3
+shooter_reload      = 4700
+shooter_type_wpn    = grenade_launcher
+shooter_move_state  = walk
+shooter_idle_state  = threat
+shooter_fire_state  = threat_fire
+shooter_allow_info  = agr_defend_dolg_rpg3_allow
+shooter_switch      = stage_end | move@rpg_idle
+combat_ignore_cond  = true
+combat_ignore_keep_when_attacked = true
+
+[move@rpg_idle]
+target_type     = level_vertex
+dest_number     = 98716
+state_in_center = guard
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 94588
+
+
+
+
+
+

@@ -1,0 +1,307 @@
+        <string id="sgm_extra_menu_back">
+		<text>Вернутся</text>
+	</string>
+        <string id="sgm_extra_menu_apply">
+		<text>Применить</text>
+	</string>
+        <string id="sgm_extra_menu_default">
+		<text>По умолчанию</text>
+	</string>
+        <string id="sgm_extra_menu_cancel">
+		<text>Отмена</text>
+	</string>
+        <string id="sgm_extra_menu_help_book">
+		<text>Справка</text>
+	</string>
+        <string id="sgm_extra_menu_more">
+		<text>Еще</text>
+	</string>
+        <string id="sgm_extra_menu_hud">
+		<text>Установки HUD</text>
+	</string>
+        <string id="sgm_extra_menu_relation">
+		<text>Репутация</text>
+	</string>
+        <string id="sgm_extra_menu_possibilities">
+		<text>Навыки</text>
+	</string>
+        <string id="sgm_extra_menu_on">
+		<text>"включить"</text>
+	</string>
+        <string id="sgm_extra_menu_off">
+		<text>"отключить"</text>
+	</string>
+        <string id="sgm_extra_menu_1">
+		<text>Дополнительные игровые параметры</text>
+	</string>
+        <string id="sgm_extra_menu_2">
+		<text>Опции динамических сообщ.:</text>
+	</string>
+        <string id="sgm_extra_menu_3">
+		<text>Опции чистки трупов:</text>
+	</string>
+        <string id="sgm_extra_menu_4">
+		<text>Опции автомат.енергетика:</text>
+	</string>
+        <string id="sgm_extra_menu_5">
+		<text>Опции ускорения времени:</text>
+	</string>
+        <string id="sgm_extra_menu_6">
+		<text>Отключить неуязвимость "Волка"</text>
+	</string>
+        <string id="sgm_extra_menu_7">
+		<text>Отключить неуязвимость "Серого"</text>
+	</string>
+        <string id="sgm_extra_menu_8">
+		<text>Отключить головокружение</text>
+	</string>
+        <string id="sgm_extra_menu_9">
+		<text>Отключить "Слежку в Баре"</text>
+	</string>
+        <string id="sgm_extra_menu_10">
+		<text>Меню меток:</text>
+	</string>
+        <string id="sgm_extra_menu_11">
+		<text>Метки "Уникальные":</text>
+	</string>
+        <string id="sgm_extra_menu_12">
+		<text>Метки "Артефактов":</text>
+	</string>
+        <string id="sgm_extra_menu_13">
+		<text>"отключить"</text>
+	</string>
+        <string id="sgm_extra_menu_14">
+		<text>"установить"</text>
+	</string>
+        <string id="sgm_extra_menu_15">
+		<text>"стереть"</text>
+	</string>
+        <string id="sgm_extra_menu_16">
+		<text>Меню покупки репутаций к группировкам:</text>
+	</string>
+        <string id="sgm_extra_menu_17">
+		<text>*ДОЛГ*(500 000р.)</text>
+	</string>
+        <string id="sgm_extra_menu_18">
+		<text>*СВОБОДА*(500 000р.)</text>
+	</string>
+        <string id="sgm_extra_menu_19">
+		<text>*ОДИНОЧКИ*(120 000р.)</text>
+	</string>
+        <string id="sgm_extra_menu_20">
+		<text>Меню обмена очков навыка:</text>
+	</string>
+        <string id="sgm_extra_menu_21">
+		<text>*Починить все поврежденное*(-2 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_22">
+		<text>*Стать бессмертым на 1 час*(-5 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_23">
+		<text>*Вызвать подкрепление*(-3 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_24">
+		<text>*Обменять на 300 тисяч*(-9 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_25">
+		<text>*Получить уникальный предмет*(-14 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_26">
+		<text>*Обменять на био.комплекс*(-1 очк.)</text>
+	</string>
+        <string id="sgm_extra_menu_27">
+		<text>Дополнительные опции</text>
+	</string>
+        <string id="sgm_extra_menu_28">
+		<text>Опции выброса:</text>
+	</string>
+        <string id="sgm_extra_menu_29">
+		<text>Опции затмения:</text>
+	</string>
+        <string id="sgm_extra_menu_30">
+		<text>Опции рождения артефактов:</text>
+	</string>
+        <string id="sgm_extra_menu_31">
+		<text>Включить опасность</text>
+	</string>
+        <string id="sgm_extra_menu_32">
+		<text>Отключить хорор</text>
+	</string>
+        <string id="sgm_extra_menu_33">
+		<text>Включить войну</text>
+	</string>
+        <string id="sgm_extra_menu_34">
+		<text>Отключить мини-тайники</text>
+	</string>
+        <string id="sgm_extra_menu_35">
+		<text>Подробная информация:</text>
+	</string>
+        <string id="sgm_extra_menu_36">
+		<text>Параметры оружия в 1-м слоте:</text>
+	</string>
+        <string id="sgm_extra_menu_37">
+		<text>Параметры оружия в 2-м слоте:</text>
+	</string>
+        <string id="sgm_extra_menu_38">
+		<text>Параметры худа:</text>
+	</string>
+        <string id="sgm_extra_menu_39">
+		<text>Скрыть информ.</text>
+	</string>
+        <string id="sgm_extra_menu_40">
+		<text>о состоянии оружия</text>
+	</string>
+        <string id="sgm_extra_menu_41">
+		<text>Режим "модера"</text>
+	</string>
+        <string id="sgm_extra_menu_42">
+		<text>Убрать счетчик "Навыка"</text>
+	</string>
+        <string id="sgm_extra_menu_43">
+		<text>Отключить "шатание" при попадании</text>
+	</string>
+        <string id="sgm_extra_menu_44">
+		<text>Показывать таймер бодрствования</text>
+	</string>
+        <string id="sgm_extra_menu_45">
+		<text>Отключить потребность в био-комплексах</text>
+	</string>
+        <string id="sgm_extra_menu_46">
+		<text>Показывать хар-ки оружия:</text>
+	</string>
+        <string id="sgm_extra_menu_47">
+		<text>Показывать сост.бронекост.:</text>
+	</string>
+        <string id="sgm_extra_menu_48">
+		<text>Показывать часы:</text>
+	</string>
+        <string id="sgm_extra_menu_49">
+		<text>Меню возможностей:</text>
+	</string>
+        <string id="sgm_extra_menu_50">
+		<text>Режим бессмертия:</text>
+	</string>
+        <string id="sgm_extra_menu_51">
+		<text>Режим енергетика:</text>
+	</string>
+        <string id="sgm_extra_menu_52">
+		<text>Справка</text>
+	</string>
+        <string id="sgm_extra_menu_53">
+		<text>1)Опция "Включить опасность",</text>
+	</string>
+        <string id="sgm_extra_menu_54">
+		<text>включает ночную опасность, которую создают </text>
+	</string>
+        <string id="sgm_extra_menu_55">
+		<text>различные мутанты и монстры, отключение</text>
+	</string>
+        <string id="sgm_extra_menu_56">
+		<text>этого параметра позволяет избавится</text>
+	</string>
+        <string id="sgm_extra_menu_57">
+		<text>от лишних скоплений разной</text>
+	</string>
+        <string id="sgm_extra_menu_58">
+		<text>живности, в ночное время суток.</text>
+	</string>
+        <string id="sgm_extra_menu_59">
+		<text>2)Опция "Отключить хорор", убирает</text>
+	</string>
+        <string id="sgm_extra_menu_60">
+		<text>симуляцию полтергейстов и других монстров</text>
+	</string>
+        <string id="sgm_extra_menu_61">
+		<text>во время "затмения",  для</text>
+	</string>
+        <string id="sgm_extra_menu_62">
+		<text>отключения данной опции также</text>
+	</string>
+        <string id="sgm_extra_menu_63">
+		<text>можно использовать опцию в</text>
+	</string>
+        <string id="sgm_extra_menu_64">
+		<text>панели "Опции затмения:"</text>
+	</string>
+        <string id="sgm_extra_menu_65">
+		<text>выбрав метку "отключить".</text>
+	</string>
+        <string id="sgm_extra_menu_66">
+		<text>3)Опция "Включить войну", обеспечивает</text>
+	</string>
+        <string id="sgm_extra_menu_67">
+		<text>появление различных засад противника и войну между группировками.</text>
+	</string>
+        <string id="sgm_extra_menu_68">
+		<text>Включить схему обыска трупов</text>
+	</string>
+	<string id="kb_zoom_inc">
+		<text>Прицел: приблизить</text>
+	</string>
+	<string id="kb_zoom_dec">
+		<text>Прицел: отдалить</text>
+	</string>
+        <string id="extra_help_block_one">
+		<text>1)Опция "Отключить опасность", отключает ночную опасность, которую создают различные мутанты и монстры, отключение этого параметра позволяет избавится от лишних скоплений разной живности в ночное время суток.</text>
+        </string>
+        <string id="extra_help_block_two">
+		<text>2)Опция "Отключить хорор", убирает симуляцию полтергейстов и других монстров во время "затмения",  для отключения данной опции также можно использовать опцию в панели "Опции затмения:" выбрав метку "отключить".</text>
+        </string>
+        <string id="extra_help_block_three">
+		<text>3)Опция "Отключить войну", навсегда отключает появление различных засад противника и войну между группировками.</text>
+        </string>
+	<string id="ui_mm_in_extra_vibros">
+		<text>Отключить "выброс"</text>
+	</string>
+	<string id="ui_mm_in_extra_black_day">
+		<text>Отключить "затмение"</text>
+	</string>
+	<string id="ui_mm_extra_option">
+		<text>Опции "МОДА"</text>
+	</string>
+	<string id="ui_mm_vertex_action">
+		<text>Координировать</text>
+	</string>
+	<string id="sgm_extra_menu_69">
+		<text>Бессмертие</text>
+	</string>
+	<string id="sgm_extra_menu_70">
+		<text>Беск. энергия</text>
+	</string>
+	<string id="sgm_extra_menu_71">
+		<text>Без кровотечения</text>
+	</string>
+	<string id="sgm_extra_menu_72">
+		<text>Авторемонт</text>
+	</string>
+        <string id="sgm_extra_menu_73">
+		<text>о хар-ках оружия</text>
+	</string>
+        <string id="sgm_extra_menu_74">
+		<text>Убрать часы</text>
+	</string>
+        <string id="sgm_extra_menu_75">
+		<text>Активировать авто.энергетик</text>
+	</string>
+        <string id="sgm_extra_menu_76">
+		<text>Выключить схему лечения</text>
+	</string>
+        <string id="sgm_extra_menu_77">
+		<text>Включить схему обыска трупов</text>
+	</string>
+        <string id="sgm_extra_menu_78">
+		<text>Активировать еффект отклонения</text>
+	</string>
+        <string id="sgm_extra_menu_79">
+		<text>Не прятать оружие на базах</text>
+	</string>
+        <string id="sgm_extra_menu_80">
+		<text>Убрать иконку зоны сна</text>
+	</string>
+        <string id="sgm_extra_menu_81">
+		<text>Вывести на HUD инф. о ранге</text>
+	</string>
+        <string id="sgm_extra_menu_82">
+		<text>Отключить голод</text>
+	</string>
+

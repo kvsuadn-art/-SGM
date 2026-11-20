@@ -1,0 +1,320 @@
+show_hud_message(db.actor:object_count()) - количество предметов в инвентаре у ГГ
+
+    function take_items_enabled(boolean);
+    function take_items_enabled() const;
+;--------------------------------------------------------------------------------;
+;--------------------------------------------------------------------------------;
+;--------------------------------------------------------------------------------;
+;--------------------------------База мох знаний---------------------------------;
+;--------------------------------------------------------------------------------;
+;--------------------------------------------------------------------------------;
+--' Получение ссылки на клас
+function get_class_name()
+        if result == nil then
+        result = class_name()
+        end
+        return result
+end
+;--------------------------------------------------------------------------------;
+ui_npc_u_dolg_1
+ui_npc_u_dolg_2
+ui_npc_u_dolg_2_mask
+actors\stalker_dolg\stalker_dolg_2_mask
+ui_npc_u_dolg_3
+ui_npc_u_dolg_4
+;--------------------------------------------------------------------------------;
+states = { idle = { weapon = nil },
+states[idle].weapon
+;-----------------Использование памяти:---------------------------;
+actor_capital
+actor_percent
+actor_ptimer
+actor_btimer
+actor_deposit
+fill_npc_time
+fill_npc_enemy
+zatm_h_rnd
+zatm_m_rnd
+zatm_timer
+zatm_switch
+allow_sleep
+satiety_factor
+;---------------------------Разное:-------------------------------;
+local unique_items_list={
+{"wpn_addon_scope"},
+{"wpn_addon_scope_4x"},
+{"wpn_addon_scope_susat"},
+{"wpn_addon_silencer"},
+{"wpn_addon_silencer_rifle"},
+{"wpn_addon_grenade_launcher"},
+{"wpn_addon_grenade_launcher_m203"},
+{"novice_outfit"},
+{"bandit_outfit"},
+{"cs_light_outfit"},
+{"cs_heavy_outfit"},
+{"stalker_outfit"},
+{"svoboda_light_outfit"},
+{"svoboda_heavy_outfit"},
+{"dolg_outfit"},
+{"dolg_heavy_outfit"},
+{"scientific_outfit"},
+{"specops_outfit"},
+{"military_outfit"},
+{"exo_outfit"},
+{"svoboda_exo_outfit"},
+{"device_pda_fang"},
+{"esc_trader_habar"},
+{"device_pda_military"},
+{"device_pda_old"},
+{"device_pda_garbage_traitor"},
+{"device_pda_comendant"},
+{"device_pda_freedom"},
+{"device_pda_bloodsucker"},
+{"device_pda_digger"},
+{"red_forest_pda_map"},
+{"mar_quest_wpn_pm_1"},
+{"mar_quest_wpn_ak74u_1"},
+{"mar_quest_af_cristall_flower_1"},
+{"mar_quest_scout_pda"},
+{"mar_quest_novice_outfit_1"},
+{"mil_quest_af_fuzz_kolobok"},
+{"mil_device_pda_lost_squard"},
+{"esc_quest_magic_vodka"},
+{"esc_quest_akm47"},
+{"esc_quest_luky_detector"},
+{"esc_quest_spec_medkit"},
+{"esc_device_pda_driver"},
+{"esc_mechanic_flash_card_1"},
+{"esc_mechanic_flash_card_2"},
+{"esc_mechanic_flash_card_3"},
+{"esc_mechanic_flash_card_4"},
+{"gar_quest_wpn_wincheaster1300"},
+{"gar_quest_wpn_desert_eagle"},
+{"gar_quest_vodka_2"},
+{"gar_quest_novice_outfit"},
+{"gar_quest_wpn_pm"},
+{"val_quest_scope_x8"},
+{"val_quest_flash_movies"},
+{"val_quest_guitar_serg"},
+{"agr_quest_wpn_spas12"},
+{"agr_quest_duty_secret_pda"},
+{"agr_quest_duty_case"},
+{"agr_quest_duty_abakan"},
+{"agr_pda_for_secret_trader"},
+{"agr_map_animals"},
+{"agr_mechanic_pda"},
+{"yan_quest_ammo_sleep"},
+{"yan_quest_scarlet_flower"},
+{"yan_quest_granade"},
+{"red_forest_pda_map_2"},
+{"red_quest_tank_minigun"},
+{"red_quest_prototipe_device"},
+{"detector_simple"},
+{"detector_advanced"},
+{"detector_elite"},
+{"af_medusa"},
+{"af_cristall_flower"},
+{"af_night_star"},
+{"af_vyvert"},
+{"af_gravi"},
+{"af_gold_fish"},
+{"af_cristall"},
+{"af_fireball"},
+{"af_dummy_glassbeads"},
+{"af_eye"},
+{"af_fire"},
+{"af_blood"},
+{"af_mincer_meat"},
+{"af_soul"},
+{"af_fuzz_kolobok"},
+{"af_baloon"},
+{"af_glass"},
+{"af_electra_sparkler"},
+{"af_electra_flash"},
+{"af_electra_moonlight"},
+{"af_dummy_battery"},
+{"af_dummy_dummy"},
+{"af_ice"},
+{"af_compass"}
+function npc_check_unique_item(corpse_id)
+     local corpse=level.object_by_id(corpse_id)
+     if corpse~=nil then
+        for z,w in pairs(unique_items_list) do
+            if corpse:object(w[1]) then
+               result="true"
+            else
+               result="false"
+            end
+        end
+     end
+     return result
+end
+;---------------------------Определение Клавиш:-------------------------------;
+		if dik == DIK_keys.DIK_ADD then
+			give_quick_news("DIK_ADD")
+		elseif dik == DIK_keys.DIK_APOSTROPHE then
+			give_quick_news("DIK_APOSTROPHE")
+		elseif dik == DIK_keys.DIK_APPS then
+			give_quick_news("DIK_APPS")
+		elseif dik == DIK_keys.DIK_AT then
+			give_quick_news("DIK_AT")
+		elseif dik == DIK_keys.DIK_AX then
+			give_quick_news("DIK_AX")
+		elseif dik == DIK_keys.DIK_BACKSLASH then
+			give_quick_news("DIK_BACKSLASH")
+		elseif dik == DIK_keys.DIK_CAPITAL then
+			give_quick_news("DIK_CAPITAL")
+		elseif dik == DIK_keys.DIK_CIRCUMFLEX then
+			give_quick_news("DIK_CIRCUMFLEX")
+		elseif dik == DIK_keys.DIK_COLON then
+			give_quick_news("DIK_COLON")
+		elseif dik == DIK_keys.DIK_COMMA then
+			give_quick_news("DIK_COMMA")
+		elseif dik == DIK_keys.DIK_CONVERT then
+			give_quick_news("DIK_CONVERT")
+		elseif dik == DIK_keys.DIK_DECIMAL then
+			give_quick_news("DIK_DECIMAL")
+		elseif dik == DIK_keys.DIK_DELETE then
+			give_quick_news("DIK_DELETE")
+		elseif dik == DIK_keys.DIK_DIVIDE then
+			give_quick_news("DIK_DIVIDE")
+		elseif dik == DIK_keys.DIK_DOWN then
+			give_quick_news("DIK_DOWN")
+		elseif dik == DIK_keys.DIK_END then
+			give_quick_news("DIK_END")
+		elseif dik == DIK_keys.DIK_EQUALS then
+			give_quick_news("DIK_EQUALS")
+		elseif dik == DIK_keys.DIK_GRAVE then
+			give_quick_news("DIK_GRAVE")
+		elseif dik == DIK_keys.DIK_HOME then
+			give_quick_news("DIK_HOME")
+		elseif dik == DIK_keys.DIK_INSERT then
+			give_quick_news("DIK_INSERT")
+		elseif dik == DIK_keys.DIK_KANA then
+			give_quick_news("DIK_KANA")
+		elseif dik == DIK_keys.DIK_KANJI then
+			give_quick_news("DIK_KANJI")
+		elseif dik == DIK_keys.DIK_LBRACKET then
+			give_quick_news("DIK_LBRACKET")
+		elseif dik == DIK_keys.DIK_LCONTROL then
+			give_quick_news("DIK_LCONTROL")
+		elseif dik == DIK_keys.DIK_LEFT then
+			give_quick_news("DIK_LEFT")
+		elseif dik == DIK_keys.DIK_LMENU then
+			give_quick_news("DIK_LMENU")
+		elseif dik == DIK_keys.DIK_MULTIPLY then
+			give_quick_news("DIK_MULTIPLY")
+		elseif dik == DIK_keys.DIK_MINUS then
+			give_quick_news("DIK_MINUS")
+		elseif dik == DIK_keys.DIK_NEXT then
+			give_quick_news("DIK_NEXT")
+		elseif dik == DIK_keys.DIK_NOCONVERT then
+			give_quick_news("DIK_NOCONVERT")
+		elseif dik == DIK_keys.DIK_NUMLOCK then
+			give_quick_news("DIK_NUMLOCK")
+		elseif dik == DIK_keys.DIK_NUMPADCOMMA then
+			give_quick_news("DIK_NUMPADCOMMA")
+		elseif dik == DIK_keys.DIK_NUMPADENTER then
+			give_quick_news("DIK_NUMPADENTER")
+		elseif dik == DIK_keys.DIK_NUMPADEQUALS then
+			give_quick_news("DIK_NUMPADEQUALS")
+		elseif dik == DIK_keys.DIK_PERIOD then
+			give_quick_news("DIK_PERIOD")
+		elseif dik == DIK_keys.DIK_PRIOR then
+			give_quick_news("DIK_PRIOR")
+		elseif dik == DIK_keys.DIK_RBRACKET then
+			give_quick_news("DIK_RBRACKET")
+		elseif dik == DIK_keys.DIK_RCONTROL then
+			give_quick_news("DIK_RCONTROL")
+		elseif dik == DIK_keys.DIK_RETURN then
+			give_quick_news("DIK_RETURN")
+		elseif dik == DIK_keys.DIK_RIGHT then
+			give_quick_news("DIK_RIGHT")
+		elseif dik == DIK_keys.DIK_RMENU then
+			give_quick_news("DIK_RMENU")
+		elseif dik == DIK_keys.DIK_SEMICOLON then
+			give_quick_news("DIK_SEMICOLON")
+		elseif dik == DIK_keys.DIK_SLASH then
+			give_quick_news("DIK_SLASH")
+		elseif dik == DIK_keys.DIK_STOP then
+			give_quick_news("DIK_STOP")
+		elseif dik == DIK_keys.DIK_SUBTRACT then
+			give_quick_news("DIK_SUBTRACT")
+		elseif dik == DIK_keys.DIK_SYSRQ then
+			give_quick_news("DIK_SYSRQ")
+		elseif dik == DIK_keys.DIK_UNDERLINE then
+			give_quick_news("DIK_UNDERLINE")
+		elseif dik == DIK_keys.DIK_UNLABELED then
+			give_quick_news("DIK_UNLABELED")
+		elseif dik == DIK_keys.DIK_YEN then
+			give_quick_news("DIK_YEN")
+		end
+------------------------------------------
+w_ak74            = upgrade_scheme_u17b_sgm
+w_sig550          = upgrade_scheme_u17b_sgm
+------------------------------------------
+w_abakan          = upgrade_scheme_u16a_sgm  
+w_l85             = upgrade_scheme_u16a_sgm  
+------------------------------------------
+w_commander_pm    = upgrade_scheme_u10a_sgm  
+w_pm              = upgrade_scheme_u10a_sgm  
+w_fort            = upgrade_scheme_u10a_sgm  
+w_beretta         = upgrade_scheme_u10a_sgm  
+w_walther         = upgrade_scheme_u10a_sgm  
+w_hpsa            = upgrade_scheme_u10a_sgm  
+w_mp5             = upgrade_scheme_u10a_sgm  
+------------------------------------------
+w_wincheaster1300 = upgrade_scheme_u9d_sgm  
+w_spas12          = upgrade_scheme_u9d_sgm  
+------------------------------------------
+w_autocolt        = upgrade_scheme_u9_sgm  
+w_colt1911        = upgrade_scheme_u9_sgm  
+w_cobra           = upgrade_scheme_u9_sgm  
+w_desert_eagle    = upgrade_scheme_u9_sgm  
+w_sig220          = upgrade_scheme_u9_sgm  
+w_usp45           = upgrade_scheme_u9_sgm  
+------------------------------------------
+w_val             = upgrade_scheme_u7a_sgm
+w_vintorez        = upgrade_scheme_u7a_sgm
+w_svu             = upgrade_scheme_u7a_sgm
+------------------------------------------
+w_groza           = upgrade_scheme_u8_sgm  
+w_svd             = upgrade_scheme_u8_sgm  
+------------------------------------------
+w_pb              = upgrade_scheme_u5_sgm  
+w_toz34           = upgrade_scheme_u5_sgm 
+------------------------------------------
+w_ak74u           = upgrade_scheme_u9e_sgm 
+------------------------------------------
+w_g36             = upgrade_scheme_u15_sgm  
+------------------------------------------
+w_fn2000          = upgrade_scheme_u11a_sgm 
+------------------------------------------
+w_lr300           = upgrade_scheme_u16a_2_sgm
+------------------------------------------
+w_bm16            = upgrade_scheme_u3_sgm 
+------------------------------------------
+
+       local secret_case=alife():create("treasure_rukzak",vector():set(-120.583,-6.250,-44.999),7562,993)
+       alife():create("af_monolit",vector(),0,0,secret_case.id)
+
+xr_effects[infop.func](actor, npc)
+[personal_rukzak]
+GroupControlSection	= spawn_group
+discovery_dependency    =
+$spawn 			= "devices\personal_rukzak"
+class			= O_INVBOX
+cform			= skeleton
+visual			= dynamics\devices\dev_rukzak\dev_rukzak.ogf
+script_binding          = bind_physic_object.init
+radius                  = 3
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x		= 23
+inv_grid_y		= 15
+cost			= 1000
+can_take		= false
+inv_weight		= 1.14
+description		= treasure_rukzak_descr
+inv_name		= treasure_rukzak_title
+inv_name_short		= treasure_rukzak_title

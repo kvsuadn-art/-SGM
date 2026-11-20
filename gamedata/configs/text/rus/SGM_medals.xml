@@ -1,0 +1,75 @@
+      <string id="st_medal_tip_title">
+		<text>За достижение ранга:</text>
+      </string>
+      <string id="st_medal_tip_text1">
+		<text>Получена медаль - Первенство «Новичка»</text>
+      </string>
+      <string id="st_medal_tip_text2">
+		<text>Получена медаль - Первенство «Следопыта»</text>
+      </string>
+      <string id="st_medal_tip_text3">
+		<text>Получена медаль - Первенство «Сталкера»</text>
+      </string>
+      <string id="st_medal_tip_text4">
+		<text>Получена медаль - Первенство «Опытного»</text>
+      </string>
+      <string id="st_medal_tip_text5">
+		<text>Получена медаль - Первенство «Ветерана»</text>
+      </string>
+      <string id="st_medal_tip_text6">
+		<text>Получена медаль - Первенство «Мастера»</text>
+      </string>
+      <string id="st_medal_tip_text7">
+		<text>Получена медаль - Первенство «Элитария»</text>
+      </string>
+      <string id="st_medal_tip_text8">
+		<text>Получена медаль - Первенство «Героя зоны»</text>
+      </string>
+      <string id="st_medal_100_title">
+		<text>Первенство «Новичка»</text>
+      </string>
+      <string id="st_medal_100_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 100. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_200_title">
+		<text>Первенство «Следопыта»</text>
+      </string>
+      <string id="st_medal_200_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 200. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_400_title">
+		<text>Первенство «Сталкера»</text>
+      </string>
+      <string id="st_medal_400_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 400. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_600_title">
+		<text>Первенство «Опытного»</text>
+      </string>
+      <string id="st_medal_600_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 600. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_800_title">
+		<text>Первенство «Ветерана»</text>
+      </string>
+      <string id="st_medal_800_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 800. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_1000_title">
+		<text>Первенство «Мастера»</text>
+      </string>
+      <string id="st_medal_1000_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 1000. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_1100_title">
+		<text>Первенство «Элитария»</text>
+      </string>
+      <string id="st_medal_1100_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 1100. Для преобразования в капитал - необходимо использовать.</text>
+      </string>
+      <string id="st_medal_1200_title">
+		<text>Первенство «Героя зоны»</text>
+      </string>
+      <string id="st_medal_1200_descr">
+		<text>Награда за достижение ранга. Выдается если текущий ранг более 1200. Для преобразования в капитал - необходимо использовать.</text>
+      </string>

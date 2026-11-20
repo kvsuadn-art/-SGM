@@ -1,0 +1,1786 @@
+if (jit == nil) then
+	profiler.setup_hook	()
+end
+
+
+function empty	(container)
+	if (type(container) == "function") then
+		for i in container do
+			return	(false)
+		end
+
+		return		(true)
+	end
+
+	assert			(type(container) == "table")
+	if (container[1] ~= nil) then
+		return		(false)
+	end
+
+	for i,j in pairs(container) do
+		return		(false)
+	end
+
+	return			(true)
+end
+
+
+schemes = {} -- соответствие схем модулям
+stypes = {} -- типv схем
+
+-- іагружает схему из файла на диске и активирует в мотиваторе.
+-- ідесь:
+-- 	filename - имя файла, в котором реализована схема, без расширения
+-- 	scheme - имя схемv
+function load_scheme(filename, scheme, stype)
+	schemes[scheme] = filename
+	stypes[scheme] = stype
+end
+
+----------------------------------------------------------------------
+dev_debug = false
+----------------------------------------------------------------------
+local scripts_to_print =	{
+															["stalker_generic"] = true,
+															["xr_smartcover"] = true,
+															["xr_logic"] = true,
+															["xr_conditions"] = true,
+															["xr_cover"] = true,
+															["sim_combat"] = true,
+															["xr_motivator"] = true,
+															["xr_walker"] = true,
+															["xr_camper"] = true,
+															["xr_kamp"] = true,
+															["restrictor_manager"] = true,
+															["sim_board"] = true,
+															["sim_faction"] = true,
+															["post_combat_idle"] = true,
+															["xr_death"] = true,
+															["xr_sound"] = true,
+															["utils"] = true,
+															["treasure_manager"] = true,
+															["object_collection"] = true,
+															["minigames_manager"] = true,
+															["minigame_crowkiller"] = true,
+															["minigame_shooting"] = true,
+															["se_actor"] = true,
+															["smart_terrain"] = true,
+															["bind_physic_object"] = true,
+															["bind_heli"] = true,
+															["bind_anomaly_zone"] = true,
+								["bind_stalker"] = true,
+								["state_mgr_animation"] = true,
+								["se_stalker"] = true,
+								["db"] = true,
+								["sim_squad_generic"] = true,
+								["sim_squad_scripted"] = true,
+								["se_smart_cover"] = true,
+								["se_monster"] = true,
+								["xr_use"] = true,
+								["dialog_manager"] = true,
+								["xr_combat_ignore"] = true,
+								["xr_remark"] = true,
+								["cover_manager"] = true,
+								["xr_danger"]	 = true,
+								--["task_manager"] = true,
+								--["task_objects"]	 = true
+
+							}
+function printf(fmt,...)
+	local is_g = 0
+	local result = fmt
+	if debug == nil then
+		log(string.format(fmt,...))
+		return
+	end
+	local info_table = debug.getinfo(2)
+	local script_name = string.gsub(info_table.short_src, "%.script", "")
+	script_name = string.gsub(script_name, "gamedata\\scripts\\", "")
+	if scripts_to_print[script_name] == true then return end
+	script_name,is_g = string.gsub(script_name, "_g", "")
+	if is_g == 0 then
+		result = script_name..":("..info_table.currentline.."):"..fmt
+	end
+	log(string.format(result,...))
+end
+
+----------------------------------------------------------------------
+if nil == time_global then
+	time_global = function () return device():time_global() end
+end
+
+function wait_game(time_to_wait)
+		verify_if_thread_is_running()
+		if (time_to_wait == nil) then
+				coroutine.yield()
+		else
+				local time_to_stop = game.time() + time_to_wait
+				while game.time() <= time_to_stop do
+						coroutine.yield()
+				end
+		end
+end
+
+function wait(time_to_wait)
+		verify_if_thread_is_running()
+		if (time_to_wait == nil) then
+				coroutine.yield()
+		else
+				local time_to_stop = time_global() + time_to_wait
+				while time_global() <= time_to_stop do
+						coroutine.yield()
+				end
+		end
+end
+
+function action(obj,...)
+		local arg = {...}
+		local act = entity_action()
+		local i = 1
+		while true do
+				if (arg[i] ~= nil) then
+						act:set_action(arg[i])
+				else
+						break
+				end
+				i = i + 1
+		end
+		if (obj ~= nil) then
+				obj:command(act,false)
+		end
+		return  entity_action(act)
+end
+
+function action_first(obj,...)
+		local arg = {...}
+		local act = entity_action()
+		local i = 1
+		while true do
+				if (arg[i] ~= nil) then
+						act:set_action(arg[i])
+				else
+						break
+				end
+				i = i + 1
+		end
+		if (obj ~= nil) then
+				obj:command(act,true)
+		end
+		return  entity_action(act)
+end
+
+function round (value)
+		local min = math.floor (value)
+		local max = min + 1
+		if value - min > max - value then return max end
+		return min
+end
+
+function debug_get_level_object(obj_name)
+		local res = level.debug_object(obj_name)
+		while res == nil do
+
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- !!!!! =+ іLі+іі+=TLіLTLЈT+, L=L++ =+ +L-+T TL-=+ ++L++і ііL іLTTTL=+Tі+ ++-+іT+T !!!!!
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				printf("get_level_object() is waiting for object \"%s\"", obj_name)
+
+				res         = level.object(obj_name)
+				wait        ()
+		end
+		return          res
+end
+
+function debug_get_actor()
+		local res       = level.debug_actor()
+		while res == nil do
+				res         = level.debug_actor()
+				wait        ()
+		end
+		return          res
+end
+
+function distance_between(obj1, obj2)
+		return obj1:position():distance_to(obj2:position())
+end
+
+-- +сли один объект nil, например нет актера, то считаем, что он далеко
+function distance_between_safe(obj1, obj2)
+		if(obj1 == nil or obj2 == nil) then return 100000 end
+	return obj1:position():distance_to(obj2:position())
+end
+
+local aa = nil
+--' іроверка на инфопоршнv, даже если игрока не су	ествует
+function has_alife_info(info_id)
+	if aa == nil then
+		return false
+	end
+	return aa:has_info(0, info_id)
+end
+
+
+
+function reset_action (npc, script_name)
+		if npc:get_script () then
+			 npc:script (false, script_name)
+		end
+		npc:script (true, script_name)
+end
+
+class "script_object"
+
+function script_object.__init(self,name,script,...)
+	self.action         = action(nil,...)
+	self.object_name    = name
+	self.script_name    = script
+	self.object         = nil
+end
+
+function script_object:update()
+		local                   obj = self.object
+		self.object             = level.object(self.object_name)
+		if ((obj == nil) and (self.object ~= nil)) then
+				self.object:script  (true,self.script_name)
+				self.object:command (self.action,false)
+		end
+end
+
+--
+-- іередача персонажу информации
+--
+
+function GiveInfoViaPda(obj_receiver, obj_sender, info_number)
+		obj_receiver:give_info_portion_via_pda(info_number, obj_sender)
+end
+
+
+--------------------------------------------------
+-- Functions and variables added by Zmey
+--------------------------------------------------
+
+-- іонстанта, которуі использовать в местах, где нужно задать неограниченное время действия
+time_infinite = 100000000
+
+-- =азвание скрипта, которvй в даннvй момент находится в отладке
+-- (в этом скрипте будут срабатvвать вvзовv функции debug_log)
+debug_script_name = ""
+
+-- Tvводит в лог строчку, если script_name == debug_script_name
+-- Lспользуется для отрадки сценариев
+function debug_log(script_name, fmt, ...)
+	if debug_script_name == script_name then
+		log(string.format(fmt, ...))
+	end
+end
+
+-- +сли в даннvй момент вvполняется какое-то действие, прерvвает его и отклічает скриптовvй режим
+function interrupt_action(who, script_name)
+	if who:get_script() then
+		who:script(false, script_name)
+	end
+end
+
+function random_choice(...)
+		local arg = {...}
+		local r = math.random(1, #arg)
+		return arg[r]
+end
+
+function new_action(...)
+		local arg = {...}
+		local act = entity_action()
+		for i = 1, #arg do
+				act:set_action(arg[i])
+		end
+		return act;
+end
+
+obj_last_actions = {};
+
+function perform_action(obj, action_name, action)
+	if (obj ~= nil) then
+		obj_last_actions[obj] = action_name
+		obj:command(act, false)
+	end
+end
+
+function last_action(obj)
+	return obj_last_actions[obj]
+end
+
+function if_then_else(cond, if_true, if_false)
+		if cond then
+				return if_true
+		end
+		return if_false
+end
+
+function update_action (npc, script, ...)
+		local arg = {...}
+		if npc == nil then return end
+		local act = npc:action ()
+		if arg.n == 0 then return end
+
+		if act == nil then act = entity_action () end
+
+		for a = 1, arg.n, 1 do
+				if arg[a] ~= nil then act:set_action (arg[a]) end
+		end
+		reset_action (npc, script)
+		npc:command (act, false)
+
+end
+
+
+function set_current_time (hour, min, sec)
+		local current_time_factor = level.get_time_factor ()
+
+		printf ("Need time : %d:%d:%d", hour, min, sec)
+
+		local current_time = game.time ()
+		local c_day = math.floor (current_time / 86400000)
+		local c_time = current_time - c_day * 86400000
+		local n_time = (sec + min * 60 + hour * 3600) * 1000
+
+		if c_time > n_time then c_day = c_day + 1 end
+		n_time = n_time + c_day * 86400000
+
+		level.set_time_factor (10000)
+		while game.time () < n_time do wait () end
+
+		level.set_time_factor (current_time_factor)
+end
+
+
+
+if (editor() == false) then
+class "pp_effector" (effector)
+
+function pp_effector:__init(effector_type,start_time,dest_power,life_time) super(effector_type,start_time)
+		self.start_time = start_time
+		self.stop_time  = start_time + life_time
+		self.max_power  = dest_power
+end
+
+function pp_effector:process(pp)
+		effector.process(self,pp)
+
+		local curr_time = time_global()
+		local d         = 0.0
+
+		if curr_time < self.start_time then
+				d           = 0.0
+		else
+				if curr_time < self.stop_time then
+						d           = (curr_time - self.start_time) / (self.stop_time - self.start_time)
+				else
+						self.info   = self.max_power
+						return      true
+				end
+		end
+
+		local dual      = duality()
+		local noise     = noise()
+		local base      = color()
+		local gray      = color()
+		local add       = color()
+
+		dual.h          = self.max_power.dual.h         * d
+		dual.v          = self.max_power.dual.v         * d
+
+		noise.grain     = self.max_power.noise.grain        * d
+		noise.intensity     = self.max_power.noise.intensity    * d
+		noise.fps       = self.max_power.noise.fps      * d
+
+		base.r          = self.max_power.color_base.r       * d
+		base.g          = self.max_power.color_base.g       * d
+		base.b          = self.max_power.color_base.b       * d
+
+		gray.r          = self.max_power.color_gray.r       * d
+		gray.g          = self.max_power.color_gray.g       * d
+		gray.b          = self.max_power.color_gray.b       * d
+
+		add.r           = self.max_power.color_add.r        * d
+		add.g           = self.max_power.color_add.g        * d
+		add.b           = self.max_power.color_add.b        * d
+
+		pp.gray         = self.max_power.gray           * d
+		pp.blur         = self.max_power.blur           * d
+
+		pp.dual         = dual
+		pp.noise        = noise
+		pp.color_base       = base
+		pp.color_gray       = gray
+		pp.color_add        = add
+
+		self.info       = pp
+
+		return              true
+end
+
+function pp_effector:finished()
+		return          self.stop_time < time_global()
+end
+
+--
+-- postprocess for rainbow
+--
+class "pp_linear_lerp" (effector)
+
+function pp_linear_lerp:__init(effector_type,start_time,life_time,start_power,dest_power) super(effector_type,start_time)
+		self.start_time = start_time
+		self.stop_time  = start_time + life_time
+		self.min_power  = start_power
+		self.max_power  = dest_power
+end
+
+function pp_linear_lerp:process(pp)
+		effector.process(self,pp)
+
+		local curr_time = time_global()
+		local d         = 0.0
+
+		if curr_time < self.start_time then
+				d           = 0.0
+		else
+				if curr_time < self.stop_time then
+						d           = (curr_time - self.start_time) / (self.stop_time - self.start_time)
+				else
+						self.info   = self.max_power
+						return      true
+				end
+		end
+
+		local dual      = duality()
+		local noise     = noise()
+		local base      = color()
+		local gray      = color()
+		local add       = color()
+
+		dual.h          = self.min_power.dual.h         + (self.max_power.dual.h        - self.min_power.dual.h     )   * d
+		dual.v          = self.min_power.dual.v         + (self.max_power.dual.v        - self.min_power.dual.v     )   * d
+
+		noise.grain     = self.min_power.noise.grain        + (self.max_power.noise.grain       - self.min_power.noise.grain    )   * d
+		noise.intensity     = self.min_power.noise.intensity    + (self.max_power.noise.intensity   - self.min_power.noise.intensity)   * d
+		noise.fps       = self.min_power.noise.fps      + (self.max_power.noise.fps         - self.min_power.noise.fps  )   * d
+
+		base.r          = self.min_power.color_base.r       + (self.max_power.color_base.r      - self.min_power.color_base.r   )   * d
+		base.g          = self.min_power.color_base.g       + (self.max_power.color_base.g      - self.min_power.color_base.g   )   * d
+		base.b          = self.min_power.color_base.b       + (self.max_power.color_base.b      - self.min_power.color_base.b   )   * d
+
+		gray.r          = self.min_power.color_gray.r       + (self.max_power.color_gray.r      - self.min_power.color_gray.r   )   * d
+		gray.g          = self.min_power.color_gray.g       + (self.max_power.color_gray.g      - self.min_power.color_gray.g   )   * d
+		gray.b          = self.min_power.color_gray.b       + (self.max_power.color_gray.b      - self.min_power.color_gray.b   )   * d
+
+		add.r           = self.min_power.color_add.r        + (self.max_power.color_add.r       - self.min_power.color_add.r    )   * d
+		add.g           = self.min_power.color_add.g        + (self.max_power.color_add.g       - self.min_power.color_add.g    )   * d
+		add.b           = self.min_power.color_add.b        + (self.max_power.color_add.b       - self.min_power.color_add.b    )   * d
+
+		pp.gray         = self.min_power.gray           + (self.max_power.gray          - self.min_power.gray       )   * d
+		pp.blur         = self.min_power.blur           + (self.max_power.blur          - self.min_power.blur       )   * d
+
+		pp.dual         = dual
+		pp.noise        = noise
+		pp.color_base       = base
+		pp.color_gray       = gray
+		pp.color_add        = add
+
+		self.info       = pp
+
+		return          true
+end
+
+function pp_linear_lerp:finished()
+		return          self.stop_time < time_global()
+end
+--
+-- end of postprocess for rainbow
+--
+
+----------------------------------------------------------------------------------------------------------------------
+-- Evaluators
+----------------------------------------------------------------------------------------------------------------------
+-- зарезервированv id с номерами от 0 до 256 для создания стандартнvх эвалуаторов.
+
+--Constant evaluator
+class "const_evaluator" (property_evaluator)
+
+function const_evaluator:__init (name, value) super (nil, name)
+		self.value = value
+end
+
+function const_evaluator:evaluate()
+		return          self.value
+end
+
+--Wait evaluator
+class "wait_evaluator" (property_evaluator)
+
+function wait_evaluator:__init (wait_time) super ()
+		self.wait_time = wait_time
+		self.first_call = true
+		self.current_time = 0
+end
+
+function wait_evaluator:evaluate ()
+		if self.first_call == true then
+			 self.first_call = false
+			 self.current_time = device ():time_global ()
+			 return false
+		end
+
+		local t = device():time_global () - self.current_time;
+		if t > self.wait_time then return true end
+		return false
+end
+--------------------------------------------------------------------------------
+class "enabled_evaluator" (property_evaluator)
+
+function enabled_evaluator:__init (name, storage) super ()
+		self.a = storage
+end
+
+function enabled_evaluator:evaluate()
+		return  self.a.enabled
+end
+
+end -- end of editor() == false
+
+
+function str_split (str)
+
+		local strlen = string.len (str)
+
+		local parts = {{}, {}, {}, {}}
+		local cpart = 1
+
+		for a = 1, strlen, 1 do
+				local char = string.byte (str, a)
+				if char ~= 95 then
+					 table.insert (parts[cpart], char)
+				else
+					 cpart = cpart + 1
+					 if cpart > 4 then break end
+				end
+		end
+
+		if cpart ~= 4 then return "unknown", "stalker", 0, 0 end
+
+		local str1 = string.char ()
+		local str2 = string.char ()
+		local str3 = string.char ()
+		local str4 = string.char ()
+
+		local ref = parts[1]
+		for a = 1, #ref, 1 do
+				str1 = string.format ("%s%c", str1, ref[a])
+		end
+
+		ref = parts[2]
+		for a = 1, #ref, 1 do
+				str2 = string.format ("%s%c", str2, ref[a])
+		end
+
+		ref = parts[3]
+		for a = 1, #ref, 1 do
+				str3 = string.format ("%s%c", str3, ref[a])
+		end
+
+		ref = parts[4]
+		for a = 1, #ref, 1 do
+				str4 = string.format ("%s%c", str4, ref[a])
+		end
+
+		printf ("%s %s %d %d", str1, str2, str3, str4)
+		return str1, str2, (str3 + 1) - 1, (str4 + 1) - 1
+end
+
+function random_number (min_value, max_value)
+		math.randomseed (device ():time_global ())
+		if min_value == nil and max_value == nil then
+			return math.random ()
+		else
+			return math.random (min_value, max_value)
+		end
+end
+
+-- ‚аҐ¬п бгв®Є ў ¬б
+-- —гЈ ©
+local ms_per_day = 24 * 60 * 60 * 1000
+function day_time()
+		return math.mod( game.time(), ms_per_day )
+end
+
+--Time in hours
+function local_hours()
+		return math.floor( math.mod( game.time()/1000, 86400 )/ 3600 )
+end
+
+-- Ї абЁв бва®Єг ўЁ¤  "   , ЎЎЎ, ўўў..." ў в Ў«Ёжг { "   ", "ЎЎЎ", "ўўў", ... }
+-- —гЈ ©
+function parse_names( s )
+		local t = {}
+		for name in string.gfind( s, "([%w_\\]+)%p*" ) do
+		--for name in string.gfind( s, "%s*([^%,]+)%s*" ) do
+				table.insert( t, name )
+		end
+
+		return t
+end
+
+
+function parse_key_value( s )
+		local t = {}
+	if s == nil then
+		return nil
+	end
+		local key, nam = nil, nil
+		for name in string.gfind( s, "([%w_\\]+)%p*" ) do
+		if key == nil then
+			key = name
+		else
+			t[key] = name
+			key = nil
+		end
+		end
+		return t
+end
+
+function empty (container)
+	if (type(container) == "function") then
+		for i in container do
+			return (false)
+		end
+		return  (true)
+	end
+	if (container[1] ~= nil) then
+		return  (false)
+	end
+	for i,j in pairs(container) do
+		return  (false)
+	end
+	return   (true)
+end
+
+-- Ї абЁв бва®Єг ўЁ¤  "n1, n2, n3..." ў в Ў«Ёжг { n1, n2, n3, ... } Ј¤Ґ n1, n2, n3... - жҐ«лҐ зЁб« 
+-- —гЈ ©
+--[[function parse_nums( s )
+		local t = {}
+
+		for entry in string.gfind( s, "([%w_\\]+)%p*" ) do
+				table.insert( t, tonumber( entry ) )
+		end
+
+		return t
+end]]
+
+-- Ї абЁв бва®Єг ўЁ¤  "n1, n2, n3..." ў в Ў«Ёжг { n1, n2, n3, ... } Ј¤Ґ n1, n2, n3... - ¤а®Ў­лҐ зЁб« 
+function parse_nums( s )
+	local t = {}
+
+	for entry in string.gfind( s, "([%-%d%.]+)%,*" ) do
+		table.insert( t, tonumber( entry ) )
+	end
+
+	return t
+end
+
+-- Їа®ўҐапҐв, Ґбвм «Ё ®ЎкҐЄв ў ®­« ©­Ґ
+function is_object_online(obj_id)
+	return level.object_by_id(obj_id) ~= nil
+end
+
+function get_clsid(npc)
+		if npc == nil then return nil end
+
+	return npc:clsid()
+
+--    if is_object_online(npc:id()) then
+--      return npc:clsid()
+--    else
+--        return nil
+--    end
+end
+
+--Tvчисляет yaw в радианах
+function yaw( v1, v2 )
+		return  math.acos( ( (v1.x*v2.x) + (v1.z*v2.z ) ) / ( math.sqrt(v1.x*v1.x + v1.z*v1.z ) * math.sqrt(v2.x*v2.x + v2.z*v2.z ) ) )
+end
+
+function yaw_degree( v1, v2 )
+		return  (math.acos( ( (v1.x*v2.x) + (v1.z*v2.z ) ) / ( math.sqrt(v1.x*v1.x + v1.z*v1.z ) * math.sqrt(v2.x*v2.x + v2.z*v2.z ) ) ) * 57.2957)
+end
+function yaw_degree3d( v1, v2 )
+		return  (math.acos((v1.x*v2.x + v1.y*v2.y + v1.z*v2.z)/(math.sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z )*math.sqrt(v2.x*v2.x + v2.y*v2.y + v2.z*v2.z)))*57.2957)
+end
+
+function vector_cross(v1, v2)
+		return vector():set(v1.y  * v2.z  - v1.z  * v2.y, v1.z  * v2.x  - v1.x  * v2.z, v1.x  * v2.y  - v1.y  * v2.x)
+end
+
+--Tра	ает вектор вокруг оси y против часовой стрелки
+
+function vector_rotate_y(v, angle)
+		angle = angle * 0.017453292519943295769236907684886
+		local c = math.cos (angle)
+		local s = math.sin (angle)
+		return vector ():set (v.x * c - v.z * s, v.y, v.x * s + v.z * c)
+end
+
+-- очистка таблицv
+function clear_table (t)
+		while #t > 0 do
+					table.remove (t, #t)
+		end
+end
+
+--€бЇ®«м§гҐв ¤«п ¬®­бва®ў. ‚лЎ®а в®зЄЁ, Єг¤  Ё¤вЁ ў ­ҐЄ®в®а®¬ а ¤ЁгбҐ Ё зв®Ў в®зЄ  Ўл«  ¤ «миҐ ­  а ббв®п­ЁЁ
+-- min_radius ®в вҐЄгйҐ© Ї®§ЁжЁЁ(Ґб«Ё нв® Ї®«гзЁвбп). center_id - жҐ­ва Ї®§ЁжЁЁ, ў®ЄагЈ Є®в®а®© ¦ЁўҐ¬,
+-- position_id - вгЄгй п Ї®§ЁжЁп, radius - ў Є Є®¬ а ¤ЁгбҐ ўлЎЁа вм в®зЄг, min_radius - ¬Ё­Ё¬ «м­®Ґ а ббв®п­ЁҐ, ®в вҐЄгйҐ© Ї®§ЁжЁЁ ¤® ­®ў®© в®зЄЁ.
+function new_point(center_id, position_id,radius, min_radius)
+		local dir = vector():set(math.random(-1000, 1000)/1000.0, 0.0001, math.random(-1000, 1000)/1000.0)
+		local pos = level.vertex_in_direction(center_id, dir, radius)
+		local i   = 1
+	printf("vertex_position")
+		while(level.vertex_position(position_id):distance_to(level.vertex_position(pos) ) < min_radius and i < 20) do
+				dir = vector():set(math.random(-1000, 1000)/1000.0, 0.0001, math.random(-1000, 1000)/1000.0)
+				pos = level.vertex_in_direction(center_id, dir, radius)
+				i   = i + 1
+		end
+
+		return (level.vertex_position(pos))
+end
+
+function stop_play_sound(obj)
+	if obj:alive() == true then
+		obj:set_sound_mask(-1)
+		obj:set_sound_mask(0)
+	end
+end
+
+--ў®§ўа й Ґв Їа®Ё§ў®«м­го в®зЄг ЇгвЁ г Є®в®а®© гбв ­®ў«Ґ­ ЎЁв
+function point_with_bit(patrol_path, bit, old_point)      -- old_point - Ё­¤ҐЄб в®зЄЁ, Є®в®аго ­Ґ ­ ¤® ўлЎЁа вм,
+	local points = {}                                       -- Ї а ¬Ґва ­Ґ ®Ўп§ вҐ«м­л©( ­ ЇаЁ¬Ґа вҐЄгйҐ© в®зЄЁ )
+
+		for i = 0, patrol_path:count()-1 do
+			--„®Ў®ў«пҐ¬ ў в Ў«Ёжг в®зЄЁ б ­г¦­л¬ ЎЁв®¬
+			if( patrol_path:flag(i, bit)) then
+						--„®Ў ў«пҐ¬ в®зЄг Ґб«Ё old_point == nil Ё«Ё ­®ў п в®зЄ  ­Ґ б®ўЇ ¤ Ґв б old_point
+						if(old_point == nil) then
+								table.insert(points, patrol_path:point(i))
+						elseif(old_point ~= i) then
+								table.insert(points, patrol_path:point(i))
+						end
+				end
+		end
+
+		local number_point = #points
+
+		if(number_point == 0) then
+				return nil
+		elseif(number_point == 1) then
+				return points[1]
+		else
+				return points[math.random(1, number_point)]
+		end
+end
+
+--ў®§ўа й Ґв Їа®Ё§ў®«м­го в®зЄг ЇгвЁ г Є®в®а®© гбв ­®ў«Ґ­ ЎЁв
+function point_with_bit_id(patrol_path, bit, old_point)        -- old_point - Ё­¤ҐЄб в®зЄЁ, Є®в®аго ­Ґ ­ ¤® ўлЎЁа вм,
+		local points = {}                                          -- Ї а ¬Ґва ­Ґ ®Ўп§ вҐ«м­л©( ­ ЇаЁ¬Ґа вҐЄгйҐ© в®зЄЁ )
+
+		for i = 0, patrol_path:count()-1 do
+			--„®Ў®ў«пҐ¬ ў в Ў«Ёжг в®зЄЁ б ­г¦­л¬ ЎЁв®¬
+			if( patrol_path:flag(i, bit)) then
+						--„®Ў ў«пҐ¬ в®зЄг Ґб«Ё old_point == nil Ё«Ё ­®ў п в®зЄ  ­Ґ б®ўЇ ¤ Ґв б old_point
+						if(old_point == nil) then
+								table.insert(points, i)
+						elseif(old_point ~= i) then
+								table.insert(points, i)
+						end
+				end
+		end
+
+		local number_point = #points
+
+		if(number_point == 0) then
+				return nil
+		elseif(number_point == 1) then
+				return patrol_path:level_vertex_id(points[1])
+		else
+				return patrol_path:level_vertex_id(points[math.random(1, number_point)])
+		end
+end
+
+--‚®§ўа й Ґв Ё­¤ҐЄб б ¬®© Ў«Ё¦­Ґ© в®зЄЁ ЇгвЁ б § ¤ ­л¬ ЎЁв®¬, ®в вҐЄгйҐ© в®зЄЁ
+function near_point_with_bit(point, patrol_path, bit)
+		local new_point = nil
+		local index     = nil
+		local dist      = 1000.0
+
+		for i = 0, patrol_path:count()-1 do
+				if( patrol_path:flag(i, bit) ) then
+						if(new_point == nil or patrol_path:point(i):distance_to(point) < dist) then
+								--…б«Ё нв  в®зЄ  ЇҐаў п Ё§ ­ иҐ¤иЁебп, «ЁЎ® ®в ­ҐҐ Їгвм Ў«Ё¦Ґ, в® § Ї®¬Ё­ Ґ¬ ҐҐ
+								new_point   = patrol_path:point(i)
+								index       = i
+								dist        = new_point:distance_to(point)
+						 end
+				end
+		end
+
+		return index
+end
+
+-- ђҐЄгабЁў­ п а бЇҐз вЄ  в Ў«Ёжл
+function print_table(table, subs)
+	local sub
+	if subs ~= nil then
+		sub = subs
+	else
+		sub = ""
+	end
+	for k,v in pairs(table) do
+		if type(v) == "table" then
+			printf(sub.."%s:", tostring(k))
+			print_table(v, sub.."    ")
+		elseif type(v) == "function" then
+			printf(sub.."%s:function", tostring(k))
+		elseif type(v) == "userdata" then
+			printf(sub.."%s:userdata", tostring(k))
+		elseif type(v) == "boolean" then
+	if v == true then
+		printf(sub.."%s:true", tostring(k))
+	else
+		printf(sub.."%s:false", tostring(k))
+	end
+		else
+			if v ~= nil then
+				printf(sub.."%s:%s", tostring(k),v)
+			else
+				printf(sub.."%s:nil", tostring(k),v)
+			end
+		end
+	end
+end
+
+
+function store_table(table, subs)
+	local sub
+	if subs ~= nil then
+		sub = subs
+	else
+		sub = ""
+	end
+	printf(sub.."{")
+	for k,v in pairs(table) do
+		if type(v) == "table" then
+			printf(sub.."%s = ", tostring(k))
+			store_table(v, sub.."    ")
+		elseif type(v) == "function" then
+			printf(sub.."%s = \"func\",", tostring(k))
+			elseif type(v) == "userdata" then
+					printf(sub.."%s = \"userdata\",", tostring(k))
+		elseif type(v) == "string" then
+			printf(sub.."%s = \"%s\",", tostring(k), tostring(v))
+		else
+			printf(sub.."%s = %s,", tostring(k), tostring(v))
+		end
+	end
+	printf(sub.."},")
+end
+
+-------------------------------------------------------------------------------------------
+function switch_online (id)
+		if id == -1 then return end
+		local sim = alife ()
+		if sim ~= nil then
+			 sim:set_switch_online  (id, true)
+			 sim:set_switch_offline (id, false)
+		end
+end
+-------------------------------------------------------------------------------------------
+function switch_offline (npc)
+		if npc == nil or npc:alive () == false then return end
+		local sim = alife ()
+		if sim ~= nil then
+			 sim:set_switch_online  (npc:id (), false)
+			 sim:set_switch_offline (npc:id (), true)
+		end
+end
+-------------------------------------------------------------------------------------------
+function get_actor_id()
+	if(level.actor() == nil) then return -1 end
+	return level.actor():id()
+end
+-------------------------------------------------------------------------------------------
+local monster_classes = {}
+local stalker_classes = {}
+local weapon_classes = {}
+local artefact_classes = {}
+
+function IsMonster (object, class_id)
+		local id = class_id or get_clsid(object)
+		return monster_classes[id] == true
+end
+function IsStalker (object, class_id)
+		local id = class_id or get_clsid(object)
+		return stalker_classes[id] == true
+end
+
+function isWeapon(object, class_id)
+		local id = class_id or get_clsid(object)
+	return weapon_classes[id] == true
+end
+
+function isArtefact(object, class_id)
+		local id = class_id or get_clsid(object)
+	return artefact_classes[id] == true
+end
+
+
+-------------------------------------------------------------------------------------------
+function level_object_by_sid( sid )
+	local sim = alife()
+
+	if sim then
+		local se_obj = sim:story_object( sid )
+		if se_obj then
+			return level.object_by_id( se_obj.id )
+		end
+	end
+
+	return nil
+end
+
+function id_by_sid( sid )
+	local sim = alife()
+
+	if sim then
+		local se_obj = sim:story_object( sid )
+		if se_obj then
+			return se_obj.id
+		end
+	end
+
+	return nil
+end
+
+-- ірешнуть игру (после вvвода сооб	ения об ошибке в лог)
+function abort(fmt, ...)
+	local reason = string.format(fmt, ...)
+	assert("ERROR: " .. reason)
+	error_log("ERROR: " .. reason)
+	log(string.format("%s",nil))
+end
+
+function set_postprocess(name_ini_file)
+	bind_stalker.post_process = postprocess.PostProcess(ini_file(name_ini_file))
+end
+function remove_postprocess()
+	bind_stalker.post_process = nil
+end
+
+function set_inactivate_input_time(delta)
+	db.storage[db.actor:id()].disable_input_time = game.get_game_time()
+	db.storage[db.actor:id()].disable_input_idle = delta
+	level.disable_input()
+end
+-- іринимает: позициі положения, позициі куда смотреть, время сна в минутах.
+function set_sleep_relocate(point, look, timeout)
+	db.storage[db.actor:id()].sleep_relocate_time = game.get_game_time()
+	db.storage[db.actor:id()].sleep_relocate_idle = timeout*60
+	db.storage[db.actor:id()].sleep_relocate_point = point
+	db.storage[db.actor:id()].sleep_relocate_look = look
+
+	--set_inactivate_input_time(timeout*60)
+	--db.actor:actor_sleep(0, timeout)
+end
+
+-- проверяет целуі часть числа на нечїтность
+function odd( x )
+	return math.floor( x * 0.5 ) * 2 == math.floor( x )
+end
+
+
+--' =аходится ли =іT во фруструме игрока
+function npc_in_actor_frustrum(npc)
+	local actor_dir = device().cam_dir
+	--local actor_dir = db.actor:direction()
+	local npc_dir = npc:position():sub(db.actor:position())
+
+	local yaw = yaw_degree3d(actor_dir, npc_dir)
+	--printf("YAW %s", tostring(yaw))
+
+	return yaw < 35
+end
+
+--' Lсталость
+function on_actor_critical_power()
+
+end
+
+function on_actor_critical_max_power()
+end
+
+--' іровотечение
+function on_actor_bleeding()
+
+end
+
+function on_actor_satiety()
+end
+
+--' іадиация
+function on_actor_radiation()
+
+end
+
+--' іаклинило оружие
+function on_actor_weapon_jammed()
+
+end
+
+--' не может ходить изза веса
+function on_actor_cant_walk_weight()
+
+end
+
+--' пси воздействие
+function on_actor_psy()
+end
+
+function set_actor_rank(rank)
+	if rank == "novice" then
+		db.actor:set_character_rank(0)
+	elseif rank == "stalker" then
+		db.actor:set_character_rank(300)
+	elseif rank == "veteran" then
+		db.actor:set_character_rank(600)
+	elseif rank == "master" then
+		db.actor:set_character_rank(900)
+	end
+end
+
+function get_texture_info(id_name, id_default)
+	if id_default == nil then id_default = id_name end
+
+	local task_info = GetTextureInfo(id_name, id_default)
+	local r = task_info:get_rect()
+
+	r.x2 = r.x2 - r.x1
+	r.y2 = r.y2 - r.y1
+	return task_info:get_file_name(), r
+end
+
+function start_game_callback()
+	aa = alife()
+
+monster_classes = {
+	[clsid.bloodsucker_s] 			= true,
+	[clsid.boar_s] 					= true,
+	[clsid.dog_s] 					= true,
+	[clsid.flesh_s] 				= true,
+	[clsid.pseudodog_s] 			= true,
+	[clsid.burer_s] 				= true,
+	[clsid.cat_s] 					= true,
+	[clsid.chimera_s] 				= true,
+	[clsid.controller_s] 			= true,
+	[clsid.fracture_s] 				= true,
+	[clsid.poltergeist_s] 			= true,
+	[clsid.gigant_s] 				= true,
+	[clsid.zombie_s] 				= true,
+	[clsid.snork_s] 				= true,
+	[clsid.tushkano_s] 				= true,
+	[clsid.psy_dog_s] 				= true,
+	[clsid.psy_dog_phantom_s] 		= true}
+
+stalker_classes = {
+	[clsid.script_actor] 			= true,
+	[clsid.script_stalker] 			= true}
+
+weapon_classes = {
+	[clsid.wpn_vintorez_s] 			= true,
+		[clsid.wpn_ak74_s] 				= true,
+		[clsid.wpn_lr300_s] 			= true,
+		[clsid.wpn_hpsa_s] 				= true,
+		[clsid.wpn_pm_s] 				= true,
+		[clsid.wpn_shotgun_s] 			= true,
+		[clsid.wpn_bm16_s] 				= true,
+		[clsid.wpn_svd_s] 				= true,
+		[clsid.wpn_svu_s] 				= true,
+		[clsid.wpn_rpg7_s] 				= true,
+		[clsid.wpn_val_s] 				= true,
+		[clsid.wpn_walther_s] 			= true,
+		[clsid.wpn_usp45_s] 			= true,
+		[clsid.wpn_groza_s] 			= true,
+		[clsid.wpn_knife_s] 			= true,
+		[clsid.wpn_grenade_launcher] 	= true,
+		[clsid.wpn_grenade_f1] 			= true,
+		[clsid.wpn_grenade_rpg7] 		= true,
+		[clsid.wpn_grenade_rgd5] 		= true,
+		[clsid.wpn_grenade_fake] 		= true}
+
+artefact_classes = {
+		[clsid.art_bast_artefact] 		= true,
+		[clsid.art_black_drops] 		= true,
+		[clsid.art_dummy] 				= true,
+		[clsid.art_electric_ball] 		= true,
+		[clsid.art_faded_ball] 			= true,
+		[clsid.art_galantine] 			= true,
+		[clsid.art_gravi] 				= true,
+		[clsid.art_gravi_black] 		= true,
+		[clsid.art_mercury_ball] 		= true,
+		[clsid.art_needles] 			= true,
+		[clsid.art_rusty_hair] 			= true,
+		[clsid.art_thorn] 				= true,
+		[clsid.art_zuda] 				= true,
+		[clsid.artefact] 				= true,
+		[clsid.artefact_s] 				= true}
+
+
+	printf	("start_game_callback called")
+	smart_names.init_smart_names_table()
+	task_manager.clear_task_manager()
+	treasure_manager.load_treasures()
+
+		sound_theme.load_sound()
+		xr_sound.start_game_callback()
+
+	dialog_manager.fill_phrase_table()
+	xr_s.init()                              --' Distemper 03.2008 --
+	sim_objects.clear()
+	sim_board.clear()
+
+		sr_light.clean_up ()
+
+
+	-- Tестирование оптимизации
+	--local test_object = test_object.test_object_class()
+	--test_object:test()
+end
+
+function gi (info)
+	db.actor:give_info_portion(info)
+end
+
+ammo_section = {}
+ammo_section["ammo_9x18_fmj"]		= true
+ammo_section["ammo_9x18_pbp"]		= true
+ammo_section["ammo_9x18_pmm"]		= true
+ammo_section["ammo_9x19_fmj"]		= true
+ammo_section["ammo_9x19_pbp"]		= true
+ammo_section["ammo_5.45x39_fmj"]	= true
+ammo_section["ammo_5.45x39_ap"]		= true
+ammo_section["ammo_5.56x45_ss190"]	= true
+ammo_section["ammo_5.56x45_ap"]		= true
+ammo_section["ammo_5.7x28_fmj"]		= true
+ammo_section["ammo_5.7x28_ap"]		= true
+ammo_section["ammo_7.62x54_7h1"]	= true
+ammo_section["ammo_7.62x54_ap"]		= true
+ammo_section["ammo_7.62x54_7h14"]	= true
+ammo_section["ammo_9x39_pab9"]		= true
+ammo_section["ammo_gauss"]		= true
+ammo_section["ammo_9x39_ap"]		= true
+ammo_section["ammo_9x39_sp5"]		= true
+ammo_section["ammo_11.43x23_fmj"]	= true
+ammo_section["ammo_11.43x23_hydro"]	= true
+ammo_section["ammo_12x70_buck"]		= true
+ammo_section["ammo_12x76_dart"]		= true
+ammo_section["ammo_12x76_zhekan"]	= true
+ammo_section["ammo_pkm_100"]	        = true
+ammo_section["ammo_9x18_hpm"]	        = true
+ammo_section["ammo_9x19_spp"]	        = true
+ammo_section["ammo_5.45x39_hm"]	        = true
+ammo_section["ammo_5.45x39_hr"]	        = true
+ammo_section["ammo_5.56x45_gd"]	        = true
+ammo_section["ammo_12x76_quadro"]	= true
+
+quest_section = {}
+
+function get_param_string(src_string , obj)
+	--printf("src_string is [%s] obj name is [%s]", tostring(src_string), obj:name())
+	local script_ids = db.script_ids[obj:id()]
+	local out_string, num = string.gsub(src_string, "%$script_id%$", tostring(script_ids))
+	if num > 0 then
+		return out_string , true
+	else
+		return src_string , false
+	end
+end
+
+local save_markers = {}
+
+-- Lункции для проверки корректности сейв лоад
+function set_save_marker(p, mode, check, prefix)
+
+	-- +пределяем кліч маркера.
+	local result = ""
+--	if debug ~= nil then
+--		local info_table = debug.getinfo(2)
+--		local script_name = string.gsub(info_table.short_src, "%.script", "")
+--		script_name = string.gsub(script_name, "gamedata\\scripts\\", "")
+--		result = script_name
+--	end
+
+--	if prefix ~= nil then
+		result = result .. "_" .. prefix
+--	end
+
+	if check == true then
+		if save_markers[result] == nil then
+			abort("Trying to check without marker %s", result)
+		end
+
+		if mode == "save" then
+			local dif = p:w_tell() - save_markers[result]
+			printf(result..": SAVE DIF: %s", dif)
+			if dif >= 8000 then
+				printf("WARNING! may be this is problem save point")
+			end
+			if dif >= 10240 then
+				abort("You are saving too much")
+			end
+			p:w_u16(dif)
+		else
+			local c_dif = p:r_tell() - save_markers[result]
+			local dif = p:r_u16()
+			 if dif ~= c_dif then
+			 	abort("INCORRECT LOAD [%s].[%s][%s]", result, dif, c_dif)
+			 else
+			 	printf(result..": LOAD DIF: %s", dif)
+			 end
+		end
+		return
+	end
+
+	if mode == "save" then
+		printf(result..": set save marker: %s", p:w_tell())
+		save_markers[result] = p:w_tell()
+		if p:w_tell() > 16000 then
+			abort("You are saving too much")
+		end
+	else
+		printf(result..": set load marker: %s", p:r_tell())
+		save_markers[result] = p:r_tell()
+	end
+
+end
+function vec_to_str (vector)
+	if vector == nil then return "nil" end
+	return string.format("[%d:%d:%d]", vector.x, vector.y, vector.z)
+end
+function callstack()
+	if debug ~= nil then
+		log(debug.traceback(2))
+	end
+end
+function change_team_sqaud_group(se_obj, team, squad, group)
+	local cl_obj = db.storage[se_obj.id] and db.storage[se_obj.id].object
+	if cl_obj ~= nil then
+		cl_obj:change_team(team, squad, group)
+	else
+		se_obj.team = team
+		se_obj.squad = squad
+		se_obj.group = group
+	end
+	--printf("_G:TSG: [%s][%s][%s]", tostring(se_obj.team), tostring(se_obj.squad), tostring(se_obj.group))
+end
+--=============================================================--
+--=======================/SGM/=================================--
+--=============================================================--
+--/Переменные/--
+local progress_bar=nil
+--/Функции для работы со спауном/--
+function create(who,x,y,z,lv,gv)
+   local obj=alife():create(who,vector():set(x,y,z),lv,gv)
+   if obj then
+   sgm_modules.create_update(who,obj.id)
+   end
+end
+function create_force(force_sect,target_smart)
+	if force_sect == nil then
+	abort("Wrong squad identificator [NIL] in create_squad function")
+	end
+	if target_smart == nil then
+	abort("Wrong smart name [NIL] in create_squad function")
+	end
+	local ltx = sim_board.squad_ltx
+	if not ltx:section_exist(force_sect) then
+		abort("Wrong squad identificator [%s]. Squad descr doesnt exist.", tostring(force_sect))
+	end
+	local player_name = utils.cfg_get_string(ltx, force_sect, "faction", self, true, "")
+	local board = sim_board.get_sim_board()
+	local player = board.players[player_name]
+	if player == nil then
+		abort("Wrong player_name [%s] for squad [%s]", tostring(player_name), tostring(force_sect))
+	end
+	local smart = board.smarts_by_names[target_smart]
+	if smart == nil then
+		abort("Wrong target_smart [%s] for [%s] faction in create_squad function", tostring(target_smart), tostring(player_name))
+	end
+	if smart.player_name ~= player_name and smart.player_name ~= "none" then
+	return
+	end
+	local squad
+	local is_autogenerated_id = utils.cfg_get_bool(ltx, force_sect, "auto_id", self, false, false)
+	if is_autogenerated_id then
+		squad = board:create_squad(player.player_name, sim_squad_scripted.sim_squad_scripted, smart, nil, force_sect)
+	else
+		squad = board:create_squad(player.player_name, sim_squad_scripted.sim_squad_scripted, smart, force_sect)
+	end
+	board:enter_smart(squad, smart.id)
+	for k,v in pairs(squad.squad_npc) do
+		local obj = alife():object(k)
+		board:setup_squad_and_group(obj)
+	end
+	squad:update()
+end
+function delete_force(sq_name)
+	local squad_id = sq_name
+	if squad_id == nil then
+	abort("Wrong squad identificator [NIL] in kill_squad function")
+	end
+	local board = sim_board.get_sim_board()
+	local squad = board.squads[squad_id]
+	if squad == nil then
+		return
+	end
+	for k,v in pairs(squad.squad_npc) do
+		local cl_obj = db.storage[k] and db.storage[k].object
+		if cl_obj == nil then
+			alife():object(k).health = 0
+		else
+			cl_obj:kill(cl_obj)
+		end
+	end
+end
+function release_force(sq_name)
+	local squad_id = sq_name
+	if squad_id == nil then
+	abort("Wrong squad identificator [NIL] in kill_squad function")
+	end
+	local board = sim_board.get_sim_board()
+	local squad = board.squads[squad_id]
+	if squad == nil then
+		return
+	end
+	for k,v in pairs(squad.squad_npc) do
+		local cl_obj = db.storage[k] and db.storage[k].object
+		if cl_obj == nil then
+			alife():object(k).health = 0
+                        alife():release(alife():object(k),true)
+		else
+			cl_obj:kill(cl_obj)
+                        alife():release(alife():object(cl_obj:id()),true)
+		end
+	end
+end
+function universal_create(item,in_level,info,x,y,z,lv,gv)
+  local level_name=level.name()
+  if item~=nil and level_name==in_level and not has_alife_info(info) then
+     create(item,x,y,z,lv,gv)
+     db.actor:give_info_portion(info)
+     return false
+  end
+end
+function universal_create2(item,in_level,info_1,info_2,x,y,z,lv,gv)
+  local level_name=level.name()
+  if item~=nil and level_name==in_level and has_alife_info(info_1) and not has_alife_info(info_2) then
+     create(item,x,y,z,lv,gv)
+     db.actor:give_info_portion(info_2)
+     return false
+  end
+end
+function universal_two_create(in_level,info,item_1,x_v1,y_v1,z_v1,lv_v1,gv_v1,item_2,x_v2,y_v2,z_v2,lv_v2,gv_v2)
+  local level_name=level.name()
+  if item~=nil and level_name==in_level and not has_alife_info(info) then
+     create(item_1,x_v1,y_v1,z_v1,lv_v1,gv_v1)
+     create(item_2,x_v2,y_v2,z_v2,lv_v2,gv_v2)
+     db.actor:give_info_portion(info)
+     return false
+  end
+end
+function universal_two_create2(in_level,info_1,info_2,item_1,x_v1,y_v1,z_v1,lv_v1,gv_v1,item_2,x_v2,y_v2,z_v2,lv_v2,gv_v2)
+  local level_name=level.name()
+  if item~=nil and level_name==in_level and has_alife_info(info_1) and not has_alife_info(info_2) then
+     create(item_1,x_v1,y_v1,z_v1,lv_v1,gv_v1)
+     create(item_2,x_v2,y_v2,z_v2,lv_v2,gv_v2)
+     db.actor:give_info_portion(info_2)
+     return false
+  end
+end
+function give_object_to_actor(obj)
+  if obj~=nil then
+     alife():create(obj,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+     return false
+  end
+end
+function give_item_to_sid(item,sid)
+  if item~=nil and sid~=nil then
+     local sobj=alife():story_object(sid)
+     alife():create(item,sobj.position,sobj.m_level_vertex_id,sobj.m_game_vertex_id,sobj.id)
+     return false
+  end
+end
+function give_item_to_sid2(item,sid)
+  if item~=nil and sid~=nil then
+     local sobj=alife():story_object(sid)
+     alife():create(item,sobj:position(),sobj:level_vertex_id(),sobj:game_vertex_id(),sobj:id())
+     return false
+  end
+end
+function create_rukzak_item(item,x,y,z,lv,gv)
+   local secret_case=alife():create("treasure_rukzak",vector():set(x,y,z),lv,gv)
+   alife():create(item,vector(),0,0,secret_case.id)
+end
+--/Функции для работы с режимами/--
+function use_all_modes(val_first,val_second)
+   local blood_level=level.object_by_id(db.actor:id()):get_bleeding()
+   local active_slot=db.actor:active_slot()
+   local active_item=db.actor:active_item()
+   local pistol_in_slot=db.actor:item_in_slot(1)
+   local rifle_in_slot=db.actor:item_in_slot(2)
+   local outfit_in_slot=db.actor:item_in_slot(6)
+   local artefact_in_slot=db.actor:item_in_slot(3)
+   local actor=db.actor
+   local pistol_contain
+   local rifle_contain
+   local outfit_contain
+   local artefact_contain
+   --//--
+   if outfit_in_slot~=nil then outfit_contain=outfit_in_slot:section() end
+   if pistol_in_slot~=nil then pistol_contain=pistol_in_slot:section() end
+   if rifle_in_slot~=nil  then rifle_contain=rifle_in_slot:section()   end
+   --//--
+   if outfit_contain~=nil and outfit_in_slot~=nil then
+          if outfit_in_slot:condition()<val_first then outfit_in_slot:set_condition(val_second) end
+   end
+   if pistol_contain~=nil and pistol_in_slot~=nil then
+          if pistol_in_slot:condition()<val_first then pistol_in_slot:set_condition(val_second) end
+   end
+   if rifle_contain~=nil and rifle_in_slot~=nil then
+          if rifle_in_slot:condition()<val_first then rifle_in_slot:set_condition(val_second) end
+   end
+  if db.actor.health<val_first then 
+     db.actor.health=val_second 
+     db.actor.psy_health=val_second
+  end
+  if db.actor.power<val_first then db.actor.power=val_second end
+  if blood_level>0.05 then 
+   alife():create("bandage",db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+   if db.actor:object("bandage") then db.actor:eat(db.actor:object("bandage")) end
+  end
+end
+function use_immortal_mode(val_first,val_second)
+  if db.actor.health<val_first then 
+     db.actor.health=val_second 
+     db.actor.psy_health=val_second 
+  end
+end
+function use_power_mode(val_first,val_second)
+  if db.actor.power<val_first then db.actor.power=val_second end
+end
+function use_bleeding_mode()
+  local blood_level=level.object_by_id(db.actor:id()):get_bleeding()
+  if blood_level>0.05 then 
+   alife():create("bandage",db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id())
+   if db.actor:object("bandage") then db.actor:eat(db.actor:object("bandage")) end
+  end
+end
+function use_repair_mode(val_first,val_second)
+   local active_slot=db.actor:active_slot()
+   local active_item=db.actor:active_item()
+   local pistol_in_slot=db.actor:item_in_slot(1)
+   local rifle_in_slot=db.actor:item_in_slot(2)
+   local outfit_in_slot=db.actor:item_in_slot(6)
+   local artefact_in_slot=db.actor:item_in_slot(3)
+   local actor=db.actor
+   local pistol_contain
+   local rifle_contain
+   local outfit_contain
+   local artefact_contain
+   --//--
+   if outfit_in_slot~=nil then outfit_contain=outfit_in_slot:section() end
+   if pistol_in_slot~=nil then pistol_contain=pistol_in_slot:section() end
+   if rifle_in_slot~=nil  then rifle_contain=rifle_in_slot:section()   end
+   --//--
+   if outfit_contain~=nil and outfit_in_slot~=nil then
+          if outfit_in_slot:condition()<val_first then outfit_in_slot:set_condition(val_second) end
+   end
+   if pistol_contain~=nil and pistol_in_slot~=nil then
+          if pistol_in_slot:condition()<val_first then pistol_in_slot:set_condition(val_second) end
+   end
+   if rifle_contain~=nil and rifle_in_slot~=nil then
+          if rifle_in_slot:condition()<val_first then rifle_in_slot:set_condition(val_second) end
+   end
+end
+--/Функции для работы с инфопортациями/--
+function recover_info(dont_info)
+   if not has_alife_info(dont_info) then 
+     db.actor:give_info_portion(dont_info) 
+   end
+end
+function recover_info2(has_info,grant_info)
+   if has_alife_info(has_info) and not has_alife_info(grant_info) then 
+     db.actor:give_info_portion(grant_info) 
+   end
+end
+--/Функции связаные с выводом информации на HUD/--
+function give_quick_news(text)
+   if db.actor~=nil then
+   news_manager.send_silence_tip(db.actor,text,0,bandit,2000,nil,"Быстрое сообщение:") 
+   end
+end
+function show_hud_message(text)
+   if db.actor~=nil then
+     get_hud():AddCustomStatic("hud_event", true)
+     get_hud():GetCustomStatic("hud_event"):wnd():SetTextST(text)
+   end
+end
+function show_logic_section(npc,profile)
+       local ids = npc:id()
+       local hud = get_hud()
+       if db.actor~=nil and npc:profile_name()==profile and db.storage[ids].active_section~=nil then
+         local w_txt="Схема = "..db.storage[ids].active_section
+         hud:AddCustomStatic("hud_event",true)
+         hud:GetCustomStatic("hud_event"):wnd():SetTextST(w_txt)
+       end
+end
+--/Функции воспроизведения звуков/--
+function play_theme_snd(snd)
+     xr_sound.set_sound_play(db.actor:id(),snd)
+end
+function play_folder_snd(sound)
+     snd_sourse=sound_object(sound)
+     snd_sourse:play(db.actor,0,sound_object.s2d)
+end
+function play_snd_at_pos(sound,npc,count1,count2)
+     if count1==nil and count2==nil then
+     snd_sourse=sound_object(sound)
+     snd_sourse:play_at_pos(npc,npc:position(),0,sound_object.s3d)
+     elseif count1~=nil and count2~=nil then
+     local rnd_snd=math.random(count1,count2)
+     snd_sourse=sound_object(sound..rnd_snd)
+     snd_sourse:play_at_pos(npc,npc:position(),0,sound_object.s3d)
+     end
+end
+function play_snd_at_actor(sound,count1,count2)
+     if count1==nil and count2==nil then
+     snd_sourse=sound_object(sound)
+     snd_sourse:play(db.actor,0,sound_object.s2d)
+     elseif count1~=nil and count2~=nil then
+     local rnd_snd=math.random(count1,count2)
+     snd_sourse=sound_object(sound..rnd_snd)
+     snd_sourse:play(db.actor,0,sound_object.s2d)
+     end
+end
+--/Функции для добавления квестов/--
+function add_task(type,task_name,faction)
+	local task_type    = type
+	local target_name  = task_name
+	local faction_name = faction
+	local tm = task_manager.get_task_manager()
+	local target_obj = nil
+	if task_type == "storyline" then
+		target_obj = target_name
+	elseif task_type == "eliminate_smart" then
+		target_obj = sim_board.get_sim_board().smarts_by_names[target_name]
+	elseif task_type == "capture_smart" then
+		target_obj = sim_board.get_sim_board().smarts_by_names[target_name]
+	elseif task_type == "defend_smart" then
+		target_obj = sim_board.get_sim_board().smarts_by_names[target_name]
+	elseif task_type == "eliminate_squad" then
+		target_obj = sim_board.get_sim_board().squads[target_name]
+	end
+	local task = tm:select_task(task_type,target_obj,faction_name)
+	task:give_task(faction_name)
+end
+function add_eliminate_task(type,task_name,faction,smart_name)
+	local tm = task_manager.get_task_manager()
+	local target_obj = nil
+	if type=="eliminate_smart" then
+		target_obj = sim_board.get_sim_board().smarts_by_names[smart_name]
+	end
+	local task = tm:select_task(type,target_obj,faction)
+	task:give_task(faction)
+end
+--/Функции для респауна експлореров/--
+function use_explorer_module(smart_name,faction_name,squad_sect,squad_pos,prefix_info,rnd1,rnd2)
+   local level_name = level.name()
+   local minutes_time = level.get_time_minutes()
+   if rnd1~=nil and rnd2~=nil then
+     local rnd_squad=math.random(rnd1,rnd2)
+     if sgm_functions.is_smart_captured(smart_name,faction_name)==false and (minutes_time==45 or minutes_time==15) and not has_alife_info(prefix_info.."_switch") then
+      create_force(squad_sect..rnd_squad,squad_pos)
+      db.actor:give_info_portion(prefix_info.."_switch")
+     elseif has_alife_info(prefix_info.."_deaths") and (minutes_time==30 or minutes_time==59 or minutes_time==10) then
+      db.actor:disable_info_portion(prefix_info.."_switch")
+      db.actor:disable_info_portion(prefix_info.."_deaths")
+     end
+   else
+     if sgm_functions.is_smart_captured(smart_name,faction_name)==false and (minutes_time==45 or minutes_time==15) and not has_alife_info(prefix_info.."_switch") then
+      create_force(squad_sect,squad_pos)
+      db.actor:give_info_portion(prefix_info.."_switch")
+     elseif has_alife_info(prefix_info.."_deaths") and (minutes_time==30 or minutes_time==59 or minutes_time==10) then
+      db.actor:disable_info_portion(prefix_info.."_switch")
+      db.actor:disable_info_portion(prefix_info.."_deaths")
+     end
+   end
+end
+function create_info_explorer(squad_sect,squad_target,need_info)
+   local level_name = level.name()
+   local minutes_time = level.get_time_minutes()
+   if not has_alife_info(need_info) then
+      create_force(squad_sect,squad_target)
+      db.actor:give_info_portion(need_info)
+   end
+end
+function create_info_explorer2(smart_name,faction_name,squad_sect,squad_target,need_info)
+   local level_name = level.name()
+   local minutes_time = level.get_time_minutes()
+   if sgm_functions.is_smart_captured(smart_name,faction_name)==false and not has_alife_info(need_info) then
+      create_force(squad_sect,squad_target)
+      db.actor:give_info_portion(need_info)
+   end
+end
+--/Поисковики/--
+function find_in_string(where,what)
+  if string.find(where,what) then 
+  return true 
+  end
+  return false
+end
+function find_out_string(where,what)
+  if string.find(where,what) then 
+  return false
+  end
+  return true
+end
+function check_table(tbl)
+   for k,v in pairs(tbl) do
+       if v~=nil then
+          return v
+       end
+   end
+   return nil
+end
+--/Разные функции/--
+function object_alive(victim)
+  if victim:alive()==true then 
+         return true 
+  end
+  return false
+end
+function get_installed_addon(wpn,type)
+   if wpn~=nil and type~=nil then
+      if type=="scope" then
+        result=wpn:weapon_is_scope()
+      elseif type=="silencer" then
+        result=wpn:weapon_is_silencer()
+      elseif type=="launcher" then
+        result=wpn:weapon_is_grenadelauncher()
+      end
+   end
+   return result
+end
+function hero_in_stalker()
+   for k,v in pairs(sim_board.get_sim_board().players) do
+	if v.community_player == true and v.player_name == "stalker" then
+		return true
+	end
+   end
+   return false
+end
+function remove_inv_item(victim,item)
+   if victim~=nil and item~=nil then
+      alife():release(alife():object(victim:object(item):id()),true)
+   end
+end
+function variable_precond(type,variable_name,equal_val)
+   if type=="equal" then
+      if sgm_functions.read_variable(variable_name)~=nil and sgm_functions.read_variable(variable_name)==equal_val then
+         return true
+      else
+         return false
+      end
+   elseif type=="something" then
+      if sgm_functions.read_variable(variable_name)~=nil then
+         return sgm_functions.read_variable(variable_name)
+      else
+         return 0
+      end
+   end
+end
+function on_level(level)
+   local level_name=level.name()
+   if level_name==level then
+      return true
+   else
+      return false
+   end
+end
+function activate_blackday()
+   if level.get_time_hours()>=7 and level.get_time_hours()<=20 then
+      if sgm_functions.read_variable("zatm_switch")==nil then
+         sgm_functions.write_variable("zatm_h_rnd",level.get_time_hours())
+         sgm_functions.write_variable("zatm_m_rnd",level.get_time_minutes())
+      end
+   end
+end
+function set_community_rel(target_comm,relation_value)
+   relation_registry.set_community_relation(target_comm,db.actor:character_community(),relation_value)
+end
+function present_night()
+   if level.get_time_hours()<6 or level.get_time_hours()>=22 then
+      return true
+   else
+      return false
+   end
+end
+function actor_in_sleep_zone(zone_name)
+   local zone=db.zone_by_name[zone_name]
+   return utils.npc_in_zone(db.actor,zone)
+end
+function actor_out_sleep_zone(zone_name)
+   local zone=db.zone_by_name[zone_name]
+   if zone==nil then
+   return false
+   end
+   return not utils.npc_in_zone(db.actor,db.zone_by_name[zone_name])
+end
+function show_progress_bar(hud_name,xml_name,xml_sect,show_func)
+   --/show_progress_bar("hud_hero_rank","rank_progress.xml","rank_bar",db.actor:character_rank())
+   local hud=get_hud()
+   local xml=CScriptXmlInit()
+   if hud:GetCustomStatic(hud_name)==nil then
+        hud:AddCustomStatic(hud_name,true)
+        xml:ParseFile(xml_name)
+        progress_bar=xml:InitProgressBar(xml_sect,hud:GetCustomStatic(hud_name):wnd())
+        if hud:GetCustomStatic(hud_name)~=nil then
+            hud:AddCustomStatic(hud_name, true)
+            bar_level=show_func
+            if bar_level>0 then
+              progress_bar:Show(true)
+              progress_bar:SetProgressPos(bar_level)
+            end
+        end
+   elseif hud:GetCustomStatic(hud_name)~=nil then
+        xml:ParseFile(xml_name)
+        hud:AddCustomStatic(hud_name,true)
+        bar_level=show_func
+        if bar_level>0 then
+           progress_bar:Show(true)
+           progress_bar:SetProgressPos(bar_level)
+        end
+    end
+end
+function activate_faction_brain(faction_name)
+	local board=sim_board.get_sim_board()
+	local player=board.players[faction_name]
+	if player==nil then
+	abort("Can't find player sgm %s", tostring(p[1]))
+	end
+	player:faction_brain_update()
+end

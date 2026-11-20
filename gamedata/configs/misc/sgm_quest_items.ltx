@@ -1,0 +1,92 @@
+;-------------------------------------------------------------------------------------------------------------------------;
+;--------------------------------------------Êגוסעמגûו ןנוהלועû:----------------------------------------------------------;
+;-------------------------------------------------------------------------------------------------------------------------;
+[wpn_quest_svu]:wpn_svu
+$spawn                  = "quest_items\light_svu"
+can_trade	        = false
+quest_item 	        = true
+[wpn_equipment_svu]:wpn_svu
+$spawn                  = "quest_items\equipment_svu"
+condition_shot_dec      = 0.002
+control_inertion_factor = 2.3f
+inv_weight              = 8.5
+inv_name                = st_wpn_svu_light
+inv_name_short          = st_wpn_svu_light
+can_trade	        = false
+upgrades                = up_gr_a_equipment_svu, up_gr_b_equipment_svu, up_gr_c_equipment_svu, up_gr_d_equipment_svu, up_gr_e_equipment_svu, up_gr_sgm_equipment_svu
+installed_upgrades      =
+upgrade_scheme          = upgrade_scheme_u7a_sgm
+[shilov_rukzak]:device_pda
+$spawn 			= "quest_items\shilov_rukzak"
+$prefetch 		= 16
+visual			= dynamics\devices\dev_rukzak\dev_rukzak.ogf
+description		= st_shilov_rukzak_descr
+inv_name		= st_shilov_rukzak
+inv_name_short		= st_shilov_rukzak
+inv_weight		= 1.5
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x		= 23
+inv_grid_y		= 15
+cost			= 2000
+can_trade		= false
+quest_item      	= true
+[valley_propusk]:device_pda
+$spawn 			= "quest_items\valley_propusk"
+$prefetch 		= 16
+description		= st_valley_propusk_descr
+inv_name		= st_valley_propusk
+inv_name_short		= st_valley_propusk
+can_trade		= false
+quest_item      	= false
+[wpn_rpg7_for_blockpost]:wpn_rpg7
+$spawn             = "quest_items\wpn_rpg7_for_blockpost"
+can_trade	   = false
+quest_item 	   = true
+inv_weight         = 4.5
+inv_name           = st_wpn_rpg7_for_blockpost
+inv_name_short     = st_wpn_rpg7_for_blockpost
+[af_quest_sizer]:af_soul
+$spawn		   = "artefacts\af_sizer"
+can_trade	   = false
+quest_item 	   = true
+inv_weight         = 2.5
+inv_name           = st_af_sizer
+inv_name_short     = st_af_sizer
+description	   = st_af_sizer_descr
+inv_grid_x	   = 38
+inv_grid_y	   = 4
+health_restore_speed	= 0.0
+radiation_restore_speed	= 0.005
+additional_inventory_weight	= 40
+additional_inventory_weight2	= 40
+[device_pda_bus_hostage]:device_pda
+$spawn 			= "quest_items\bus_hostage_pda"
+$prefetch 		= 16
+description		= st_device_pda_bus_hostage_descr
+inv_name		= st_device_pda_bus_hostage
+inv_name_short		= st_device_pda_bus_hostage
+can_trade		= false
+quest_item      	= true
+[device_pda_exo_victim1]:device_pda
+$spawn 			= "quest_items\device_pda_exo_victim1"
+$prefetch 		= 16
+description		= st_device_pda_exo_victim1_descr
+inv_name		= st_device_pda_exo_victim1
+inv_name_short		= st_device_pda_exo_victim1
+can_trade		= false
+quest_item      	= true
+[device_pda_exo_victim2]:device_pda
+$spawn 			= "quest_items\device_pda_exo_victim2"
+$prefetch 		= 16
+description		= st_device_pda_exo_victim2_descr
+inv_name		= st_device_pda_exo_victim2
+inv_name_short		= st_device_pda_exo_victim2
+can_trade		= false
+quest_item      	= true
+[mil_quest_wpn_rpg7]:wpn_rpg7
+$spawn 			= "quest_items\mil_quest_wpn_rpg7"
+inv_name		= st_mil_quest_wpn_rpg7
+inv_name_short		= st_mil_quest_wpn_rpg7
+description		= st_agr_quest_wpn_rpg7_descr
+can_trade		= false

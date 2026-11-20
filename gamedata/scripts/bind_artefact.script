@@ -1,0 +1,63 @@
+--'******************************************************
+--'*  Биндер объекта артефакт .
+--'******************************************************
+function omega_exception(obj)
+     local actor_pos = db.actor:position()
+     local get_exceptions = 
+     actor_pos:distance_to_sqr(obj:position())>5
+     if get_exceptions and obj:parent()==nil and obj:section()~="af_monolit" then 
+        return true
+     end
+     return false
+end
+function printf()
+end
+function bind(obj)
+	obj:bind_object(artefact_binder(obj))
+end
+class "artefact_binder" (object_binder)
+function artefact_binder:__init(obj) super(obj)
+	db.storage[self.object:id()] = { }
+end
+function artefact_binder:net_spawn(server_object)
+	if not object_binder.net_spawn(self, server_object) then
+		return false
+	end
+	db.add_obj(self.object)
+	local artefact = self.object:get_artefact()
+	if bind_anomaly_zone.artefact_ways_by_id[self.object:id()] ~= nil then
+		local force_xz	= bind_anomaly_zone.parent_zones_by_artefact_id[self.object:id()].applying_force_xz
+		local force_y	= bind_anomaly_zone.parent_zones_by_artefact_id[self.object:id()].applying_force_y
+		artefact:FollowByPath(bind_anomaly_zone.artefact_ways_by_id[self.object:id()],0,vector():set(force_xz,force_y,force_xz))
+	end
+	return true
+end
+function artefact_binder:update(delta)
+     object_binder.update(self, delta)
+     local detector_in_slot=db.actor:item_in_slot(8)
+     if detector_in_slot~=nil then
+       its_omega=detector_in_slot:section()=="detector_omega"
+       if its_omega and omega_exception(self.object)==true then
+          if level.map_has_object_spot(self.object:id(),"decoder_location")==0 then
+          level.map_add_object_spot_ser(self.object:id(),"decoder_location","st_generic_af")
+          end
+       elseif its_omega and omega_exception(self.object)==false then
+          if level.map_has_object_spot(self.object:id(),"decoder_location")~=0 then
+          level.map_remove_object_spot(self.object:id(),"decoder_location")
+          end
+       else
+          if level.map_has_object_spot(self.object:id(),"decoder_location")~=0 then
+          level.map_remove_object_spot(self.object:id(),"decoder_location")
+          end
+       end
+     else
+        if level.map_has_object_spot(self.object:id(),"decoder_location")~=0 then
+        level.map_remove_object_spot(self.object:id(),"decoder_location")
+        end
+     end
+     --show_hud_message(db.actor:active_item():section())
+end
+function artefact_binder:net_destroy(server_object)
+	db.del_obj(self.object)
+	object_binder.net_destroy(self)
+end

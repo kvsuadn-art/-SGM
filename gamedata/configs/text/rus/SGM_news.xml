@@ -1,0 +1,102 @@
+	<string id="mar_last_intensify_tip">
+		<text>Найомник, подходи, есть разговор.</text>
+	</string>
+	<string id="gar_wild_napr_talk_me_title">
+		<text>Лидер диггеров. Дикий Напр:</text>
+	</string>
+	<string id="gar_wild_napr_talk_me_tip">
+		<text>Наемник, говорит лидер диггеров «Дикий Напр», нам срочно нужно поговорить, есть важная для тебя информация. Подходи к "барахолке".</text>
+	</string>
+	<string id="val_guard_commander_talk_title">
+		<text>Начальник охраны. Полковник Бородин:</text>
+	</string>
+	<string id="val_guard_commander_talk_tip">
+		<text>Мужик, говорит начальник охраны, ты на территории базы «Свободы». Шалить тута никак не разрешается. Давай ко мне, если вопросы какие мучают.</text>
+	</string>
+	<string id="val_comendant_talk_title">
+		<text>Комендант. Щюкин:</text>
+	</string>
+	<string id="val_comendant_talk_tip">
+		<text>Найомник, это комендант, можешь подходить.. Помогу чем смогу.</text>
+	</string>
+	<string id="val_bus_hostage_see_tip">
+		<text>Сталкер, cкорее, подойди ко мне.</text>
+	</string>
+	<string id="val_bus_hostage_reward_tip">
+		<text>Найомник, спасибо, ты меня спас. Подойди ко мне, я тебя отблагодарю.</text>
+	</string>
+	<string id="lim_sivoha_talk_title">
+		<text>«Монолит». Сивоха:</text>
+	</string>
+	<string id="lim_sivoha_talk_tip">
+		<text>Мужик, не рыпайся, опусти оружие и медленно подходи ко мне..</text>
+	</string>
+	<string id="sgm_add_info_title">
+		<text>Доп. информация:</text>
+	</string>
+	<string id="sgm_bodyguard_init_tip">
+		<text>Вами нанят телохранитель:</text>
+	</string>
+	<string id="sgm_bodyguard_death_tip">
+		<text>Ваш телохранитель:</text>
+	</string>
+	<string id="sgm_bodyguard_death2_tip">
+		<text>погиб.</text>
+	</string>
+	<string id="sgm_bodyguard_commands_tip">
+		<text>Ваш телохранитель:</text>
+	</string>
+	<string id="sgm_bodyguard_command_0_tip">
+		<text>начал выполнение команды «Охранять».</text>
+	</string>
+	<string id="sgm_bodyguard_command_1_tip">
+		<text>начал выполнение команды «Не применять оружие».</text>
+	</string>
+	<string id="sgm_bodyguard_command_2_tip">
+		<text>начал выполнение команды «Стоять на месте».</text>
+	</string>
+	<string id="sgm_bodyguard_command_3_tip">
+		<text>был вами отпущен.</text>
+	</string>
+	<string id="sgm_about_deposit_title">
+		<text>Получена информация от местного сберигателя:</text>
+	</string>
+	<string id="sgm_about_deposit_part0">
+		<text>%c[110,128,128,255]«Активизировано время сбора»</text>
+	</string>
+	<string id="sgm_about_deposit_part1">
+		<text>%c[110,230,25,100]Накопительный процент составляет =</text>
+	</string>
+	<string id="sgm_about_deposit_part2">
+		<text>%c[110,0,128,64]Всего на депозите =</text>
+	</string>
+	<string id="agr_chief_commander_title">
+		<text>Начальник охраны. Майор Сарматов:</text>
+	</string>
+	<string id="agr_chief_commander_tip">
+		<text>Внимание! Ребята, у нас плохие новости, к северу от базы обнаружено огромное скопление мутантов, судя по их поведению - они явно не намерены отступать. Нам нужно как можно скорее занять оборонительный рубеж у северного входа.</text>
+	</string>
+	<string id="agr_chief_commander_tip2">
+		<text>Отлично, найомник, хорошо постарался, но расслабляться пока рано, гады по прежнему остались. Они окопались в своих норах, и ждут удобного момента чтобы обойти с восточного входа. Твоя задача: догнать и уничтожить.</text>
+	</string>
+	<string id="agr_chief_commander_tip3">
+		<text>Отличная работа, северные норы уничтожены.. Черт возьми, ребята, новая опасность: мутанты снова активизировались, погиб наш отряд у блокпоста на дороге. Наш генерал отдал приказ - занять восточный рубеж.</text>
+	</string>
+	<string id="agr_chief_commander_tip4">
+		<text>Все ребята, одолели тварей.</text>
+	</string>
+	<string id="agru_about_poltergeist_text">
+		<text>    «Подсказка от разработчика SGM»\nДля того чтобы быстро одолеть полтергейстов необходимо сделать следующее:\n%c[255,238,153,26]• %c[default]Стать возле лестничной клетки.\n%c[255,238,153,26]• %c[default]Достать гранату.\n%c[255,238,153,26]• %c[default]Метнуть гранату вверх так, чтобы она приземлилась на верхнем ярусе.\n%c[255,238,153,26]• %c[default]Тоже самое еще раз.</text>
+	</string>
+	<string id="red_about_secret_case_text">
+		<text>  «Сообщение от разработчика SGM»\nПоздравляю, вы только что нашли самый серьезный тайник.</text>
+	</string>
+	<string id="about_actor_is_sleep_text">
+		<text>К сожелению сейчас уснуть невозможно, так как ГГ уже спал.</text>
+	</string>
+	<string id="about_actor_no_sleep_text">
+		<text>К сожелению сейчас уснуть невозможно, ГГ пока не устал. Обычное время сна ГГ: с 21:00 до 6:00</text>
+	</string>
+	<string id="about_dont_sleep_place_text">
+		<text>ГГ не может здесь заночевать, слишком опасное место. Необходимо найти специальное место для ночлега.</text>
+	</string>

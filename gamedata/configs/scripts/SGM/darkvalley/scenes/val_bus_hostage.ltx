@@ -1,0 +1,36 @@
+[logic]
+active = theatre@hostage
+on_death = death
+
+[death]
+on_info = %+val_bus_hostage_death%
+
+[theatre@hostage]
+role_name            = hostage
+role_pos             = 216492
+role_state           = hello
+role_update          = 1700
+hostage_reward_allow = true
+hostage_reward_need  = val_bus_killer_death
+hostage_reward_ru    = 500
+hostage_reward_info  = val_bus_ambush_reward
+hostage_reward_snd   = freedom
+hostage_tip_text     = val_bus_hostage_see_tip
+hostage_tip_dist     = 25
+hostage_reward_tip   = val_bus_hostage_reward_tip
+on_approach_dist     = 60
+on_approach_info     = val_check_bus_on_zone
+look_subject         = actor
+meet                 = no_meet
+combat_ignore_cond   = true
+combat_ignore_keep_when_attacked = true
+on_info              = {+val_bus_ambush_danger -val_bus_killer_death} nil %=kill_npc%, {+val_bus_killer_death +val_bus_ambush_reward} move@back_on_base
+
+[move@back_on_base]
+target_type     = level_vertex
+dest_number     = 162666
+state_in_center = sleep
+state_for_move  = assault
+miss_center     = false
+update_state_a  = 10000
+update_state_b  = 15000

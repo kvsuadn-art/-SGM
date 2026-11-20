@@ -1,0 +1,70 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+-------------------------------------------(Затмение)---------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+--/Списки условий, для того чтобы произошло затмение..
+local on_level_allow = {{"marsh","default_rain"},{"escape","default_rain"},{"garbage","default_rain"},{"darkvalley","default_rain"},{"agroprom","default_rain"},{"military","default_rain"}}
+function black_day_sys()
+      local level_name = level.name()
+      local hours_time = level.get_time_hours()
+      local minutes_time = level.get_time_minutes()
+      if sgm_functions.read_variable("zatm_h_rnd")~=nil and sgm_functions.read_variable("zatm_m_rnd")~=nil then
+        for s,l in pairs(on_level_allow) do
+             --/show_hud_message("Погода = "..level.get_weather().."  Время: "..sgm_functions.read_variable("zatm_h_rnd").." часов  "..sgm_functions.read_variable("zatm_m_rnd").." минут")
+             ---/Переменные/--
+             local zatm_h_rnd=sgm_functions.read_variable("zatm_h_rnd")
+             local zatm_m_rnd=sgm_functions.read_variable("zatm_m_rnd")
+             local zatm_timer=sgm_functions.read_variable("zatm_timer")
+             local zatm_switch=sgm_functions.read_variable("zatm_switch")            
+             local blackday_expired=260000
+             ---/Поиск совпадений времени/--
+             if hours_time==zatm_h_rnd and minutes_time>=zatm_m_rnd and zatm_switch==nil and level_name==(l[1])
+                then 
+                if string.find(level.get_weather(),"default_") then
+                   if level.get_weather()=="default_clear" or level.get_weather()=="default_cloudy" then 
+                     level.set_weather_fx("fx_blackday_clear")
+                     sgm_functions.write_variable("zatm_switch","step_1")
+                     sgm_functions.write_variable("zatm_timer",time_global()+blackday_expired)
+                     db.actor:give_info_portion("blackday_is_active")
+                   else
+                     level.set_weather_fx("fx_blackday_rain")
+                     sgm_functions.write_variable("zatm_switch","step_1")
+                     sgm_functions.write_variable("zatm_timer",time_global()+blackday_expired)
+                     db.actor:give_info_portion("blackday_is_active")
+                   end
+                end
+             end
+             ---/Начать затмение/--
+             if zatm_switch~=nil and zatm_switch=="step_1" and level_name==(l[1])
+                then 
+                if level.get_weather()=="default_clear" or level.get_weather()=="default_cloudy" then 
+                level.set_weather_fx("fx_blackday_clear")
+                sgm_functions.write_variable("zatm_switch","step_2")
+                else
+                level.set_weather_fx("fx_blackday_rain")
+                sgm_functions.write_variable("zatm_switch","step_2")
+                end
+             end
+             ---/Закончить затмение /--
+             if zatm_switch~=nil and zatm_timer~=nil and zatm_timer<=time_global() and zatm_switch=="step_2" and level_name==(l[1])
+                then 
+                --/level.set_weather(l[2],true)
+                sgm_functions.write_variable("zatm_switch","step_3")
+                sgm_functions.write_variable("zatm_h_rnd",24)
+                sgm_flags.enable_creator=true
+                db.actor:disable_info_portion("blackday_is_active")
+             end
+             ---/Назначить случайное время для следующего затмения/--
+             if (zatm_switch=="step_3" or zatm_switch=="step_2" or has_alife_info("blackday_is_active")) and hours_time>=21 and hours_time<=23 then 
+                sgm_functions.write_variable("zatm_h_rnd",math.random(10,19))
+                sgm_functions.write_variable("zatm_m_rnd",math.random(2,57))
+                sgm_functions.clear_variable("zatm_timer")
+                sgm_functions.clear_variable("zatm_switch")
+                db.actor:disable_info_portion("blackday_is_active")
+             end
+        end
+      end
+end
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

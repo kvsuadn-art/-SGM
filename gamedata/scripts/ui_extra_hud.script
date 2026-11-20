@@ -1,0 +1,133 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------------(HUD меню мода)---------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+class "extra_hud" (CUIScriptWnd)
+
+function extra_hud:__init(owner) super()
+	self.owner=owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function extra_hud:__finalize()
+end
+
+function extra_hud:InitControls()
+	---Фон---
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mod_extra_hud.xml")
+        xml:InitStatic("background",self)
+
+	---Формы---
+	self.hud_form = xml:InitStatic("hud_form",self)
+	xml:InitStatic("hud_form:title",self.hud_form)
+	xml:InitStatic("hud_form:monitor",self.hud_form)
+
+	---Кнопки---
+	self:Register(xml:Init3tButton("hud_form:btn_back",self.hud_form),"btn_back")
+	self:Register(xml:Init3tButton("hud_form:btn_apply",self.hud_form),"btn_apply")
+        ---Функции---(Лампа)
+        local btn
+	btn = xml:InitCheck("hud_form:btn_disable_hud_time",self.hud_form)
+	self:Register(btn,"btn_disable_hud_time")
+	self.btn_disable_hud_time=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("disable_hud_time"))
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_disable_hud_wpn",self.hud_form)
+	self:Register(btn,"btn_disable_hud_wpn")
+	self.btn_disable_hud_wpn=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("disable_hud_wpn"))
+        xml:InitStatic("hud_form:text_disable_hud_wpn",self.hud_form)
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_disable_shock_hits",self.hud_form)
+	self:Register(btn,"btn_disable_shock_hits")
+	self.btn_disable_shock_hits=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("disable_shock_hits"))
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_disable_actor_vertigo",self.hud_form)
+	self:Register(btn,"btn_disable_actor_vertigo")
+	self.btn_disable_actor_vertigo=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("disable_actor_vertigo"))
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_activate_shock_motion",self.hud_form)
+	self:Register(btn,"btn_activate_shock_motion")
+	self.btn_activate_shock_motion=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("activate_shock_motion"))
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_always_hide_sleep_zone",self.hud_form)
+	self:Register(btn,"btn_always_hide_sleep_zone")
+	self.btn_always_hide_sleep_zone=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("always_hide_sleep_zone"))
+        -->
+        local btn
+	btn = xml:InitCheck("hud_form:btn_show_rank_counter",self.hud_form)
+	self:Register(btn,"btn_show_rank_counter")
+	self.btn_show_rank_counter=btn
+	btn:SetCheck(sgm_functions.info_get_boolean("show_rank_counter"))
+        -->
+end
+
+function extra_hud:InitCallBacks()
+        self:AddCallback("btn_back",ui_events.BUTTON_CLICKED,self.press_back,self)
+        self:AddCallback("btn_apply",ui_events.BUTTON_CLICKED,self.press_apply,self)
+end
+
+
+function extra_hud:press_apply()
+        --'Убрать хар-ки оружия
+	local btn_disable_hud_wpn=self.btn_disable_hud_wpn:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_disable_hud_wpn,"disable_hud_wpn")
+        --'Убрать часы
+	local btn_disable_hud_time=self.btn_disable_hud_time:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_disable_hud_time,"disable_hud_time")
+        --'Отключить шатание при попадании
+	local btn_disable_shock_hits=self.btn_disable_shock_hits:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_disable_shock_hits,"disable_shock_hits")
+        --'Отключить головокружение
+	local btn_disable_actor_vertigo=self.btn_disable_actor_vertigo:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_disable_actor_vertigo,"disable_actor_vertigo")
+        --'Активировать еффект отклонения
+	local btn_activate_shock_motion=self.btn_activate_shock_motion:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_activate_shock_motion,"activate_shock_motion")
+        --'Скрыть уведомление о зоне сна
+	local btn_always_hide_sleep_zone=self.btn_always_hide_sleep_zone:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_always_hide_sleep_zone,"always_hide_sleep_zone")
+        --'Вывести ранг на HUD
+	local btn_show_rank_counter=self.btn_show_rank_counter:GetCheck()
+        sgm_functions.info_give_on_boolean(btn_show_rank_counter,"show_rank_counter")
+        --'Назад
+	self:press_back()
+end
+
+
+function extra_hud:press_back()
+	self:GetHolder():start_stop_menu(self.owner,true)
+	self:GetHolder():start_stop_menu(self,true)
+	self.owner:Show(true)
+end
+
+
+function extra_hud:OnKeyboard(dik,keyboard_action)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action==ui_events.WINDOW_KEY_PRESSED then
+		if dik==DIK_keys.DIK_ESCAPE then
+                   self:press_back()
+		end
+	end
+        return true
+end
+
+
+
+-------------------------------------//Copyright 2008-2009 GeJorge//-------------------------------------------------
+
+
+

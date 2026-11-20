@@ -1,0 +1,81 @@
+[logic]
+active = move@breeder_step_0
+trade = misc\trade\trade_breeder.ltx
+
+[move@breeder_step_0]
+target_type     = level_vertex
+dest_number     = 28736
+state_in_center = guard
+state_for_move  = walk
+miss_center     = true
+on_signal       = in_center | move@breeder_step_1
+stop_on_talk    = true
+meet            = meet@breeder
+combat_ignore_cond = always
+play_dir 	= characters_voice\human_02\dolg\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 20
+
+[move@breeder_step_1]
+target_type     = level_vertex
+dest_number     = 27121
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 26511
+stand_time      = 6000
+on_signal       = in_center | move@breeder_step_2
+stop_on_talk    = true
+meet            = meet@breeder
+combat_ignore_cond = always
+play_dir 	= characters_voice\human_02\dolg\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 20
+
+[move@breeder_step_2]
+target_type     = level_vertex
+dest_number     = 35231
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+stand_time      = 6000
+on_signal       = in_center | move@breeder_step_3
+look_vertex     = 36291
+stop_on_talk    = true
+meet            = meet@breeder
+combat_ignore_cond = always
+play_dir 	= characters_voice\human_02\dolg\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 20
+
+[move@breeder_step_3]
+target_type     = level_vertex
+dest_number     = 72640
+look_vertex     = 73597
+state_in_center = choose
+state_for_move  = walk
+miss_center     = false
+stand_time      = 6000
+on_signal       = in_center | move@breeder_step_0
+stop_on_talk    = true
+meet            = meet@breeder
+combat_ignore_cond = always
+play_dir 	= characters_voice\human_02\dolg\states\idle\idle_
+play_dir_a      = 1
+play_dir_b      = 20
+
+[meet@breeder]
+meet_state	= 3|nil@nil
+meet_state_wpn	= 3|nil@nil
+victim		= 3|actor
+victim_wpn	= 3|actor
+precond 	= usability
+sound_start 	= characters_voice\scenario\marsh\mar_csky_trader_meet_greet_2
+sound_stop 	= characters_voice\scenario\marsh\mar_csky_trader_meet_bye_2
+use		= {!actor_enemy} true, false
+use_wpn		= {!actor_enemy} true, false
+abuse		= false
+quest_npc       = true
+trade_enable    = false
+allow_break     = false
+

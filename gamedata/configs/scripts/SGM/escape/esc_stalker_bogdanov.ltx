@@ -1,0 +1,33 @@
+[logic]
+active = move@bogdanov
+on_death = death
+
+[death]
+on_info = {=killed_by_actor} %+esc_stalker_bogdanov_killed =install_less_relation%, %+esc_stalker_bogdanov_death%
+
+[move@bogdanov]
+target_type     = level_vertex
+dest_number     = 332472
+state_in_center = ward
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 342159
+on_info         = {+esc_kill_blockpost_leader_reward} move@bogdanov2
+meet            = meet@bogdanov
+
+[move@bogdanov2]
+target_type     = level_vertex
+dest_number     = 300901
+state_in_center = ward
+state_for_move  = walk
+miss_center     = false
+look_vertex     = 304663
+
+[meet@bogdanov]
+use             = true
+use_wpn         = false
+meet_state      = 10|backoff@threat_back
+meet_sate_wpn   = 10|backoff@meet_weapon_wait
+victim          = 15|actor
+victim_wpn      = 15|actor
+

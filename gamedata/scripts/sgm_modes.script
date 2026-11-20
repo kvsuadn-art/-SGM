@@ -1,0 +1,35 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+----------------------------------(Активация опций)-----------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function modes_init()
+   modes_update()
+end
+function modes_update()
+ if db.actor~=nil then
+       if has_alife_info("activate_immortal") then
+          use_immortal_mode(0.90,1.00)
+          --/if get_hud():GetCustomStatic("hud_immortal_static")==nil then
+          --/   get_hud():AddCustomStatic("hud_immortal_static",true)
+          --/end
+          --/elseif not has_alife_info("activate_immortal") then
+          --/if get_hud():GetCustomStatic("hud_immortal_static")~=nil then
+          --/   get_hud():RemoveCustomStatic("hud_immortal_static")
+          --/end
+       end
+       if has_alife_info("activate_power") then
+          use_power_mode(0.90,1.00)
+       end
+       if has_alife_info("activate_bleeding") then
+          use_bleeding_mode()
+       end
+       if has_alife_info("activate_repair") then
+          use_repair_mode(0.95,1.00)
+       end
+       sgm_blackday.black_day_sys()
+ end
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

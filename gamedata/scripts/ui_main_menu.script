@@ -1,0 +1,895 @@
+-- File:        UI_MAIN_MENU.SCRIPT
+-- Description: Load Dialog for STALKER
+-- Created:     28.10.2004
+-- Lasd edit:	18.01.2006
+-- Copyright:   2004 GSC Game World
+-- Author:      Serhiy Vynnychenko (narrator@gsc-game.kiev.ua)
+-- Version:     0.9
+
+class "main_menu" (CUIScriptWnd)
+
+function main_menu:__init() super()
+	self.mbox_mode = 0
+    self:InitControls()
+    self:InitCallBacks()
+    xr_s.on_main_menu_on()     						 --' Distemper 03.2008 --
+end
+
+function main_menu:__finalize()
+end
+
+function main_menu:InitControls()
+	self:SetWndRect					(Frect():set(0,0,1024,768))
+	
+    local xml						= CScriptXmlInit()
+    xml:ParseFile					("ui_mod_main.xml")
+     
+    xml:InitStatic					("background", self)
+    self.shniaga					= xml:InitMMShniaga("shniaga_wnd",self);
+	
+	self.message_box				= CUIMessageBoxEx()
+	self:Register					(self.message_box, "msg_box")	
+	
+	local _ver = xml:InitStatic		("static_version",self)
+	local mm						= _G.main_menu.get_main_menu()
+	_ver:SetText					("ver. " .. mm:GetGSVer())
+	
+end
+
+function main_menu:Show(f)
+	self.shniaga:SetVisibleMagnifier(f)
+end
+
+
+function main_menu:InitCallBacks()
+	-- mod buttons
+	self:AddCallback("btn_extra_option",	ui_events.BUTTON_CLICKED,				self.extra_options,		self)
+	self:AddCallback("btn_vertex",		ui_events.BUTTON_CLICKED,				self.OnButton_vertex_clicked,		self)
+	-- new game
+	self:AddCallback("btn_novice",		ui_events.BUTTON_CLICKED,				self.OnButton_new_novice_game,		self)
+	self:AddCallback("btn_stalker",		ui_events.BUTTON_CLICKED,				self.OnButton_new_stalker_game,		self)
+	self:AddCallback("btn_veteran",		ui_events.BUTTON_CLICKED,				self.OnButton_new_veteran_game,		self)
+	self:AddCallback("btn_master",		ui_events.BUTTON_CLICKED,				self.OnButton_new_master_game,		self)
+	self:AddCallback("btn_spawn",		ui_events.BUTTON_CLICKED,				self.OnButton_load_spawn,			self)
+	-- options																											
+	self:AddCallback("btn_options",     ui_events.BUTTON_CLICKED,				self.OnButton_options_clicked,		self)
+	-- load																												
+	self:AddCallback("btn_load",        ui_events.BUTTON_CLICKED,				self.OnButton_load_clicked,			self)
+	-- save																												
+	self:AddCallback("btn_save",		ui_events.BUTTON_CLICKED,				self.OnButton_save_clicked,			self)
+	-- multiplayer																										
+	self:AddCallback("btn_multiplayer", ui_events.BUTTON_CLICKED,				self.OnButton_multiplayer_clicked,	self)
+	-- quit																												
+	self:AddCallback("btn_quit",		ui_events.BUTTON_CLICKED,				self.OnButton_quit_clicked,			self)
+	self:AddCallback("btn_quit_to_mm",	ui_events.BUTTON_CLICKED,				self.OnButton_disconnect_clicked,	self)
+	self:AddCallback("btn_ret",			ui_events.BUTTON_CLICKED,				self.OnButton_return_game,			self)
+	self:AddCallback("btn_lastsave",	ui_events.BUTTON_CLICKED,				self.OnButton_last_save,			self)
+	self:AddCallback("btn_credits",		ui_events.BUTTON_CLICKED,				self.OnButton_credits_clicked,		self)
+	-- message box																										
+	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_OK_CLICKED,		self.OnMsgOk,						self)
+	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_CANCEL_CLICKED,	self.OnMsgCancel,					self)
+	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_YES_CLICKED,		self.OnMsgYes,						self)
+	self:AddCallback("msg_box",     ui_events.MESSAGE_BOX_NO_CLICKED,		self.OnMsgNo,						self)
+	self:AddCallback("msg_box",			ui_events.MESSAGE_BOX_QUIT_GAME_CLICKED,self.OnMessageQuitGame,				self)
+	self:AddCallback("msg_box",			ui_events.MESSAGE_BOX_QUIT_WIN_CLICKED,	self.OnMessageQuitWin,				self)
+end
+function main_menu:OnMsgOk()
+	self.mbox_mode = 0
+end
+
+function main_menu:OnMsgCancel()
+	self.mbox_mode = 0
+end
+
+function main_menu:OnMsgYes()
+	
+	if 	self.mbox_mode == 1 then
+		self:LoadLastSave()	
+	end
+
+	self.mbox_mode = 0
+end
+
+function main_menu:OnMsgNo()
+	self.mbox_mode = 0
+end
+
+function main_menu:LoadLastSave()
+	local					console = get_console()
+	console:execute			("main_menu off")
+	console:execute			("load_last_save")
+end
+
+function main_menu:OnButton_last_save()
+	if ( alife() == nil) then
+		self:LoadLastSave	()
+		return
+	end
+
+	if ( (db.actor ~= nil) and (db.actor:alive() == false) ) then
+		self:LoadLastSave	()
+		return
+	end
+	
+	self.mbox_mode			= 1
+	self.message_box:InitMessageBox	("message_box_confirm_load_save")
+	self:GetHolder():start_stop_menu(self.message_box, true)
+end
+
+function main_menu:OnButton_credits_clicked()
+--	local console = get_console()
+--	console:execute("main_menu off")
+	game.start_tutorial("credits_seq")
+end
+
+function main_menu:OnButton_quit_clicked()
+	self.message_box:InitMessageBox("message_box_quit_windows")
+	self:GetHolder():start_stop_menu(self.message_box, true)
+end
+
+
+function main_menu:OnButton_disconnect_clicked()
+	self.message_box:InitMessageBox("message_box_quit_game")
+	
+	if (level.game_id() ~= 1) then		
+		self.message_box:SetText("ui_mm_disconnect_message")	-- MultiPlayer
+	else
+		self.message_box:SetText("ui_mm_quit_game_message")		-- SinglePlayer
+	end
+	self:GetHolder():start_stop_menu(self.message_box, true)
+end
+
+function main_menu:OnMessageQuitGame()
+	local console = get_console()
+	console:execute("disconnect")
+end
+
+function main_menu:OnMessageQuitWin()
+	local console = get_console()
+	console:execute("quit")
+end
+
+function main_menu:OnButton_return_game()
+	log("333")
+	local console = get_console()
+	console:execute("main_menu off")
+	xr_s.on_main_menu_off()      						--' Distemper 03.2008 --
+end
+
+function main_menu:OnButton_new_novice_game()
+	local console = get_console()
+	console:execute("g_game_difficulty gd_novice")
+	self:StartGame()	
+end
+
+function main_menu:OnButton_new_stalker_game()
+	local console = get_console()
+	console:execute("g_game_difficulty gd_stalker")
+	self:StartGame()
+end
+
+function main_menu:OnButton_new_veteran_game()
+	local console = get_console()
+	console:execute("g_game_difficulty gd_veteran")
+	self:StartGame()
+end
+
+function main_menu:OnButton_new_master_game()
+	local console = get_console()
+	console:execute("g_game_difficulty gd_master")
+	self:StartGame()
+end
+
+function main_menu:StartGame()
+	local console = get_console()
+	
+	if (alife() ~= nil) then
+		console:execute	("disconnect")	
+	end
+	device():pause(false)
+	console:execute("start server(all/single/alife/new) client(localhost)")
+	console:execute("main_menu off")
+end
+
+function main_menu:OnButton_load_spawn()
+	if self.spawn_dlg == nil then
+		self.spawn_dlg = ui_spawn_dialog.spawn_dialog()
+		self.spawn_dlg.owner = self
+	end
+	
+	self:GetHolder():start_stop_menu(self.spawn_dlg, true)
+	self:GetHolder():start_stop_menu(self, true) --new
+	self:Show(false)
+end
+
+function main_menu:OnButton_save_clicked()
+	if self.save_dlg == nil then
+		self.save_dlg = ui_save_dialog.save_dialog()
+		self.save_dlg.owner = self
+	end
+	
+	self.save_dlg:FillList()
+	self:GetHolder():start_stop_menu(self.save_dlg, true)
+	self:GetHolder():start_stop_menu(self, true) --new
+	self:Show(false)
+end
+
+function main_menu:OnButton_options_clicked()
+	if self.opt_dlg == nil then
+		self.opt_dlg = ui_mm_opt_main.options_dialog()
+		self.opt_dlg.owner = self
+	end
+	
+	self.opt_dlg:UpdateControls()
+	self:GetHolder():start_stop_menu(self.opt_dlg, true)
+	self:GetHolder():start_stop_menu(self, true) --new
+	self:Show(false)
+end
+
+function main_menu:OnButton_load_clicked()
+	if self.load_dlg ==nil then
+		self.load_dlg = ui_load_dialog.load_dialog()
+		self.load_dlg.owner = self
+	end
+	
+	self.load_dlg:FillList()
+	self:GetHolder():start_stop_menu(self.load_dlg, true)
+	self:GetHolder():start_stop_menu(self, true) --new
+	self:Show(false)
+end
+
+function main_menu:OnButton_multiplayer_clicked()
+	if self.mp_dlg ==nil then
+		self.mp_dlg = ui_mp_main.mp_main()
+		self.mp_dlg.owner = self
+	end
+	self.mp_dlg:UpdateControls()
+	self:GetHolder():start_stop_menu(self.mp_dlg, true)
+	self:GetHolder():start_stop_menu(self, true) --new
+	self:Show(false)
+	
+--	self.mp_dlg:OnBtn_Refresh()
+	
+	local console			= get_console()
+	console:execute			("check_for_updates 0")
+	
+	self.mp_dlg:OnRadio_NetChanged()
+end
+
+function main_menu:Dispatch(cmd, param)  --virtual function
+	if cmd == 2 then
+		self:OnButton_multiplayer_clicked()
+	end
+	return true
+end
+
+function main_menu:OnButton_vertex_clicked() 
+	local a=vector()  
+	a=db.actor:position()  
+	vid=db.actor:level_vertex_id()  
+	gvid=db.actor:game_vertex_id()  
+        local abs_cam_pos=device().cam_pos
+        local cam_pos_x=abs_cam_pos.x
+        local cam_pos_y=abs_cam_pos.y
+        local cam_pos_z=abs_cam_pos.z
+	text="Позиция:\\nX= "..a.x.."\\nY= "..a.y.."\\nZ= "..a.z.."\\nlevel_vertex= "..vid.."\\ngame_vertex_id= "..gvid.."\\nНаправление:\\nX= "..cam_pos_x.."\\nY= "..cam_pos_y.."\\nZ= "..cam_pos_z
+	news_manager.send_tip(db.actor,text,0,bandit,10000,"Координата") 
+end
+
+function main_menu:extra_money()
+     if db.actor~=nil then
+	dialogs.relocate_money(db.actor,10000,"in")
+     end
+end
+
+
+function main_menu:extra_test()
+     if db.actor~=nil then
+	 local actor_pos=db.actor:position() 
+         create("test_npc",actor_pos.x+2,actor_pos.y,actor_pos.z-2,db.actor:level_vertex_id(),db.actor:game_vertex_id())
+     end
+end
+
+function main_menu:extra_modes()
+   --  if db.actor~=nil then
+	if self.extra_modes_dlg == nil then
+		self.extra_modes_dlg = ui_extra_modes.extra_modes()
+		self.extra_modes_dlg.owner = self
+	end
+	self:GetHolder():start_stop_menu(self.extra_modes_dlg,true)
+	self:GetHolder():start_stop_menu(self,true)
+	self:Show(false)
+   --  end
+end
+
+function main_menu:extra_options()
+	if self.extra_dlg == nil then
+		self.extra_dlg = ui_extra_options.extra_options()
+		self.extra_dlg.owner = self
+	end
+	self:GetHolder():start_stop_menu(self.extra_dlg, true)
+	self:GetHolder():start_stop_menu(self, true)
+	self:Show(false)
+end
+
+function main_menu:set_0_factor()
+     if db.actor~=nil then
+     level.set_time_factor(8)
+     end
+end
+function main_menu:set_1_factor()
+     if db.actor~=nil then
+     level.set_time_factor(50)
+     end
+end
+function main_menu:set_2_factor()
+     if db.actor~=nil then
+     level.set_time_factor(100)
+     end
+end
+function main_menu:set_3_factor()
+     if db.actor~=nil then
+     level.set_time_factor(500)
+     end
+end
+function main_menu:set_4_factor()
+     if db.actor~=nil then
+     level.set_time_factor(1000)
+     end
+end
+function main_menu:set_5_factor()
+     if db.actor~=nil then
+     level.set_time_factor(5000)
+     end
+end
+function main_menu:sgm_deactivate_on()
+     if db.actor~=nil then
+     db.actor:give_info_portion("mod_deactivate")
+     end
+end
+function main_menu:sgm_deactivate_off()
+     if db.actor~=nil then
+     db.actor:disable_info_portion("mod_deactivate")
+     end
+end
+
+function main_menu:OnKeyboard(dik, keyboard_action)  --virtual function
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   local bind = dik_to_bind(dik)
+   local console = get_console()
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+                --/"default"/--
+		if dik == DIK_keys.DIK_ESCAPE then
+			if level.present() and 
+				(	((db.actor ~= nil)and(db.actor:alive())) or 
+					(false==IsGameTypeSingle())
+				) then
+                                self.OnButton_return_game()
+			end
+		end
+		if dik == DIK_keys.DIK_Q then
+			self:OnMessageQuitWin()
+		elseif dik == DIK_keys.DIK_F5 then
+			self:extra_options()
+		elseif dik == DIK_keys.DIK_F2 then
+			self:sgm_deactivate_on()
+		elseif dik == DIK_keys.DIK_F3 then
+			self:sgm_deactivate_off()
+		elseif dik == DIK_keys.DIK_SUBTRACT then
+			self:screenshot_mode_on()
+		elseif dik == DIK_keys.DIK_ADD then
+			self:screenshot_mode_off()
+		end
+                --/"keys_mode"/--
+		if string.find(command_line(),"-keys_mode") then
+		   if dik == DIK_keys.DIK_ADD then
+			give_quick_news("DIK_ADD")
+		   elseif dik == DIK_keys.DIK_APOSTROPHE then
+			give_quick_news("DIK_APOSTROPHE")
+		   elseif dik == DIK_keys.DIK_APPS then
+			give_quick_news("DIK_APPS")
+		   elseif dik == DIK_keys.DIK_AT then
+			give_quick_news("DIK_AT")
+		   elseif dik == DIK_keys.DIK_AX then
+			give_quick_news("DIK_AX")
+		   elseif dik == DIK_keys.DIK_BACKSLASH then
+			give_quick_news("DIK_BACKSLASH")
+		   elseif dik == DIK_keys.DIK_CAPITAL then
+			give_quick_news("DIK_CAPITAL")
+		   elseif dik == DIK_keys.DIK_CIRCUMFLEX then
+			give_quick_news("DIK_CIRCUMFLEX")
+		   elseif dik == DIK_keys.DIK_COLON then
+			give_quick_news("DIK_COLON")
+		   elseif dik == DIK_keys.DIK_COMMA then
+			give_quick_news("DIK_COMMA")
+		   elseif dik == DIK_keys.DIK_CONVERT then
+			give_quick_news("DIK_CONVERT")
+		   elseif dik == DIK_keys.DIK_DECIMAL then
+			give_quick_news("DIK_DECIMAL")
+		   elseif dik == DIK_keys.DIK_DELETE then
+			give_quick_news("DIK_DELETE")
+		   elseif dik == DIK_keys.DIK_DIVIDE then
+			give_quick_news("DIK_DIVIDE")
+		   elseif dik == DIK_keys.DIK_DOWN then
+			give_quick_news("DIK_DOWN")
+		   elseif dik == DIK_keys.DIK_END then
+			give_quick_news("DIK_END")
+		   elseif dik == DIK_keys.DIK_EQUALS then
+			give_quick_news("DIK_EQUALS")
+		   elseif dik == DIK_keys.DIK_GRAVE then
+			give_quick_news("DIK_GRAVE")
+		   elseif dik == DIK_keys.DIK_HOME then
+			give_quick_news("DIK_HOME")
+		   elseif dik == DIK_keys.DIK_INSERT then
+			give_quick_news("DIK_INSERT")
+		   elseif dik == DIK_keys.DIK_KANA then
+			give_quick_news("DIK_KANA")
+		   elseif dik == DIK_keys.DIK_KANJI then
+			give_quick_news("DIK_KANJI")
+		   elseif dik == DIK_keys.DIK_LBRACKET then
+			give_quick_news("DIK_LBRACKET")
+		   elseif dik == DIK_keys.DIK_LCONTROL then
+			give_quick_news("DIK_LCONTROL")
+		   elseif dik == DIK_keys.DIK_LEFT then
+			give_quick_news("DIK_LEFT")
+		   elseif dik == DIK_keys.DIK_LMENU then
+			give_quick_news("DIK_LMENU")
+		   elseif dik == DIK_keys.DIK_MULTIPLY then
+			give_quick_news("DIK_MULTIPLY")
+		   elseif dik == DIK_keys.DIK_MINUS then
+			give_quick_news("DIK_MINUS")
+		   elseif dik == DIK_keys.DIK_NEXT then
+			give_quick_news("DIK_NEXT")
+		   elseif dik == DIK_keys.DIK_NOCONVERT then
+			give_quick_news("DIK_NOCONVERT")
+		   elseif dik == DIK_keys.DIK_NUMLOCK then
+			give_quick_news("DIK_NUMLOCK")
+		   elseif dik == DIK_keys.DIK_NUMPADCOMMA then
+			give_quick_news("DIK_NUMPADCOMMA")
+		   elseif dik == DIK_keys.DIK_NUMPADENTER then
+			give_quick_news("DIK_NUMPADENTER")
+		   elseif dik == DIK_keys.DIK_NUMPADEQUALS then
+			give_quick_news("DIK_NUMPADEQUALS")
+		   elseif dik == DIK_keys.DIK_PERIOD then
+			give_quick_news("DIK_PERIOD")
+		   elseif dik == DIK_keys.DIK_PRIOR then
+			give_quick_news("DIK_PRIOR")
+		   elseif dik == DIK_keys.DIK_RBRACKET then
+			give_quick_news("DIK_RBRACKET")
+		   elseif dik == DIK_keys.DIK_RCONTROL then
+			give_quick_news("DIK_RCONTROL")
+		   elseif dik == DIK_keys.DIK_RETURN then
+			give_quick_news("DIK_RETURN")
+		   elseif dik == DIK_keys.DIK_RIGHT then
+			give_quick_news("DIK_RIGHT")
+		   elseif dik == DIK_keys.DIK_RMENU then
+			give_quick_news("DIK_RMENU")
+		   elseif dik == DIK_keys.DIK_SEMICOLON then
+			give_quick_news("DIK_SEMICOLON")
+		   elseif dik == DIK_keys.DIK_SLASH then
+			give_quick_news("DIK_SLASH")
+		   elseif dik == DIK_keys.DIK_STOP then
+			give_quick_news("DIK_STOP")
+		   elseif dik == DIK_keys.DIK_SUBTRACT then
+			give_quick_news("DIK_SUBTRACT")
+		   elseif dik == DIK_keys.DIK_SYSRQ then
+			give_quick_news("DIK_SYSRQ")
+		   elseif dik == DIK_keys.DIK_UNDERLINE then
+			give_quick_news("DIK_UNDERLINE")
+		   elseif dik == DIK_keys.DIK_UNLABELED then
+			give_quick_news("DIK_UNLABELED")
+		   elseif dik == DIK_keys.DIK_YEN then
+			give_quick_news("DIK_YEN")
+		   end
+                end
+                --/"cheat_mode"/--
+		if string.find(command_line(),"-cheat_mode") then
+		   if dik == DIK_keys.DIK_P then
+	           self:extra_money()
+		   elseif dik == DIK_keys.DIK_F1 then
+		   self:extra_modes()
+		   elseif dik==DIK_keys.DIK_0 then
+		   self:set_0_factor()
+		   elseif dik==DIK_keys.DIK_1 then
+		   self:set_1_factor()
+		   elseif dik==DIK_keys.DIK_2 then
+		   self:set_2_factor()
+		   elseif dik==DIK_keys.DIK_3 then
+		   self:set_3_factor()
+		   elseif dik==DIK_keys.DIK_4 then
+		   self:set_4_factor()
+		   elseif dik==DIK_keys.DIK_5 then
+		   self:set_5_factor()
+		   end
+		end
+                --/"test"/--
+		if string.find(command_line(),"-test") then
+		   if dik==DIK_keys.DIK_Z then
+	           self:extra_test()
+		   elseif dik==DIK_keys.DIK_U then
+		   self:sgm_addons()
+		   elseif dik==DIK_keys.DIK_O then
+		   self:sgm_outfits()
+		   elseif dik==DIK_keys.DIK_A then
+		   self:sgm_ammo()
+		   elseif dik==DIK_keys.DIK_F then
+		   self:sgm_af()
+		   elseif dik==DIK_keys.DIK_M then
+		   self:sgm_upgrades()
+		   elseif dik==DIK_keys.DIK_W then
+		   self:sgm_wpns()
+		   elseif dik==DIK_keys.DIK_T then
+		   self:sgm_flashs()
+		   elseif dik==DIK_keys.DIK_N then
+		   self:sgm_new_items()
+		   elseif dik==DIK_keys.DIK_S then
+		   self:sgm_wpn_books()
+		   elseif dik==DIK_keys.DIK_B then
+		   self:sgm_medals()
+		   elseif dik==DIK_keys.DIK_H then
+		   self:sgm_help()
+		   elseif dik==DIK_keys.DIK_F9 then
+		   self:sgm_show_smarts()
+		   elseif dik==DIK_keys.DIK_F10 then
+		   self:sgm_hide_smarts()
+		   elseif dik==DIK_keys.DIK_F11 then
+		   self:sgm_check_ground()
+                   end
+		end
+   end
+   return true
+end
+
+
+function main_menu:sgm_check_ground()
+local actor_pos=db.actor:position() 
+db.actor:disable_info_portion("val_freedom_brain")
+--/sgm_functions.write_variable("satiety_factor",sgm_functions.read_variable("satiety_factor")+10)
+end
+
+function main_menu:screenshot_mode_on()
+level.hide_indicators_safe()
+local hud = get_hud()
+hud:HideActorMenu()
+hud:HidePdaMenu()
+end
+function main_menu:screenshot_mode_off()
+level.show_indicators()
+end
+
+function main_menu:sgm_show_smarts()
+	db.actor:give_info_portion("show_smarts")
+end
+function main_menu:sgm_hide_smarts()
+	db.actor:disable_info_portion("show_smarts")
+end
+
+function main_menu:sgm_help()
+	help="[B] = sgm_medals".."\\n[S] = sgm_wpn_books".."\\n[N] = sgm_new_items".."\\n[T] = sgm_flashs".."\\n[U] = sgm_addons".."\\n[O] = sgm_outfits".."\\n[A] = sgm_ammo".."\\n[F] = sgm_af".."\\n[M] = sgm_upgrades".."\\n[W] = sgm_wpns"
+	news_manager.send_tip(db.actor,help,0,bandit,20000,"Горячие клавишы:") 
+end
+
+function main_menu:sgm_medals()
+     if db.actor~=nil then
+     give_object_to_actor("medal_rank_100")
+     give_object_to_actor("medal_rank_200")
+     give_object_to_actor("medal_rank_400")
+     give_object_to_actor("medal_rank_600")
+     give_object_to_actor("medal_rank_800")
+     give_object_to_actor("medal_rank_1000")
+     end
+end
+
+function main_menu:sgm_wpn_books()
+     if db.actor~=nil then
+     give_object_to_actor("skill_book_ak78")
+     give_object_to_actor("skill_book_ak82")
+     give_object_to_actor("skill_book_heavy_rpg")
+     give_object_to_actor("skill_book_spp200")
+     give_object_to_actor("skill_book_shotgun")
+     give_object_to_actor("skill_book_berg")
+     give_object_to_actor("skill_book_grom")
+     give_object_to_actor("skill_book_viper")
+     give_object_to_actor("skill_book_ak78u")
+     give_object_to_actor("skill_book_commander_pm")
+     give_object_to_actor("skill_book_cobra")
+     give_object_to_actor("skill_book_autocolt")
+     give_object_to_actor("skill_book_pkm")
+     give_object_to_actor("skill_book_abakan")
+     give_object_to_actor("skill_book_ak74")
+     give_object_to_actor("skill_book_ak74u")
+     give_object_to_actor("skill_book_beretta")
+     give_object_to_actor("skill_book_bm16")
+     give_object_to_actor("skill_book_colt1911")
+     give_object_to_actor("skill_book_desert_eagle")
+     give_object_to_actor("skill_book_fn2000")
+     give_object_to_actor("skill_book_fort")
+     give_object_to_actor("skill_book_g36")
+     give_object_to_actor("skill_book_gauss")
+     give_object_to_actor("skill_book_groza")
+     give_object_to_actor("skill_book_hpsa")
+     give_object_to_actor("skill_book_l85")
+     give_object_to_actor("skill_book_lr300")
+     give_object_to_actor("skill_book_mp5")
+     give_object_to_actor("skill_book_pb")
+     give_object_to_actor("skill_book_pm")
+     give_object_to_actor("skill_book_rg-6")
+     give_object_to_actor("skill_book_rpg7")
+     give_object_to_actor("skill_book_sig220")
+     give_object_to_actor("skill_book_sig550")
+     give_object_to_actor("skill_book_spas12")
+     give_object_to_actor("skill_book_svd")
+     give_object_to_actor("skill_book_svu")
+     give_object_to_actor("skill_book_toz34")
+     give_object_to_actor("skill_book_usp")
+     give_object_to_actor("skill_book_val")
+     give_object_to_actor("skill_book_vintorez")
+     give_object_to_actor("skill_book_walther")
+     give_object_to_actor("skill_book_wincheaster1300")
+     end
+end
+function main_menu:sgm_new_items()
+     if db.actor~=nil then
+     give_object_to_actor("bio_bandage")
+     give_object_to_actor("medkit_elite")
+     give_object_to_actor("psy_complex")
+     give_object_to_actor("wild_drink")
+     give_object_to_actor("bun")
+     give_object_to_actor("ananas")
+     give_object_to_actor("af_geliy")
+     give_object_to_actor("af_monolit")
+     give_object_to_actor("cev_plastin_1")
+     give_object_to_actor("cev_plastin_2")
+     give_object_to_actor("cev_plastin_3")
+     give_object_to_actor("cev_plastin_4")
+     give_object_to_actor("cev_plastin_5")
+     give_object_to_actor("ammo_9x18_hpm")
+     give_object_to_actor("ammo_9x19_spp")
+     give_object_to_actor("ammo_5.45x39_hm")
+     give_object_to_actor("ammo_5.45x39_hr")
+     give_object_to_actor("ammo_5.56x45_gd")
+     give_object_to_actor("ammo_12x76_quadro")
+     give_object_to_actor("wpn_autocolt")
+     give_object_to_actor("wpn_cobra")
+     give_object_to_actor("solar_exo_outfit")
+     give_object_to_actor("novice_cevlar_outfit")
+     give_object_to_actor("killer_outfit")
+     give_object_to_actor("commander_outfit")
+     give_object_to_actor("dolg_scientific_outfit")
+     give_object_to_actor("raincoat_outfit")
+     give_object_to_actor("wpn_commander_pm")
+     give_object_to_actor("wpn_ak78")
+     give_object_to_actor("wpn_ak82")
+     give_object_to_actor("wpn_heavy_rpg")
+     give_object_to_actor("wpn_spp200")
+     give_object_to_actor("wpn_shotgun")
+     give_object_to_actor("wpn_berg")
+     give_object_to_actor("wpn_grom")
+     give_object_to_actor("wpn_viper")
+     give_object_to_actor("wpn_ak78u")
+     give_object_to_actor("wpn_svd_tiger")
+     give_object_to_actor("wpn_spp200_arrow")
+     give_object_to_actor("skill_book_ak78")
+     give_object_to_actor("skill_book_ak82")
+     give_object_to_actor("skill_book_heavy_rpg")
+     give_object_to_actor("skill_book_spp200")
+     give_object_to_actor("skill_book_shotgun")
+     give_object_to_actor("skill_book_berg")
+     give_object_to_actor("skill_book_grom")
+     give_object_to_actor("skill_book_viper")
+     give_object_to_actor("skill_book_ak78u")
+     give_object_to_actor("skill_book_commander_pm")
+     give_object_to_actor("skill_book_cobra")
+     give_object_to_actor("skill_book_autocolt")
+     give_object_to_actor("skill_book_pkm")
+     give_object_to_actor("skill_book_abakan")
+     give_object_to_actor("skill_book_ak74")
+     give_object_to_actor("skill_book_ak74u")
+     give_object_to_actor("skill_book_beretta")
+     give_object_to_actor("skill_book_bm16")
+     give_object_to_actor("skill_book_colt1911")
+     give_object_to_actor("skill_book_desert_eagle")
+     give_object_to_actor("skill_book_fn2000")
+     give_object_to_actor("skill_book_fort")
+     give_object_to_actor("skill_book_g36")
+     give_object_to_actor("skill_book_gauss")
+     give_object_to_actor("skill_book_groza")
+     give_object_to_actor("skill_book_hpsa")
+     give_object_to_actor("skill_book_l85")
+     give_object_to_actor("skill_book_lr300")
+     give_object_to_actor("skill_book_mp5")
+     give_object_to_actor("skill_book_pb")
+     give_object_to_actor("skill_book_pm")
+     give_object_to_actor("skill_book_rg-6")
+     give_object_to_actor("skill_book_rpg7")
+     give_object_to_actor("skill_book_sig220")
+     give_object_to_actor("skill_book_sig550")
+     give_object_to_actor("skill_book_spas12")
+     give_object_to_actor("skill_book_svd")
+     give_object_to_actor("skill_book_svu")
+     give_object_to_actor("skill_book_toz34")
+     give_object_to_actor("skill_book_usp")
+     give_object_to_actor("skill_book_val")
+     give_object_to_actor("skill_book_vintorez")
+     give_object_to_actor("skill_book_walther")
+     give_object_to_actor("skill_book_wincheaster1300")
+     end
+end
+function main_menu:sgm_addons()
+     if db.actor~=nil then
+     give_object_to_actor("wpn_addon_scope")
+     give_object_to_actor("wpn_addon_scope_4x")
+     give_object_to_actor("wpn_addon_scope_susat")
+     give_object_to_actor("wpn_silencer_9x18")
+     give_object_to_actor("wpn_silencer_9x19")
+     give_object_to_actor("wpn_silencer_11.43x23")
+     give_object_to_actor("wpn_silencer_5.56x45")
+     give_object_to_actor("wpn_silencer_5.45x39")
+     give_object_to_actor("wpn_silencer_9x39")
+     give_object_to_actor("wpn_addon_grenade_launcher")
+     give_object_to_actor("wpn_addon_grenade_launcher_m203")
+     end
+end
+function main_menu:sgm_flashs()
+     if db.actor~=nil then
+     give_object_to_actor("esc_mechanic_flash_card_1")
+     give_object_to_actor("esc_mechanic_flash_card_2")
+     give_object_to_actor("esc_mechanic_flash_card_3")
+     give_object_to_actor("esc_mechanic_flash_card_4")
+     give_object_to_actor("flesh_up_ac_mp5")
+     give_object_to_actor("flesh_up_bd_mp5")
+     give_object_to_actor("flesh_up_a_novice_outfit")
+     give_object_to_actor("flesh_up_ac_wincheaster1300")
+     give_object_to_actor("flesh_up_bd_wincheaster1300")
+     give_object_to_actor("flesh_up_ac_ak74u")
+     give_object_to_actor("flesh_up_fh_scientific_outfit")
+     give_object_to_actor("flesh_up_bdfh_scientific_outfit")
+     give_object_to_actor("flesh_up_aceg_scientific_outfit")
+     give_object_to_actor("flesh_up_ab_svu")
+     give_object_to_actor("flesh_up_cd_svu")
+     give_object_to_actor("flesh_up_abcd_svu")
+     give_object_to_actor("flesh_up_ab_pkm")
+     give_object_to_actor("flesh_up_cd_pkm")
+     give_object_to_actor("flesh_up_abcd_pkm")
+     give_object_to_actor("flesh_up_ac_desert_eagle")
+     give_object_to_actor("flesh_up_bd_desert_eagle")
+     give_object_to_actor("flesh_up_ac_spas12")
+     end
+end
+function main_menu:sgm_outfits()
+     if db.actor~=nil then
+     give_object_to_actor("novice_outfit")
+     give_object_to_actor("bandit_outfit")
+     give_object_to_actor("cs_light_outfit")
+     give_object_to_actor("cs_heavy_outfit")
+     give_object_to_actor("stalker_outfit")
+     give_object_to_actor("svoboda_light_outfit")
+     give_object_to_actor("svoboda_heavy_outfit")
+     give_object_to_actor("dolg_outfit")
+     give_object_to_actor("dolg_heavy_outfit")
+     give_object_to_actor("scientific_outfit")
+     give_object_to_actor("specops_outfit")
+     give_object_to_actor("military_outfit")
+     give_object_to_actor("exo_outfit")
+     give_object_to_actor("svoboda_exo_outfit")
+     end
+end
+function main_menu:sgm_ammo()
+     if db.actor~=nil then
+     give_object_to_actor("ammo_9x18_fmj")
+     give_object_to_actor("ammo_9x18_pmm")
+     give_object_to_actor("ammo_9x19_fmj")
+     give_object_to_actor("ammo_9x19_pbp")
+     give_object_to_actor("ammo_11.43x23_fmj")
+     give_object_to_actor("ammo_11.43x23_hydro")
+     give_object_to_actor("ammo_5.45x39_fmj")
+     give_object_to_actor("ammo_5.45x39_ap")
+     give_object_to_actor("ammo_5.56x45_ss190")
+     give_object_to_actor("ammo_5.56x45_ap")
+     give_object_to_actor("ammo_pkm_100")
+     give_object_to_actor("ammo_7.62x54_7h14")
+     give_object_to_actor("ammo_223_fmj")
+     give_object_to_actor("ammo_gauss")
+     give_object_to_actor("ammo_9x39_pab9")
+     give_object_to_actor("ammo_9x39_ap")
+     give_object_to_actor("ammo_12x70_buck")
+     give_object_to_actor("ammo_12x76_dart")
+     give_object_to_actor("ammo_12x76_zhekan")
+     give_object_to_actor("ammo_og-7b")
+     give_object_to_actor("ammo_vog-25p")
+     give_object_to_actor("ammo_vog-25")
+     give_object_to_actor("ammo_m209")
+     give_object_to_actor("ammo_minigame")
+     end
+end
+function main_menu:sgm_af()
+     if db.actor~=nil then
+     give_object_to_actor("af_medusa")
+     give_object_to_actor("af_cristall_flower")
+     give_object_to_actor("af_night_star")
+     give_object_to_actor("af_vyvert")
+     give_object_to_actor("af_gravi")
+     give_object_to_actor("af_gold_fish")
+     give_object_to_actor("af_cristall")
+     give_object_to_actor("af_fireball")
+     give_object_to_actor("af_dummy_glassbeads")
+     give_object_to_actor("af_eye")
+     give_object_to_actor("af_fire")
+     give_object_to_actor("af_blood")
+     give_object_to_actor("af_mincer_meat")
+     give_object_to_actor("af_soul")
+     give_object_to_actor("af_fuzz_kolobok")
+     give_object_to_actor("af_baloon")
+     give_object_to_actor("af_glass")
+     give_object_to_actor("af_electra_sparkler")
+     give_object_to_actor("af_electra_flash")
+     give_object_to_actor("af_electra_moonlight")
+     give_object_to_actor("af_dummy_battery")
+     give_object_to_actor("af_dummy_dummy")
+     give_object_to_actor("af_ice")
+     give_object_to_actor("af_compass")
+     give_object_to_actor("detector_simple")
+     give_object_to_actor("detector_advanced")
+     give_object_to_actor("detector_elite")
+     end
+end
+function main_menu:sgm_upgrades()
+     if db.actor~=nil then
+     give_object_to_actor("wpn_ak74_up")
+     give_object_to_actor("wpn_ak74_up2")
+     give_object_to_actor("wpn_ak74_minigame")
+     give_object_to_actor("wpn_ak74u_minigame")
+     give_object_to_actor("wpn_beretta_minigame")
+     give_object_to_actor("wpn_binoc")
+     give_object_to_actor("wpn_desert_eagle_up")
+     give_object_to_actor("wpn_gauss_aes")
+     give_object_to_actor("wpn_lr300_minigame")
+     give_object_to_actor("wpn_lr300_up2")
+     give_object_to_actor("wpn_mp5_minigame")
+     give_object_to_actor("wpn_pm_minigame")
+     give_object_to_actor("wpn_pm_up")
+     give_object_to_actor("wpn_pm_9x19")
+     give_object_to_actor("wpn_sig550_minigame")
+     give_object_to_actor("wpn_val_minigame")
+     give_object_to_actor("wpn_vintorez_up")
+     end
+end
+function main_menu:sgm_wpns()
+     if db.actor~=nil then
+     give_object_to_actor("wpn_pm")
+     give_object_to_actor("wpn_pb")
+     give_object_to_actor("wpn_fort")
+     give_object_to_actor("wpn_hpsa")
+     give_object_to_actor("wpn_beretta")
+     give_object_to_actor("wpn_walther")
+     give_object_to_actor("wpn_sig220")
+     give_object_to_actor("wpn_colt1911")
+     give_object_to_actor("wpn_usp")
+     give_object_to_actor("wpn_desert_eagle")
+     give_object_to_actor("wpn_bm16")
+     give_object_to_actor("wpn_toz34")
+     give_object_to_actor("wpn_wincheaster1300")
+     give_object_to_actor("wpn_spas12")
+     give_object_to_actor("wpn_ak74u")
+     give_object_to_actor("wpn_mp5")
+     give_object_to_actor("wpn_ak74")
+     give_object_to_actor("wpn_abakan")
+     give_object_to_actor("wpn_l85")
+     give_object_to_actor("wpn_lr300")
+     give_object_to_actor("wpn_sig550")
+     give_object_to_actor("wpn_groza")
+     give_object_to_actor("wpn_val")
+     give_object_to_actor("wpn_vintorez")
+     give_object_to_actor("wpn_svu")
+     give_object_to_actor("wpn_svd")
+     give_object_to_actor("wpn_rg-6")
+     give_object_to_actor("wpn_rpg7")
+     give_object_to_actor("wpn_g36")
+     give_object_to_actor("wpn_fn2000")
+     give_object_to_actor("wpn_pkm")
+     give_object_to_actor("wpn_gauss")
+     end
+end
+
+
+

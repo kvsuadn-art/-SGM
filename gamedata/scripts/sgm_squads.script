@@ -1,0 +1,164 @@
+---==================================================================================================---
+--------------------------------------------------------------------------------------------------------
+--------------------------------------(Создание отрядов)------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+---==================================================================================================---
+function squads_init()
+  squads_update()
+end
+function squads_update()
+   local level_name = level.name()
+   local minutes_time = level.get_time_minutes()
+----------------------------------------------------------------
+----------------------------'Болота'----------------------------
+----------------------------------------------------------------
+if level_name=="marsh" then
+     if sgm_functions.get_explorers_deaths("crossing")==true and (minutes_time==45 or minutes_time==15) then
+        db.actor:disable_info_portion("mar_explorer_crossing1_death")
+        db.actor:disable_info_portion("mar_explorer_crossing2_death")
+        db.actor:disable_info_portion("mar_explorer_crossing3_death")
+        db.actor:disable_info_portion("mar_explorer_crossing4_death")
+        create("mar_explorer_crossing1",641.903,8.729,458.324,527912,226)
+        create("mar_explorer_crossing3",641.903,8.729,458.324,527912,226)
+        create("mar_explorer_crossing2",635.714,8.686,462.506,527171,226)
+        create("mar_explorer_crossing4",635.714,8.686,462.506,527171,226)
+        db.actor:give_info_portion("mar_crossing_rexplorers")
+     elseif sgm_functions.get_explorers_deaths("khutor")==true and (minutes_time==45 or minutes_time==15) then
+        db.actor:disable_info_portion("mar_explorer_khutor1_death")
+        db.actor:disable_info_portion("mar_explorer_khutor2_death")
+        db.actor:disable_info_portion("mar_explorer_khutor3_death")
+        db.actor:disable_info_portion("mar_explorer_khutor4_death")
+        create("mar_explorer_khutor1",-246.442,1.024,346.327,20612,80)
+        create("mar_explorer_khutor2",-246.442,1.024,346.327,20612,80)
+        create("mar_explorer_khutor3",-246.442,1.024,346.327,20612,80)
+        create("mar_explorer_khutor4",-246.442,1.024,346.327,20612,80)
+        db.actor:give_info_portion("mar_khutor_rexplorers")
+     elseif sgm_functions.get_explorers_deaths("village")==true and (minutes_time==45 or minutes_time==15) then
+        db.actor:disable_info_portion("mar_explorer_village1_death")
+        db.actor:disable_info_portion("mar_explorer_village2_death")
+        db.actor:disable_info_portion("mar_explorer_village3_death")
+        create("mar_explorer_village1",17.802,1.035,289.947,147504,81)
+        create("mar_explorer_village2",12.559,0.716,272.578,144850,81)
+        create("mar_explorer_village3",15.999,0.935,279.397,146736,81)
+        db.actor:give_info_portion("mar_village_rexplorers")
+     elseif sgm_functions.get_explorers_deaths("railway")==true and (minutes_time==45 or minutes_time==15) then
+        db.actor:disable_info_portion("mar_explorer_railway1_death")
+        db.actor:disable_info_portion("mar_explorer_railway2_death")
+        create("mar_explorer_railway1",228.686,2.295,503.743,279604,219)
+        create("mar_explorer_railway2",228.686,2.295,503.743,279604,219)
+        db.actor:give_info_portion("mar_railway_rexplorers")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Кордон'----------------------------
+----------------------------------------------------------------
+if level_name=="escape" then
+     if has_alife_info("esc_trader_bandits_2") then
+        use_explorer_module("esc_smart_terrain_6_6","stalker","esc_ruins_explorers_s","esc_smart_terrain_6_6","esc_force_ruins",1,2)
+     end
+     if hero_in_stalker()==true then
+        create_info_explorer2("esc_smart_terrain_4_9","stalker","esc_4_9_once_squad","esc_smart_terrain_4_9","esc_smart_4_9_once_squad")
+        create_info_explorer2("esc_smart_terrain_6_8","stalker","esc_6_8_once_squad","esc_smart_terrain_6_8","esc_smart_6_8_once_squad")
+        create_info_explorer2("esc_smart_terrain_5_9","stalker","esc_5_9_once_squad","esc_smart_terrain_5_9","esc_smart_5_9_once_squad")
+        create_info_explorer2("esc_smart_terrain_5_10","stalker","esc_5_10_once_squad","esc_smart_terrain_5_10","esc_smart_5_10_once_squad")
+        create_info_explorer2("esc_smart_terrain_7_11","stalker","esc_7_11_once_squad","esc_smart_terrain_7_11","esc_smart_7_11_once_squad")
+     end
+     if has_alife_info("esc_eliminate_blockpost_talk") and (not has_alife_info("esc_eliminate_blockpost_complete")) and (not has_alife_info("esc_smart_3_16_once_squad")) then
+        create_force("esc_hero_reinforcements","esc_smart_terrain_5_7")
+        db.actor:give_info_portion("esc_smart_3_16_once_squad")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Свалка'----------------------------
+----------------------------------------------------------------
+if level_name=="garbage" then
+     if sgm_functions.is_smart_captured2("gar_smart_terrain_3_5","stalker")==true and not has_alife_info("gar_smart_3_5_once_squad") then
+        create_force("gar_capture_reinf1","gar_smart_terrain_3_5")
+        create_force("gar_capture_reinf2","gar_smart_terrain_3_5")
+        db.actor:give_info_portion("gar_smart_3_5_once_squad")
+     elseif sgm_functions.is_smart_captured("gar_smart_terrain_5_8","stalker")==true and has_alife_info("gar_actor_has_valley_propusk") and not has_alife_info("gar_smart_5_8_once_squad") then
+        create_force("gar_acceptance_reinf","gar_smart_terrain_5_8")
+        db.actor:give_info_portion("gar_smart_5_8_once_squad")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Долина'----------------------------
+----------------------------------------------------------------
+if level_name=="darkvalley" then
+     if has_alife_info("val_kill_flesh_done") and not has_alife_info("val_smart_6_4_once_squad") then
+        create_force("val_after_dogs_squad","val_smart_terrain_7_6")
+        db.actor:give_info_portion("val_smart_6_4_once_squad")
+     end
+end
+----------------------------------------------------------------
+--------------------------'Агропром'----------------------------
+----------------------------------------------------------------
+if level_name=="agroprom" then
+     if has_alife_info("agr_actor_inside_2") and not has_alife_info("agr_significant_hold_spawner") then
+        create_force("agr_significant_hold_up","agr_smart_terrain_5_4")
+        db.actor:give_info_portion("agr_significant_hold_spawner")
+     end
+     if has_alife_info("agr_garbage_end") and not has_alife_info("agr_clear_7_4_duty_1_squad") then
+        if sgm_functions.is_squad_spawned("agr_smart_terrain_7_4_duty_1_squad") then
+        release_force("agr_smart_terrain_7_4_duty_1_squad")
+        end
+        db.actor:give_info_portion("agr_clear_7_4_duty_1_squad")
+     elseif has_alife_info("agr_garbage_end") and not has_alife_info("agr_clear_7_4_duty_2_squad") then
+        if sgm_functions.is_squad_spawned("agr_smart_terrain_7_4_duty_2_squad") then
+        release_force("agr_smart_terrain_7_4_duty_2_squad")
+        end
+        create_force("agr_smart_terrain_7_4_stalker_1_squad","agr_smart_terrain_7_4")
+        create_force("agr_smart_terrain_7_4_stalker_2_squad","agr_smart_terrain_7_4")
+        db.actor:give_info_portion("agr_clear_7_4_duty_2_squad")
+     end
+     if sgm_functions.hero_in_faction("dolg") and not has_alife_info("agr_recapture_7_4_duty") then
+        if sgm_functions.is_squad_spawned("agr_smart_terrain_7_4_stalker_1_squad") then
+        release_force("agr_smart_terrain_7_4_stalker_1_squad")
+        end
+        if sgm_functions.is_squad_spawned("agr_smart_terrain_7_4_stalker_2_squad") then
+        release_force("agr_smart_terrain_7_4_stalker_2_squad")
+        end
+        --/create_force("agr_smart_terrain_7_4_dolg_squad1","agr_smart_terrain_7_4")
+        --/create_force("agr_smart_terrain_7_4_dolg_squad2","agr_smart_terrain_7_4")
+        db.actor:give_info_portion("agr_recapture_7_4_duty")
+     end
+     if has_alife_info("agr_smart_terrain_6_4_simulation_task") and not has_alife_info("agr_smart_6_4_once_squad") then
+        create_force("agr_tunnel_once_squad","agr_smart_terrain_4_4")
+        db.actor:give_info_portion("agr_smart_6_4_once_squad")
+     end
+end
+----------------------------------------------------------------
+----------------------------'Янтарь'----------------------------
+----------------------------------------------------------------
+if level_name=="yantar" then
+end
+----------------------------------------------------------------
+------------------------'Заповедник'----------------------------
+----------------------------------------------------------------
+if level_name=="red_forest" then
+end
+----------------------------------------------------------------
+---------------------------'Склады'-----------------------------
+----------------------------------------------------------------
+if level_name=="military" then
+   if has_alife_info("mil_actor_inside_wtower") and not has_alife_info("mil_2_2_ambush") then
+       create_force("mil_monolith_ambush1","mil_smart_terrain_2_2")
+       create_force("mil_monolith_ambush2","mil_smart_terrain_2_2")
+       db.actor:give_info_portion("mil_2_2_ambush")
+   elseif has_alife_info("mil_actor_go_to_limansk") and not has_alife_info("mil_5_6_5_ambush") then
+       create_force("mil_army_ambush1","mil_smart_terrain_5_6")
+       create_force("mil_army_ambush2","mil_smart_terrain_5_5")
+       db.actor:give_info_portion("mil_5_6_5_ambush")
+   end
+end
+----------------------------------------------------------------
+----------------------------'Разное'----------------------------
+----------------------------------------------------------------
+if sgm_functions.hero_in_faction("stalker") and has_alife_info("gar_actor_has_valley_propusk") then
+   use_explorer_module("gar_smart_terrain_3_5","stalker","gar_depo_attackers","gar_smart_terrain_3_5","gar_depo_attackers")
+end
+--============================================================--
+end
+
+
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

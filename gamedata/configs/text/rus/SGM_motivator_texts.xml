@@ -1,0 +1,360 @@
+        <string id="stalker_vs_bandit_txt1">
+		<text>Мужики, только что видел бандитов, нужно предпринять меры!</text>
+	</string>
+        <string id="stalker_vs_bandit_txt2">
+		<text>Бандиты повалили, все в укрытие!</text>
+	</string>
+        <string id="stalker_vs_bandit_txt3">
+		<text>Бандиты! Ребята, не дайте им прорваться!</text>
+	</string>
+        <string id="stalker_vs_bandit_txt4">
+		<text>Вижу бандита, сейчас как стрельну!</text>
+	</string>
+        <string id="stalker_vs_bandit_txt5">
+		<text>Народ, шухер, бандюки посыпались!</text>
+	</string>
+        <string id="dolg_vs_bandit_txt1">
+		<text>Братцы, видел бандита вдали, нужно проверить..</text>
+	</string>
+        <string id="dolg_vs_bandit_txt2">
+		<text>Что-то тут не так, слишком тихо.. А..а..а, засада!</text>
+	</string>
+        <string id="dolg_vs_bandit_txt3">
+		<text>Внимание, вижу противника, немедленно выдвигаюсь.</text>
+	</string>
+        <string id="dolg_vs_bandit_txt4">
+		<text>Проклятый бандит, ранил меня в руку, теперь не смогу играть на гитаре.</text>
+	</string>
+        <string id="dolg_vs_bandit_txt5">
+		<text>Как же мы это бандитское отродие раньше то не заметили!?</text>
+	</string>
+        <string id="freedom_vs_bandit_txt1">
+		<text>Смерть бандитам!</text>
+	</string>
+        <string id="freedom_vs_bandit_txt2">
+		<text>Не дадим этим падлам жить в зоне, мочите их!</text>
+	</string>
+        <string id="freedom_vs_bandit_txt3">
+		<text>Вижу бандитов, вроде человек 5, надо поближе рассмотреть...</text>
+	</string>
+        <string id="freedom_vs_bandit_txt4">
+		<text>Ребята, давайте в рассыпную, их слишком много.</text>
+	</string>
+        <string id="freedom_vs_bandit_txt5">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="csky_vs_bandit_txt1">
+		<text>Нужна подмога, сами не управимся с бандитской скотиной.</text>
+	</string>
+        <string id="csky_vs_bandit_txt2">
+		<text>Вижу бандитов!</text>
+	</string>
+        <string id="csky_vs_bandit_txt3">
+		<text>Три бандита на АТП устроились прямо как дома, нужно исправить..</text>
+	</string>
+        <string id="csky_vs_bandit_txt4">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="csky_vs_bandit_txt5">
+		<text>Бей ублюдков!</text>
+	</string>
+        <string id="stalker_vs_renegade_txt1">
+		<text>Бей ублюдков!</text>
+	</string>
+        <string id="stalker_vs_renegade_txt2">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="stalker_vs_renegade_txt3">
+		<text>Вижу ренегатовцев!</text>
+	</string>
+        <string id="stalker_vs_renegade_txt4">
+		<text>Не дадим этим падлам жить в зоне, мочите их!</text>
+	</string>
+        <string id="stalker_vs_renegade_txt5">
+		<text>Братцы, видел ренегатовца вдали, нужно проверить..</text>
+	</string>
+        <string id="dolg_vs_renegade_txt1">
+		<text>Вижу ренегатовцев!</text>
+	</string>
+        <string id="dolg_vs_renegade_txt2">
+		<text>Не дадим этим падлам жить в зоне, мочите их!</text>
+	</string>
+        <string id="dolg_vs_renegade_txt3">
+		<text>Братцы, видел ренегатовца вдали, нужно проверить..</text>
+	</string>
+        <string id="dolg_vs_renegade_txt4">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="dolg_vs_renegade_txt5">
+		<text>Вали его!</text>
+	</string>
+        <string id="freedom_vs_renegade_txt1">
+		<text>Вижу ренегатовцев!</text>
+	</string>
+        <string id="freedom_vs_renegade_txt2">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="freedom_vs_renegade_txt3">
+		<text>Народ, шухер, ренегатовци посыпались!</text>
+	</string>
+        <string id="freedom_vs_renegade_txt4">
+		<text>Мужики, только что видел ренегатовцев, нужно предпринять меры!</text>
+	</string>
+        <string id="freedom_vs_renegade_txt5">
+		<text>Внимание, вижу противника, немедленно выдвигаемся.</text>
+	</string>
+        <string id="csky_vs_renegade_txt1">
+		<text>Выносим его!</text>
+	</string>
+        <string id="csky_vs_renegade_txt2">
+		<text>Кладем его!</text>
+	</string>
+        <string id="csky_vs_renegade_txt3">
+		<text>Зашибем!</text>
+	</string>
+        <string id="csky_vs_renegade_txt4">
+		<text>С дороги!</text>
+	</string>
+        <string id="csky_vs_renegade_txt5">
+		<text>Мать вашу!</text>
+	</string>
+        <string id="stalker_vs_zombied_txt1">
+		<text>Чужой!</text>
+	</string>
+        <string id="stalker_vs_zombied_txt2">
+		<text>Зомбаки повалили!</text>
+	</string>
+        <string id="stalker_vs_zombied_txt3">
+		<text>Ребята, стреляйте зомбакам в голову, так проще!</text>
+	</string>
+        <string id="stalker_vs_zombied_txt4">
+		<text>Вмажте тому кренделю, он меня зацепил!</text>
+	</string>
+        <string id="stalker_vs_zombied_txt5">
+		<text>Вперед, вали гадов!</text>
+	</string>
+        <string id="dolg_vs_zombied_txt1">
+		<text>Триндец вам олухи!</text>
+	</string>
+        <string id="dolg_vs_zombied_txt2">
+		<text>Вали скотину!</text>
+	</string>
+        <string id="dolg_vs_zombied_txt3">
+		<text>Вижу чумаходов, сейчас я их размажу!</text>
+	</string>
+        <string id="dolg_vs_zombied_txt4">
+		<text>Работаем!</text>
+	</string>
+        <string id="dolg_vs_zombied_txt5">
+		<text>По местам!</text>
+	</string>
+        <string id="freedom_vs_zombied_txt1">
+		<text>Свободу не остановить!</text>
+	</string>
+        <string id="freedom_vs_zombied_txt2">
+		<text>По местам!</text>
+	</string>
+        <string id="freedom_vs_zombied_txt3">
+		<text>Вижу чумаходов, сейчас я их размажу!</text>
+	</string>
+        <string id="freedom_vs_zombied_txt4">
+		<text>Триндец вам олухи!</text>
+	</string>
+        <string id="freedom_vs_zombied_txt5">
+		<text>Вперед, вали гадов!</text>
+	</string>
+        <string id="csky_vs_zombied_txt1">
+		<text>Вмажте тому кренделю, он меня зацепил!</text>
+	</string>
+        <string id="csky_vs_zombied_txt2">
+		<text>Вперед, вали гадов!</text>
+	</string>
+        <string id="csky_vs_zombied_txt3">
+		<text>По местам!</text>
+	</string>
+        <string id="csky_vs_zombied_txt4">
+		<text>Влипил гаду!</text>
+	</string>
+        <string id="csky_vs_zombied_txt5">
+		<text>В яблочко!</text>
+	</string>
+        <string id="stalker_vs_killer_txt1">
+		<text>Щя как видам, всех перепугаю, наемники хреновы!</text>
+	</string>
+        <string id="stalker_vs_killer_txt2">
+		<text>Вижу найомника!</text>
+	</string>
+        <string id="stalker_vs_killer_txt3">
+		<text>Враг на горизонте, похоже найомник.</text>
+	</string>
+        <string id="stalker_vs_killer_txt4">
+		<text>Ребята, на нас напали, все работаем по плану "Б"!</text>
+	</string>
+        <string id="stalker_vs_killer_txt5">
+		<text>Надо же, найомник уснул, ну промо ангел, разбужу прикладом по чердаку...</text>
+	</string>
+        <string id="dolg_vs_killer_txt1">
+		<text>Вижу найомника!</text>
+	</string>
+        <string id="dolg_vs_killer_txt2">
+		<text>По местам!</text>
+	</string>
+        <string id="dolg_vs_killer_txt3">
+		<text>Как нам быть, их слишком много?.. Требую подкрепления!</text>
+	</string>
+        <string id="dolg_vs_killer_txt4">
+		<text>Сейчас будет жарко!</text>
+	</string>
+        <string id="dolg_vs_killer_txt5">
+		<text>Внимание, противник!</text>
+	</string>
+        <string id="freedom_vs_killer_txt1">
+		<text>Огонь по найомнику, убейте его пока он не заминировал стоянку!</text>
+	</string>
+        <string id="freedom_vs_killer_txt2">
+		<text>Вперед!</text>
+	</string>
+        <string id="freedom_vs_killer_txt3">
+		<text>Вижу найомника, буду валить.</text>
+	</string>
+        <string id="freedom_vs_killer_txt4">
+		<text>Триндец вам олухи!</text>
+	</string>
+        <string id="freedom_vs_killer_txt5">
+		<text>Вмажте тому кренделю, он меня зацепил!</text>
+	</string>
+        <string id="csky_vs_killer_txt1">
+		<text>Внимание, противник!</text>
+	</string>
+        <string id="csky_vs_killer_txt2">
+		<text>Вмажте тому кренделю, он меня зацепил!</text>
+	</string>
+        <string id="csky_vs_killer_txt3">
+		<text>Сейчас будет жарко!</text>
+	</string>
+        <string id="csky_vs_killer_txt4">
+		<text>По местам!</text>
+	</string>
+        <string id="csky_vs_killer_txt5">
+		<text>Внимание, вижу противника, немедленно выдвигаемся.</text>
+	</string>
+        <string id="stalker_vs_military_txt1">
+		<text>Обнаружен военный патруль, всем быть бдительными!</text>
+	</string>
+        <string id="stalker_vs_military_txt2">
+		<text>Вижу военного!</text>
+	</string>
+        <string id="stalker_vs_military_txt3">
+		<text>Вперед, мочи вояк!</text>
+	</string>
+        <string id="stalker_vs_military_txt4">
+		<text>Одному мне не справится, военные меня уже окружают.</text>
+	</string>
+        <string id="stalker_vs_military_txt5">
+		<text>Вояки явно не шутят. Нужно сматываться, и как можно скорее.</text>
+	</string>
+        <string id="dolg_vs_military_txt1">
+		<text>Враг на горизонте!</text>
+	</string>
+        <string id="dolg_vs_military_txt2">
+		<text>Внимание! Военные повалили..</text>
+	</string>
+        <string id="dolg_vs_military_txt3">
+		<text>Получай вражина!</text>
+	</string>
+        <string id="dolg_vs_military_txt4">
+		<text>Щяс как пальну, перцем в зад!</text>
+	</string>
+        <string id="dolg_vs_military_txt5">
+		<text>Вижу военного!</text>
+	</string>
+        <string id="freedom_vs_military_txt1">
+		<text>Им капец!</text>
+	</string>
+        <string id="freedom_vs_military_txt2">
+		<text>Мочи гадов!</text>
+	</string>
+        <string id="freedom_vs_military_txt3">
+		<text>Вперед, ура!</text>
+	</string>
+        <string id="freedom_vs_military_txt4">
+		<text>Народ, шухер, вояки повалили!</text>
+	</string>
+        <string id="freedom_vs_military_txt5">
+		<text>Вперед, ура!</text>
+	</string>
+        <string id="csky_vs_military_txt1">
+		<text>Занять позиции, военные уже близко!</text>
+	</string>
+        <string id="csky_vs_military_txt2">
+		<text>Мочи скотину!</text>
+	</string>
+        <string id="csky_vs_military_txt3">
+		<text>Куча мала на них!</text>
+	</string>
+        <string id="csky_vs_military_txt4">
+		<text>Минус один.</text>
+	</string>
+        <string id="csky_vs_military_txt5">
+		<text>Замечен военный.</text>
+	</string>
+        <string id="stalker_vs_monolith_txt1">
+		<text>Народ, шухер, монолит повалил!</text>
+	</string>
+        <string id="stalker_vs_monolith_txt2">
+		<text>Братцы, видел монолит вдали, нужно проверить..</text>
+	</string>
+        <string id="stalker_vs_monolith_txt3">
+		<text>Не дадим этим падлам жить в зоне, мочите их!</text>
+	</string>
+        <string id="stalker_vs_monolith_txt4">
+		<text>Вижу монолит!</text>
+	</string>
+        <string id="stalker_vs_monolith_txt5">
+		<text>Ну все, хана тебе!</text>
+	</string>
+        <string id="dolg_vs_monolith_txt1">
+		<text>Ну все, хана тебе!</text>
+	</string>
+        <string id="dolg_vs_monolith_txt2">
+		<text>Вижу монолититовца, всем прозьба отреагировать!</text>
+	</string>
+        <string id="dolg_vs_monolith_txt3">
+		<text>Внимание!.. Началось вторжение монолита.</text>
+	</string>
+        <string id="dolg_vs_monolith_txt4">
+		<text>Не дадим этим падлам жить в зоне!</text>
+	</string>
+        <string id="dolg_vs_monolith_txt5">
+		<text>Нейтрализируйте патруль монолита!</text>
+	</string>
+        <string id="freedom_vs_monolith_txt1">
+		<text>Тебе кронти, монолитовец хренов!</text>
+	</string>
+        <string id="freedom_vs_monolith_txt2">
+		<text>Вижу монолитовца!</text>
+	</string>
+        <string id="freedom_vs_monolith_txt3">
+		<text>Мужики, только что видел монолит, нужно предпринять меры!</text>
+	</string>
+        <string id="freedom_vs_monolith_txt4">
+		<text>Эх, гробы та как подорожали!</text>
+	</string>
+        <string id="freedom_vs_monolith_txt5">
+		<text>Монолит! Ребята, не дайте им прорваться!</text>
+	</string>
+        <string id="csky_vs_monolith_txt1">
+		<text>Мужики, только что видел монолит, нужно предпринять меры!</text>
+	</string>
+        <string id="csky_vs_monolith_txt2">
+		<text>Чужой!</text>
+	</string>
+        <string id="csky_vs_monolith_txt3">
+		<text>Получай!</text>
+	</string>
+        <string id="csky_vs_monolith_txt4">
+		<text>Ребята, на нас напали!</text>
+	</string>
+        <string id="csky_vs_monolith_txt5">
+		<text>Пошла жара!</text>
+	</string>

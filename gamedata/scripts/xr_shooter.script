@@ -1,0 +1,312 @@
+---=============================================================================================---
+---------------------------------------------------------------------------------------------------
+-----------------------------------------(Схема обстрела)------------------------------------------
+---------------------------------------------------------------------------------------------------
+---=============================================================================================---
+------------------------------------
+------------/Условие/---------------
+------------------------------------
+class "evaluator_need_shooter" (property_evaluator)
+function evaluator_need_shooter:__init(storage, name) super(nil, name)
+  	self.st = storage
+end
+function evaluator_need_shooter:evaluate()
+  	return xr_logic.is_active(self.object, self.st)
+end
+------------------------------------
+------------/Действие/--------------
+------------------------------------
+class "action_to_shooter" (action_base)
+function action_to_shooter:__init (npc, action_name, storage) super(nil, action_name)
+	self.st = storage
+	self.move_mgr = db.storage[npc:id()].move_mgr
+end
+function action_to_shooter:initialize()
+	action_base.initialize(self)
+	local npc=self.object
+        self.object:set_desired_position()
+        self.object:set_desired_direction()
+        self.object:clear_animations()
+        self.object:set_detail_path_type(move.line)
+        self.object:set_body_state(move.standing)
+        self.object:set_movement_type(move.run)
+        self.object:set_path_type(game_object.level_path)
+        self.object:set_mental_state(anim.free)
+        self.object:set_sight(look.danger, nil, 0)
+        self.object:remove_all_restrictions()
+        self.npc_vector=vector():set(0,0,0)
+        self.npc_vector:normalize()
+	self:reset_scheme(nil,self.object)
+end
+function action_to_shooter:activate_scheme(loading,npc)
+	self.st.switchs = {}
+	self.switch_init_bool=false
+	self.switch_preparate_bool=false
+	self.switch_fire_bool=false
+	self.switch_end_bool=false
+	self:reset_scheme(loading, npc)
+        self.in_center_signalled = false
+	self.stage=0
+	self.clip_counter=0
+        self.switch_bool=false
+end
+function action_to_shooter:reset_scheme(loading,npc)
+end
+function action_to_shooter:get_idle_target()
+    local i_table={}
+    if self.st.shooter_idle_look~="nil" then
+      if self.st.convert_shooter_idle_look~=nil then
+         i_table.look_position=self.st.convert_shooter_idle_look
+      end
+    end
+    return i_table
+end
+function action_to_shooter:get_fire_target()
+    local f_table={}
+    local look_rnd1=self.st.shooter_fire_look_table[math.random(table.getn(self.st.shooter_fire_look_table))]
+    local look_rnd2=self.st.shooter_fire_look_table[math.random(table.getn(self.st.shooter_fire_look_table))]
+    local look_rnd3=self.st.shooter_fire_look_table[math.random(table.getn(self.st.shooter_fire_look_table))]
+    local main_rnd=math.random(1,3)
+    if self.st.shooter_fire_look~="nil" and self.st.shooter_fire_look~="actor" then
+      if self.st.fire_rnd_bool==false then
+         f_table.look_position=level.vertex_position(self.st.shooter_fire_look)
+      else
+         if main_rnd==1 then
+         f_table.look_position=level.vertex_position(look_rnd1)
+         elseif main_rnd==2 then
+         f_table.look_position=level.vertex_position(look_rnd2)
+         else
+         f_table.look_position=level.vertex_position(look_rnd3)
+         end
+      end
+    elseif self.st.shooter_fire_look~="nil" and self.st.shooter_fire_look=="actor" then
+         f_table.look_object=db.actor
+    end
+    return f_table
+end
+function action_to_shooter:turn_end_callback()
+  printf("TURN END CALLBACK CALLED")
+end
+function action_to_shooter:time_callback()
+  printf("TIME CALLBACK CALLED")
+end
+function action_to_shooter:death_callback()
+  printf("DEATH CALLBACK CALLED")
+end
+function action_to_shooter:hit_callback()
+  printf("HIT CALLBACK CALLED")
+end
+function action_to_shooter:execute()
+   action_base.execute(self)
+   self.move_mgr:update()
+   if xr_logic.try_switch_to_another_section(self.object,self.st,db.actor) then
+   return
+   end
+   local npc=self.object
+   local npc_pos=self.object:level_vertex_id()
+   local idle_look=self:get_idle_target()
+   local fire_look=self:get_fire_target()
+   local dont_talk=not npc:is_talking()
+   --/Команда: Движение к вектору/--(«Пост. обновление»)
+   if self.st.shooter_pos~=0 then
+      local send_target=level.vertex_in_direction(self.st.shooter_pos,self.npc_vector,5)
+      local send_stalker=utils.send_to_nearest_accessible_vertex(npc,send_target)
+   end 
+   --/Команда: Установка состояний/--
+   if self.stage==0 and dont_talk then
+     if npc_pos~=self.st.shooter_pos then
+      if state_mgr.get_state(npc)~=self.st.shooter_move_state then
+         state_mgr.set_state(npc,self.st.shooter_move_state)
+      end
+      if self.stage>0 then
+         self.stage=0
+      end
+     elseif npc_pos==self.st.shooter_pos then
+      if state_mgr.get_state(npc)~=self.st.shooter_idle_state then
+         state_mgr.set_state(npc,self.st.shooter_idle_state,nil,nil,idle_look)
+      end
+      if self.stage==0 then
+         self.stage=1
+      end
+     end
+     save_stage(self.switch_init_bool,self.st.switchs,"stage_init")
+   end
+   --/Команда: Подготовка обстрела/--
+   if self.stage==1 and dont_talk then
+      state_mgr.set_state(npc,self.st.shooter_idle_state,nil,nil,idle_look)
+      if self.st.shooter_allow_info==nil or self.st.shooter_allow_info=="nil" then
+         if self.stage==1 and self.st.shooter_delay==0 then
+            self.stage=3
+         elseif self.stage==1 and self.st.shooter_delay~=0 then
+            sgm_flags.shooter_delay_timer=time_global()+self.st.shooter_delay
+            self.stage=4
+         end
+      else
+         if has_alife_info(self.st.shooter_allow_info) and self.st.shooter_delay==0 then
+            self.stage=3
+         elseif has_alife_info(self.st.shooter_allow_info) and self.st.shooter_delay~=0 then
+            sgm_flags.shooter_delay_timer=time_global()+self.st.shooter_delay
+            self.stage=4
+         end
+      end
+      save_stage(self.switch_preparate_bool,self.st.switchs,"stage_preparate")
+   end 
+   --/Команда: Ждать появления игрока/--
+   if self.st.shooter_need_see==true and self.stage==2 then
+      if npc:see(db.actor) then
+         self.stage=3
+      end
+   end
+   --/Команда: Активация обстрела/--
+   if self.stage==3 and dont_talk then
+      if self.st.shooter_need_see==true and not npc:see(db.actor) then
+         self.stage=2
+      end
+      if self.clip_counter<self.st.shooter_clip then 
+         if self.st.shooter_type_wpn=="grenade_launcher" then
+             if sgm_flags.launcher_timer==0 then
+                state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                self.clip_counter=self.clip_counter+1
+                sgm_flags.launcher_timer=time_global()+self.st.shooter_reload
+             elseif sgm_flags.launcher_timer>0 then
+                if state_mgr.get_state(npc)~=self.st.shooter_fire_state then
+                   state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                end
+             end
+         elseif self.st.shooter_type_wpn=="rifle" then
+             if sgm_flags.launcher_timer==0 then
+                state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                self.clip_counter=self.clip_counter+1
+                sgm_flags.launcher_timer=time_global()+self.st.shooter_reload
+             elseif sgm_flags.launcher_timer>0 then
+                if state_mgr.get_state(npc)~=self.st.shooter_fire_state then
+                   state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                end
+             end
+        elseif self.st.shooter_type_wpn=="sniper" then
+             if sgm_flags.launcher_timer==0 then
+                state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                self.clip_counter=self.clip_counter+1
+                sgm_flags.launcher_timer=time_global()+self.st.shooter_reload
+             elseif sgm_flags.launcher_timer>0 then
+                if state_mgr.get_state(npc)~=self.st.shooter_fire_state then
+                   state_mgr.set_state(npc,self.st.shooter_fire_state,nil,nil,fire_look)
+                end
+             end
+          end
+      else
+          if self.stage==3 then
+             self.stage=10
+          end
+      end
+      save_stage(self.switch_fire_bool,self.st.switchs,"stage_fire")
+   end 
+   --/Команда: Задержка/--
+   if self.stage==4 then
+      if sgm_flags.shooter_delay_timer==1 then
+         self.stage=3
+      end
+      save_stage(self.switch_bool,self.st.switchs,"stage_delay")
+   end 
+   --/Команда: Обстрел окончен, нужно стоять/--
+   if self.stage==10 and dont_talk then
+      if state_mgr.get_state(npc)~=self.st.shooter_idle_state then
+         state_mgr.set_state(npc,self.st.shooter_idle_state,nil,nil,idle_look)
+      end
+      parse_info(self.st.shooter_end_info)
+      save_stage(self.switch_end_bool,self.st.switchs,"stage_end")
+   end 
+   --/Команда: Доп. информация/--
+   --/show_hud_message("Обойма:"..self.clip_counter.."   Этап:"..self.stage.."   Состояние:"..state_mgr.get_state(npc))
+end
+function action_to_shooter:finalize()
+	self.move_mgr:finalize()
+	action_base.finalize(self)
+	--/self.stage=0
+	--/self.clip_counter=0
+end
+------------------------------------
+------------/Планировка/------------
+------------------------------------
+shooter_base_eva=stalker_ids.property_script+4590
+shooter_base_act=stalker_ids.action_script+3892
+
+function add_to_binder(npc, ini, scheme, section, storage)
+		printf("DEBUG: add_to_binder: scheme='%s', section='%s'", scheme, section)
+  		local operators	= {} 
+	  	local properties  = {}
+	   	local manager = npc:motivation_action_manager()  --/планировщик
+		properties["event"] = xr_evaluators_id.reaction
+	 	properties["need_shooter"] = shooter_base_eva+1
+	 	operators["action_shooter"] = shooter_base_act+1
+		manager:add_evaluator(properties["need_shooter"],this.evaluator_need_shooter(storage,"shooter_need"))
+                --/
+		local new_action = this.action_to_shooter(npc, "action_to_shooter", storage)
+		new_action:add_precondition(world_property(stalker_ids.property_alive, true))
+		new_action:add_precondition(world_property(properties["need_shooter"], true))
+		xr_motivator.addCommonPrecondition(new_action)
+	   	new_action:add_effect(world_property(properties["need_shooter"], false))
+		manager:add_action(operators["action_shooter"], new_action)
+                --/
+		xr_logic.subscribe_action_for_events(npc, storage, new_action)
+	  	new_action = manager:action(xr_actions_id.alife)
+	  	new_action:add_precondition(world_property(properties["need_shooter"],false))
+end
+function set_scheme(npc,ini,scheme,section,gulag_name)
+	printf("DEBUG: set_scheme: scheme='%s', section='%s'", scheme, section)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	printf("DEBUG: set_scheme: storage assigned")
+	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
+        --/
+        st.shooter_pos          = utils.cfg_get_number(ini,section,"shooter_pos",npc,false,0)
+        st.shooter_fire_look    = utils.cfg_get_string(ini,section,"shooter_fire_look",npc,false,"","nil")
+        st.shooter_idle_look    = utils.cfg_get_string(ini,section,"shooter_idle_look",npc,false,"","nil")
+        st.shooter_clip         = utils.cfg_get_number(ini,section,"shooter_clip",npc,false,0)
+        st.shooter_reload       = utils.cfg_get_number(ini,section,"shooter_reload",npc,false,0)
+        st.shooter_type_wpn     = utils.cfg_get_string(ini,section,"shooter_type_wpn",npc,false,"","nil")
+        st.shooter_move_state   = utils.cfg_get_string(ini,section,"shooter_move_state",npc,false,"","nil")
+        st.shooter_idle_state   = utils.cfg_get_string(ini,section,"shooter_idle_state",npc,false,"","nil")
+        st.shooter_fire_state   = utils.cfg_get_string(ini,section,"shooter_fire_state",npc,false,"","nil")
+        st.shooter_delay        = utils.cfg_get_number(ini,section,"shooter_delay",npc,false,0)
+        st.shooter_end_info     = utils.cfg_get_string(ini,section,"shooter_end_info",npc,false,"",nil)
+        st.shooter_allow_info   = utils.cfg_get_string(ini,section,"shooter_allow_info",npc,false,"",nil)
+        st.shooter_attack_actor = utils.cfg_get_bool(ini,section,"allow_teleport",npc,false,false)
+        st.shooter_need_see     = utils.cfg_get_bool(ini,section,"shooter_need_see",npc,false,false)
+        --/
+	if st.shooter_fire_look~=nil then
+	st.shooter_fire_look_table=parse_names(st.shooter_fire_look)
+	end
+        --/
+        if st.shooter_fire_look and st.shooter_fire_look~="nil" then 
+           if find_in_string(st.shooter_fire_look,",") then
+              st.fire_rnd_bool=true
+           else
+              st.fire_rnd_bool=false
+           end
+        end
+        --/
+        st.convert_shooter_idle_look=nil
+        if st.shooter_idle_look and st.shooter_idle_look~="nil" then
+             local get_shooter_idle_look=tonumber(st.shooter_idle_look)
+             if get_shooter_idle_look then
+                st.convert_shooter_idle_look=level.vertex_position(st.shooter_idle_look)
+             else
+                st.convert_shooter_idle_look=nil
+             end
+        end
+end
+------------------------------------
+------------/Функции/---------------
+------------------------------------
+function parse_info(info)
+      if info~=nil and not has_alife_info(info) then
+         db.actor:give_info_portion(info)
+      end
+end
+function save_stage(bool,container,stage_name)
+   if bool==false then
+      bool=true
+      container[stage_name]=true
+   end
+end
+-------------------------------------//Copyright 2009 GeJorge//-------------------------------------------------

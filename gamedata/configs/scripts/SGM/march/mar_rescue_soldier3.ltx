@@ -1,0 +1,99 @@
+[logic]
+active = move@wait
+on_death = death
+on_hit = hit
+
+[hit]
+on_info = %+mar_rescue_specnaz_hit%
+
+[death]
+on_info = %+mar_rescue_soldier3_death%
+
+[move@wait]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 196852
+state_in_center = hide
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 198688
+on_actor_dist_le_nvis = 10 | move@wait2 %+mar_rescue_specnaz_see%
+on_info         = {+mar_rescue_specnaz_complete} nil,{+mar_rescue_specnaz_see} move@wait2, {+mar_rescue_specnaz_fail} move@go_home
+[move@wait2]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 196852
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 198688
+on_info         = {+mar_rescue_specnaz_complete} nil,{+mar_rescue_specnaz_plan_a} move@step_0,{+mar_rescue_specnaz_plan_b} move@plan_b, {+mar_rescue_specnaz_fail} move@go_home
+[move@plan_b]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 118279
+state_in_center = hide
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 112707
+center_info     = mar_rescue_specnaz_plan_b_3
+on_signal       = in_center|{=mar_plan_b3_func} move@step_0 %+mar_rescue_specnaz_plan_b_allow%
+on_info         = {+mar_rescue_specnaz_complete} nil,{+mar_rescue_specnaz_fail} move@go_home
+[move@step_0]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 72626
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 73347
+on_signal       = in_center | move@step_0_work %+mar_rescue_specnaz_step_0_work%
+on_info         = {+mar_rescue_specnaz_fail} move@go_home
+[move@step_0_work]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 72626
+state_in_center = dynamite
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 73347
+on_timer        = 7000 | move@pre_rush %+mar_rescue_specnaz_step_0_end%
+play_dir        = csky_idle
+on_info         = {+mar_rescue_specnaz_fail} move@go_home
+[move@pre_rush]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 85247
+state_in_center = hide
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 87009
+center_info     = mar_rescue_specnaz_rush1_3
+on_signal       = in_center|{=mar_rescue3_func} move@go_home %+mar_rescue_specnaz_rush1_allow%
+on_info         = {+mar_rescue_specnaz_fail} move@go_home
+on_timer        = 150000 | move@go_home %+mar_rescue_specnaz_rush1_allow%
+[move@go_home]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 154926
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 152829
+center_info     = mar_rescue_specnaz_rescue
+on_info         = {+mar_rescue_specnaz_rescue} move@end
+[move@end]
+meet            = no_meet
+target_type     = level_vertex
+dest_number     = 154926
+state_in_center = guard
+state_for_move  = assault
+miss_center     = false
+look_vertex     = 152829
+on_signal       = in_center | {+mar_rescue_specnaz_rescue} nil
+on_info         = {+esc_actor_inside_traders_dung} nil
+
+
+
+
+
